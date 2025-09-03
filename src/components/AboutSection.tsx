@@ -1,0 +1,121 @@
+import { CheckCircle, Users, Zap, Shield } from "lucide-react";
+
+export default function AboutSection() {
+  const features = [
+    {
+      icon: Zap,
+      title: "Innovative Solutions",
+      description: "Cutting-edge technology solutions tailored to your business needs"
+    },
+    {
+      icon: Users,
+      title: "Expert Team",
+      description: "Skilled professionals with years of experience in tech industry"
+    },
+    {
+      icon: Shield,
+      title: "Secure & Reliable",
+      description: "Enterprise-grade security and 99.9% uptime guarantee"
+    }
+  ];
+
+  return (
+    <section id="about" className="py-24 relative overflow-hidden">
+      <div className="container mx-auto px-6">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Content */}
+          <div className="space-y-8">
+            <div className="space-y-4">
+              <h2 className="text-5xl font-bold">
+                <span className="text-foreground">About </span>
+                <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                  FRIMAT
+                </span>
+              </h2>
+              <p className="text-xl text-muted-foreground leading-relaxed">
+                We are a leading technology company dedicated to transforming businesses through innovative digital solutions. 
+                Our mission is to bridge the gap between cutting-edge technology and practical business applications.
+              </p>
+            </div>
+
+            <div className="space-y-6">
+              <h3 className="text-2xl font-semibold text-foreground">Our Vision</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                To be the global leader in technology innovation, empowering businesses of all sizes to achieve 
+                their digital transformation goals and stay ahead in an ever-evolving technological landscape.
+              </p>
+            </div>
+
+            <div className="space-y-4">
+              <h3 className="text-2xl font-semibold text-foreground">Why Choose Us?</h3>
+              <div className="space-y-3">
+                {[
+                  "10+ years of industry experience",
+                  "Dedicated support team available 24/7",
+                  "Custom solutions tailored to your needs",
+                  "Proven track record with 500+ successful projects"
+                ].map((item, index) => (
+                  <div key={index} className="flex items-center gap-3">
+                    <CheckCircle className="text-accent" size={20} />
+                    <span className="text-muted-foreground">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Features Grid */}
+          <div className="space-y-8">
+            <div className="grid gap-6">
+              {features.map((feature, index) => {
+                const Icon = feature.icon;
+                return (
+                  <div key={index} className="glass-card hover-scale group">
+                    <div className="flex items-start gap-4">
+                      <div className="p-3 rounded-xl bg-gradient-to-br from-primary to-accent">
+                        <Icon className="text-background" size={24} />
+                      </div>
+                      <div>
+                        <h4 className="text-xl font-semibold text-foreground mb-2">
+                          {feature.title}
+                        </h4>
+                        <p className="text-muted-foreground">
+                          {feature.description}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Company Stats */}
+            <div className="glass-card p-8">
+              <h4 className="text-2xl font-bold text-center text-foreground mb-6">
+                Company Highlights
+              </h4>
+              <div className="grid grid-cols-2 gap-6 text-center">
+                <div>
+                  <div className="text-3xl font-bold text-primary">2015</div>
+                  <div className="text-sm text-muted-foreground">Founded</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold text-secondary">50+</div>
+                  <div className="text-sm text-muted-foreground">Team Members</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold text-accent">15+</div>
+                  <div className="text-sm text-muted-foreground">Countries Served</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold text-primary">99.9%</div>
+                  <div className="text-sm text-muted-foreground">Uptime</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

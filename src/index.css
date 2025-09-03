@@ -2,41 +2,71 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* FRIMAT TECHNOLOGIES Design System - Tech-Inspired Theme
+All colors MUST be HSL for proper theming.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
+    /* Tech Brand Colors */
+    --background: 220 25% 8%;
+    --foreground: 210 40% 98%;
+    
+    /* Tech Blue Primary */
+    --primary: 220 90% 56%;
+    --primary-foreground: 220 25% 8%;
+    --primary-glow: 220 90% 70%;
+    
+    /* Tech Purple Secondary */
+    --secondary: 270 90% 60%;
+    --secondary-foreground: 220 25% 8%;
+    --secondary-glow: 270 90% 75%;
+    
+    /* Neon Accent */
+    --accent: 180 100% 50%;
+    --accent-foreground: 220 25% 8%;
+    --accent-glow: 180 100% 70%;
+    
+    /* Cards & Surfaces */
+    --card: 220 25% 12%;
+    --card-foreground: 210 40% 98%;
+    --card-glass: 220 25% 15%;
+    
+    /* Muted Elements */
+    --muted: 220 20% 20%;
+    --muted-foreground: 210 20% 70%;
+    
+    /* Borders & Inputs */
+    --border: 220 20% 25%;
+    --input: 220 20% 18%;
+    --ring: 220 90% 56%;
+    
+    /* Popover */
+    --popover: 220 25% 12%;
+    --popover-foreground: 210 40% 98%;
+    
+    /* Destructive */
+    --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+    
+    /* Tech Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(220 90% 56%), hsl(270 90% 60%));
+    --gradient-hero: linear-gradient(135deg, hsl(220 25% 8%), hsl(220 90% 15%), hsl(270 90% 15%));
+    --gradient-card: linear-gradient(135deg, hsl(220 25% 12% / 0.8), hsl(220 25% 15% / 0.6));
+    --gradient-button: linear-gradient(135deg, hsl(220 90% 56%), hsl(180 100% 50%));
+    --gradient-glow: radial-gradient(circle, hsl(220 90% 56% / 0.3), transparent 70%);
+    
+    /* Glassmorphism */
+    --glass-bg: hsl(220 25% 15% / 0.25);
+    --glass-border: hsl(220 40% 80% / 0.18);
+    --glass-shadow: 0 8px 32px hsl(220 90% 56% / 0.15);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-glow: all 0.4s ease-out;
+    
+    /* Layout */
+    --radius: 1rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +130,136 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans overflow-x-hidden;
+    background: var(--gradient-hero);
+  }
+}
+
+@layer components {
+  /* Glassmorphism Components */
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+  }
+  
+  .glass-card {
+    @apply glass rounded-[var(--radius)] p-6;
+    background: var(--gradient-card);
+    backdrop-filter: blur(20px);
+  }
+  
+  /* Hero Gradient Background */
+  .hero-bg {
+    background: var(--gradient-hero);
+    position: relative;
+  }
+  
+  .hero-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-glow);
+    opacity: 0.5;
+    animation: pulse 4s ease-in-out infinite;
+  }
+  
+  /* Glow Effects */
+  .glow-primary {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.5), 0 0 40px hsl(var(--primary) / 0.3);
+  }
+  
+  .glow-secondary {
+    box-shadow: 0 0 20px hsl(var(--secondary) / 0.5), 0 0 40px hsl(var(--secondary) / 0.3);
+  }
+  
+  .glow-accent {
+    box-shadow: 0 0 20px hsl(var(--accent) / 0.5), 0 0 40px hsl(var(--accent) / 0.3);
+  }
+  
+  /* Hover Animations */
+  .hover-glow:hover {
+    transform: translateY(-2px);
+    transition: var(--transition-glow);
+  }
+  
+  .hover-scale:hover {
+    transform: scale(1.05);
+    transition: var(--transition-smooth);
+  }
+  
+  /* Mobile Bottom Navbar */
+  .mobile-nav {
+    @apply glass fixed bottom-4 left-4 right-4 z-50 rounded-2xl p-4;
+    background: var(--gradient-card);
+  }
+  
+  .nav-item {
+    @apply flex flex-col items-center gap-1 text-xs font-medium transition-all duration-300;
+  }
+  
+  .nav-item.active {
+    @apply text-primary;
+    filter: drop-shadow(0 0 8px hsl(var(--primary) / 0.8));
+  }
+  
+  /* Scroll Animations */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+  }
+  
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Tech Particles Background */
+  .tech-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+  }
+  
+  .particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: hsl(var(--primary));
+    border-radius: 50%;
+    animation: float 8s infinite linear;
+  }
+  
+  @keyframes float {
+    0% {
+      transform: translateY(100vh) rotate(0deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100px) rotate(360deg);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 0.8;
+    }
   }
 }
