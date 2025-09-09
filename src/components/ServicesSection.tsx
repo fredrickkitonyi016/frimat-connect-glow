@@ -6,14 +6,7 @@ import {
   Network, 
   ShoppingCart,
   ArrowRight,
-  Printer,
-  ScanLine,
-  FileText,
-  Wifi,
-  GraduationCap,
-  HardDrive,
-  Building2,
-  CloudUpload
+  MonitorSpeaker
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -56,52 +49,19 @@ export default function ServicesSection() {
       features: ["Shopify", "WooCommerce", "Payment Integration", "Inventory Management"]
     },
     {
-      icon: Printer,
-      title: "Printing Services",
-      description: "Professional printing solutions for all your document needs",
-      features: ["Color & B/W Printing", "Large Format Printing", "Business Cards", "Brochures & Flyers"]
-    },
-    {
-      icon: ScanLine,
-      title: "Scanning & Photocopying",
-      description: "High-quality document scanning and photocopying services",
-      features: ["Document Scanning", "Bulk Photocopying", "Color Copying", "Digital File Conversion"]
-    },
-    {
-      icon: FileText,
-      title: "Document Services",
-      description: "Complete document processing and finishing services",
-      features: ["Lamination", "Binding & Stapling", "Document Typing", "CV & Resume Writing"]
-    },
-    {
-      icon: Wifi,
-      title: "Internet Services",
-      description: "Fast and reliable internet access and browsing services",
-      features: ["High-Speed Internet", "Computer Rental", "Email Services", "Social Media Access"]
-    },
-    {
-      icon: GraduationCap,
-      title: "Computer Training",
-      description: "Comprehensive computer literacy and software training programs",
-      features: ["Basic Computer Skills", "Microsoft Office", "Internet Training", "Digital Literacy"]
-    },
-    {
-      icon: HardDrive,
-      title: "Data Recovery",
-      description: "Professional data recovery and backup services",
-      features: ["File Recovery", "Data Backup", "Virus Removal", "System Restoration"]
-    },
-    {
-      icon: Building2,
-      title: "Government Services",
-      description: "Assistance with online government services and applications",
-      features: ["KRA iTax Services", "HELB Applications", "NHIF Registration", "eCitizen Services"]
-    },
-    {
-      icon: CloudUpload,
-      title: "Cloud Storage & Backup",
-      description: "Secure cloud storage solutions and data backup services",
-      features: ["Google Drive Setup", "OneDrive Configuration", "File Synchronization", "Cloud Migration"]
+      icon: MonitorSpeaker,
+      title: "Cyber Cafe Services",
+      description: "Complete cyber cafe solutions for all your digital needs",
+      features: [
+        "Printing & Photocopying", 
+        "Document Scanning", 
+        "Internet Access", 
+        "Computer Training",
+        "Government Services (KRA iTax, HELB, NHIF)",
+        "Data Recovery & Backup",
+        "CV Writing & Typing",
+        "Lamination & Binding"
+      ]
     }
   ];
 
