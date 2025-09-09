@@ -5,7 +5,13 @@ import {
   Shield, 
   Network, 
   ShoppingCart,
-  ArrowRight
+  ArrowRight,
+  Printer,
+  ScanLine,
+  FileText,
+  Wifi,
+  GraduationCap,
+  HardDrive
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -46,6 +52,42 @@ export default function ServicesSection() {
       title: "E-commerce",
       description: "Complete e-commerce solutions from design to deployment",
       features: ["Shopify", "WooCommerce", "Payment Integration", "Inventory Management"]
+    },
+    {
+      icon: Printer,
+      title: "Printing Services",
+      description: "Professional printing solutions for all your document needs",
+      features: ["Color & B/W Printing", "Large Format Printing", "Business Cards", "Brochures & Flyers"]
+    },
+    {
+      icon: ScanLine,
+      title: "Scanning & Photocopying",
+      description: "High-quality document scanning and photocopying services",
+      features: ["Document Scanning", "Bulk Photocopying", "Color Copying", "Digital File Conversion"]
+    },
+    {
+      icon: FileText,
+      title: "Document Services",
+      description: "Complete document processing and finishing services",
+      features: ["Lamination", "Binding & Stapling", "Document Typing", "CV & Resume Writing"]
+    },
+    {
+      icon: Wifi,
+      title: "Internet Services",
+      description: "Fast and reliable internet access and browsing services",
+      features: ["High-Speed Internet", "Computer Rental", "Email Services", "Social Media Access"]
+    },
+    {
+      icon: GraduationCap,
+      title: "Computer Training",
+      description: "Comprehensive computer literacy and software training programs",
+      features: ["Basic Computer Skills", "Microsoft Office", "Internet Training", "Digital Literacy"]
+    },
+    {
+      icon: HardDrive,
+      title: "Data Recovery",
+      description: "Professional data recovery and backup services",
+      features: ["File Recovery", "Data Backup", "Virus Removal", "System Restoration"]
     }
   ];
 
