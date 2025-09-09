@@ -11,7 +11,9 @@ import {
   FileText,
   Wifi,
   GraduationCap,
-  HardDrive
+  HardDrive,
+  Building2,
+  CloudUpload
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -88,6 +90,18 @@ export default function ServicesSection() {
       title: "Data Recovery",
       description: "Professional data recovery and backup services",
       features: ["File Recovery", "Data Backup", "Virus Removal", "System Restoration"]
+    },
+    {
+      icon: Building2,
+      title: "Government Services",
+      description: "Assistance with online government services and applications",
+      features: ["KRA iTax Services", "HELB Applications", "NHIF Registration", "eCitizen Services"]
+    },
+    {
+      icon: CloudUpload,
+      title: "Cloud Storage & Backup",
+      description: "Secure cloud storage solutions and data backup services",
+      features: ["Google Drive Setup", "OneDrive Configuration", "File Synchronization", "Cloud Migration"]
     }
   ];
 
