@@ -241,13 +241,13 @@ export default function ServicesSection() {
 
       {/* Detailed Service Modal */}
       {selectedService !== null && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-          <div className="glass-card max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md">
+          <div className="bg-background/95 backdrop-blur-xl border border-border rounded-2xl shadow-2xl max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
             <div className="relative p-8">
               {/* Close Button */}
               <button
                 onClick={() => setSelectedService(null)}
-                className="absolute top-4 right-4 p-2 rounded-full glass hover-glow transition-all"
+                className="absolute top-4 right-4 p-2 rounded-full bg-background/80 hover:bg-accent/20 border border-border transition-all z-10"
               >
                 <X size={20} className="text-foreground" />
               </button>
@@ -309,16 +309,16 @@ export default function ServicesSection() {
 
                         {/* Pricing & Timeline */}
                         <div className="space-y-4">
-                          <div className="p-4 rounded-xl bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20">
+                          <div className="p-4 rounded-xl bg-primary/20 border border-primary/30">
                             <div className="flex items-center gap-2 mb-2">
                               <Clock className="text-primary" size={16} />
                               <span className="font-semibold text-foreground">Timeline</span>
                             </div>
-                            <p className="text-muted-foreground">{service.timeline}</p>
+                            <p className="text-foreground font-medium">{service.timeline}</p>
                           </div>
-                          <div className="p-4 rounded-xl bg-gradient-to-r from-accent/10 to-primary/10 border border-accent/20">
+                          <div className="p-4 rounded-xl bg-accent/20 border border-accent/30">
                             <span className="font-semibold text-foreground block mb-1">Pricing</span>
-                            <p className="text-lg font-bold text-accent">{service.pricing}</p>
+                            <p className="text-xl font-bold text-accent">{service.pricing}</p>
                           </div>
                         </div>
                       </div>
@@ -333,7 +333,7 @@ export default function ServicesSection() {
                         {service.features.map((feature, idx) => (
                           <span
                             key={idx}
-                            className="px-4 py-2 rounded-full glass text-sm font-medium text-foreground"
+                            className="px-4 py-2 rounded-full bg-secondary/30 border border-secondary/50 text-sm font-medium text-foreground"
                           >
                             {feature}
                           </span>
