@@ -1,13 +1,6 @@
 import { useState } from "react";
 import { 
-  Code, 
-  Smartphone, 
-  Cloud, 
-  Shield, 
-  Network, 
-  ShoppingCart,
   ArrowRight,
-  MonitorSpeaker,
   X,
   CheckCircle,
   Clock,
@@ -15,12 +8,22 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+// Import service logos
+import webDevLogo from "@/assets/logos/web-dev-logo.png";
+import mobileAppLogo from "@/assets/logos/mobile-app-logo.png";
+import cloudServicesLogo from "@/assets/logos/cloud-services-logo.png";
+import cybersecurityLogo from "@/assets/logos/cybersecurity-logo.png";
+import itSupportLogo from "@/assets/logos/it-support-logo.png";
+import ecommerceLogo from "@/assets/logos/ecommerce-logo.png";
+import cyberCafeLogo from "@/assets/logos/cyber-cafe-logo.png";
+import kraLogo from "@/assets/logos/kra-logo.png";
+
 export default function ServicesSection() {
   const [selectedService, setSelectedService] = useState<number | null>(null);
 
   const services = [
     {
-      icon: Code,
+      logo: webDevLogo,
       title: "Web Development",
       description: "Custom web applications built with modern frameworks and technologies",
       features: ["React & Vue.js", "Full-Stack Development", "API Integration", "Performance Optimization"],
@@ -37,7 +40,7 @@ export default function ServicesSection() {
       ]
     },
     {
-      icon: Smartphone,
+      logo: mobileAppLogo,
       title: "Mobile Apps",
       description: "Native and cross-platform mobile applications for iOS and Android",
       features: ["React Native", "Flutter", "iOS Development", "Android Development"],
@@ -54,7 +57,7 @@ export default function ServicesSection() {
       ]
     },
     {
-      icon: Cloud,
+      logo: cloudServicesLogo,
       title: "Cloud Services",
       description: "Scalable cloud infrastructure and migration services",
       features: ["AWS & Azure", "Cloud Migration", "DevOps", "Microservices"],
@@ -71,7 +74,7 @@ export default function ServicesSection() {
       ]
     },
     {
-      icon: Shield,
+      logo: cybersecurityLogo,
       title: "Cybersecurity",
       description: "Comprehensive security solutions to protect your digital assets",
       features: ["Security Audits", "Penetration Testing", "Compliance", "Risk Assessment"],
@@ -88,7 +91,7 @@ export default function ServicesSection() {
       ]
     },
     {
-      icon: Network,
+      logo: itSupportLogo,
       title: "IT Support",
       description: "24/7 technical support and IT infrastructure management",
       features: ["Help Desk", "Network Management", "System Monitoring", "Maintenance"],
@@ -105,7 +108,7 @@ export default function ServicesSection() {
       ]
     },
     {
-      icon: ShoppingCart,
+      logo: ecommerceLogo,
       title: "E-commerce",
       description: "Complete e-commerce solutions from design to deployment",
       features: ["Shopify", "WooCommerce", "Payment Integration", "Inventory Management"],
@@ -122,7 +125,8 @@ export default function ServicesSection() {
       ]
     },
     {
-      icon: MonitorSpeaker,
+      logo: cyberCafeLogo,
+      kraLogo: kraLogo,
       title: "Cyber Cafe Services",
       description: "Complete cyber cafe solutions for all your digital needs",
       features: [
@@ -169,14 +173,25 @@ export default function ServicesSection() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => {
-            const Icon = service.icon;
             return (
               <div key={index} className="glass-card hover-scale group h-full">
                 <div className="space-y-6">
-                  {/* Icon */}
+                  {/* Logo */}
                   <div className="relative">
-                    <div className="p-4 rounded-2xl bg-gradient-to-br from-primary to-accent w-fit">
-                      <Icon className="text-background" size={32} />
+                    <div className="p-4 rounded-2xl bg-white/90 backdrop-blur-sm w-fit shadow-lg">
+                      <img 
+                        src={service.logo} 
+                        alt={`${service.title} logo`}
+                        className="w-12 h-12 object-contain"
+                      />
+                      {/* Show KRA logo for cyber cafe services */}
+                      {service.kraLogo && (
+                        <img 
+                          src={service.kraLogo} 
+                          alt="KRA logo"
+                          className="w-8 h-8 object-contain absolute -top-1 -right-1 bg-white rounded-full p-1"
+                        />
+                      )}
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-br from-primary to-accent rounded-2xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
                   </div>
@@ -254,13 +269,24 @@ export default function ServicesSection() {
 
               {(() => {
                 const service = services[selectedService];
-                const Icon = service.icon;
                 return (
                   <div className="space-y-8">
                     {/* Header */}
                     <div className="flex items-start gap-6">
-                      <div className="p-4 rounded-2xl bg-gradient-to-br from-primary to-accent">
-                        <Icon className="text-background" size={40} />
+                      <div className="p-4 rounded-2xl bg-white/90 backdrop-blur-sm shadow-lg relative">
+                        <img 
+                          src={service.logo} 
+                          alt={`${service.title} logo`}
+                          className="w-16 h-16 object-contain"
+                        />
+                        {/* Show KRA logo for cyber cafe services */}
+                        {service.kraLogo && (
+                          <img 
+                            src={service.kraLogo} 
+                            alt="KRA logo"
+                            className="w-10 h-10 object-contain absolute -top-2 -right-2 bg-white rounded-full p-1"
+                          />
+                        )}
                       </div>
                       <div className="flex-1">
                         <h3 className="text-3xl font-bold text-foreground mb-2">
