@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
+import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-bg.jpg";
 
 export default function HeroSection() {
@@ -58,13 +59,17 @@ export default function HeroSection() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mt-12">
-            <Button variant="hero" size="lg" className="group">
-              Get Started
-              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
+            <Button variant="hero" size="lg" className="group" asChild>
+              <Link to="#services">
+                Get Started
+                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
+              </Link>
             </Button>
-            <Button variant="glass" size="lg" className="group">
-              Sign Up
-              <Sparkles className="ml-2 group-hover:rotate-12 transition-transform" size={20} />
+            <Button variant="glass" size="lg" className="group" asChild>
+              <Link to="/auth">
+                Sign Up
+                <Sparkles className="ml-2 group-hover:rotate-12 transition-transform" size={20} />
+              </Link>
             </Button>
           </div>
 
