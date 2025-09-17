@@ -3,9 +3,14 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import ServicesSection from "@/components/ServicesSection";
+import ClientLogosSection from "@/components/ClientLogosSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import TeamSection from "@/components/TeamSection";
+import PricingSection from "@/components/PricingSection";
 import ShopSection from "@/components/ShopSection";
 import PortfolioSection from "@/components/PortfolioSection";
 import BlogSection from "@/components/BlogSection";
+import FAQSection from "@/components/FAQSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
@@ -46,6 +51,18 @@ const Index = () => {
           <ServicesSection />
         </div>
         <div className="fade-in">
+          <ClientLogosSection />
+        </div>
+        <div className="fade-in">
+          <TestimonialsSection />
+        </div>
+        <div className="fade-in">
+          <TeamSection />
+        </div>
+        <div className="fade-in">
+          <PricingSection />
+        </div>
+        <div className="fade-in">
           <ShopSection />
         </div>
         <div className="fade-in">
@@ -53,6 +70,9 @@ const Index = () => {
         </div>
         <div className="fade-in">
           <BlogSection />
+        </div>
+        <div className="fade-in">
+          <FAQSection />
         </div>
         <div className="fade-in">
           <ContactSection />
