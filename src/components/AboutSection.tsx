@@ -38,12 +38,25 @@ export default function AboutSection() {
               </p>
             </div>
 
-            <div className="space-y-6">
-              <h3 className="text-2xl font-semibold text-foreground">Our Vision</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                To be the global leader in technology innovation, empowering businesses of all sizes to achieve 
-                their digital transformation goals and stay ahead in an ever-evolving technological landscape.
-              </p>
+            {/* Vision Banner */}
+            <div className="relative overflow-hidden rounded-2xl p-8 bg-gradient-to-br from-primary/20 via-secondary/10 to-accent/20 backdrop-blur-sm border border-primary/20">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-accent/5 animate-pulse"></div>
+              <div className="relative z-10 space-y-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-8 bg-gradient-to-b from-primary to-accent rounded-full"></div>
+                  <h3 className="text-3xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                    Our Vision
+                  </h3>
+                </div>
+                <p className="text-lg text-foreground/90 leading-relaxed font-medium">
+                  To be the global leader in technology innovation, empowering businesses of all sizes to achieve 
+                  their digital transformation goals and stay ahead in an ever-evolving technological landscape.
+                </p>
+                <div className="flex items-center gap-2 text-sm text-primary">
+                  <div className="w-1 h-1 bg-primary rounded-full animate-pulse"></div>
+                  <span className="font-semibold">Innovating Tomorrow, Today</span>
+                </div>
+              </div>
             </div>
 
             <div className="space-y-4">
