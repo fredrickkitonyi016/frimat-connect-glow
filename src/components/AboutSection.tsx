@@ -2,9 +2,9 @@ import { CheckCircle, Users, Zap, Shield } from "lucide-react";
 import { useCountUp } from "@/hooks/useCountUp";
 
 export default function AboutSection() {
-  const teamCount = useCountUp({ end: 50, suffix: '+' });
-  const countriesCount = useCountUp({ end: 15, suffix: '+' });
-  const uptimePercent = useCountUp({ end: 99.9, suffix: '%' });
+  const teamCount = useCountUp({ end: 50, suffix: '+', duration: 8000 });
+  const countriesCount = useCountUp({ end: 15, suffix: '+', duration: 6000 });
+  const uptimePercent = useCountUp({ end: 99.9, suffix: '%', duration: 10000 });
 
   const features = [
     {
