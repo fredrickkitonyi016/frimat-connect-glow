@@ -28,7 +28,7 @@ const clients = [
 ];
 
 export default function ClientLogosSection() {
-  const projectsCount = useCountUp({ end: 500, suffix: '+', duration: 12000 });
+  const projectsCount = useCountUp({ end: 20, suffix: '+', duration: 12000 });
   const countriesCount = useCountUp({ end: 15, suffix: '+', duration: 8000 });
   const satisfactionCount = useCountUp({ end: 99.9, suffix: '%', duration: 10000 });
 

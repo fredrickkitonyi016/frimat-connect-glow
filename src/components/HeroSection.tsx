@@ -5,7 +5,7 @@ import heroImage from "@/assets/hero-bg.jpg";
 import { useCountUp } from "@/hooks/useCountUp";
 
 export default function HeroSection() {
-  const projectsCount = useCountUp({ end: 500, suffix: '+', duration: 10000 });
+  const projectsCount = useCountUp({ end: 20, suffix: '+', duration: 10000 });
   const clientsCount = useCountUp({ end: 100, suffix: '+', duration: 8000 });
   const uptimeCount = useCountUp({ end: 24, suffix: '/7', duration: 6000 });
   const ratingCount = useCountUp({ end: 5, suffix: '★', duration: 4000 });
