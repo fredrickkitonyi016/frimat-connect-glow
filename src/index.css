@@ -218,6 +218,63 @@ All colors MUST be HSL for proper theming.
     opacity: 1;
     transform: translateY(0);
   }
+
+  /* Interactive Effects */
+  .hover-lift:hover {
+    transform: translateY(-5px);
+    transition: var(--transition-smooth);
+    box-shadow: 0 10px 25px hsl(var(--primary) / 0.2);
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 30px hsl(var(--primary) / 0.6);
+    transition: var(--transition-glow);
+  }
+
+  .typing-cursor::after {
+    content: '|';
+    animation: blink 1s infinite;
+  }
+
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+
+  /* Enhanced Particle System */
+  .tech-particles .particle:nth-child(odd) {
+    background: hsl(var(--accent));
+    animation-duration: 12s;
+  }
+
+  .tech-particles .particle:nth-child(3n) {
+    background: hsl(var(--secondary));
+    animation-duration: 15s;
+  }
+
+  /* Navbar Blur Effect */
+  .navbar-blur {
+    backdrop-filter: blur(20px);
+    transition: background-color 0.3s ease;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary-glow));
+  }
   
   /* Tech Particles Background */
   .tech-particles {

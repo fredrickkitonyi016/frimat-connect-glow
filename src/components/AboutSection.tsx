@@ -1,6 +1,11 @@
 import { CheckCircle, Users, Zap, Shield } from "lucide-react";
+import { useCountUp } from "@/hooks/useCountUp";
 
 export default function AboutSection() {
+  const teamCount = useCountUp({ end: 50, suffix: '+' });
+  const countriesCount = useCountUp({ end: 15, suffix: '+' });
+  const uptimePercent = useCountUp({ end: 99.9, suffix: '%' });
+
   const features = [
     {
       icon: Zap,
@@ -113,15 +118,15 @@ export default function AboutSection() {
                   <div className="text-sm text-muted-foreground">Founded</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-secondary">50+</div>
+                  <div ref={teamCount.ref} className="text-3xl font-bold text-secondary">{teamCount.value}</div>
                   <div className="text-sm text-muted-foreground">Team Members</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-accent">15+</div>
+                  <div ref={countriesCount.ref} className="text-3xl font-bold text-accent">{countriesCount.value}</div>
                   <div className="text-sm text-muted-foreground">Countries Served</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-primary">99.9%</div>
+                  <div ref={uptimePercent.ref} className="text-3xl font-bold text-primary">{uptimePercent.value}</div>
                   <div className="text-sm text-muted-foreground">Uptime</div>
                 </div>
               </div>

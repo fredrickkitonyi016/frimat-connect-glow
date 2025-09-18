@@ -1,3 +1,5 @@
+import { useCountUp } from "@/hooks/useCountUp";
+
 const clients = [
   {
     name: "TechStart Solutions",
@@ -26,6 +28,10 @@ const clients = [
 ];
 
 export default function ClientLogosSection() {
+  const projectsCount = useCountUp({ end: 500, suffix: '+' });
+  const countriesCount = useCountUp({ end: 15, suffix: '+' });
+  const satisfactionCount = useCountUp({ end: 99.9, suffix: '%' });
+
   return (
     <section className="py-16 border-y border-border/50">
       <div className="container mx-auto px-6">
@@ -59,12 +65,12 @@ export default function ClientLogosSection() {
         </div>
 
         <div className="text-center mt-12">
-          <div className="inline-flex items-center gap-4 text-sm text-muted-foreground">
-            <span>500+ Projects Completed</span>
-            <span>•</span>
-            <span>15+ Countries Served</span>
-            <span>•</span>
-            <span>99.9% Client Satisfaction</span>
+          <div className="flex flex-wrap justify-center gap-8 text-sm text-muted-foreground">
+            <span ref={projectsCount.ref}>{projectsCount.value} Projects Completed</span>
+            <span className="hidden md:inline">•</span>
+            <span ref={countriesCount.ref}>{countriesCount.value} Countries Served</span>
+            <span className="hidden md:inline">•</span>
+            <span ref={satisfactionCount.ref}>{satisfactionCount.value} Client Satisfaction</span>
           </div>
         </div>
       </div>

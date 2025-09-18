@@ -2,8 +2,14 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-bg.jpg";
+import { useCountUp } from "@/hooks/useCountUp";
 
 export default function HeroSection() {
+  const projectsCount = useCountUp({ end: 500, suffix: '+' });
+  const clientsCount = useCountUp({ end: 100, suffix: '+' });
+  const uptimeCount = useCountUp({ end: 24, suffix: '/7' });
+  const ratingCount = useCountUp({ end: 5, suffix: '★' });
+
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
@@ -75,17 +81,22 @@ export default function HeroSection() {
 
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 max-w-4xl mx-auto">
-            {[
-              { number: "500+", label: "Projects Completed" },
-              { number: "100+", label: "Happy Clients" },
-              { number: "24/7", label: "Support Available" },
-              { number: "5★", label: "Customer Rating" }
-            ].map((stat, index) => (
-              <div key={index} className="glass-card text-center p-6 hover-scale">
-                <div className="text-3xl font-bold text-primary mb-2">{stat.number}</div>
-                <div className="text-sm text-muted-foreground">{stat.label}</div>
-              </div>
-            ))}
+            <div className="glass-card text-center p-6 hover-scale">
+              <div ref={projectsCount.ref} className="text-3xl font-bold text-primary mb-2">{projectsCount.value}</div>
+              <div className="text-sm text-muted-foreground">Projects Completed</div>
+            </div>
+            <div className="glass-card text-center p-6 hover-scale">
+              <div ref={clientsCount.ref} className="text-3xl font-bold text-primary mb-2">{clientsCount.value}</div>
+              <div className="text-sm text-muted-foreground">Happy Clients</div>
+            </div>
+            <div className="glass-card text-center p-6 hover-scale">
+              <div ref={uptimeCount.ref} className="text-3xl font-bold text-primary mb-2">{uptimeCount.value}</div>
+              <div className="text-sm text-muted-foreground">Support Available</div>
+            </div>
+            <div className="glass-card text-center p-6 hover-scale">
+              <div ref={ratingCount.ref} className="text-3xl font-bold text-primary mb-2">{ratingCount.value}</div>
+              <div className="text-sm text-muted-foreground">Customer Rating</div>
+            </div>
           </div>
         </div>
       </div>
