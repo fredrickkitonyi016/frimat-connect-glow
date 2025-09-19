@@ -3,7 +3,7 @@ import { useCountUp } from "@/hooks/useCountUp";
 
 export default function AboutSection() {
   const teamCount = useCountUp({ end: 50, suffix: '+', duration: 3000, enableScrollTrigger: false });
-  const countriesCount = useCountUp({ end: 15, suffix: '+', duration: 2500, enableScrollTrigger: false });
+  const countriesCount = useCountUp({ end: 1, duration: 2500, enableScrollTrigger: false });
   const uptimePercent = useCountUp({ end: 99.9, suffix: '%', duration: 3500, enableScrollTrigger: false });
 
   const features = [
