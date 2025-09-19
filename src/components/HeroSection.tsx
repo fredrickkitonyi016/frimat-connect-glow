@@ -5,10 +5,10 @@ import heroImage from "@/assets/hero-bg.jpg";
 import { useCountUp } from "@/hooks/useCountUp";
 
 export default function HeroSection() {
-  const projectsCount = useCountUp({ end: 20, duration: 10000 });
-  const clientsCount = useCountUp({ end: 100, suffix: '+', duration: 8000 });
-  const uptimeCount = useCountUp({ end: 24, suffix: '/7', duration: 6000 });
-  const ratingCount = useCountUp({ end: 5, suffix: '★', duration: 4000 });
+  const projectsCount = useCountUp({ end: 20, duration: 3000, enableScrollTrigger: true });
+  const clientsCount = useCountUp({ end: 100, suffix: '+', duration: 3500, enableScrollTrigger: true });
+  const uptimeCount = useCountUp({ end: 24, suffix: '/7', duration: 2000, enableScrollTrigger: true });
+  const ratingCount = useCountUp({ end: 5, suffix: ' Star Rating', duration: 2500, enableScrollTrigger: true });
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -95,7 +95,7 @@ export default function HeroSection() {
             </div>
             <div className="glass-card text-center p-6 hover-scale">
               <div ref={ratingCount.ref} className="text-3xl font-bold text-primary mb-2">{ratingCount.value}</div>
-              <div className="text-sm text-muted-foreground">Customer Rating</div>
+              <div className="text-sm text-muted-foreground">Customer Reviews</div>
             </div>
           </div>
         </div>
