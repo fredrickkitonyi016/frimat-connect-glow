@@ -257,7 +257,7 @@ export default function ServicesSection() {
       {/* Detailed Service Modal */}
       {selectedService !== null && (
         <div className="fixed inset-0 z-50 flex items-start justify-center bg-black/80 backdrop-blur-md p-4 overflow-y-auto">
-          <div className="bg-background/95 backdrop-blur-xl border border-border rounded-2xl shadow-2xl max-w-4xl w-full my-4">
+          <div className="bg-background/95 backdrop-blur-xl border border-border rounded-2xl shadow-2xl max-w-4xl w-full">
             <div className="relative p-6 md:p-8">
               {/* Close Button */}
               <button
