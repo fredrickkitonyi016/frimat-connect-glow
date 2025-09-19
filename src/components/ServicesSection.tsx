@@ -256,16 +256,17 @@ export default function ServicesSection() {
 
       {/* Detailed Service Modal */}
       {selectedService !== null && (
-        <div className="fixed inset-0 z-50 flex items-start justify-center bg-black/80 backdrop-blur-md p-4 overflow-y-auto">
-          <div className="bg-background/95 backdrop-blur-xl border border-border rounded-2xl shadow-2xl max-w-4xl w-full">
-            <div className="relative p-6 md:p-8">
-              {/* Close Button */}
-              <button
-                onClick={() => setSelectedService(null)}
-                className="absolute top-3 right-3 p-2 rounded-full bg-background/80 hover:bg-accent/20 border border-border transition-all z-10"
-              >
-                <X size={18} className="text-foreground" />
-              </button>
+        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md overflow-y-auto">
+          <div className="min-h-screen flex items-start justify-center p-2">
+            <div className="bg-background/95 backdrop-blur-xl border border-border rounded-2xl shadow-2xl max-w-4xl w-full mt-2">
+              <div className="relative p-4 md:p-6">
+                {/* Close Button */}
+                <button
+                  onClick={() => setSelectedService(null)}
+                  className="absolute top-2 right-2 p-2 rounded-full bg-background/80 hover:bg-accent/20 border border-border transition-all z-10"
+                >
+                  <X size={16} className="text-foreground" />
+                </button>
 
               {(() => {
                 const service = services[selectedService];
@@ -379,6 +380,7 @@ export default function ServicesSection() {
                   </div>
                 );
               })()}
+              </div>
             </div>
           </div>
         </div>
