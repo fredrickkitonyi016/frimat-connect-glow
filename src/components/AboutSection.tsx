@@ -71,7 +71,7 @@ export default function AboutSection() {
                   "10+ years of industry experience",
                   "Dedicated support team available 24/7",
                   "Custom solutions tailored to your needs",
-                  "Proven track record with 20+ successful projects"
+                  "Proven track record with 20 successful projects"
                 ].map((item, index) => (
                   <div key={index} className="flex items-center gap-3">
                     <CheckCircle className="text-accent" size={20} />
