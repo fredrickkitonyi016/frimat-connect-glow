@@ -7,6 +7,7 @@ import {
   Users
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import CyberCafeServicesModal from "@/components/CyberCafeServicesModal";
 
 // Import service logos
 import webDevLogo from "@/assets/logos/web-dev-logo.png";
@@ -20,6 +21,7 @@ import kraLogo from "@/assets/logos/kra-logo.png";
 
 export default function ServicesSection() {
   const [selectedService, setSelectedService] = useState<number | null>(null);
+  const [showCyberCafeModal, setShowCyberCafeModal] = useState(false);
 
   const services = [
     {
@@ -221,7 +223,13 @@ export default function ServicesSection() {
                     <Button 
                       variant="glass" 
                       className="w-full group"
-                      onClick={() => setSelectedService(index)}
+                      onClick={() => {
+                        if (index === 6) {
+                          setShowCyberCafeModal(true);
+                        } else {
+                          setSelectedService(index);
+                        }
+                      }}
                     >
                       Learn More
                       <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={16} />
@@ -399,6 +407,12 @@ export default function ServicesSection() {
           </div>
         </div>
       )}
+
+      {/* Cyber Cafe Services Modal */}
+      <CyberCafeServicesModal 
+        isOpen={showCyberCafeModal}
+        onClose={() => setShowCyberCafeModal(false)}
+      />
     </section>
   );
 }
