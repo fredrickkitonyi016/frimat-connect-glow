@@ -370,10 +370,24 @@ export default function ServicesSection() {
 
                     {/* CTA Buttons */}
                     <div className="flex gap-4 pt-4">
-                      <Button variant="hero" className="flex-1">
+                      <Button 
+                        variant="hero" 
+                        className="flex-1"
+                        onClick={() => {
+                          setSelectedService(null);
+                          document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                      >
                         Get Quote
                       </Button>
-                      <Button variant="glass" className="flex-1">
+                      <Button 
+                        variant="glass" 
+                        className="flex-1"
+                        onClick={() => {
+                          setSelectedService(null);
+                          document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                      >
                         Contact Us
                       </Button>
                     </div>
