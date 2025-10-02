@@ -12,6 +12,7 @@ import PortfolioSection from "@/components/PortfolioSection";
 import BlogSection from "@/components/BlogSection";
 import FAQSection from "@/components/FAQSection";
 import ContactSection from "@/components/ContactSection";
+import QuotationGenerator from "@/components/QuotationGenerator";
 import Footer from "@/components/Footer";
 import { useScrollAnimations, useMouseEffects } from "@/hooks/useScrollAnimations";
 
@@ -56,6 +57,9 @@ const Index = () => {
         </div>
         <div className="fade-in">
           <ContactSection />
+        </div>
+        <div className="fade-in">
+          <QuotationGenerator />
         </div>
       </main>
       <Footer />

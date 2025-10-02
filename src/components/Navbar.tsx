@@ -10,7 +10,8 @@ import {
   FileText, 
   Phone,
   Menu,
-  X
+  X,
+  Receipt
 } from "lucide-react";
 
 const navigation = [
@@ -20,6 +21,7 @@ const navigation = [
   { name: "Shop", href: "#shop", icon: ShoppingBag },
   { name: "Portfolio", href: "#portfolio", icon: Briefcase },
   { name: "Blog", href: "#blog", icon: FileText },
+  { name: "Quotation", href: "#quotation", icon: Receipt },
   { name: "Contact", href: "#contact", icon: Phone },
 ];
 
