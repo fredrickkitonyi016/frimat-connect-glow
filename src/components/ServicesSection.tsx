@@ -8,6 +8,12 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import CyberCafeServicesModal from "@/components/CyberCafeServicesModal";
+import WebDevelopmentModal from "@/components/WebDevelopmentModal";
+import MobileAppModal from "@/components/MobileAppModal";
+import CloudServicesModal from "@/components/CloudServicesModal";
+import CybersecurityModal from "@/components/CybersecurityModal";
+import ITSupportModal from "@/components/ITSupportModal";
+import EcommerceModal from "@/components/EcommerceModal";
 
 // Import service logos
 import webDevLogo from "@/assets/logos/web-dev-logo.png";
@@ -22,6 +28,12 @@ import kraLogo from "@/assets/logos/kra-logo.png";
 export default function ServicesSection() {
   const [selectedService, setSelectedService] = useState<number | null>(null);
   const [showCyberCafeModal, setShowCyberCafeModal] = useState(false);
+  const [showWebDevModal, setShowWebDevModal] = useState(false);
+  const [showMobileAppModal, setShowMobileAppModal] = useState(false);
+  const [showCloudServicesModal, setShowCloudServicesModal] = useState(false);
+  const [showCybersecurityModal, setShowCybersecurityModal] = useState(false);
+  const [showITSupportModal, setShowITSupportModal] = useState(false);
+  const [showEcommerceModal, setShowEcommerceModal] = useState(false);
 
   const services = [
     {
@@ -224,11 +236,16 @@ export default function ServicesSection() {
                       variant="glass" 
                       className="w-full group"
                       onClick={() => {
-                        if (index === 6) {
-                          setShowCyberCafeModal(true);
-                        } else {
-                          setSelectedService(index);
-                        }
+                        const modalMap = [
+                          () => setShowWebDevModal(true),
+                          () => setShowMobileAppModal(true),
+                          () => setShowCloudServicesModal(true),
+                          () => setShowCybersecurityModal(true),
+                          () => setShowITSupportModal(true),
+                          () => setShowEcommerceModal(true),
+                          () => setShowCyberCafeModal(true)
+                        ];
+                        modalMap[index]();
                       }}
                     >
                       Learn More
@@ -408,11 +425,17 @@ export default function ServicesSection() {
         </div>
       )}
 
-      {/* Cyber Cafe Services Modal */}
+      {/* Service Modals */}
       <CyberCafeServicesModal 
         isOpen={showCyberCafeModal}
         onClose={() => setShowCyberCafeModal(false)}
       />
+      <WebDevelopmentModal open={showWebDevModal} onOpenChange={setShowWebDevModal} />
+      <MobileAppModal open={showMobileAppModal} onOpenChange={setShowMobileAppModal} />
+      <CloudServicesModal open={showCloudServicesModal} onOpenChange={setShowCloudServicesModal} />
+      <CybersecurityModal open={showCybersecurityModal} onOpenChange={setShowCybersecurityModal} />
+      <ITSupportModal open={showITSupportModal} onOpenChange={setShowITSupportModal} />
+      <EcommerceModal open={showEcommerceModal} onOpenChange={setShowEcommerceModal} />
     </section>
   );
 }
