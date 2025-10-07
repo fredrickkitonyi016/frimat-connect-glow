@@ -20,28 +20,158 @@ const QuotationGenerator = () => {
   
   const [clientName, setClientName] = useState("");
   const [services, setServices] = useState<QuotationService[]>([
+    // Cyber Cafe Services
     {
-      service: "ICT Consultancy",
-      description: "Tech setup, troubleshooting",
+      service: "Printing & Photocopying",
+      description: "Black & White: KSH 5/page, Color: KSH 20/page",
+      price: 5,
+      selected: false
+    },
+    {
+      service: "Scanning Services",
+      description: "Document scanning to PDF/JPEG",
+      price: 20,
+      selected: false
+    },
+    {
+      service: "Lamination",
+      description: "A4 size document protection",
+      price: 50,
+      selected: false
+    },
+    {
+      service: "Typing Services",
+      description: "Professional document typing",
+      price: 100,
+      selected: false
+    },
+    {
+      service: "Internet Access",
+      description: "High-speed browsing per hour",
+      price: 50,
+      selected: false
+    },
+    {
+      service: "Document Binding",
+      description: "Spiral/comb binding services",
+      price: 100,
+      selected: false
+    },
+    {
+      service: "Passport Photos",
+      description: "Professional passport photo printing",
+      price: 200,
+      selected: false
+    },
+    {
+      service: "CD/DVD Burning",
+      description: "Data backup and burning",
+      price: 150,
+      selected: false
+    },
+    // E-Citizen Services
+    {
+      service: "NSSF Registration",
+      description: "Complete registration process",
+      price: 200,
+      selected: false
+    },
+    {
+      service: "NHIF Registration",
+      description: "Health insurance registration",
+      price: 200,
+      selected: false
+    },
+    {
+      service: "HELB Application",
+      description: "Student loan application assistance",
+      price: 300,
+      selected: false
+    },
+    {
+      service: "KRA PIN Application",
+      description: "Tax registration and PIN generation",
+      price: 200,
+      selected: false
+    },
+    {
+      service: "Good Conduct Certificate",
+      description: "Police clearance certificate",
+      price: 300,
+      selected: false
+    },
+    {
+      service: "Business Registration",
+      description: "Business name registration",
+      price: 500,
+      selected: false
+    },
+    // ICT Services
+    {
+      service: "Website Development",
+      description: "Custom website design and development",
+      price: 25000,
+      selected: false
+    },
+    {
+      service: "Mobile App Development",
+      description: "iOS and Android app development",
+      price: 50000,
+      selected: false
+    },
+    {
+      service: "E-commerce Solutions",
+      description: "Online store setup and integration",
+      price: 35000,
+      selected: false
+    },
+    {
+      service: "Cloud Services Setup",
+      description: "Cloud infrastructure and migration",
+      price: 15000,
+      selected: false
+    },
+    {
+      service: "Cybersecurity Consultation",
+      description: "Security audit and implementation",
+      price: 20000,
+      selected: false
+    },
+    {
+      service: "IT Support & Maintenance",
+      description: "Monthly IT support package",
+      price: 10000,
+      selected: false
+    },
+    {
+      service: "Network Setup",
+      description: "LAN/WAN network installation",
+      price: 15000,
+      selected: false
+    },
+    {
+      service: "Data Recovery",
+      description: "Professional data recovery services",
       price: 5000,
       selected: false
     },
+    // Tech Accessories
     {
-      service: "E-Citizen Services",
-      description: "NSSF, NHIF, HELB, KRA, etc.",
-      price: 2500,
+      service: "Computer Repair",
+      description: "Hardware and software troubleshooting",
+      price: 2000,
       selected: false
     },
     {
-      service: "Cyber Café Services",
-      description: "Printing, scanning, internet use",
+      service: "Printer Repair",
+      description: "Printer maintenance and repair",
       price: 1500,
       selected: false
     },
     {
-      service: "Tech Accessories",
-      description: "Cables, devices, parts",
-      price: 3000,
+      service: "Tech Accessories Sales",
+      description: "Cables, chargers, and computer parts",
+      price: 500,
       selected: false
     }
   ]);
@@ -129,47 +259,164 @@ const QuotationGenerator = () => {
           {/* Services Table */}
           <div className="mb-6">
             <h3 className="text-xl font-semibold mb-4">Services Quoted:</h3>
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead>
-                  <tr className="border-b border-border">
-                    <th className="text-left py-3 px-2 print:hidden">Select</th>
-                    <th className="text-left py-3 px-2">Service</th>
-                    <th className="text-left py-3 px-2">Description</th>
-                    <th className="text-right py-3 px-2">Price (KSH)</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {services.map((service, index) => (
-                    <tr 
-                      key={index} 
-                      className={`border-b border-border/50 ${service.selected ? 'bg-primary/5' : ''} ${!service.selected ? 'print:hidden' : ''}`}
-                    >
-                      <td className="py-3 px-2 print:hidden">
-                        <input
-                          type="checkbox"
-                          checked={service.selected}
-                          onChange={() => toggleService(index)}
-                          className="w-4 h-4 accent-primary cursor-pointer"
-                        />
-                      </td>
-                      <td className="py-3 px-2 font-medium">{service.service}</td>
-                      <td className="py-3 px-2 text-muted-foreground">{service.description}</td>
-                      <td className="py-3 px-2 text-right font-semibold">{service.price.toLocaleString()}</td>
-                    </tr>
-                  ))}
-                </tbody>
-                <tfoot>
-                  <tr className="border-t-2 border-primary">
-                    <td colSpan={3} className="py-4 px-2 text-right font-bold text-lg print:col-span-2">
-                      Total:
-                    </td>
-                    <td className="py-4 px-2 text-right font-bold text-2xl text-primary">
-                      KSH {total.toLocaleString()}
-                    </td>
-                  </tr>
-                </tfoot>
-              </table>
+            
+            {/* Service Categories */}
+            <div className="space-y-6">
+              {/* Cyber Cafe Services */}
+              <div>
+                <h4 className="font-semibold text-lg mb-3 text-primary">Cyber Cafe Services</h4>
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead>
+                      <tr className="border-b border-border">
+                        <th className="text-left py-2 px-2 print:hidden w-12">Select</th>
+                        <th className="text-left py-2 px-2">Service</th>
+                        <th className="text-left py-2 px-2">Description</th>
+                        <th className="text-right py-2 px-2">Price (KSH)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {services.slice(0, 8).map((service, index) => (
+                        <tr 
+                          key={index} 
+                          className={`border-b border-border/50 ${service.selected ? 'bg-primary/5' : ''} ${!service.selected ? 'print:hidden' : ''}`}
+                        >
+                          <td className="py-2 px-2 print:hidden">
+                            <input
+                              type="checkbox"
+                              checked={service.selected}
+                              onChange={() => toggleService(index)}
+                              className="w-4 h-4 accent-primary cursor-pointer"
+                            />
+                          </td>
+                          <td className="py-2 px-2 font-medium text-sm">{service.service}</td>
+                          <td className="py-2 px-2 text-muted-foreground text-sm">{service.description}</td>
+                          <td className="py-2 px-2 text-right font-semibold text-sm">{service.price.toLocaleString()}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {/* E-Citizen Services */}
+              <div>
+                <h4 className="font-semibold text-lg mb-3 text-primary">E-Citizen Services</h4>
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead>
+                      <tr className="border-b border-border">
+                        <th className="text-left py-2 px-2 print:hidden w-12">Select</th>
+                        <th className="text-left py-2 px-2">Service</th>
+                        <th className="text-left py-2 px-2">Description</th>
+                        <th className="text-right py-2 px-2">Price (KSH)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {services.slice(8, 14).map((service, index) => (
+                        <tr 
+                          key={index + 8} 
+                          className={`border-b border-border/50 ${service.selected ? 'bg-primary/5' : ''} ${!service.selected ? 'print:hidden' : ''}`}
+                        >
+                          <td className="py-2 px-2 print:hidden">
+                            <input
+                              type="checkbox"
+                              checked={service.selected}
+                              onChange={() => toggleService(index + 8)}
+                              className="w-4 h-4 accent-primary cursor-pointer"
+                            />
+                          </td>
+                          <td className="py-2 px-2 font-medium text-sm">{service.service}</td>
+                          <td className="py-2 px-2 text-muted-foreground text-sm">{service.description}</td>
+                          <td className="py-2 px-2 text-right font-semibold text-sm">{service.price.toLocaleString()}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {/* ICT Services */}
+              <div>
+                <h4 className="font-semibold text-lg mb-3 text-primary">ICT Services</h4>
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead>
+                      <tr className="border-b border-border">
+                        <th className="text-left py-2 px-2 print:hidden w-12">Select</th>
+                        <th className="text-left py-2 px-2">Service</th>
+                        <th className="text-left py-2 px-2">Description</th>
+                        <th className="text-right py-2 px-2">Price (KSH)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {services.slice(14, 22).map((service, index) => (
+                        <tr 
+                          key={index + 14} 
+                          className={`border-b border-border/50 ${service.selected ? 'bg-primary/5' : ''} ${!service.selected ? 'print:hidden' : ''}`}
+                        >
+                          <td className="py-2 px-2 print:hidden">
+                            <input
+                              type="checkbox"
+                              checked={service.selected}
+                              onChange={() => toggleService(index + 14)}
+                              className="w-4 h-4 accent-primary cursor-pointer"
+                            />
+                          </td>
+                          <td className="py-2 px-2 font-medium text-sm">{service.service}</td>
+                          <td className="py-2 px-2 text-muted-foreground text-sm">{service.description}</td>
+                          <td className="py-2 px-2 text-right font-semibold text-sm">{service.price.toLocaleString()}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {/* Tech Accessories & Repair */}
+              <div>
+                <h4 className="font-semibold text-lg mb-3 text-primary">Tech Accessories & Repair</h4>
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead>
+                      <tr className="border-b border-border">
+                        <th className="text-left py-2 px-2 print:hidden w-12">Select</th>
+                        <th className="text-left py-2 px-2">Service</th>
+                        <th className="text-left py-2 px-2">Description</th>
+                        <th className="text-right py-2 px-2">Price (KSH)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {services.slice(22).map((service, index) => (
+                        <tr 
+                          key={index + 22} 
+                          className={`border-b border-border/50 ${service.selected ? 'bg-primary/5' : ''} ${!service.selected ? 'print:hidden' : ''}`}
+                        >
+                          <td className="py-2 px-2 print:hidden">
+                            <input
+                              type="checkbox"
+                              checked={service.selected}
+                              onChange={() => toggleService(index + 22)}
+                              className="w-4 h-4 accent-primary cursor-pointer"
+                            />
+                          </td>
+                          <td className="py-2 px-2 font-medium text-sm">{service.service}</td>
+                          <td className="py-2 px-2 text-muted-foreground text-sm">{service.description}</td>
+                          <td className="py-2 px-2 text-right font-semibold text-sm">{service.price.toLocaleString()}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {/* Total */}
+              <div className="border-t-2 border-primary pt-4">
+                <div className="flex justify-between items-center">
+                  <span className="font-bold text-lg">Total:</span>
+                  <span className="font-bold text-2xl text-primary">KSH {total.toLocaleString()}</span>
+                </div>
+              </div>
             </div>
           </div>
 
