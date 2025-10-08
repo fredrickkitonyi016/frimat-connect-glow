@@ -39,7 +39,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-3 text-muted-foreground">
                 <MessageSquare size={18} className="text-accent" />
-                <span>+94 11 227 7289</span>
+                <span>+254112277289</span>
               </div>
               <div className="flex items-center gap-3 text-muted-foreground">
                 <MapPin size={18} className="text-secondary" />

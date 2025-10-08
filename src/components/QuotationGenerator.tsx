@@ -225,7 +225,7 @@ const QuotationGenerator = () => {
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4" />
-                <span>0112277289</span>
+                <span>+254112277289</span>
               </div>
             </div>
           </div>
