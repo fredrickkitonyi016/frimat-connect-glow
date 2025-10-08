@@ -130,7 +130,170 @@ export default function ShopSection() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* HP Series Showcase */}
+        <div className="mb-20">
+          <div className="glass-card p-8">
+            <div className="flex items-center gap-4 mb-8">
+              <img src={hpLogo} alt="HP" className="h-12 object-contain" />
+              <div>
+                <h3 className="text-3xl font-bold text-foreground">HP Laptops</h3>
+                <p className="text-muted-foreground">Explore our complete HP collection</p>
+              </div>
+            </div>
+
+            {/* HP Pavilion Series */}
+            <div className="mb-8">
+              <h4 className="text-xl font-bold text-primary mb-4 flex items-center gap-2">
+                <div className="w-1 h-6 bg-primary rounded"></div>
+                HP Pavilion Series
+              </h4>
+              <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
+                {[
+                  { model: "HP Pavilion 14", specs: "i3-1115G4, 8GB, 256GB SSD", price: "KSh 55,000", original: "KSh 68,000" },
+                  { model: "HP Pavilion 15", specs: "i5-1135G7, 8GB, 512GB SSD", price: "KSh 65,000", original: "KSh 78,000" },
+                  { model: "HP Pavilion 15 Touch", specs: "i5-1235U, 16GB, 512GB SSD", price: "KSh 82,000", original: "KSh 95,000" },
+                  { model: "HP Pavilion x360", specs: "i7-1255U, 16GB, 512GB SSD", price: "KSh 95,000", original: "KSh 115,000" },
+                ].map((item, idx) => (
+                  <div key={idx} className="bg-background/50 backdrop-blur-sm border border-border/50 rounded-lg p-4 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/10">
+                    <h5 className="font-bold text-foreground mb-2">{item.model}</h5>
+                    <p className="text-xs text-muted-foreground mb-3">{item.specs}</p>
+                    <div className="flex items-baseline gap-2 mb-3">
+                      <span className="text-lg font-bold text-primary">{item.price}</span>
+                      <span className="text-xs text-muted-foreground line-through">{item.original}</span>
+                    </div>
+                    <Button size="sm" variant="hero" className="w-full">
+                      <ShoppingCart size={14} className="mr-2" />
+                      Add to Cart
+                    </Button>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* HP EliteBook Series */}
+            <div className="mb-8">
+              <h4 className="text-xl font-bold text-accent mb-4 flex items-center gap-2">
+                <div className="w-1 h-6 bg-accent rounded"></div>
+                HP EliteBook Series - Business Class
+              </h4>
+              <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
+                {[
+                  { model: "HP EliteBook 840 G8", specs: "i5-1135G7, 8GB, 256GB SSD", price: "KSh 85,000", original: "KSh 105,000" },
+                  { model: "HP EliteBook 840 G9", specs: "i7-1185G7, 16GB, 512GB SSD", price: "KSh 110,000", original: "KSh 130,000" },
+                  { model: "HP EliteBook 850 G8", specs: "i7-1165G7, 16GB, 512GB SSD", price: "KSh 115,000", original: "KSh 135,000" },
+                  { model: "HP EliteBook x360", specs: "i7-1260P, 16GB, 1TB SSD", price: "KSh 145,000", original: "KSh 170,000" },
+                ].map((item, idx) => (
+                  <div key={idx} className="bg-background/50 backdrop-blur-sm border border-border/50 rounded-lg p-4 hover:border-accent/50 transition-all hover:shadow-lg hover:shadow-accent/10">
+                    <div className="flex items-center gap-2 mb-2">
+                      <h5 className="font-bold text-foreground">{item.model}</h5>
+                    </div>
+                    <p className="text-xs text-muted-foreground mb-3">{item.specs}</p>
+                    <div className="flex items-baseline gap-2 mb-3">
+                      <span className="text-lg font-bold text-accent">{item.price}</span>
+                      <span className="text-xs text-muted-foreground line-through">{item.original}</span>
+                    </div>
+                    <Button size="sm" variant="hero" className="w-full">
+                      <ShoppingCart size={14} className="mr-2" />
+                      Add to Cart
+                    </Button>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* HP ProBook Series */}
+            <div className="mb-8">
+              <h4 className="text-xl font-bold text-secondary mb-4 flex items-center gap-2">
+                <div className="w-1 h-6 bg-secondary rounded"></div>
+                HP ProBook Series - Professional
+              </h4>
+              <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
+                {[
+                  { model: "HP ProBook 440 G8", specs: "i5-1135G7, 8GB, 256GB SSD", price: "KSh 68,000", original: "KSh 82,000" },
+                  { model: "HP ProBook 450 G8", specs: "i5-1135G7, 8GB, 512GB SSD", price: "KSh 75,000", original: "KSh 90,000" },
+                  { model: "HP ProBook 450 G9", specs: "i7-1255U, 16GB, 512GB SSD", price: "KSh 95,000", original: "KSh 112,000" },
+                  { model: "HP ProBook 455 G9", specs: "Ryzen 7, 16GB, 512GB SSD", price: "KSh 88,000", original: "KSh 105,000" },
+                ].map((item, idx) => (
+                  <div key={idx} className="bg-background/50 backdrop-blur-sm border border-border/50 rounded-lg p-4 hover:border-secondary/50 transition-all hover:shadow-lg hover:shadow-secondary/10">
+                    <h5 className="font-bold text-foreground mb-2">{item.model}</h5>
+                    <p className="text-xs text-muted-foreground mb-3">{item.specs}</p>
+                    <div className="flex items-baseline gap-2 mb-3">
+                      <span className="text-lg font-bold text-secondary">{item.price}</span>
+                      <span className="text-xs text-muted-foreground line-through">{item.original}</span>
+                    </div>
+                    <Button size="sm" variant="hero" className="w-full">
+                      <ShoppingCart size={14} className="mr-2" />
+                      Add to Cart
+                    </Button>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* HP Envy Series */}
+            <div className="mb-8">
+              <h4 className="text-xl font-bold text-primary mb-4 flex items-center gap-2">
+                <div className="w-1 h-6 bg-gradient-to-b from-primary to-accent rounded"></div>
+                HP Envy Series - Premium Design
+              </h4>
+              <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
+                {[
+                  { model: "HP Envy 13", specs: "i5-1135G7, 8GB, 512GB SSD", price: "KSh 92,000", original: "KSh 108,000" },
+                  { model: "HP Envy 14", specs: "i7-1195G7, 16GB, 512GB SSD", price: "KSh 125,000", original: "KSh 145,000" },
+                  { model: "HP Envy x360 13", specs: "Ryzen 7, 16GB, 512GB SSD", price: "KSh 105,000", original: "KSh 125,000" },
+                  { model: "HP Envy 17", specs: "i7-1255U, 16GB, 1TB SSD", price: "KSh 148,000", original: "KSh 175,000" },
+                ].map((item, idx) => (
+                  <div key={idx} className="bg-gradient-to-br from-background/60 to-primary/5 backdrop-blur-sm border border-primary/30 rounded-lg p-4 hover:border-primary/70 transition-all hover:shadow-lg hover:shadow-primary/20">
+                    <h5 className="font-bold text-foreground mb-2">{item.model}</h5>
+                    <p className="text-xs text-muted-foreground mb-3">{item.specs}</p>
+                    <div className="flex items-baseline gap-2 mb-3">
+                      <span className="text-lg font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">{item.price}</span>
+                      <span className="text-xs text-muted-foreground line-through">{item.original}</span>
+                    </div>
+                    <Button size="sm" variant="hero" className="w-full">
+                      <ShoppingCart size={14} className="mr-2" />
+                      Add to Cart
+                    </Button>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* HP Omen Series */}
+            <div>
+              <h4 className="text-xl font-bold text-accent mb-4 flex items-center gap-2">
+                <div className="w-1 h-6 bg-gradient-to-b from-accent to-secondary rounded"></div>
+                HP Omen Series - Gaming Performance
+              </h4>
+              <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
+                {[
+                  { model: "HP Omen 15", specs: "i5-11400H, RTX 3050, 16GB", price: "KSh 135,000", original: "KSh 165,000" },
+                  { model: "HP Omen 15 RTX 3060", specs: "i7-11800H, RTX 3060, 16GB", price: "KSh 165,000", original: "KSh 195,000" },
+                  { model: "HP Omen 16", specs: "i7-12700H, RTX 3070, 16GB", price: "KSh 195,000", original: "KSh 235,000" },
+                  { model: "HP Omen 17", specs: "i9-12900H, RTX 3080, 32GB", price: "KSh 285,000", original: "KSh 340,000" },
+                ].map((item, idx) => (
+                  <div key={idx} className="bg-gradient-to-br from-background/60 to-accent/10 backdrop-blur-sm border border-accent/30 rounded-lg p-4 hover:border-accent/70 transition-all hover:shadow-lg hover:shadow-accent/20">
+                    <h5 className="font-bold text-foreground mb-2">{item.model}</h5>
+                    <p className="text-xs text-muted-foreground mb-3">{item.specs}</p>
+                    <div className="flex items-baseline gap-2 mb-3">
+                      <span className="text-lg font-bold text-accent">{item.price}</span>
+                      <span className="text-xs text-muted-foreground line-through">{item.original}</span>
+                    </div>
+                    <Button size="sm" variant="hero" className="w-full">
+                      <ShoppingCart size={14} className="mr-2" />
+                      Add to Cart
+                    </Button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Other Brands Section */}
+        <div className="mb-16">
+          <h3 className="text-3xl font-bold text-foreground mb-8 text-center">Other Premium Brands</h3>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {products.map((product) => (
             <div key={product.id} className="glass-card hover-scale group overflow-hidden">
               {/* Brand Logo & Badge */}
@@ -216,6 +379,7 @@ export default function ShopSection() {
               </div>
             </div>
           ))}
+          </div>
         </div>
 
         {/* Shop CTA */}
