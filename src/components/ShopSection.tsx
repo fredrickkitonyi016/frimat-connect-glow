@@ -201,7 +201,7 @@ export default function ShopSection() {
             </div>
 
             {/* HP Omen Series */}
-            <div>
+            <div className="mb-8">
               <h4 className="text-xl font-bold text-accent mb-4 flex items-center gap-2">
                 <div className="w-1 h-6 bg-gradient-to-b from-accent to-secondary rounded"></div>
                 HP Omen Series - Gaming Performance
@@ -222,6 +222,45 @@ export default function ShopSection() {
                       <p className="text-xs text-muted-foreground mb-3">{item.specs}</p>
                       <div className="flex items-baseline gap-2 mb-3">
                         <span className="text-lg font-bold text-accent">{item.price}</span>
+                        <span className="text-xs text-muted-foreground line-through">{item.original}</span>
+                      </div>
+                      <Button size="sm" variant="hero" className="w-full">
+                        <ShoppingCart size={14} className="mr-2" />
+                        Add to Cart
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* HP Refurbished Series */}
+            <div>
+              <h4 className="text-xl font-bold text-primary mb-4 flex items-center gap-2">
+                <div className="w-1 h-6 bg-gradient-to-b from-primary via-accent to-secondary rounded"></div>
+                HP Refurbished - Great Value
+              </h4>
+              <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
+                {[
+                  { model: "HP EliteBook 840 G7", specs: "i5-10210U, 8GB, 256GB SSD", price: "KSh 48,000", original: "KSh 75,000", image: hpElitebook840, badge: "Certified" },
+                  { model: "HP ProBook 450 G7", specs: "i5-10210U, 8GB, 256GB SSD", price: "KSh 42,000", original: "KSh 65,000", image: hpProbook450, badge: "Excellent" },
+                  { model: "HP Pavilion 15 G6", specs: "i7-8565U, 16GB, 512GB SSD", price: "KSh 52,000", original: "KSh 70,000", image: hpPavilion15, badge: "Certified" },
+                  { model: "HP Envy 13 G5", specs: "i7-8550U, 8GB, 256GB SSD", price: "KSh 55,000", original: "KSh 78,000", image: hpEnvy13, badge: "Very Good" },
+                ].map((item, idx) => (
+                  <div key={idx} className="relative bg-background/50 backdrop-blur-sm border border-border/50 rounded-lg overflow-hidden hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/10">
+                    <div className="absolute top-2 right-2 z-10">
+                      <span className="bg-primary text-primary-foreground text-xs px-2 py-1 rounded-full font-semibold">
+                        {item.badge}
+                      </span>
+                    </div>
+                    <div className="aspect-video overflow-hidden bg-muted">
+                      <img src={item.image} alt={item.model} className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+                    </div>
+                    <div className="p-4">
+                      <h5 className="font-bold text-foreground mb-2">{item.model}</h5>
+                      <p className="text-xs text-muted-foreground mb-3">{item.specs}</p>
+                      <div className="flex items-baseline gap-2 mb-3">
+                        <span className="text-lg font-bold text-primary">{item.price}</span>
                         <span className="text-xs text-muted-foreground line-through">{item.original}</span>
                       </div>
                       <Button size="sm" variant="hero" className="w-full">
@@ -316,7 +355,7 @@ export default function ShopSection() {
             </div>
 
             {/* Dell Latitude Series */}
-            <div>
+            <div className="mb-8">
               <h4 className="text-xl font-bold text-secondary mb-4 flex items-center gap-2">
                 <div className="w-1 h-6 bg-secondary rounded"></div>
                 Dell Latitude Series - Business Ready
@@ -337,6 +376,45 @@ export default function ShopSection() {
                       <p className="text-xs text-muted-foreground mb-3">{item.specs}</p>
                       <div className="flex items-baseline gap-2 mb-3">
                         <span className="text-lg font-bold text-secondary">{item.price}</span>
+                        <span className="text-xs text-muted-foreground line-through">{item.original}</span>
+                      </div>
+                      <Button size="sm" variant="hero" className="w-full">
+                        <ShoppingCart size={14} className="mr-2" />
+                        Add to Cart
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Dell Refurbished Series */}
+            <div>
+              <h4 className="text-xl font-bold text-accent mb-4 flex items-center gap-2">
+                <div className="w-1 h-6 bg-gradient-to-b from-accent via-primary to-secondary rounded"></div>
+                Dell Refurbished - Quality Assured
+              </h4>
+              <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
+                {[
+                  { model: "Dell Latitude 5410", specs: "i5-10310U, 8GB, 256GB SSD", price: "KSh 45,000", original: "KSh 72,000", image: dellLatitude5420, badge: "Certified" },
+                  { model: "Dell Inspiron 15 5000", specs: "i5-8265U, 8GB, 256GB SSD", price: "KSh 38,000", original: "KSh 60,000", image: dellInspiron15, badge: "Very Good" },
+                  { model: "Dell XPS 13 9360", specs: "i7-8550U, 16GB, 512GB SSD", price: "KSh 68,000", original: "KSh 95,000", image: dellXps13, badge: "Excellent" },
+                  { model: "Dell Latitude 7490", specs: "i7-8650U, 16GB, 512GB SSD", price: "KSh 58,000", original: "KSh 85,000", image: dellLatitude5420, badge: "Certified" },
+                ].map((item, idx) => (
+                  <div key={idx} className="relative bg-background/50 backdrop-blur-sm border border-border/50 rounded-lg overflow-hidden hover:border-accent/50 transition-all hover:shadow-lg hover:shadow-accent/10">
+                    <div className="absolute top-2 right-2 z-10">
+                      <span className="bg-accent text-accent-foreground text-xs px-2 py-1 rounded-full font-semibold">
+                        {item.badge}
+                      </span>
+                    </div>
+                    <div className="aspect-video overflow-hidden bg-muted">
+                      <img src={item.image} alt={item.model} className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+                    </div>
+                    <div className="p-4">
+                      <h5 className="font-bold text-foreground mb-2">{item.model}</h5>
+                      <p className="text-xs text-muted-foreground mb-3">{item.specs}</p>
+                      <div className="flex items-baseline gap-2 mb-3">
+                        <span className="text-lg font-bold text-accent">{item.price}</span>
                         <span className="text-xs text-muted-foreground line-through">{item.original}</span>
                       </div>
                       <Button size="sm" variant="hero" className="w-full">
