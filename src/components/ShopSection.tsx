@@ -236,6 +236,121 @@ export default function ShopSection() {
           </div>
         </div>
 
+        {/* Dell Series Showcase */}
+        <div className="mb-20">
+          <div className="glass-card p-8">
+            <div className="flex items-center gap-4 mb-8">
+              <img src={dellLogo} alt="Dell" className="h-12 object-contain" />
+              <div>
+                <h3 className="text-3xl font-bold text-foreground">Dell Laptops</h3>
+                <p className="text-muted-foreground">Precision engineered for performance</p>
+              </div>
+            </div>
+
+            {/* Dell Inspiron Series */}
+            <div className="mb-8">
+              <h4 className="text-xl font-bold text-primary mb-4 flex items-center gap-2">
+                <div className="w-1 h-6 bg-primary rounded"></div>
+                Dell Inspiron Series - Everyday Computing
+              </h4>
+              <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
+                {[
+                  { model: "Dell Inspiron 15 3000", specs: "i3-1115G4, 8GB, 256GB SSD", price: "KSh 52,000", original: "KSh 65,000", image: dellInspiron15 },
+                  { model: "Dell Inspiron 15 3520", specs: "i5-1135G7, 8GB, 512GB SSD", price: "KSh 68,000", original: "KSh 82,000", image: dellInspiron15 },
+                  { model: "Dell Inspiron 15 5000", specs: "i5-1235U, 16GB, 512GB SSD", price: "KSh 85,000", original: "KSh 98,000", image: dellInspiron15 },
+                  { model: "Dell Inspiron 16 Plus", specs: "i7-12700H, 16GB, 512GB SSD", price: "KSh 115,000", original: "KSh 135,000", image: dellInspiron15 },
+                ].map((item, idx) => (
+                  <div key={idx} className="bg-background/50 backdrop-blur-sm border border-border/50 rounded-lg overflow-hidden hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/10">
+                    <div className="aspect-video overflow-hidden bg-muted">
+                      <img src={item.image} alt={item.model} className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+                    </div>
+                    <div className="p-4">
+                      <h5 className="font-bold text-foreground mb-2">{item.model}</h5>
+                      <p className="text-xs text-muted-foreground mb-3">{item.specs}</p>
+                      <div className="flex items-baseline gap-2 mb-3">
+                        <span className="text-lg font-bold text-primary">{item.price}</span>
+                        <span className="text-xs text-muted-foreground line-through">{item.original}</span>
+                      </div>
+                      <Button size="sm" variant="hero" className="w-full">
+                        <ShoppingCart size={14} className="mr-2" />
+                        Add to Cart
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Dell XPS Series */}
+            <div className="mb-8">
+              <h4 className="text-xl font-bold text-accent mb-4 flex items-center gap-2">
+                <div className="w-1 h-6 bg-gradient-to-b from-accent to-primary rounded"></div>
+                Dell XPS Series - Premium Ultrabooks
+              </h4>
+              <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
+                {[
+                  { model: "Dell XPS 13 9310", specs: "i5-1135G7, 8GB, 512GB SSD", price: "KSh 125,000", original: "KSh 148,000", image: dellXps13 },
+                  { model: "Dell XPS 13 Plus", specs: "i7-1260P, 16GB, 512GB SSD", price: "KSh 165,000", original: "KSh 195,000", image: dellXps13 },
+                  { model: "Dell XPS 15 9520", specs: "i7-12700H, 16GB, 1TB SSD", price: "KSh 195,000", original: "KSh 230,000", image: dellXps13 },
+                  { model: "Dell XPS 17 9720", specs: "i9-12900HK, RTX 3050, 32GB", price: "KSh 285,000", original: "KSh 335,000", image: dellXps13 },
+                ].map((item, idx) => (
+                  <div key={idx} className="bg-gradient-to-br from-background/60 to-accent/5 backdrop-blur-sm border border-accent/30 rounded-lg overflow-hidden hover:border-accent/70 transition-all hover:shadow-lg hover:shadow-accent/20">
+                    <div className="aspect-video overflow-hidden bg-muted">
+                      <img src={item.image} alt={item.model} className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+                    </div>
+                    <div className="p-4">
+                      <h5 className="font-bold text-foreground mb-2">{item.model}</h5>
+                      <p className="text-xs text-muted-foreground mb-3">{item.specs}</p>
+                      <div className="flex items-baseline gap-2 mb-3">
+                        <span className="text-lg font-bold bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">{item.price}</span>
+                        <span className="text-xs text-muted-foreground line-through">{item.original}</span>
+                      </div>
+                      <Button size="sm" variant="hero" className="w-full">
+                        <ShoppingCart size={14} className="mr-2" />
+                        Add to Cart
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Dell Latitude Series */}
+            <div>
+              <h4 className="text-xl font-bold text-secondary mb-4 flex items-center gap-2">
+                <div className="w-1 h-6 bg-secondary rounded"></div>
+                Dell Latitude Series - Business Ready
+              </h4>
+              <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
+                {[
+                  { model: "Dell Latitude 3420", specs: "i5-1135G7, 8GB, 256GB SSD", price: "KSh 72,000", original: "KSh 88,000", image: dellLatitude5420 },
+                  { model: "Dell Latitude 5420", specs: "i5-1145G7, 16GB, 512GB SSD", price: "KSh 95,000", original: "KSh 115,000", image: dellLatitude5420 },
+                  { model: "Dell Latitude 7420", specs: "i7-1185G7, 16GB, 512GB SSD", price: "KSh 125,000", original: "KSh 148,000", image: dellLatitude5420 },
+                  { model: "Dell Latitude 9420", specs: "i7-1185G7, 16GB, 1TB SSD", price: "KSh 155,000", original: "KSh 185,000", image: dellLatitude5420 },
+                ].map((item, idx) => (
+                  <div key={idx} className="bg-background/50 backdrop-blur-sm border border-border/50 rounded-lg overflow-hidden hover:border-secondary/50 transition-all hover:shadow-lg hover:shadow-secondary/10">
+                    <div className="aspect-video overflow-hidden bg-muted">
+                      <img src={item.image} alt={item.model} className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+                    </div>
+                    <div className="p-4">
+                      <h5 className="font-bold text-foreground mb-2">{item.model}</h5>
+                      <p className="text-xs text-muted-foreground mb-3">{item.specs}</p>
+                      <div className="flex items-baseline gap-2 mb-3">
+                        <span className="text-lg font-bold text-secondary">{item.price}</span>
+                        <span className="text-xs text-muted-foreground line-through">{item.original}</span>
+                      </div>
+                      <Button size="sm" variant="hero" className="w-full">
+                        <ShoppingCart size={14} className="mr-2" />
+                        Add to Cart
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Shop CTA */}
         <div className="text-center mt-16">
           <div className="glass-card p-8 max-w-4xl mx-auto">
