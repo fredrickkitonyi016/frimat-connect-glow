@@ -43,9 +43,7 @@ const Index = () => {
         <div className="fade-in">
           <PricingSection />
         </div>
-        <div className="fade-in">
-          <ShopSection />
-        </div>
+        <ShopSection />
         <div className="fade-in">
           <PortfolioSection />
         </div>
