@@ -6,73 +6,73 @@ export default function PortfolioSection() {
   const projects = [
     {
       id: 1,
-      title: "E-Commerce Platform",
-      description: "Modern e-commerce solution with advanced analytics and inventory management",
+      title: "KRA Tax Portal Integration",
+      description: "Built a secure integration system for automated tax filing and compliance tracking. Reduced manual filing time by 70% for small businesses.",
       image: portfolioImage,
       category: "Web Development",
-      technologies: ["React", "Node.js", "MongoDB", "Stripe"],
-      year: "2024",
-      client: "RetailTech Corp",
+      technologies: ["PHP", "MySQL", "Laravel", "KRA API"],
+      year: "2023",
+      client: "Nairobi Accounting Services",
       featured: true
     },
     {
       id: 2,
-      title: "Healthcare Management System",
-      description: "Comprehensive patient management system with telemedicine capabilities",
+      title: "Matatu SACCO Management System",
+      description: "Complete fleet management solution tracking routes, payments, and driver schedules for 45 vehicles across Nairobi routes.",
       image: portfolioImage,
-      category: "Healthcare",
-      technologies: ["Vue.js", "Python", "PostgreSQL", "WebRTC"],
+      category: "Web Development",
+      technologies: ["React", "Node.js", "PostgreSQL", "M-Pesa API"],
       year: "2024",
-      client: "MedCare Solutions",
+      client: "Eastlands Transporters SACCO",
       featured: true
     },
     {
       id: 3,
-      title: "Financial Dashboard",
-      description: "Real-time financial analytics and reporting dashboard for investment firms",
+      title: "School ERP System",
+      description: "Fee management, student records, and parent communication portal for a secondary school with 800+ students.",
       image: portfolioImage,
-      category: "FinTech",
-      technologies: ["React", "D3.js", "Express", "Redis"],
+      category: "Education",
+      technologies: ["WordPress", "PHP", "MySQL", "SMS Gateway"],
       year: "2023",
-      client: "InvestPro",
+      client: "St. Mary's High School",
       featured: false
     },
     {
       id: 4,
-      title: "Mobile Learning App",
-      description: "Interactive learning platform with gamification and progress tracking",
+      title: "Cyber Cafe Billing Software",
+      description: "Time tracking and billing system managing 20 workstations with automatic session logs and prepaid card support.",
       image: portfolioImage,
-      category: "Education",
-      technologies: ["React Native", "Firebase", "GraphQL", "AWS"],
-      year: "2023",
-      client: "EduTech Global",
+      category: "Software",
+      technologies: ["C#", "Windows Forms", "SQLite", "Receipt Printer"],
+      year: "2022",
+      client: "TechHub Cyber Cafe",
       featured: false
     },
     {
       id: 5,
-      title: "IoT Monitoring System",
-      description: "Industrial IoT solution for real-time equipment monitoring and predictive maintenance",
+      title: "Hardware Inventory & POS",
+      description: "Stock management and point of sale system for computer parts shop. Tracks warranty, suppliers, and generates quotations.",
       image: portfolioImage,
-      category: "IoT",
-      technologies: ["Angular", "Python", "InfluxDB", "Docker"],
-      year: "2023",
-      client: "IndustrialTech Ltd",
+      category: "Retail",
+      technologies: ["React", "Firebase", "Thermal Printer", "Barcode Scanner"],
+      year: "2024",
+      client: "ComputerWorld Kenya",
       featured: false
     },
     {
       id: 6,
-      title: "Social Media Platform",
-      description: "Next-generation social platform with AI-powered content recommendation",
+      title: "Real Estate Listings Portal",
+      description: "Property search website with agent dashboards, WhatsApp integration, and virtual tour embedding for 200+ listings.",
       image: portfolioImage,
-      category: "Social Media",
-      technologies: ["Next.js", "TypeScript", "Prisma", "OpenAI"],
-      year: "2024",
-      client: "SocialConnect Inc",
+      category: "Web Development",
+      technologies: ["WordPress", "Elementor", "MySQL", "WhatsApp API"],
+      year: "2023",
+      client: "Nairobi Properties Ltd",
       featured: true
     }
   ];
 
-  const categories = ["All", "Web Development", "Healthcare", "FinTech", "Education", "IoT", "Social Media"];
+  const categories = ["All", "Web Development", "Education", "Software", "Retail"];
 
   return (
     <section id="portfolio" className="py-24 relative">
