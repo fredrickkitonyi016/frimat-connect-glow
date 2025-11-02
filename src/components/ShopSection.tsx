@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { ShoppingCart } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { ShoppingCart, Search } from "lucide-react";
+import { useState } from "react";
 import hpLogo from "@/assets/logos/hp-logo.png";
 import acerLogo from "@/assets/logos/acer-logo.png";
 import dellLogo from "@/assets/logos/dell-logo.png";
@@ -38,6 +40,45 @@ import toshibaSatellitePro from "@/assets/products/toshiba-satellite-pro.jpg";
 import toshibaPortege from "@/assets/products/toshiba-portege.jpg";
 
 export default function ShopSection() {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResult, setSearchResult] = useState<any>(null);
+
+  const ictAccessories = [
+    { name: "Wireless Mouse", category: "Peripherals", specs: "2.4GHz, Ergonomic Design", price: "KSh 1,500", original: "KSh 2,500", description: "Comfortable wireless mouse with long battery life" },
+    { name: "USB Keyboard", category: "Peripherals", specs: "Mechanical, RGB Backlit", price: "KSh 3,500", original: "KSh 5,000", description: "High-quality mechanical keyboard with RGB lighting" },
+    { name: "Laptop Bag", category: "Accessories", specs: "15.6 inch, Water Resistant", price: "KSh 2,000", original: "KSh 3,500", description: "Durable and stylish laptop bag with multiple compartments" },
+    { name: "USB-C Hub", category: "Accessories", specs: "7-in-1, HDMI, USB 3.0", price: "KSh 2,500", original: "KSh 4,000", description: "Multi-port hub with HDMI, USB, and SD card reader" },
+    { name: "External Hard Drive", category: "Storage", specs: "1TB, USB 3.0", price: "KSh 5,500", original: "KSh 7,500", description: "Portable external storage with fast transfer speeds" },
+    { name: "Webcam", category: "Peripherals", specs: "1080p, Auto Focus", price: "KSh 4,500", original: "KSh 6,500", description: "HD webcam perfect for video calls and streaming" },
+    { name: "Headphones", category: "Audio", specs: "Wireless, Noise Canceling", price: "KSh 6,000", original: "KSh 9,000", description: "Premium wireless headphones with active noise cancellation" },
+    { name: "Monitor", category: "Displays", specs: "24 inch, Full HD, IPS", price: "KSh 15,000", original: "KSh 22,000", description: "High-quality IPS monitor with vibrant colors" },
+    { name: "Printer", category: "Office", specs: "All-in-One, WiFi", price: "KSh 12,000", original: "KSh 18,000", description: "Multi-function printer with wireless connectivity" },
+    { name: "SSD", category: "Storage", specs: "512GB, NVMe", price: "KSh 7,000", original: "KSh 10,000", description: "High-speed solid state drive for faster performance" },
+    { name: "RAM", category: "Components", specs: "16GB, DDR4", price: "KSh 5,500", original: "KSh 8,000", description: "Memory upgrade for improved multitasking" },
+    { name: "Power Bank", category: "Accessories", specs: "20000mAh, Fast Charge", price: "KSh 3,000", original: "KSh 4,500", description: "High-capacity power bank for on-the-go charging" },
+    { name: "USB Flash Drive", category: "Storage", specs: "64GB, USB 3.0", price: "KSh 800", original: "KSh 1,500", description: "Compact and fast flash storage" },
+    { name: "HDMI Cable", category: "Cables", specs: "2m, 4K Support", price: "KSh 600", original: "KSh 1,200", description: "High-quality HDMI cable for crystal clear display" },
+    { name: "Cooling Pad", category: "Accessories", specs: "Dual Fan, LED", price: "KSh 2,500", original: "KSh 4,000", description: "Laptop cooling pad to prevent overheating" },
+  ];
+
+  const handleSearch = () => {
+    if (!searchQuery.trim()) return;
+    
+    const found = ictAccessories.find(item => 
+      item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.category.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    
+    setSearchResult(found || {
+      name: searchQuery,
+      category: "ICT Accessories",
+      specs: "Contact us for specifications",
+      price: "Contact for pricing",
+      original: "",
+      description: "This item is available. Please contact us for more details and pricing information."
+    });
+  };
+
   return (
     <section id="shop" className="py-12 sm:py-16 md:py-24 relative">
       <div className="container mx-auto px-4 sm:px-6">
@@ -51,6 +92,59 @@ export default function ShopSection() {
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
             Discover our curated selection of premium laptops from top brands, all at competitive prices.
           </p>
+        </div>
+
+        {/* ICT Accessories Search */}
+        <div className="mb-12 max-w-2xl mx-auto">
+          <div className="glass-card p-6">
+            <h3 className="text-xl font-bold text-foreground mb-4 text-center">
+              Search ICT Accessories
+            </h3>
+            <div className="flex gap-2">
+              <Input
+                type="text"
+                placeholder="Search for keyboards, mice, monitors, cables, etc..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
+                className="flex-1"
+              />
+              <Button onClick={handleSearch} variant="hero">
+                <Search className="mr-2" size={18} />
+                Search
+              </Button>
+            </div>
+          </div>
+
+          {/* Search Result Display */}
+          {searchResult && (
+            <div className="glass-card p-6 mt-4">
+              <div className="flex items-start justify-between mb-4">
+                <div>
+                  <h4 className="text-xl font-bold text-foreground mb-1">{searchResult.name}</h4>
+                  <p className="text-sm text-muted-foreground">{searchResult.category}</p>
+                </div>
+                <button 
+                  onClick={() => setSearchResult(null)}
+                  className="text-muted-foreground hover:text-foreground"
+                >
+                  ✕
+                </button>
+              </div>
+              <p className="text-sm text-muted-foreground mb-3">{searchResult.specs}</p>
+              <p className="text-foreground mb-4">{searchResult.description}</p>
+              <div className="flex items-baseline gap-2 mb-4">
+                <span className="text-2xl font-bold text-primary">{searchResult.price}</span>
+                {searchResult.original && (
+                  <span className="text-sm text-muted-foreground line-through">{searchResult.original}</span>
+                )}
+              </div>
+              <Button variant="hero" className="w-full">
+                <ShoppingCart className="mr-2" size={18} />
+                Add to Cart
+              </Button>
+            </div>
+          )}
         </div>
 
         {/* HP Series Showcase */}
