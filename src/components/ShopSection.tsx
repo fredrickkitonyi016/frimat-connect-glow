@@ -141,25 +141,33 @@ export default function ShopSection() {
       return;
     }
     
+    // Search for matching products (searches in name, category, brand, specs, and description)
     const found = allProducts.filter(item => 
       item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       item.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
       item.brand.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.specs.toLowerCase().includes(searchQuery.toLowerCase())
+      item.specs.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.description.toLowerCase().includes(searchQuery.toLowerCase())
     );
     
-    setSearchResults(found.length > 0 ? found : [
-      {
-        name: searchQuery,
-        category: "ICT Products",
-        brand: "General",
-        specs: "Contact us for specifications",
-        price: "Contact for pricing",
-        original: "",
-        description: "This item is available. Please contact us for more details, specifications, and pricing information.",
-        image: null
-      }
-    ]);
+    // If products found, show ALL matching results
+    if (found.length > 0) {
+      setSearchResults(found);
+    } else {
+      // If no exact match, show "contact us" message
+      setSearchResults([
+        {
+          name: `${searchQuery} - Available on Request`,
+          category: "ICT Products",
+          brand: "Various Brands",
+          specs: "Multiple variants available",
+          price: "Contact for pricing",
+          original: "",
+          description: `We have various ${searchQuery} products available. Contact us for detailed specifications, pricing, and current stock availability.`,
+          image: null
+        }
+      ]);
+    }
   };
 
   return (
