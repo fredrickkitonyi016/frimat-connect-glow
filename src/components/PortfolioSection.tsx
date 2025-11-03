@@ -2,7 +2,12 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { ExternalLink, Github, Calendar, CheckCircle2, Clock } from "lucide-react";
-import portfolioImage from "@/assets/portfolio-1.jpg";
+import portfolioKra from "@/assets/portfolio-kra.jpg";
+import portfolioSacco from "@/assets/portfolio-sacco.jpg";
+import portfolioSchool from "@/assets/portfolio-school.jpg";
+import portfolioCyber from "@/assets/portfolio-cyber.jpg";
+import portfolioPos from "@/assets/portfolio-pos.jpg";
+import portfolioRealEstate from "@/assets/portfolio-realestate.jpg";
 
 
 interface Project {
@@ -28,7 +33,7 @@ export default function PortfolioSection() {
       id: 1,
       title: "KRA Tax Portal Integration",
       description: "Built a secure integration system for automated tax filing and compliance tracking. Reduced manual filing time by 70% for small businesses.",
-      image: portfolioImage,
+      image: portfolioKra,
       category: "Web Development",
       technologies: ["PHP", "MySQL", "Laravel", "KRA API"],
       year: "2023",
@@ -47,7 +52,7 @@ export default function PortfolioSection() {
       id: 2,
       title: "Matatu SACCO Management System",
       description: "Complete fleet management solution tracking routes, payments, and driver schedules for 45 vehicles across Nairobi routes.",
-      image: portfolioImage,
+      image: portfolioSacco,
       category: "Web Development",
       technologies: ["React", "Node.js", "PostgreSQL", "M-Pesa API"],
       year: "2024",
@@ -66,7 +71,7 @@ export default function PortfolioSection() {
       id: 3,
       title: "School ERP System",
       description: "Fee management, student records, and parent communication portal for a secondary school with 800+ students.",
-      image: portfolioImage,
+      image: portfolioSchool,
       category: "Education",
       technologies: ["WordPress", "PHP", "MySQL", "SMS Gateway"],
       year: "2023",
@@ -85,7 +90,7 @@ export default function PortfolioSection() {
       id: 4,
       title: "Cyber Cafe Billing Software",
       description: "Time tracking and billing system managing 20 workstations with automatic session logs and prepaid card support.",
-      image: portfolioImage,
+      image: portfolioCyber,
       category: "Software",
       technologies: ["C#", "Windows Forms", "SQLite", "Receipt Printer"],
       year: "2022",
@@ -104,7 +109,7 @@ export default function PortfolioSection() {
       id: 5,
       title: "Hardware Inventory & POS",
       description: "Stock management and point of sale system for computer parts shop. Tracks warranty, suppliers, and generates quotations.",
-      image: portfolioImage,
+      image: portfolioPos,
       category: "Retail",
       technologies: ["React", "Firebase", "Thermal Printer", "Barcode Scanner"],
       year: "2024",
@@ -123,7 +128,7 @@ export default function PortfolioSection() {
       id: 6,
       title: "Real Estate Listings Portal",
       description: "Property search website with agent dashboards, WhatsApp integration, and virtual tour embedding for 200+ listings.",
-      image: portfolioImage,
+      image: portfolioRealEstate,
       category: "Web Development",
       technologies: ["WordPress", "Elementor", "MySQL", "WhatsApp API"],
       year: "2023",
