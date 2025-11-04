@@ -42,6 +42,8 @@ import toshibaSatellitePro from "@/assets/products/toshiba-satellite-pro.jpg";
 import toshibaPortege from "@/assets/products/toshiba-portege.jpg";
 
 export default function ShopSection() {
+  console.log("=== ShopSection component is rendering ===");
+  
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<any[]>([]);
   const [activeCategory, setActiveCategory] = useState("All");
@@ -199,6 +201,9 @@ export default function ShopSection() {
     }
   };
 
+  console.log("ShopSection rendering, categories:", categories);
+  console.log("Search results count:", searchResults.length);
+  
   return (
     <section id="shop" className="py-20" style={{ backgroundColor: '#f5f5f5' }}>
       <div className="container mx-auto px-4">
