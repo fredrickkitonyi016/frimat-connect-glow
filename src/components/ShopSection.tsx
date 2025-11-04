@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ShoppingCart, Search } from "lucide-react";
+import { Card } from "@/components/ui/card";
+import { ShoppingCart, Search, Heart, Star, TrendingUp, Truck, Flame } from "lucide-react";
 import { useState } from "react";
 
 // Accessory Images
@@ -43,6 +44,20 @@ import toshibaPortege from "@/assets/products/toshiba-portege.jpg";
 export default function ShopSection() {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<any[]>([]);
+  const [activeCategory, setActiveCategory] = useState("All");
+  const [sortBy, setSortBy] = useState("best-match");
+
+  const categories = [
+    "All",
+    "Laptops & Desktops",
+    "Computer Accessories",
+    "Networking Devices",
+    "Storage & Drives",
+    "Power & Cables",
+    "Headsets & Audio",
+    "Printers & Scanners",
+    "Smart Gadgets"
+  ];
 
   // Comprehensive product database - Accessories + Laptops
   const allProducts = [
@@ -135,6 +150,20 @@ export default function ShopSection() {
     { name: "Toshiba Portege", category: "Laptops", brand: "Toshiba", specs: "i7-1165G7, 16GB, 512GB SSD", price: "KSh 85,000", original: "KSh 105,000", description: "Ultra-portable Toshiba Portege for professionals", image: toshibaPortege },
   ];
 
+  // Add random tags and ratings to products
+  const enhancedProducts = allProducts.map((product, index) => ({
+    ...product,
+    rating: (4 + Math.random()).toFixed(1),
+    reviews: Math.floor(Math.random() * 200) + 20,
+    tag: index % 5 === 0 ? "Hot Deal" : 
+         index % 5 === 1 ? "Best Seller" : 
+         index % 5 === 2 ? "Free Delivery" : 
+         index % 5 === 3 ? "Top Seller" :
+         index % 5 === 4 ? "Flash Sale" : null,
+    discount: product.original && product.price ? 
+      Math.round(((parseFloat(product.original.replace(/[^0-9]/g, '')) - parseFloat(product.price.replace(/[^0-9]/g, ''))) / parseFloat(product.original.replace(/[^0-9]/g, ''))) * 100) : null
+  }));
+
   const handleSearch = () => {
     if (!searchQuery.trim()) {
       setSearchResults([]);
@@ -142,7 +171,7 @@ export default function ShopSection() {
     }
     
     // Search for matching products (searches in name, category, brand, specs, and description)
-    const found = allProducts.filter(item => 
+    const found = enhancedProducts.filter(item => 
       item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       item.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
       item.brand.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -171,116 +200,239 @@ export default function ShopSection() {
   };
 
   return (
-    <section id="shop" className="py-12 sm:py-16 md:py-24 relative">
-      <div className="container mx-auto px-4 sm:px-6">
-        <div className="text-center mb-8 sm:mb-12 md:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
-            <span className="text-foreground">Tech </span>
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Shop
-            </span>
+    <section id="shop" className="py-20" style={{ backgroundColor: '#f5f5f5' }}>
+      <div className="container mx-auto px-4">
+        {/* Section Title */}
+        <div className="text-center mb-8 fade-in">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: '#333' }}>
+            ICT Products & Accessories
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
-            Search our complete inventory of laptops and ICT accessories from top brands
+          <p className="text-lg max-w-2xl mx-auto" style={{ color: '#666' }}>
+            Search our extensive catalog of laptops, accessories, and ICT equipment
           </p>
         </div>
 
-        {/* Universal Product Search */}
-        <div className="mb-12 max-w-3xl mx-auto">
-          <div className="glass-card p-6">
-            <h3 className="text-xl font-bold text-foreground mb-4 text-center">
-              Search Products - Laptops & Accessories
-            </h3>
-            <p className="text-sm text-muted-foreground text-center mb-4">
-              Find laptops, keyboards, mice, monitors, storage, cables, and more
-            </p>
-            <div className="flex gap-2">
-              <Input
-                type="text"
-                placeholder="Search for HP laptops, wireless mouse, monitors, SSDs, cables..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
-                className="flex-1"
-              />
-              <Button onClick={handleSearch} variant="hero" size="lg">
-                <Search className="mr-2" size={18} />
-                Search
+        {/* Universal Search Bar */}
+        <div className="max-w-4xl mx-auto mb-8 fade-in">
+          <Card className="p-4 bg-white shadow-md">
+            <div className="flex flex-col md:flex-row gap-3">
+              <div className="flex-1 relative">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5" style={{ color: '#666' }} />
+                <Input
+                  type="text"
+                  placeholder="Search for laptops, accessories, or brands (e.g., 'mouse', 'HP laptop', 'keyboard')..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onKeyPress={(e) => e.key === "Enter" && handleSearch()}
+                  className="pl-10 h-12 text-base border-gray-300"
+                />
+              </div>
+              <Button 
+                onClick={handleSearch}
+                size="lg"
+                className="gap-2"
+                style={{ backgroundColor: '#ff6a00', color: 'white' }}
+              >
+                <Search className="h-5 w-5" />
+                Search Products
               </Button>
             </div>
-          </div>
+          </Card>
+        </div>
 
-          {/* Search Results Display */}
-          {searchResults.length > 0 && (
-            <div className="mt-6">
-              <div className="flex items-center justify-between mb-4">
-                <h4 className="text-lg font-bold text-foreground">
-                  Found {searchResults.length} {searchResults.length === 1 ? 'Product' : 'Products'}
-                </h4>
-                <button 
-                  onClick={() => {
-                    setSearchResults([]);
-                    setSearchQuery("");
-                  }}
-                  className="text-sm text-muted-foreground hover:text-foreground"
-                >
-                  Clear Results ✕
-                </button>
-              </div>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                {searchResults.map((item, idx) => (
-                  <div key={idx} className="glass-card p-4 hover:shadow-lg transition-all">
-                    {item.image && (
-                      <div className="aspect-video overflow-hidden rounded-lg bg-muted mb-3">
-                        <img 
-                          src={item.image} 
-                          alt={item.name} 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" 
-                        />
-                      </div>
-                    )}
-                    <div className="mb-2">
-                      <span className="text-xs font-semibold text-primary bg-primary/10 px-2 py-1 rounded">
-                        {item.brand}
-                      </span>
-                      <span className="text-xs text-muted-foreground ml-2">{item.category}</span>
-                    </div>
-                    <h5 className="font-bold text-foreground mb-2">{item.name}</h5>
-                    <p className="text-xs text-muted-foreground mb-3">{item.specs}</p>
-                    <p className="text-sm text-foreground/80 mb-3 line-clamp-2">{item.description}</p>
-                    <div className="flex items-baseline gap-2 mb-3">
-                      <span className="text-xl font-bold text-primary">{item.price}</span>
-                      {item.original && (
-                        <span className="text-sm text-muted-foreground line-through">{item.original}</span>
-                      )}
-                    </div>
-                    <Button variant="hero" className="w-full">
-                      <ShoppingCart className="mr-2" size={16} />
-                      Add to Cart
-                    </Button>
-                  </div>
+        {/* Search Results */}
+        {searchResults.length > 0 && (
+          <div className="fade-in">
+            {/* Category Bar */}
+            <div className="mb-6 bg-white rounded-lg shadow-sm p-4">
+              <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+                {categories.map((category) => (
+                  <button
+                    key={category}
+                    onClick={() => setActiveCategory(category)}
+                    className={`px-4 py-2 rounded-md whitespace-nowrap text-sm font-medium transition-all ${
+                      activeCategory === category
+                        ? 'text-white shadow-md'
+                        : 'bg-gray-100 hover:bg-gray-200'
+                    }`}
+                    style={activeCategory === category ? { backgroundColor: '#ff6a00' } : { color: '#333' }}
+                  >
+                    {category}
+                  </button>
                 ))}
               </div>
             </div>
-          )}
-        </div>
+
+            {/* Sorting & Filter Bar */}
+            <div className="mb-6 bg-white rounded-lg shadow-sm p-4">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div className="flex items-center gap-4 flex-wrap">
+                  <span className="text-sm font-medium" style={{ color: '#333' }}>Sort by:</span>
+                  <select
+                    value={sortBy}
+                    onChange={(e) => setSortBy(e.target.value)}
+                    className="px-3 py-2 border border-gray-300 rounded-md text-sm"
+                    style={{ color: '#333' }}
+                  >
+                    <option value="best-match">Best Match</option>
+                    <option value="top-selling">Top Selling</option>
+                    <option value="newest">Newest</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                  </select>
+                </div>
+                <div className="text-sm" style={{ color: '#666' }}>
+                  Showing 1–{searchResults.length} of {searchResults.length} ICT Accessories
+                </div>
+              </div>
+            </div>
+
+            {/* Product Grid - AliExpress Style */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4 mb-12">
+              {searchResults.map((product, index) => (
+                <Card
+                  key={index}
+                  className="bg-white rounded-xl overflow-hidden group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative"
+                >
+                  {/* Discount Badge */}
+                  {product.discount && (
+                    <div className="absolute top-2 left-2 px-2 py-1 rounded-md text-xs font-bold text-white z-10"
+                         style={{ backgroundColor: '#ff4747' }}>
+                      -{product.discount}%
+                    </div>
+                  )}
+
+                  {/* Tag Badge */}
+                  {product.tag && (
+                    <div className="absolute top-2 right-2 px-2 py-1 rounded-md text-xs font-semibold text-white z-10 flex items-center gap-1"
+                         style={{ backgroundColor: '#ff6a00' }}>
+                      {product.tag === "Hot Deal" && <Flame className="h-3 w-3" />}
+                      {product.tag === "Best Seller" && <TrendingUp className="h-3 w-3" />}
+                      {product.tag === "Free Delivery" && <Truck className="h-3 w-3" />}
+                      {product.tag === "Top Seller" && <Star className="h-3 w-3" />}
+                      {product.tag === "Flash Sale" && <Flame className="h-3 w-3" />}
+                      {product.tag}
+                    </div>
+                  )}
+
+                  {/* Wishlist Icon */}
+                  <button className="absolute top-2 right-2 p-2 rounded-full bg-white/80 hover:bg-white z-20 transition-all opacity-0 group-hover:opacity-100">
+                    <Heart className="h-4 w-4" style={{ color: '#666' }} />
+                  </button>
+
+                  {/* Product Image */}
+                  <div className="relative h-48 bg-gray-100 overflow-hidden">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                  </div>
+
+                  {/* Product Info */}
+                  <div className="p-3 space-y-2">
+                    <h4 className="font-medium text-sm line-clamp-2 min-h-[2.5rem]" style={{ color: '#333' }}>
+                      {product.name}
+                    </h4>
+
+                    {/* Price */}
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-xl font-bold" style={{ color: '#ff6a00' }}>
+                        {product.price}
+                      </span>
+                      {product.original && (
+                        <span className="text-xs line-through" style={{ color: '#999' }}>
+                          {product.original}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Rating */}
+                    <div className="flex items-center gap-1">
+                      <div className="flex items-center">
+                        {[...Array(5)].map((_, i) => (
+                          <Star
+                            key={i}
+                            className="h-3 w-3"
+                            fill={i < Math.floor(parseFloat(product.rating)) ? '#ffd700' : 'none'}
+                            style={{ color: '#ffd700' }}
+                          />
+                        ))}
+                      </div>
+                      <span className="text-xs" style={{ color: '#666' }}>
+                        {product.rating} ({product.reviews})
+                      </span>
+                    </div>
+
+                    {product.tag === "Free Delivery" && (
+                      <div className="text-xs flex items-center gap-1" style={{ color: '#666' }}>
+                        <Truck className="h-3 w-3" />
+                        Free Delivery
+                      </div>
+                    )}
+
+                    {/* Buttons */}
+                    <div className="flex gap-2 pt-2">
+                      <Button 
+                        className="flex-1 text-xs h-8"
+                        style={{ backgroundColor: '#ff6a00', color: 'white' }}
+                      >
+                        <ShoppingCart className="h-3 w-3 mr-1" />
+                        Add to Cart
+                      </Button>
+                      <Button 
+                        variant="outline" 
+                        className="flex-1 text-xs h-8"
+                        style={{ borderColor: '#ff6a00', color: '#ff6a00' }}
+                      >
+                        View Details
+                      </Button>
+                    </div>
+                  </div>
+                </Card>
+              ))}
+            </div>
+
+            {/* Clear Results */}
+            <div className="text-center">
+              <Button
+                variant="outline"
+                size="lg"
+                onClick={() => {
+                  setSearchQuery("");
+                  setSearchResults([]);
+                }}
+                className="gap-2"
+              >
+                Clear Results
+              </Button>
+            </div>
+          </div>
+        )}
 
         {/* Shop CTA */}
         <div className="text-center mt-16">
-          <div className="glass-card p-8 max-w-4xl mx-auto">
-            <h3 className="text-3xl font-bold text-foreground mb-4">
+          <div className="bg-white rounded-lg shadow-md p-8 max-w-4xl mx-auto">
+            <h3 className="text-3xl font-bold mb-4" style={{ color: '#333' }}>
               Can't Find What You're Looking For?
             </h3>
-            <p className="text-lg text-muted-foreground mb-6">
+            <p className="text-lg mb-6" style={{ color: '#666' }}>
               We have an extensive inventory beyond what's listed. Contact us for custom configurations, bulk orders, or specific models.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="hero" size="lg">
-                <ShoppingCart className="mr-2" size={18} />
+              <Button 
+                size="lg"
+                className="gap-2"
+                style={{ backgroundColor: '#ff6a00', color: 'white' }}
+              >
+                <ShoppingCart className="h-5 w-5" />
                 Request Custom Quote
               </Button>
-              <Button variant="glass" size="lg">
+              <Button 
+                variant="outline" 
+                size="lg"
+                style={{ borderColor: '#ff6a00', color: '#ff6a00' }}
+              >
                 Contact Sales: +254112277289
               </Button>
             </div>
