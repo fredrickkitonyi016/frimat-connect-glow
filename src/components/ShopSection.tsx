@@ -42,12 +42,21 @@ import toshibaSatellitePro from "@/assets/products/toshiba-satellite-pro.jpg";
 import toshibaPortege from "@/assets/products/toshiba-portege.jpg";
 
 export default function ShopSection() {
-  console.log("=== ShopSection component is rendering ===");
-  
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<any[]>([]);
   const [activeCategory, setActiveCategory] = useState("All");
   const [sortBy, setSortBy] = useState("best-match");
+
+  // Redirect to external marketplaces
+  const searchOnAliExpress = (query: string) => {
+    const searchTerm = encodeURIComponent(query || searchQuery);
+    window.open(`https://www.aliexpress.com/wholesale?SearchText=${searchTerm}`, '_blank');
+  };
+
+  const searchOnJumia = (query: string) => {
+    const searchTerm = encodeURIComponent(query || searchQuery);
+    window.open(`https://www.jumia.co.ke/catalog/?q=${searchTerm}`, '_blank');
+  };
 
   const categories = [
     "All",
@@ -213,14 +222,14 @@ export default function ShopSection() {
             ICT Products & Accessories
           </h2>
           <p className="text-lg max-w-2xl mx-auto" style={{ color: '#666' }}>
-            Search our extensive catalog of laptops, accessories, and ICT equipment
+            Search locally or explore AliExpress & Jumia Kenya for more options
           </p>
         </div>
 
         {/* Universal Search Bar */}
-        <div className="max-w-4xl mx-auto mb-8 fade-in">
+        <div className="max-w-5xl mx-auto mb-8 fade-in">
           <Card className="p-4 bg-white shadow-md">
-            <div className="flex flex-col md:flex-row gap-3">
+            <div className="flex flex-col gap-3">
               <div className="flex-1 relative">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5" style={{ color: '#666' }} />
                 <Input
@@ -232,15 +241,35 @@ export default function ShopSection() {
                   className="pl-10 h-12 text-base border-gray-300"
                 />
               </div>
-              <Button 
-                onClick={handleSearch}
-                size="lg"
-                className="gap-2"
-                style={{ backgroundColor: '#ff6a00', color: 'white' }}
-              >
-                <Search className="h-5 w-5" />
-                Search Products
-              </Button>
+              <div className="flex flex-col sm:flex-row gap-2">
+                <Button 
+                  onClick={handleSearch}
+                  size="lg"
+                  className="gap-2 flex-1"
+                  style={{ backgroundColor: '#ff6a00', color: 'white' }}
+                >
+                  <Search className="h-5 w-5" />
+                  Search Local Store
+                </Button>
+                <Button 
+                  onClick={() => searchOnAliExpress(searchQuery)}
+                  size="lg"
+                  variant="outline"
+                  className="gap-2 flex-1"
+                  style={{ borderColor: '#ff6a00', color: '#ff6a00' }}
+                >
+                  Find on AliExpress
+                </Button>
+                <Button 
+                  onClick={() => searchOnJumia(searchQuery)}
+                  size="lg"
+                  variant="outline"
+                  className="gap-2 flex-1"
+                  style={{ borderColor: '#ff6a00', color: '#ff6a00' }}
+                >
+                  Find on Jumia KE
+                </Button>
+              </div>
             </div>
           </Card>
         </div>
@@ -422,16 +451,25 @@ export default function ShopSection() {
               Can't Find What You're Looking For?
             </h3>
             <p className="text-lg mb-6" style={{ color: '#666' }}>
-              We have an extensive inventory beyond what's listed. Contact us for custom configurations, bulk orders, or specific models.
+              Search on popular marketplaces for a wider selection of products and international brands
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 size="lg"
                 className="gap-2"
                 style={{ backgroundColor: '#ff6a00', color: 'white' }}
+                onClick={() => searchOnAliExpress(searchQuery || "laptop accessories")}
               >
-                <ShoppingCart className="h-5 w-5" />
-                Request Custom Quote
+                Browse AliExpress
+              </Button>
+              <Button 
+                size="lg"
+                variant="outline"
+                className="gap-2"
+                style={{ borderColor: '#ff6a00', color: '#ff6a00' }}
+                onClick={() => searchOnJumia(searchQuery || "computer accessories")}
+              >
+                Browse Jumia Kenya
               </Button>
               <Button 
                 variant="outline" 
