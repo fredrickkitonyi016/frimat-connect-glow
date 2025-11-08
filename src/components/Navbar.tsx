@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useCart } from "@/contexts/CartContext";
+import { CartDrawer } from "@/components/CartDrawer";
 import { 
   Home, 
   Info, 
@@ -11,7 +13,8 @@ import {
   Phone,
   Menu,
   X,
-  Receipt
+  Receipt,
+  ShoppingCart
 } from "lucide-react";
 
 const navigation = [
@@ -29,7 +32,9 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
   const isMobile = useIsMobile();
+  const { totalItems } = useCart();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -74,13 +79,28 @@ export default function Navbar() {
             <div className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
               FRIMAT
             </div>
-            <Button 
-              variant="nav" 
-              size="icon"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
-              {isMobileMenuOpen ? <X /> : <Menu />}
-            </Button>
+            <div className="flex items-center gap-2">
+              <Button 
+                variant="nav" 
+                size="icon"
+                onClick={() => setIsCartOpen(true)}
+                className="relative"
+              >
+                <ShoppingCart />
+                {totalItems > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                    {totalItems}
+                  </span>
+                )}
+              </Button>
+              <Button 
+                variant="nav" 
+                size="icon"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              >
+                {isMobileMenuOpen ? <X /> : <Menu />}
+              </Button>
+            </div>
           </div>
         </header>
 
@@ -129,39 +149,57 @@ export default function Navbar() {
   }
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? "glass backdrop-blur-xl" : "bg-transparent"
-    }`}>
-      <div className="container mx-auto px-6 py-4">
-        <nav className="flex items-center justify-between">
-          {/* Logo */}
-          <div className="text-3xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-            FRIMAT TECHNOLOGIES
-          </div>
+    <>
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled ? "glass backdrop-blur-xl" : "bg-transparent"
+      }`}>
+        <div className="container mx-auto px-6 py-4">
+          <nav className="flex items-center justify-between">
+            {/* Logo */}
+            <div className="text-3xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              FRIMAT TECHNOLOGIES
+            </div>
 
-          {/* Desktop Navigation */}
-          <div className="flex items-center space-x-8">
-            {navigation.map((item) => {
-              const Icon = item.icon;
-              const isActive = activeSection === item.href.substring(1);
-              return (
-                <button
-                  key={item.name}
-                  onClick={() => scrollToSection(item.href)}
-                  className={`flex items-center gap-2 text-sm font-medium transition-all duration-300 ${
-                    isActive 
-                      ? "text-primary glow-primary" 
-                      : "text-foreground hover:text-primary hover:glow-primary"
-                  }`}
-                >
-                  <Icon size={18} />
-                  {item.name}
-                </button>
-              );
-            })}
-          </div>
-        </nav>
-      </div>
-    </header>
+            {/* Desktop Navigation */}
+            <div className="flex items-center space-x-8">
+              {navigation.map((item) => {
+                const Icon = item.icon;
+                const isActive = activeSection === item.href.substring(1);
+                return (
+                  <button
+                    key={item.name}
+                    onClick={() => scrollToSection(item.href)}
+                    className={`flex items-center gap-2 text-sm font-medium transition-all duration-300 ${
+                      isActive 
+                        ? "text-primary glow-primary" 
+                        : "text-foreground hover:text-primary hover:glow-primary"
+                    }`}
+                  >
+                    <Icon size={18} />
+                    {item.name}
+                  </button>
+                );
+              })}
+              
+              {/* Cart Button */}
+              <button
+                onClick={() => setIsCartOpen(true)}
+                className="relative flex items-center gap-2 text-sm font-medium transition-all duration-300 text-foreground hover:text-primary hover:glow-primary"
+              >
+                <ShoppingCart size={18} />
+                Cart
+                {totalItems > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                    {totalItems}
+                  </span>
+                )}
+              </button>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      <CartDrawer open={isCartOpen} onOpenChange={setIsCartOpen} />
+    </>
   );
 }

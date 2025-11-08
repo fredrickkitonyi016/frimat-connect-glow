@@ -3,6 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { ShoppingCart, Search, Heart, Star, TrendingUp, Truck, Flame } from "lucide-react";
 import { useState } from "react";
+import { useCart } from "@/contexts/CartContext";
 
 // Accessory Images
 import wirelessMouse from "@/assets/accessories/wireless-mouse.jpg";
@@ -46,6 +47,7 @@ export default function ShopSection() {
   const [searchResults, setSearchResults] = useState<any[]>([]);
   const [activeCategory, setActiveCategory] = useState("All");
   const [sortBy, setSortBy] = useState("best-match");
+  const { addToCart } = useCart();
 
   // Redirect to external marketplaces
   const searchOnAliExpress = (query: string) => {
@@ -410,6 +412,16 @@ export default function ShopSection() {
                       <Button 
                         className="flex-1 text-xs h-8"
                         style={{ backgroundColor: '#ff6a00', color: 'white' }}
+                        onClick={() => {
+                          const priceValue = parseFloat(product.price.replace(/[^\d.]/g, ''));
+                          addToCart({
+                            id: `${product.brand}-${product.name}`.replace(/\s+/g, '-').toLowerCase(),
+                            name: product.name,
+                            price: priceValue,
+                            image: product.image,
+                            category: product.category,
+                          });
+                        }}
                       >
                         <ShoppingCart className="h-3 w-3 mr-1" />
                         Add to Cart
