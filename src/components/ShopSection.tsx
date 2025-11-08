@@ -4,6 +4,7 @@ import { Card } from "@/components/ui/card";
 import { ShoppingCart, Search, Heart, Star, TrendingUp, Truck, Flame } from "lucide-react";
 import { useState } from "react";
 import { useCart } from "@/contexts/CartContext";
+import { ProductDetailsModal } from "@/components/ProductDetailsModal";
 
 // Accessory Images
 import wirelessMouse from "@/assets/accessories/wireless-mouse.jpg";
@@ -47,6 +48,8 @@ export default function ShopSection() {
   const [searchResults, setSearchResults] = useState<any[]>([]);
   const [activeCategory, setActiveCategory] = useState("All");
   const [sortBy, setSortBy] = useState("best-match");
+  const [selectedProduct, setSelectedProduct] = useState<any>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { addToCart } = useCart();
 
   // Redirect to external marketplaces
@@ -430,6 +433,10 @@ export default function ShopSection() {
                         variant="outline" 
                         className="flex-1 text-xs h-8"
                         style={{ borderColor: '#ff6a00', color: '#ff6a00' }}
+                        onClick={() => {
+                          setSelectedProduct(product);
+                          setIsModalOpen(true);
+                        }}
                       >
                         View Details
                       </Button>
@@ -494,6 +501,12 @@ export default function ShopSection() {
           </div>
         </div>
       </div>
+
+      <ProductDetailsModal 
+        product={selectedProduct}
+        open={isModalOpen}
+        onOpenChange={setIsModalOpen}
+      />
     </section>
   );
 }
