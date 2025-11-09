@@ -44,13 +44,13 @@ import toshibaSatellitePro from "@/assets/products/toshiba-satellite-pro.jpg";
 import toshibaPortege from "@/assets/products/toshiba-portege.jpg";
 
 export default function ShopSection() {
+  const { addToCart } = useCart();
+  
   const [searchQuery, setSearchQuery] = useState("");
-  const [searchResults, setSearchResults] = useState<any[]>([]);
   const [activeCategory, setActiveCategory] = useState("All");
   const [sortBy, setSortBy] = useState("best-match");
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { addToCart } = useCart();
 
 
   const categories = [
@@ -170,68 +170,40 @@ export default function ShopSection() {
       Math.round(((parseFloat(product.original.replace(/[^0-9]/g, '')) - parseFloat(product.price.replace(/[^0-9]/g, ''))) / parseFloat(product.original.replace(/[^0-9]/g, ''))) * 100) : null
   }));
 
-  const handleSearch = () => {
-    if (!searchQuery.trim()) {
-      setSearchResults([]);
-      return;
-    }
-    
-    // Search for matching products (searches in name, category, brand, specs, and description)
-    const found = enhancedProducts.filter(item => 
-      item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.brand.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.specs.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.description.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-    
-    // If products found, show ALL matching results
-    if (found.length > 0) {
-      setSearchResults(found);
-    } else {
-      // If no exact match, show "contact us" message
-      setSearchResults([
-        {
-          name: `${searchQuery} - Available on Request`,
-          category: "ICT Products",
-          brand: "Various Brands",
-          specs: "Multiple variants available",
-          price: "Contact for pricing",
-          original: "",
-          description: `We have various ${searchQuery} products available. Contact us for detailed specifications, pricing, and current stock availability.`,
-          image: null
-        }
-      ]);
-    }
-  };
+  // Filter products based on search query
+  const searchFilteredProducts = searchQuery.trim()
+    ? enhancedProducts.filter(item => 
+        item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        item.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        item.brand.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        item.specs.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        item.description.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    : enhancedProducts; // Show all products by default
 
-  // Filter search results by active category
-  const filteredResults = activeCategory === "All" 
-    ? searchResults 
-    : searchResults.filter(product => {
-        // Map product categories to our category filter names
-        const categoryMap: { [key: string]: string } = {
-          "Peripherals": "Computer Accessories",
-          "Accessories": "Computer Accessories",
-          "Storage": "Storage & Drives",
-          "Audio": "Headsets & Audio",
-          "Displays": "Computer Accessories",
-          "Office": "Printers & Scanners",
-          "Components": "Computer Accessories",
-          "Cables": "Power & Cables",
-          "Laptops": "Laptops & Desktops",
-        };
-        
+  // Filter by active category
+  const categoryMap: { [key: string]: string } = {
+    "Peripherals": "Computer Accessories",
+    "Accessories": "Computer Accessories",
+    "Storage": "Storage & Drives",
+    "Audio": "Headsets & Audio",
+    "Displays": "Computer Accessories",
+    "Office": "Printers & Scanners",
+    "Components": "Computer Accessories",
+    "Cables": "Power & Cables",
+    "Laptops": "Laptops & Desktops",
+  };
+  
+  const displayedProducts = activeCategory === "All" 
+    ? searchFilteredProducts 
+    : searchFilteredProducts.filter(product => {
         const mappedCategory = categoryMap[product.category] || product.category;
         return mappedCategory === activeCategory;
       });
 
   console.log("ShopSection rendering, categories:", categories);
-  console.log("Search results count:", searchResults.length);
-  console.log("Filtered results count:", filteredResults.length);
-  if (searchResults.length > 0) {
-    console.log("First 3 search results:", searchResults.slice(0, 3));
-  }
+  console.log("Total products:", enhancedProducts.length);
+  console.log("Displayed products count:", displayedProducts.length);
   
   return (
     <section id="shop" className="py-20" style={{ backgroundColor: '#f5f5f5' }}>
@@ -257,27 +229,16 @@ export default function ShopSection() {
                   placeholder="Search for laptops, accessories, or brands (e.g., 'mouse', 'HP laptop', 'keyboard')..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  onKeyPress={(e) => e.key === "Enter" && handleSearch()}
                   className="pl-10 h-12 text-base border-gray-300"
                 />
               </div>
-              <Button 
-                onClick={handleSearch}
-                size="lg"
-                className="gap-2 w-full"
-                style={{ backgroundColor: '#ff6a00', color: 'white' }}
-              >
-                <Search className="h-5 w-5" />
-                Search Products
-              </Button>
             </div>
           </Card>
         </div>
 
-        {/* Search Results */}
-        {searchResults.length > 0 && (
-          <div className="fade-in">
-            {/* Category Bar */}
+        {/* Product Display Section */}
+        <div className="fade-in">
+          {/* Category Bar */}
             <div className="mb-6 bg-white rounded-lg shadow-sm p-4">
               <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
                 {categories.map((category) => (
@@ -316,14 +277,14 @@ export default function ShopSection() {
                   </select>
                 </div>
                 <div className="text-sm" style={{ color: '#666' }}>
-                  Showing 1–{filteredResults.length} of {searchResults.length} ICT Accessories
+                  Showing 1–{displayedProducts.length} of {enhancedProducts.length} Products
                 </div>
               </div>
             </div>
 
             {/* Product Grid - AliExpress Style */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4 mb-12">
-              {filteredResults.map((product, index) => (
+              {displayedProducts.map((product, index) => (
                 <Card
                   key={index}
                   className="bg-white rounded-xl overflow-hidden group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative"
@@ -440,23 +401,7 @@ export default function ShopSection() {
                 </Card>
               ))}
             </div>
-
-            {/* Clear Results */}
-            <div className="text-center">
-              <Button
-                variant="outline"
-                size="lg"
-                onClick={() => {
-                  setSearchQuery("");
-                  setSearchResults([]);
-                }}
-                className="gap-2"
-              >
-                Clear Results
-              </Button>
-            </div>
           </div>
-        )}
 
         {/* Shop CTA */}
         <div className="text-center mt-16">
