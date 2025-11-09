@@ -52,16 +52,6 @@ export default function ShopSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { addToCart } = useCart();
 
-  // Redirect to external marketplaces
-  const searchOnAliExpress = (query: string) => {
-    const searchTerm = encodeURIComponent(query || searchQuery);
-    window.open(`https://www.aliexpress.com/wholesale?SearchText=${searchTerm}`, '_blank');
-  };
-
-  const searchOnJumia = (query: string) => {
-    const searchTerm = encodeURIComponent(query || searchQuery);
-    window.open(`https://www.jumia.co.ke/catalog/?q=${searchTerm}`, '_blank');
-  };
 
   const categories = [
     "All",
@@ -227,7 +217,7 @@ export default function ShopSection() {
             ICT Products & Accessories
           </h2>
           <p className="text-lg max-w-2xl mx-auto" style={{ color: '#666' }}>
-            Search locally or explore AliExpress & Jumia Kenya for more options
+            Browse our local inventory. Items not in stock can be ordered from AliExpress or Jumia Kenya
           </p>
         </div>
 
@@ -246,35 +236,15 @@ export default function ShopSection() {
                   className="pl-10 h-12 text-base border-gray-300"
                 />
               </div>
-              <div className="flex flex-col sm:flex-row gap-2">
-                <Button 
-                  onClick={handleSearch}
-                  size="lg"
-                  className="gap-2 flex-1"
-                  style={{ backgroundColor: '#ff6a00', color: 'white' }}
-                >
-                  <Search className="h-5 w-5" />
-                  Search Local Store
-                </Button>
-                <Button 
-                  onClick={() => searchOnAliExpress(searchQuery)}
-                  size="lg"
-                  variant="outline"
-                  className="gap-2 flex-1"
-                  style={{ borderColor: '#ff6a00', color: '#ff6a00' }}
-                >
-                  Find on AliExpress
-                </Button>
-                <Button 
-                  onClick={() => searchOnJumia(searchQuery)}
-                  size="lg"
-                  variant="outline"
-                  className="gap-2 flex-1"
-                  style={{ borderColor: '#ff6a00', color: '#ff6a00' }}
-                >
-                  Find on Jumia KE
-                </Button>
-              </div>
+              <Button 
+                onClick={handleSearch}
+                size="lg"
+                className="gap-2 w-full"
+                style={{ backgroundColor: '#ff6a00', color: 'white' }}
+              >
+                <Search className="h-5 w-5" />
+                Search Products
+              </Button>
             </div>
           </Card>
         </div>
@@ -470,26 +440,9 @@ export default function ShopSection() {
               Can't Find What You're Looking For?
             </h3>
             <p className="text-lg mb-6" style={{ color: '#666' }}>
-              Search on popular marketplaces for a wider selection of products and international brands
+              We can order products from AliExpress and Jumia Kenya if they're not in our local inventory. Contact us for availability and pricing.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                size="lg"
-                className="gap-2"
-                style={{ backgroundColor: '#ff6a00', color: 'white' }}
-                onClick={() => searchOnAliExpress(searchQuery || "laptop accessories")}
-              >
-                Browse AliExpress
-              </Button>
-              <Button 
-                size="lg"
-                variant="outline"
-                className="gap-2"
-                style={{ borderColor: '#ff6a00', color: '#ff6a00' }}
-                onClick={() => searchOnJumia(searchQuery || "computer accessories")}
-              >
-                Browse Jumia Kenya
-              </Button>
+            <div className="flex justify-center">
               <Button 
                 variant="outline" 
                 size="lg"
