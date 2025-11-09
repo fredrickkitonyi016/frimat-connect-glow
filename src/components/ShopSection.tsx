@@ -207,6 +207,9 @@ export default function ShopSection() {
 
   console.log("ShopSection rendering, categories:", categories);
   console.log("Search results count:", searchResults.length);
+  if (searchResults.length > 0) {
+    console.log("First 3 search results:", searchResults.slice(0, 3));
+  }
   
   return (
     <section id="shop" className="py-20" style={{ backgroundColor: '#f5f5f5' }}>
