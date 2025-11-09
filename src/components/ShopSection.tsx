@@ -205,8 +205,30 @@ export default function ShopSection() {
     }
   };
 
+  // Filter search results by active category
+  const filteredResults = activeCategory === "All" 
+    ? searchResults 
+    : searchResults.filter(product => {
+        // Map product categories to our category filter names
+        const categoryMap: { [key: string]: string } = {
+          "Peripherals": "Computer Accessories",
+          "Accessories": "Computer Accessories",
+          "Storage": "Storage & Drives",
+          "Audio": "Headsets & Audio",
+          "Displays": "Computer Accessories",
+          "Office": "Printers & Scanners",
+          "Components": "Computer Accessories",
+          "Cables": "Power & Cables",
+          "Laptops": "Laptops & Desktops",
+        };
+        
+        const mappedCategory = categoryMap[product.category] || product.category;
+        return mappedCategory === activeCategory;
+      });
+
   console.log("ShopSection rendering, categories:", categories);
   console.log("Search results count:", searchResults.length);
+  console.log("Filtered results count:", filteredResults.length);
   if (searchResults.length > 0) {
     console.log("First 3 search results:", searchResults.slice(0, 3));
   }
@@ -294,14 +316,14 @@ export default function ShopSection() {
                   </select>
                 </div>
                 <div className="text-sm" style={{ color: '#666' }}>
-                  Showing 1–{searchResults.length} of {searchResults.length} ICT Accessories
+                  Showing 1–{filteredResults.length} of {searchResults.length} ICT Accessories
                 </div>
               </div>
             </div>
 
             {/* Product Grid - AliExpress Style */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4 mb-12">
-              {searchResults.map((product, index) => (
+              {filteredResults.map((product, index) => (
                 <Card
                   key={index}
                   className="bg-white rounded-xl overflow-hidden group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative"
