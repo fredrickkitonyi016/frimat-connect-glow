@@ -194,12 +194,32 @@ export default function ShopSection() {
     "Laptops": "Laptops & Desktops",
   };
   
-  const displayedProducts = activeCategory === "All" 
+  const categoryFilteredProducts = activeCategory === "All" 
     ? searchFilteredProducts 
     : searchFilteredProducts.filter(product => {
         const mappedCategory = categoryMap[product.category] || product.category;
         return mappedCategory === activeCategory;
       });
+
+  // Sort products based on selected sort option
+  const displayedProducts = [...categoryFilteredProducts].sort((a, b) => {
+    switch (sortBy) {
+      case "price-low":
+        return parseFloat(a.price.replace(/[^0-9.]/g, '')) - parseFloat(b.price.replace(/[^0-9.]/g, ''));
+      case "price-high":
+        return parseFloat(b.price.replace(/[^0-9.]/g, '')) - parseFloat(a.price.replace(/[^0-9.]/g, ''));
+      case "name":
+        return a.name.localeCompare(b.name);
+      case "rating":
+        return parseFloat(b.rating) - parseFloat(a.rating);
+      case "top-selling":
+        return b.reviews - a.reviews;
+      case "newest":
+      case "best-match":
+      default:
+        return 0;
+    }
+  });
 
   console.log("ShopSection rendering, categories:", categories);
   console.log("Total products:", enhancedProducts.length);
@@ -270,10 +290,12 @@ export default function ShopSection() {
                     style={{ color: '#333' }}
                   >
                     <option value="best-match">Best Match</option>
-                    <option value="top-selling">Top Selling</option>
-                    <option value="newest">Newest</option>
                     <option value="price-low">Price: Low to High</option>
                     <option value="price-high">Price: High to Low</option>
+                    <option value="name">Name (A-Z)</option>
+                    <option value="rating">Rating (Highest)</option>
+                    <option value="top-selling">Top Selling</option>
+                    <option value="newest">Newest</option>
                   </select>
                 </div>
                 <div className="text-sm" style={{ color: '#666' }}>
