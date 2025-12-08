@@ -8,6 +8,7 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import TeamSection from "@/components/TeamSection";
 import PricingSection from "@/components/PricingSection";
 import ShopSection from "@/components/ShopSection";
+import ShopifyProductsSection from "@/components/ShopifyProductsSection";
 import PortfolioSection from "@/components/PortfolioSection";
 import BlogSection from "@/components/BlogSection";
 import FAQSection from "@/components/FAQSection";
@@ -43,6 +44,7 @@ const Index = () => {
         <div className="fade-in">
           <PricingSection />
         </div>
+        <ShopifyProductsSection />
         <ShopSection />
         <div className="fade-in">
           <PortfolioSection />
