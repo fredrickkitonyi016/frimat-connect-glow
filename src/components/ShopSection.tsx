@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
-import { ShoppingCart, Search, Heart, Star, TrendingUp, Truck, Flame } from "lucide-react";
-import { useState } from "react";
+import { ShoppingCart, Search, Heart, Star, TrendingUp, Truck, Flame, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useEffect, useCallback } from "react";
 import { useCart } from "@/contexts/CartContext";
 import { ProductDetailsModal } from "@/components/ProductDetailsModal";
 
@@ -51,6 +51,8 @@ export default function ShopSection() {
   const [sortBy, setSortBy] = useState("best-match");
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [accessoryIndex, setAccessoryIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
 
   const categories = [
@@ -159,6 +161,7 @@ export default function ShopSection() {
   // Add random tags and ratings to products
   const enhancedProducts = allProducts.map((product, index) => ({
     ...product,
+    id: `product-${index}`,
     rating: (4 + Math.random()).toFixed(1),
     reviews: Math.floor(Math.random() * 200) + 20,
     tag: index % 5 === 0 ? "Hot Deal" : 
@@ -169,6 +172,32 @@ export default function ShopSection() {
     discount: product.original && product.price ? 
       Math.round(((parseFloat(product.original.replace(/[^0-9]/g, '')) - parseFloat(product.price.replace(/[^0-9]/g, ''))) / parseFloat(product.original.replace(/[^0-9]/g, ''))) * 100) : null
   }));
+
+  // Get only accessories for the rotating carousel
+  const accessories = enhancedProducts.filter(product => product.brand === "Accessories");
+  const accessoriesPerView = 5;
+  const maxAccessoryIndex = Math.max(0, accessories.length - accessoriesPerView);
+
+  // Auto-rotate accessories every 3 seconds
+  useEffect(() => {
+    if (isPaused || accessories.length <= accessoriesPerView) return;
+    
+    const interval = setInterval(() => {
+      setAccessoryIndex(prev => (prev >= maxAccessoryIndex ? 0 : prev + 1));
+    }, 3000);
+    
+    return () => clearInterval(interval);
+  }, [isPaused, maxAccessoryIndex, accessories.length]);
+
+  const nextAccessories = useCallback(() => {
+    setAccessoryIndex(prev => (prev >= maxAccessoryIndex ? 0 : prev + 1));
+  }, [maxAccessoryIndex]);
+
+  const prevAccessories = useCallback(() => {
+    setAccessoryIndex(prev => (prev <= 0 ? maxAccessoryIndex : prev - 1));
+  }, [maxAccessoryIndex]);
+
+  const visibleAccessories = accessories.slice(accessoryIndex, accessoryIndex + accessoriesPerView);
 
   // Filter products based on search query
   const searchFilteredProducts = searchQuery.trim()
@@ -254,6 +283,129 @@ export default function ShopSection() {
               </div>
             </div>
           </Card>
+        </div>
+
+        {/* Auto-Rotating Accessories Carousel */}
+        <div 
+          className="mb-12 fade-in"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-2xl font-bold" style={{ color: '#333' }}>
+              🔥 Featured Accessories
+            </h3>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={prevAccessories}
+                className="p-2 rounded-full bg-white shadow-md hover:shadow-lg transition-all"
+                style={{ color: '#ff6a00' }}
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+              <button
+                onClick={nextAccessories}
+                className="p-2 rounded-full bg-white shadow-md hover:shadow-lg transition-all"
+                style={{ color: '#ff6a00' }}
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
+              <div className="flex gap-1 ml-4">
+                {Array.from({ length: Math.ceil(accessories.length / accessoriesPerView) }).map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setAccessoryIndex(i * accessoriesPerView > maxAccessoryIndex ? maxAccessoryIndex : i * accessoriesPerView)}
+                    className={`w-2 h-2 rounded-full transition-all ${
+                      Math.floor(accessoryIndex / accessoriesPerView) === i ? 'w-6' : ''
+                    }`}
+                    style={{ 
+                      backgroundColor: Math.floor(accessoryIndex / accessoriesPerView) === i ? '#ff6a00' : '#ccc' 
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            {visibleAccessories.map((product, index) => (
+              <Card
+                key={`accessory-${accessoryIndex}-${index}`}
+                className="bg-white rounded-xl overflow-hidden group hover:shadow-xl transition-all duration-500 hover:-translate-y-1 relative animate-fade-in"
+              >
+                {/* Discount Badge */}
+                {product.discount && (
+                  <div className="absolute top-2 left-2 px-2 py-1 rounded-md text-xs font-bold text-white z-10"
+                       style={{ backgroundColor: '#ff4747' }}>
+                    -{product.discount}%
+                  </div>
+                )}
+                {/* Tag Badge */}
+                {product.tag && (
+                  <div className="absolute top-2 right-2 px-2 py-1 rounded-md text-xs font-semibold text-white z-10 flex items-center gap-1"
+                       style={{ backgroundColor: '#ff6a00' }}>
+                    {product.tag === "Hot Deal" && <Flame className="h-3 w-3" />}
+                    {product.tag === "Best Seller" && <TrendingUp className="h-3 w-3" />}
+                    {product.tag === "Free Delivery" && <Truck className="h-3 w-3" />}
+                    {product.tag === "Top Seller" && <Star className="h-3 w-3" />}
+                    {product.tag === "Flash Sale" && <Flame className="h-3 w-3" />}
+                    {product.tag}
+                  </div>
+                )}
+                {/* Product Image */}
+                <div 
+                  className="relative h-40 bg-gray-100 overflow-hidden cursor-pointer"
+                  onClick={() => {
+                    setSelectedProduct(product);
+                    setIsModalOpen(true);
+                  }}
+                >
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                </div>
+                {/* Product Info */}
+                <div className="p-3 space-y-2">
+                  <h4 
+                    className="font-medium text-sm line-clamp-2 cursor-pointer hover:underline" 
+                    style={{ color: '#333' }}
+                    onClick={() => {
+                      setSelectedProduct(product);
+                      setIsModalOpen(true);
+                    }}
+                  >
+                    {product.name}
+                  </h4>
+                  <div className="flex items-center gap-1">
+                    <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
+                    <span className="text-xs" style={{ color: '#666' }}>{product.rating}</span>
+                    <span className="text-xs" style={{ color: '#999' }}>({product.reviews})</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="font-bold text-base" style={{ color: '#ff4747' }}>{product.price}</span>
+                    {product.original && (
+                      <span className="text-xs line-through" style={{ color: '#999' }}>{product.original}</span>
+                    )}
+                  </div>
+                  <Button
+                    onClick={() => addToCart({
+                      id: product.id,
+                      name: product.name,
+                      price: parseFloat(product.price.replace(/[^0-9.]/g, '')),
+                      image: product.image,
+                      category: product.category,
+                    })}
+                    className="w-full text-white text-sm py-1 h-8"
+                    style={{ backgroundColor: '#ff6a00' }}
+                  >
+                    <ShoppingCart className="h-3 w-3 mr-1" />
+                    Add
+                  </Button>
+                </div>
+              </Card>
+            ))}
+          </div>
         </div>
 
         {/* Product Display Section */}
