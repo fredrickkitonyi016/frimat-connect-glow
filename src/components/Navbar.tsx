@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useCart } from "@/contexts/CartContext";
 import { CartDrawer } from "@/components/CartDrawer";
+import { ShopifyCartDrawer } from "@/components/ShopifyCartDrawer";
+import { useCartStore } from "@/stores/cartStore";
 import { 
   Home, 
   Info, 
@@ -35,6 +37,9 @@ export default function Navbar() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const isMobile = useIsMobile();
   const { totalItems } = useCart();
+  const shopifyCartItems = useCartStore(state => state.items);
+  const shopifyTotalItems = shopifyCartItems.reduce((sum, item) => sum + item.quantity, 0);
+  const combinedTotalItems = totalItems + shopifyTotalItems;
 
   useEffect(() => {
     const handleScroll = () => {
