@@ -38,7 +38,7 @@ export default function HeroSection() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-center max-w-6xl mx-auto px-6">
+      <div className="relative z-10 text-center max-w-6xl mx-auto px-6 pt-20">
         <div className="fade-in space-y-8">
           {/* Company Badge */}
           <div className="inline-flex items-center gap-2 glass-card px-6 py-3 rounded-full">
