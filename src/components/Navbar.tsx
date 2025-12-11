@@ -5,6 +5,7 @@ import { useCart } from "@/contexts/CartContext";
 import { CartDrawer } from "@/components/CartDrawer";
 import { ShopifyCartDrawer } from "@/components/ShopifyCartDrawer";
 import { useCartStore } from "@/stores/cartStore";
+import ThemeToggle from "@/components/ThemeToggle";
 import { 
   Home, 
   Info, 
@@ -85,6 +86,7 @@ export default function Navbar() {
               FRIMAT
             </div>
             <div className="flex items-center gap-2">
+              <ThemeToggle />
               <Button 
                 variant="nav" 
                 size="icon"
@@ -93,7 +95,7 @@ export default function Navbar() {
               >
                 <ShoppingCart />
                 {totalItems > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                  <span className="absolute -top-1 -right-1 bg-destructive text-destructive-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center">
                     {totalItems}
                   </span>
                 )}
@@ -186,6 +188,9 @@ export default function Navbar() {
                 );
               })}
               
+              {/* Theme Toggle */}
+              <ThemeToggle />
+              
               {/* Cart Button */}
               <button
                 onClick={() => setIsCartOpen(true)}
@@ -194,7 +199,7 @@ export default function Navbar() {
                 <ShoppingCart size={18} />
                 Cart
                 {totalItems > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                  <span className="absolute -top-2 -right-2 bg-destructive text-destructive-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center">
                     {totalItems}
                   </span>
                 )}

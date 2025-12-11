@@ -1,4 +1,5 @@
-import { Github, Linkedin, Mail, Award } from "lucide-react";
+import { Github, Linkedin, Mail, Award, ImageOff } from "lucide-react";
+import { useState } from "react";
 
 const team = [
   {
@@ -45,7 +46,7 @@ const team = [
     role: "UI/UX Designer",
     specialization: "Product Design & User Experience",
     bio: "Creative designer focused on creating intuitive and beautiful user experiences that drive business results.",
-    image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&h=300&fit=crop&crop=face",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=300&fit=crop&crop=face",
     skills: ["UI/UX Design", "Prototyping", "User Research"],
     social: {
       linkedin: "https://linkedin.com/in/grace-wanjiku",
@@ -53,6 +54,86 @@ const team = [
     }
   }
 ];
+
+interface TeamMemberProps {
+  member: typeof team[0];
+}
+
+function TeamMemberCard({ member }: TeamMemberProps) {
+  const [imgError, setImgError] = useState(false);
+
+  return (
+    <div className="glass-card hover-scale group text-center">
+      <div className="relative mb-6">
+        {imgError ? (
+          <div className="w-24 h-24 rounded-full mx-auto bg-muted border-4 border-primary/20 group-hover:border-primary/40 transition-colors flex items-center justify-center">
+            <ImageOff size={32} className="text-muted-foreground" />
+          </div>
+        ) : (
+          <img
+            src={member.image}
+            alt={member.name}
+            className="w-24 h-24 rounded-full mx-auto object-cover border-4 border-primary/20 group-hover:border-primary/40 transition-colors"
+            onError={() => setImgError(true)}
+          />
+        )}
+        <div className="absolute -bottom-2 right-1/2 translate-x-[48px] bg-gradient-to-r from-primary to-accent p-2 rounded-full">
+          <Award size={16} className="text-primary-foreground" />
+        </div>
+      </div>
+
+      <h3 className="text-xl font-bold text-foreground mb-1">{member.name}</h3>
+      <p className="text-primary font-semibold mb-2">{member.role}</p>
+      <p className="text-sm text-accent mb-4">{member.specialization}</p>
+      
+      <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+        {member.bio}
+      </p>
+
+      <div className="space-y-4">
+        <div className="flex flex-wrap gap-2 justify-center">
+          {member.skills.map((skill, skillIndex) => (
+            <span
+              key={skillIndex}
+              className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full border border-primary/20"
+            >
+              {skill}
+            </span>
+          ))}
+        </div>
+
+        <div className="flex justify-center gap-3">
+          {member.social.linkedin && (
+            <a
+              href={member.social.linkedin}
+              className="p-2 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Linkedin size={16} />
+            </a>
+          )}
+          {member.social.github && (
+            <a
+              href={member.social.github}
+              className="p-2 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Github size={16} />
+            </a>
+          )}
+          <a
+            href={`mailto:${member.social.email}`}
+            className="p-2 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
+          >
+            <Mail size={16} />
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function TeamSection() {
   return (
@@ -71,68 +152,7 @@ export default function TeamSection() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
           {team.map((member, index) => (
-            <div key={index} className="glass-card hover-scale group text-center">
-              <div className="relative mb-6">
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="w-24 h-24 rounded-full mx-auto object-cover border-4 border-primary/20 group-hover:border-primary/40 transition-colors"
-                />
-                <div className="absolute -bottom-2 -right-2 bg-gradient-to-r from-primary to-accent p-2 rounded-full">
-                  <Award size={16} className="text-background" />
-                </div>
-              </div>
-
-              <h3 className="text-xl font-bold text-foreground mb-1">{member.name}</h3>
-              <p className="text-primary font-semibold mb-2">{member.role}</p>
-              <p className="text-sm text-accent mb-4">{member.specialization}</p>
-              
-              <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-                {member.bio}
-              </p>
-
-              <div className="space-y-4">
-                <div className="flex flex-wrap gap-2 justify-center">
-                  {member.skills.map((skill, skillIndex) => (
-                    <span
-                      key={skillIndex}
-                      className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full border border-primary/20"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex justify-center gap-3">
-                  {member.social.linkedin && (
-                    <a
-                      href={member.social.linkedin}
-                      className="p-2 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-background transition-colors"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Linkedin size={16} />
-                    </a>
-                  )}
-                  {member.social.github && (
-                    <a
-                      href={member.social.github}
-                      className="p-2 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-background transition-colors"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Github size={16} />
-                    </a>
-                  )}
-                  <a
-                    href={`mailto:${member.social.email}`}
-                    className="p-2 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-background transition-colors"
-                  >
-                    <Mail size={16} />
-                  </a>
-                </div>
-              </div>
-            </div>
+            <TeamMemberCard key={index} member={member} />
           ))}
         </div>
       </div>
