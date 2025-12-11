@@ -458,6 +458,10 @@ const QuotationGenerator = () => {
 
       <style>{`
         @media print {
+          @page {
+            size: A4;
+            margin: 15mm;
+          }
           body * {
             visibility: hidden;
           }
@@ -473,12 +477,32 @@ const QuotationGenerator = () => {
           .glass-card {
             background: white !important;
             color: black !important;
+            box-shadow: none !important;
+            border: 1px solid #ddd !important;
           }
           * {
             color: black !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
           }
-          h1, h2, h3, .text-primary {
+          h1, h2, h3, h4, .text-primary {
             color: #3b82f6 !important;
+          }
+          table {
+            page-break-inside: avoid;
+          }
+          tr {
+            page-break-inside: avoid;
+            page-break-after: auto;
+          }
+          thead {
+            display: table-header-group;
+          }
+          tbody {
+            display: table-row-group;
+          }
+          .space-y-6 > div {
+            page-break-inside: avoid;
           }
         }
       `}</style>
