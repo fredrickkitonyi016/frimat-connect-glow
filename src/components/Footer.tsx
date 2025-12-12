@@ -9,10 +9,15 @@ import {
   ArrowUp
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import frimatLogo from "@/assets/frimat-logo.png";
 
 export default function Footer() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const scrollToSection = (href: string) => {
+    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -22,9 +27,9 @@ export default function Footer() {
           {/* Company Info */}
           <div className="space-y-6">
             <div>
-              <h3 className="text-3xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-4">
-                FRIMAT TECHNOLOGIES
-              </h3>
+              <button onClick={() => scrollToSection('#home')} className="focus:outline-none mb-4">
+                <img src={frimatLogo} alt="FRIMAT Technologies" className="h-12 w-auto" />
+              </button>
               <p className="text-muted-foreground leading-relaxed">
                 Connecting Innovation. Delivering Solutions.
                 <br />
@@ -33,18 +38,18 @@ export default function Footer() {
             </div>
             
             <div className="space-y-3">
-              <div className="flex items-center gap-3 text-muted-foreground">
+              <a href="mailto:frimattechnologies016@gmail.com" className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
                 <Mail size={18} className="text-primary" />
                 <span>frimattechnologies016@gmail.com</span>
-              </div>
-              <div className="flex items-center gap-3 text-muted-foreground">
+              </a>
+              <a href="https://wa.me/254112277289" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-muted-foreground hover:text-accent transition-colors">
                 <MessageSquare size={18} className="text-accent" />
                 <span>+254112277289</span>
-              </div>
-              <div className="flex items-center gap-3 text-muted-foreground">
+              </a>
+              <a href="https://maps.google.com/?q=Nairobi,Kenya" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-muted-foreground hover:text-secondary transition-colors">
                 <MapPin size={18} className="text-secondary" />
-                <span>Colombo, Sri Lanka</span>
-              </div>
+                <span>Nairobi, Kenya</span>
+              </a>
             </div>
           </div>
 
@@ -121,19 +126,22 @@ export default function Footer() {
               <h5 className="text-lg font-semibold text-foreground mb-4">Follow Us</h5>
               <div className="flex gap-3">
                 {[
-                  { icon: Facebook, color: "hover:text-blue-500" },
-                  { icon: Twitter, color: "hover:text-sky-500" },
-                  { icon: Linkedin, color: "hover:text-blue-700" },
-                  { icon: Instagram, color: "hover:text-pink-500" }
+                  { icon: Facebook, color: "hover:text-blue-500", url: "https://facebook.com/frimattechnologies" },
+                  { icon: Twitter, color: "hover:text-sky-500", url: "https://twitter.com/frimattechnologies" },
+                  { icon: Linkedin, color: "hover:text-blue-700", url: "https://linkedin.com/company/frimattechnologies" },
+                  { icon: Instagram, color: "hover:text-pink-500", url: "https://instagram.com/frimattechnologies" }
                 ].map((social, index) => {
                   const Icon = social.icon;
                   return (
-                    <button 
+                    <a 
                       key={index}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className={`p-2 rounded-lg bg-muted/20 text-muted-foreground ${social.color} transition-all duration-300 hover:scale-110`}
                     >
                       <Icon size={20} />
-                    </button>
+                    </a>
                   );
                 })}
               </div>
