@@ -6,6 +6,7 @@ import { CartDrawer } from "@/components/CartDrawer";
 import { ShopifyCartDrawer } from "@/components/ShopifyCartDrawer";
 import { useCartStore } from "@/stores/cartStore";
 import ThemeToggle from "@/components/ThemeToggle";
+import frimatLogo from "@/assets/frimat-logo.png";
 import { 
   Home, 
   Info, 
@@ -82,9 +83,9 @@ export default function Navbar() {
           isScrolled ? "glass" : "bg-transparent"
         }`}>
           <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-            <div className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              FRIMAT
-            </div>
+            <button onClick={() => scrollToSection('#home')} className="focus:outline-none">
+              <img src={frimatLogo} alt="FRIMAT Technologies" className="h-10 w-auto" />
+            </button>
             <div className="flex items-center gap-2">
               <ThemeToggle />
               <Button 
@@ -163,9 +164,9 @@ export default function Navbar() {
         <div className="container mx-auto px-6 py-4">
           <nav className="flex items-center justify-between">
             {/* Logo */}
-            <div className="text-3xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              FRIMAT TECHNOLOGIES
-            </div>
+            <button onClick={() => scrollToSection('#home')} className="focus:outline-none">
+              <img src={frimatLogo} alt="FRIMAT Technologies" className="h-12 w-auto" />
+            </button>
 
             {/* Desktop Navigation */}
             <div className="flex items-center space-x-8">
