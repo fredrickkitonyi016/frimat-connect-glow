@@ -259,6 +259,20 @@ export default function BlogSection() {
             <p className="text-sm text-muted-foreground mt-4">
               Join 1000+ tech professionals who read our weekly insights.
             </p>
+            <div className="flex flex-wrap justify-center gap-4 mt-6">
+              <Button 
+                variant="glass"
+                onClick={() => document.querySelector('#services')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                Explore Our Services
+              </Button>
+              <Button 
+                variant="nav"
+                onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                Contact Us
+              </Button>
+            </div>
           </div>
         </div>
       </div>

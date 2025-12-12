@@ -1,10 +1,15 @@
-import { CheckCircle, Users, Zap, Shield } from "lucide-react";
+import { CheckCircle, Users, Zap, Shield, ArrowRight } from "lucide-react";
 import { useCountUp } from "@/hooks/useCountUp";
+import { Button } from "@/components/ui/button";
 
 export default function AboutSection() {
   const teamCount = useCountUp({ end: 50, suffix: '+', duration: 3000, enableScrollTrigger: false });
   const countriesCount = useCountUp({ end: 1, duration: 2500, enableScrollTrigger: false });
   const uptimePercent = useCountUp({ end: 99.9, suffix: '%', duration: 3500, enableScrollTrigger: false });
+
+  const scrollToSection = (href: string) => {
+    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   const features = [
     {
@@ -79,6 +84,17 @@ export default function AboutSection() {
                   </div>
                 ))}
               </div>
+            </div>
+
+            {/* Internal Links */}
+            <div className="flex flex-wrap gap-4">
+              <Button variant="hero" onClick={() => scrollToSection('#services')}>
+                Explore Our Services
+                <ArrowRight className="ml-2" size={16} />
+              </Button>
+              <Button variant="glass" onClick={() => scrollToSection('#portfolio')}>
+                View Our Work
+              </Button>
             </div>
           </div>
 

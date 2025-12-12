@@ -324,12 +324,32 @@ export default function PortfolioSection() {
 
         {/* CTA */}
         <div className="text-center mt-16">
-          <Button variant="hero" size="lg">
-            View All Projects
-          </Button>
+          <div className="glass-card p-8 max-w-4xl mx-auto">
+            <h3 className="text-3xl font-bold text-foreground mb-4">
+              Ready to Start Your Project?
+            </h3>
+            <p className="text-xl text-muted-foreground mb-8">
+              Let us help you build something amazing. Get a free consultation today.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button 
+                variant="hero" 
+                size="lg"
+                onClick={() => document.querySelector('#quotation')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                Get Free Quotation
+              </Button>
+              <Button 
+                variant="glass" 
+                size="lg"
+                onClick={() => document.querySelector('#services')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                View Our Services
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
-
       {/* Project Details Modal */}
       <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
         <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">

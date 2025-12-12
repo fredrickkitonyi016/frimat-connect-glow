@@ -230,38 +230,38 @@ export default function ContactSection() {
               </h3>
               
               <div className="space-y-6">
-                <div className="flex items-start gap-4">
+                <a href="mailto:frimattechnologies016@gmail.com" className="flex items-start gap-4 group hover:bg-muted/10 p-2 rounded-xl transition-colors">
                   <div className="p-3 rounded-xl bg-gradient-to-br from-primary to-accent">
                     <Mail className="text-primary-foreground" size={24} />
                   </div>
                   <div>
-                    <h4 className="text-lg font-semibold text-foreground mb-1">Email</h4>
+                    <h4 className="text-lg font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">Email</h4>
                     <p className="text-muted-foreground">frimattechnologies016@gmail.com</p>
                     <p className="text-sm text-accent">We reply within 24 hours</p>
                   </div>
-                </div>
+                </a>
 
-                <div className="flex items-start gap-4">
+                <a href="https://wa.me/254112277289" target="_blank" rel="noopener noreferrer" className="flex items-start gap-4 group hover:bg-muted/10 p-2 rounded-xl transition-colors">
                   <div className="p-3 rounded-xl bg-gradient-to-br from-secondary to-accent">
                     <MessageSquare className="text-secondary-foreground" size={24} />
                   </div>
                   <div>
-                    <h4 className="text-lg font-semibold text-foreground mb-1">WhatsApp</h4>
+                    <h4 className="text-lg font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">WhatsApp</h4>
                     <p className="text-muted-foreground">+254112277289</p>
                     <p className="text-sm text-accent">Available 24/7 for urgent inquiries</p>
                   </div>
-                </div>
+                </a>
 
-                <div className="flex items-start gap-4">
+                <a href="https://maps.google.com/?q=Nairobi,Kenya" target="_blank" rel="noopener noreferrer" className="flex items-start gap-4 group hover:bg-muted/10 p-2 rounded-xl transition-colors">
                   <div className="p-3 rounded-xl bg-gradient-to-br from-accent to-primary">
                     <MapPin className="text-accent-foreground" size={24} />
                   </div>
                   <div>
-                    <h4 className="text-lg font-semibold text-foreground mb-1">Office</h4>
+                    <h4 className="text-lg font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">Office</h4>
                     <p className="text-muted-foreground">Nairobi, Kenya</p>
                     <p className="text-sm text-accent">Visit by appointment</p>
                   </div>
-                </div>
+                </a>
 
                 <div className="flex items-start gap-4">
                   <div className="p-3 rounded-xl bg-gradient-to-br from-primary to-secondary">
@@ -285,20 +285,23 @@ export default function ContactSection() {
               
               <div className="grid grid-cols-2 gap-4">
                 {[
-                  { icon: Facebook, name: "Facebook", color: "from-blue-500 to-blue-600" },
-                  { icon: Twitter, name: "Twitter", color: "from-sky-500 to-sky-600" },
-                  { icon: Linkedin, name: "LinkedIn", color: "from-blue-700 to-blue-800" },
-                  { icon: Instagram, name: "Instagram", color: "from-pink-500 to-orange-500" }
+                  { icon: Facebook, name: "Facebook", color: "from-blue-500 to-blue-600", url: "https://facebook.com/frimattechnologies" },
+                  { icon: Twitter, name: "Twitter", color: "from-sky-500 to-sky-600", url: "https://twitter.com/frimattechnologies" },
+                  { icon: Linkedin, name: "LinkedIn", color: "from-blue-700 to-blue-800", url: "https://linkedin.com/company/frimattechnologies" },
+                  { icon: Instagram, name: "Instagram", color: "from-pink-500 to-orange-500", url: "https://instagram.com/frimattechnologies" }
                 ].map((social, index) => {
                   const Icon = social.icon;
                   return (
-                    <button 
+                    <a 
                       key={index}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className={`flex items-center gap-3 p-4 rounded-xl bg-gradient-to-r ${social.color} text-white hover-scale group`}
                     >
                       <Icon size={20} />
                       <span className="font-medium">{social.name}</span>
-                    </button>
+                    </a>
                   );
                 })}
               </div>

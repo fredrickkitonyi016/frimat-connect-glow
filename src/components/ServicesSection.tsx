@@ -268,11 +268,19 @@ export default function ServicesSection() {
               Let's discuss how our services can help you achieve your technology goals.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="hero" size="lg">
-                Get Free Consultation
+              <Button 
+                variant="hero" 
+                size="lg"
+                onClick={() => document.querySelector('#quotation')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                Get Free Quotation
               </Button>
-              <Button variant="glass" size="lg">
-                View All Services
+              <Button 
+                variant="glass" 
+                size="lg"
+                onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                Contact Us
               </Button>
             </div>
           </div>
