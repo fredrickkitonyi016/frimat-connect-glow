@@ -480,65 +480,6 @@ const QuotationGenerator = () => {
         </Card>
       </div>
 
-      <style>{`
-        @media print {
-          @page {
-            size: A4;
-            margin: 10mm;
-          }
-          html, body {
-            height: auto !important;
-            overflow: visible !important;
-            margin: 0 !important;
-            padding: 0 !important;
-          }
-          body * {
-            visibility: hidden;
-          }
-          #quotation, #quotation * {
-            visibility: visible;
-          }
-          #quotation {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            padding: 0 !important;
-            margin: 0 !important;
-          }
-          .max-w-4xl {
-            max-width: 100% !important;
-            padding: 0 !important;
-          }
-          .glass-card {
-            background: white !important;
-            color: black !important;
-            box-shadow: none !important;
-            border: 1px solid #ddd !important;
-            padding: 15px !important;
-          }
-          * {
-            color: black !important;
-            -webkit-print-color-adjust: exact !important;
-            print-color-adjust: exact !important;
-          }
-          h1, h2, h3, h4, .text-primary {
-            color: #3b82f6 !important;
-          }
-          .text-center.mb-12 {
-            display: none !important;
-          }
-          .py-20 {
-            padding: 0 !important;
-          }
-          .mb-8 {
-            margin-bottom: 8px !important;
-          }
-          .mb-6 {
-            margin-bottom: 6px !important;
-          }
-        }
-      `}</style>
     </section>
   );
 };
