@@ -201,6 +201,13 @@ const QuotationGenerator = () => {
   };
 
   const total = calculateTotal();
+  const selectedServices = services.filter(s => s.selected);
+  
+  // Check if category has selected services
+  const hasCyberCafe = services.slice(0, 8).some(s => s.selected);
+  const hasECitizen = services.slice(8, 14).some(s => s.selected);
+  const hasICT = services.slice(14, 22).some(s => s.selected);
+  const hasTech = services.slice(22).some(s => s.selected);
 
   return (
     <section id="quotation" className="py-20 px-4 relative">
@@ -256,8 +263,8 @@ const QuotationGenerator = () => {
 
           <Separator className="mb-6" />
 
-          {/* Services Table */}
-          <div className="mb-6">
+          {/* Services Table - Screen View */}
+          <div className="mb-6 print:hidden">
             <h3 className="text-xl font-semibold mb-4">Services Quoted:</h3>
             
             {/* Service Categories */}
@@ -269,7 +276,7 @@ const QuotationGenerator = () => {
                   <table className="w-full">
                     <thead>
                       <tr className="border-b border-border">
-                        <th className="text-left py-2 px-2 print:hidden w-12">Select</th>
+                        <th className="text-left py-2 px-2 w-12">Select</th>
                         <th className="text-left py-2 px-2">Service</th>
                         <th className="text-left py-2 px-2">Description</th>
                         <th className="text-right py-2 px-2">Price (KSH)</th>
@@ -277,11 +284,8 @@ const QuotationGenerator = () => {
                     </thead>
                     <tbody>
                       {services.slice(0, 8).map((service, index) => (
-                        <tr 
-                          key={index} 
-                          className={`border-b border-border/50 ${service.selected ? 'bg-primary/5' : ''} ${!service.selected ? 'print:hidden' : ''}`}
-                        >
-                          <td className="py-2 px-2 print:hidden">
+                        <tr key={index} className={`border-b border-border/50 ${service.selected ? 'bg-primary/5' : ''}`}>
+                          <td className="py-2 px-2">
                             <input
                               type="checkbox"
                               checked={service.selected}
@@ -306,7 +310,7 @@ const QuotationGenerator = () => {
                   <table className="w-full">
                     <thead>
                       <tr className="border-b border-border">
-                        <th className="text-left py-2 px-2 print:hidden w-12">Select</th>
+                        <th className="text-left py-2 px-2 w-12">Select</th>
                         <th className="text-left py-2 px-2">Service</th>
                         <th className="text-left py-2 px-2">Description</th>
                         <th className="text-right py-2 px-2">Price (KSH)</th>
@@ -314,11 +318,8 @@ const QuotationGenerator = () => {
                     </thead>
                     <tbody>
                       {services.slice(8, 14).map((service, index) => (
-                        <tr 
-                          key={index + 8} 
-                          className={`border-b border-border/50 ${service.selected ? 'bg-primary/5' : ''} ${!service.selected ? 'print:hidden' : ''}`}
-                        >
-                          <td className="py-2 px-2 print:hidden">
+                        <tr key={index + 8} className={`border-b border-border/50 ${service.selected ? 'bg-primary/5' : ''}`}>
+                          <td className="py-2 px-2">
                             <input
                               type="checkbox"
                               checked={service.selected}
@@ -343,7 +344,7 @@ const QuotationGenerator = () => {
                   <table className="w-full">
                     <thead>
                       <tr className="border-b border-border">
-                        <th className="text-left py-2 px-2 print:hidden w-12">Select</th>
+                        <th className="text-left py-2 px-2 w-12">Select</th>
                         <th className="text-left py-2 px-2">Service</th>
                         <th className="text-left py-2 px-2">Description</th>
                         <th className="text-right py-2 px-2">Price (KSH)</th>
@@ -351,11 +352,8 @@ const QuotationGenerator = () => {
                     </thead>
                     <tbody>
                       {services.slice(14, 22).map((service, index) => (
-                        <tr 
-                          key={index + 14} 
-                          className={`border-b border-border/50 ${service.selected ? 'bg-primary/5' : ''} ${!service.selected ? 'print:hidden' : ''}`}
-                        >
-                          <td className="py-2 px-2 print:hidden">
+                        <tr key={index + 14} className={`border-b border-border/50 ${service.selected ? 'bg-primary/5' : ''}`}>
+                          <td className="py-2 px-2">
                             <input
                               type="checkbox"
                               checked={service.selected}
@@ -380,7 +378,7 @@ const QuotationGenerator = () => {
                   <table className="w-full">
                     <thead>
                       <tr className="border-b border-border">
-                        <th className="text-left py-2 px-2 print:hidden w-12">Select</th>
+                        <th className="text-left py-2 px-2 w-12">Select</th>
                         <th className="text-left py-2 px-2">Service</th>
                         <th className="text-left py-2 px-2">Description</th>
                         <th className="text-right py-2 px-2">Price (KSH)</th>
@@ -388,11 +386,8 @@ const QuotationGenerator = () => {
                     </thead>
                     <tbody>
                       {services.slice(22).map((service, index) => (
-                        <tr 
-                          key={index + 22} 
-                          className={`border-b border-border/50 ${service.selected ? 'bg-primary/5' : ''} ${!service.selected ? 'print:hidden' : ''}`}
-                        >
-                          <td className="py-2 px-2 print:hidden">
+                        <tr key={index + 22} className={`border-b border-border/50 ${service.selected ? 'bg-primary/5' : ''}`}>
+                          <td className="py-2 px-2">
                             <input
                               type="checkbox"
                               checked={service.selected}
@@ -416,6 +411,35 @@ const QuotationGenerator = () => {
                   <span className="font-bold text-lg">Total:</span>
                   <span className="font-bold text-2xl text-primary">KSH {total.toLocaleString()}</span>
                 </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Print View - Only Selected Services */}
+          <div className="hidden print:block mb-4">
+            <h3 className="text-base font-semibold mb-2">Services Quoted:</h3>
+            <table className="w-full text-xs">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-1 px-1">Service</th>
+                  <th className="text-left py-1 px-1">Description</th>
+                  <th className="text-right py-1 px-1">Price (KSH)</th>
+                </tr>
+              </thead>
+              <tbody>
+                {selectedServices.map((service, index) => (
+                  <tr key={index} className="border-b border-border/50">
+                    <td className="py-1 px-1 font-medium">{service.service}</td>
+                    <td className="py-1 px-1 text-muted-foreground">{service.description}</td>
+                    <td className="py-1 px-1 text-right font-semibold">{service.price.toLocaleString()}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <div className="border-t-2 border-primary pt-2 mt-2">
+              <div className="flex justify-between items-center">
+                <span className="font-bold text-sm">Total:</span>
+                <span className="font-bold text-base text-primary">KSH {total.toLocaleString()}</span>
               </div>
             </div>
           </div>
@@ -460,7 +484,7 @@ const QuotationGenerator = () => {
         @media print {
           @page {
             size: A4;
-            margin: 8mm;
+            margin: 10mm;
           }
           html, body {
             height: auto !important;
@@ -482,39 +506,24 @@ const QuotationGenerator = () => {
             padding: 0 !important;
             margin: 0 !important;
           }
+          .max-w-4xl {
+            max-width: 100% !important;
+            padding: 0 !important;
+          }
           .glass-card {
             background: white !important;
             color: black !important;
             box-shadow: none !important;
             border: 1px solid #ddd !important;
-            padding: 8px !important;
+            padding: 15px !important;
           }
           * {
             color: black !important;
             -webkit-print-color-adjust: exact !important;
             print-color-adjust: exact !important;
           }
-          h1 {
-            font-size: 16px !important;
-            margin-bottom: 2px !important;
-          }
           h1, h2, h3, h4, .text-primary {
             color: #3b82f6 !important;
-          }
-          h3 {
-            font-size: 12px !important;
-            margin-bottom: 4px !important;
-          }
-          h4 {
-            font-size: 11px !important;
-            margin-bottom: 2px !important;
-            margin-top: 6px !important;
-          }
-          table {
-            font-size: 9px !important;
-          }
-          th, td {
-            padding: 1px 3px !important;
           }
           .text-center.mb-12 {
             display: none !important;
@@ -522,33 +531,11 @@ const QuotationGenerator = () => {
           .py-20 {
             padding: 0 !important;
           }
-          .mb-8, .mb-6, .mb-4 {
-            margin-bottom: 4px !important;
+          .mb-8 {
+            margin-bottom: 8px !important;
           }
-          .space-y-6 > div {
-            margin-bottom: 2px !important;
-          }
-          .space-y-4 > div {
-            margin-bottom: 2px !important;
-          }
-          p, span, label {
-            font-size: 9px !important;
-          }
-          .text-2xl {
-            font-size: 12px !important;
-          }
-          .text-lg {
-            font-size: 10px !important;
-          }
-          .border-t-2 {
-            margin-top: 6px !important;
-            padding-top: 4px !important;
-          }
-          .grid {
-            gap: 4px !important;
-          }
-          .overflow-x-auto {
-            overflow: visible !important;
+          .mb-6 {
+            margin-bottom: 6px !important;
           }
         }
       `}</style>
