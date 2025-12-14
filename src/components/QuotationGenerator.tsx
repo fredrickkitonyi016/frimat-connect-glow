@@ -460,7 +460,13 @@ const QuotationGenerator = () => {
         @media print {
           @page {
             size: A4;
-            margin: 15mm;
+            margin: 8mm;
+          }
+          html, body {
+            height: auto !important;
+            overflow: visible !important;
+            margin: 0 !important;
+            padding: 0 !important;
           }
           body * {
             visibility: hidden;
@@ -473,36 +479,76 @@ const QuotationGenerator = () => {
             left: 0;
             top: 0;
             width: 100%;
+            padding: 0 !important;
+            margin: 0 !important;
           }
           .glass-card {
             background: white !important;
             color: black !important;
             box-shadow: none !important;
             border: 1px solid #ddd !important;
+            padding: 8px !important;
           }
           * {
             color: black !important;
             -webkit-print-color-adjust: exact !important;
             print-color-adjust: exact !important;
           }
+          h1 {
+            font-size: 16px !important;
+            margin-bottom: 2px !important;
+          }
           h1, h2, h3, h4, .text-primary {
             color: #3b82f6 !important;
           }
+          h3 {
+            font-size: 12px !important;
+            margin-bottom: 4px !important;
+          }
+          h4 {
+            font-size: 11px !important;
+            margin-bottom: 2px !important;
+            margin-top: 6px !important;
+          }
           table {
-            page-break-inside: avoid;
+            font-size: 9px !important;
           }
-          tr {
-            page-break-inside: avoid;
-            page-break-after: auto;
+          th, td {
+            padding: 1px 3px !important;
           }
-          thead {
-            display: table-header-group;
+          .text-center.mb-12 {
+            display: none !important;
           }
-          tbody {
-            display: table-row-group;
+          .py-20 {
+            padding: 0 !important;
+          }
+          .mb-8, .mb-6, .mb-4 {
+            margin-bottom: 4px !important;
           }
           .space-y-6 > div {
-            page-break-inside: avoid;
+            margin-bottom: 2px !important;
+          }
+          .space-y-4 > div {
+            margin-bottom: 2px !important;
+          }
+          p, span, label {
+            font-size: 9px !important;
+          }
+          .text-2xl {
+            font-size: 12px !important;
+          }
+          .text-lg {
+            font-size: 10px !important;
+          }
+          .border-t-2 {
+            margin-top: 6px !important;
+            padding-top: 4px !important;
+          }
+          .grid {
+            gap: 4px !important;
+          }
+          .overflow-x-auto {
+            overflow: visible !important;
           }
         }
       `}</style>
