@@ -34,6 +34,7 @@ const navigation = [
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const [activeSection, setActiveSection] = useState("home");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -46,6 +47,11 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+      
+      // Calculate scroll progress
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollHeight > 0 ? (window.scrollY / scrollHeight) * 100 : 0;
+      setScrollProgress(progress);
       
       const sections = navigation.map(item => item.href.substring(1));
       const currentSection = sections.find(section => {
@@ -84,6 +90,13 @@ export default function Navbar() {
             ? "bg-background/80 backdrop-blur-xl border-b border-border/50 shadow-lg" 
             : "bg-gradient-to-b from-background/90 to-transparent"
         }`}>
+          {/* Scroll Progress Bar */}
+          <div className="absolute bottom-0 left-0 h-0.5 bg-primary/20 w-full">
+            <div 
+              className="h-full bg-gradient-to-r from-primary via-secondary to-accent transition-all duration-150 ease-out"
+              style={{ width: `${scrollProgress}%` }}
+            />
+          </div>
           <div className="container mx-auto px-4 py-3 flex items-center justify-between">
             <button onClick={() => scrollToSection('#home')} className="focus:outline-none group">
               <img 
@@ -194,6 +207,13 @@ export default function Navbar() {
           ? "bg-background/80 backdrop-blur-xl border-b border-border/30 shadow-xl" 
           : "bg-gradient-to-b from-background/80 to-transparent"
       }`}>
+        {/* Scroll Progress Bar */}
+        <div className="absolute bottom-0 left-0 h-0.5 bg-primary/20 w-full">
+          <div 
+            className="h-full bg-gradient-to-r from-primary via-secondary to-accent transition-all duration-150 ease-out"
+            style={{ width: `${scrollProgress}%` }}
+          />
+        </div>
         <div className="container mx-auto px-6">
           <nav className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo */}
