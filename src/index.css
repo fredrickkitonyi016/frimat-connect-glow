@@ -340,11 +340,15 @@ All colors MUST be HSL for proper theming.
   }
 }
 
-/* Print styles for quotation */
+/* Print styles for quotation - Single Page */
 @media print {
   @page {
     size: A4;
-    margin: 10mm;
+    margin: 8mm;
+  }
+  
+  * {
+    visibility: hidden !important;
   }
   
   html, body {
@@ -355,79 +359,19 @@ All colors MUST be HSL for proper theming.
     background: white !important;
   }
   
-  /* Hide everything by default */
-  body > * {
-    display: none !important;
-  }
-  
-  /* Show only the main app container */
-  body > #root {
-    display: block !important;
-  }
-  
-  /* Hide all sections except quotation */
-  #root > * {
-    display: none !important;
-  }
-  
-  /* Target main container */
-  .min-h-screen {
-    display: block !important;
-    min-height: auto !important;
-    background: white !important;
-  }
-  
-  .min-h-screen > * {
-    display: none !important;
-  }
-  
-  /* Show only quotation section */
-  #quotation {
-    display: block !important;
-    position: relative !important;
-    width: 100% !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    background: white !important;
-  }
-  
-  #quotation * {
-    display: revert !important;
+  #quotation,
+  #quotation .glass-card,
+  #quotation .glass-card * {
     visibility: visible !important;
   }
   
-  #quotation .print\\:hidden {
-    display: none !important;
-  }
-  
-  #quotation .hidden.print\\:block {
-    display: block !important;
-  }
-  
-  .glass-card {
+  #quotation {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    padding: 0 !important;
     background: white !important;
-    color: black !important;
-    box-shadow: none !important;
-    border: 1px solid #ddd !important;
-    padding: 15px !important;
-    backdrop-filter: none !important;
-  }
-  
-  #quotation h1, #quotation h2, #quotation h3, #quotation h4, #quotation .text-primary {
-    color: #3b82f6 !important;
-  }
-  
-  #quotation * {
-    color: black !important;
-  }
-  
-  #quotation .text-primary {
-    color: #3b82f6 !important;
-  }
-  
-  /* Hide the page title */
-  #quotation .text-center.mb-12 {
-    display: none !important;
   }
   
   #quotation .py-20 {
@@ -436,7 +380,79 @@ All colors MUST be HSL for proper theming.
   
   #quotation .max-w-4xl {
     max-width: 100% !important;
-    padding: 0 !important;
+    padding: 0 10mm !important;
     margin: 0 !important;
+  }
+  
+  /* Hide screen-only elements */
+  #quotation .print\:hidden,
+  #quotation [class*="print:hidden"] {
+    display: none !important;
+    visibility: hidden !important;
+  }
+  
+  /* Show print-only elements */
+  #quotation .hidden.print\:block,
+  #quotation [class*="hidden"][class*="print:block"] {
+    display: block !important;
+    visibility: visible !important;
+  }
+  
+  /* Hide the section title */
+  #quotation .text-center.mb-12 {
+    display: none !important;
+    visibility: hidden !important;
+  }
+  
+  .glass-card {
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+    padding: 10mm !important;
+    backdrop-filter: none !important;
+  }
+  
+  #quotation .glass-card * {
+    color: black !important;
+    font-size: 10px !important;
+    line-height: 1.2 !important;
+  }
+  
+  #quotation h1 {
+    font-size: 16px !important;
+    color: #3b82f6 !important;
+    margin-bottom: 2px !important;
+  }
+  
+  #quotation h3, #quotation h4 {
+    font-size: 11px !important;
+    color: #3b82f6 !important;
+  }
+  
+  #quotation .text-primary {
+    color: #3b82f6 !important;
+  }
+  
+  #quotation .mb-8,
+  #quotation .mb-6 {
+    margin-bottom: 4px !important;
+  }
+  
+  #quotation .mb-4 {
+    margin-bottom: 2px !important;
+  }
+  
+  #quotation .space-y-4 > * + * {
+    margin-top: 2px !important;
+  }
+  
+  #quotation table {
+    width: 100% !important;
+  }
+  
+  #quotation th, #quotation td {
+    padding: 2px 4px !important;
+    font-size: 9px !important;
   }
 }
