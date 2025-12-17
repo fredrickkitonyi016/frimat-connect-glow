@@ -4,6 +4,7 @@ import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import ServicesSection from "@/components/ServicesSection";
 import ClientLogosSection from "@/components/ClientLogosSection";
+import TechGallerySection from "@/components/TechGallerySection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import TeamSection from "@/components/TeamSection";
 import PricingSection from "@/components/PricingSection";
@@ -32,6 +33,7 @@ const Index = () => {
         <div className="fade-in">
           <ServicesSection />
         </div>
+        <TechGallerySection />
         <div className="fade-in">
           <ClientLogosSection />
         </div>
