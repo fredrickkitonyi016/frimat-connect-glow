@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles } from "lucide-react";
-import heroImage from "@/assets/hero-bg.jpg";
+import { ArrowRight, CheckCircle, Shield, Zap } from "lucide-react";
+import heroImage from "@/assets/hero-corporate.jpg";
 import { useCountUp } from "@/hooks/useCountUp";
 
 export default function HeroSection() {
@@ -9,104 +9,162 @@ export default function HeroSection() {
   const uptimeCount = useCountUp({ end: 24, suffix: '/7', duration: 2000, enableScrollTrigger: false });
   const ratingCount = useCountUp({ end: 5, suffix: ' Star Rating', duration: 2500, enableScrollTrigger: false });
 
+  const features = [
+    { icon: CheckCircle, text: "Trusted by 100+ businesses" },
+    { icon: Shield, text: "Enterprise-grade security" },
+    { icon: Zap, text: "Fast & reliable solutions" },
+  ];
+
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
+      {/* Background Image with Overlay */}
       <div 
         className="absolute inset-0 z-0"
         style={{
           backgroundImage: `url(${heroImage})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundAttachment: 'fixed'
         }}
       />
+      {/* Professional gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background/95 via-background/85 to-primary/20 z-[1]" />
       
-      {/* Tech Particles */}
-      <div className="tech-particles">
-        {Array.from({ length: 50 }).map((_, i) => (
-          <div
-            key={i}
-            className="particle"
-            style={{
-              left: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 8}s`,
-              animationDuration: `${8 + Math.random() * 4}s`
-            }}
-          />
-        ))}
-      </div>
+      {/* Subtle grid pattern */}
+      <div 
+        className="absolute inset-0 z-[2] opacity-[0.03]"
+        style={{
+          backgroundImage: `linear-gradient(hsl(var(--primary)) 1px, transparent 1px), 
+                           linear-gradient(90deg, hsl(var(--primary)) 1px, transparent 1px)`,
+          backgroundSize: '50px 50px'
+        }}
+      />
 
       {/* Content */}
-      <div className="relative z-10 text-center max-w-6xl mx-auto px-6 pt-20">
-        <div className="fade-in space-y-8">
-          {/* Company Badge */}
-          <div className="inline-flex items-center gap-2 glass-card px-6 py-3 rounded-full">
-            <Sparkles className="text-accent" size={20} />
-            <span className="text-sm font-medium text-foreground">Innovation Powered by Technology</span>
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pt-24 pb-12">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
+          <div className="space-y-8">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 px-4 py-2 rounded-full">
+              <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+              <span className="text-sm font-medium text-foreground">Leading Technology Partner in Kenya</span>
+            </div>
+
+            {/* Main Heading */}
+            <div className="space-y-4">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]">
+                <span className="text-foreground">Transform Your</span>
+                <br />
+                <span className="bg-gradient-to-r from-primary via-primary to-accent bg-clip-text text-transparent">
+                  Business with
+                </span>
+                <br />
+                <span className="text-foreground">Technology</span>
+              </h1>
+              
+              <p className="text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed">
+                FRIMAT Technologies delivers enterprise-grade IT solutions, from web development to cybersecurity, 
+                helping businesses across Kenya achieve digital excellence.
+              </p>
+            </div>
+
+            {/* Features */}
+            <div className="flex flex-wrap gap-6">
+              {features.map((feature, index) => (
+                <div key={index} className="flex items-center gap-2 text-muted-foreground">
+                  <feature.icon className="text-primary" size={18} />
+                  <span className="text-sm font-medium">{feature.text}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button 
+                variant="hero" 
+                size="lg" 
+                className="group text-base" 
+                onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                Explore Our Services
+                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
+              </Button>
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="text-base border-primary/30 hover:bg-primary/5"
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                Schedule Consultation
+              </Button>
+            </div>
           </div>
 
-          {/* Main Heading */}
-          <h1 className="text-6xl md:text-8xl font-bold tracking-tight">
-            <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-              FRIMAT
-            </span>
-            <br />
-            <span className="text-foreground">TECHNOLOGIES</span>
-          </h1>
-
-          {/* Slogan */}
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Connecting Innovation. Delivering Solutions.
-            <br />
-            <span className="text-lg text-accent">Where Technology Meets Excellence</span>
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mt-12">
-            <Button 
-              variant="hero" 
-              size="lg" 
-              className="group" 
-              onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              Get Started
-              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
-            </Button>
-            <Button variant="glass" size="lg" className="group" asChild>
-              <a href="/auth">
-                Sign Up
-                <Sparkles className="ml-2 group-hover:rotate-12 transition-transform" size={20} />
-              </a>
-            </Button>
+          {/* Right Side - Stats Cards */}
+          <div className="hidden lg:grid grid-cols-2 gap-6">
+            <div className="space-y-6">
+              <div className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                <div ref={projectsCount.ref} className="text-4xl font-bold text-primary mb-2">{projectsCount.value}</div>
+                <div className="text-sm text-muted-foreground font-medium">Projects Delivered</div>
+                <div className="mt-3 h-1 bg-muted rounded-full overflow-hidden">
+                  <div className="h-full w-3/4 bg-gradient-to-r from-primary to-accent rounded-full" />
+                </div>
+              </div>
+              <div className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                <div ref={uptimeCount.ref} className="text-4xl font-bold text-primary mb-2">{uptimeCount.value}</div>
+                <div className="text-sm text-muted-foreground font-medium">Support Available</div>
+                <div className="mt-3 h-1 bg-muted rounded-full overflow-hidden">
+                  <div className="h-full w-full bg-gradient-to-r from-accent to-secondary rounded-full" />
+                </div>
+              </div>
+            </div>
+            <div className="space-y-6 mt-12">
+              <div className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                <div ref={clientsCount.ref} className="text-4xl font-bold text-primary mb-2">{clientsCount.value}</div>
+                <div className="text-sm text-muted-foreground font-medium">Happy Clients</div>
+                <div className="mt-3 h-1 bg-muted rounded-full overflow-hidden">
+                  <div className="h-full w-5/6 bg-gradient-to-r from-secondary to-primary rounded-full" />
+                </div>
+              </div>
+              <div className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                <div ref={ratingCount.ref} className="text-4xl font-bold text-primary mb-2">{ratingCount.value}</div>
+                <div className="text-sm text-muted-foreground font-medium">Customer Reviews</div>
+                <div className="mt-3 h-1 bg-muted rounded-full overflow-hidden">
+                  <div className="h-full w-full bg-gradient-to-r from-primary to-accent rounded-full" />
+                </div>
+              </div>
+            </div>
           </div>
+        </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 max-w-4xl mx-auto">
-            <div className="glass-card text-center p-6 hover-scale">
-              <div ref={projectsCount.ref} className="text-3xl font-bold text-primary mb-2">{projectsCount.value}</div>
-              <div className="text-sm text-muted-foreground">Projects Completed</div>
-            </div>
-            <div className="glass-card text-center p-6 hover-scale">
-              <div ref={clientsCount.ref} className="text-3xl font-bold text-primary mb-2">{clientsCount.value}</div>
-              <div className="text-sm text-muted-foreground">Happy Clients</div>
-            </div>
-            <div className="glass-card text-center p-6 hover-scale">
-              <div ref={uptimeCount.ref} className="text-3xl font-bold text-primary mb-2">{uptimeCount.value}</div>
-              <div className="text-sm text-muted-foreground">Support Available</div>
-            </div>
-            <div className="glass-card text-center p-6 hover-scale">
-              <div ref={ratingCount.ref} className="text-3xl font-bold text-primary mb-2">{ratingCount.value}</div>
-              <div className="text-sm text-muted-foreground">Customer Reviews</div>
-            </div>
+        {/* Mobile Stats */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 lg:hidden">
+          <div className="bg-card/60 backdrop-blur-sm border border-border/30 rounded-xl p-4 text-center">
+            <div ref={projectsCount.ref} className="text-2xl font-bold text-primary">{projectsCount.value}</div>
+            <div className="text-xs text-muted-foreground">Projects</div>
+          </div>
+          <div className="bg-card/60 backdrop-blur-sm border border-border/30 rounded-xl p-4 text-center">
+            <div ref={clientsCount.ref} className="text-2xl font-bold text-primary">{clientsCount.value}</div>
+            <div className="text-xs text-muted-foreground">Clients</div>
+          </div>
+          <div className="bg-card/60 backdrop-blur-sm border border-border/30 rounded-xl p-4 text-center">
+            <div ref={uptimeCount.ref} className="text-2xl font-bold text-primary">{uptimeCount.value}</div>
+            <div className="text-xs text-muted-foreground">Support</div>
+          </div>
+          <div className="bg-card/60 backdrop-blur-sm border border-border/30 rounded-xl p-4 text-center">
+            <div ref={ratingCount.ref} className="text-2xl font-bold text-primary">{ratingCount.value}</div>
+            <div className="text-xs text-muted-foreground">Rating</div>
           </div>
         </div>
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-primary rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-primary rounded-full mt-2 animate-pulse"></div>
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
+        <div className="flex flex-col items-center gap-2">
+          <span className="text-xs text-muted-foreground font-medium">Scroll to explore</span>
+          <div className="w-6 h-10 border-2 border-primary/50 rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-primary rounded-full mt-2 animate-bounce" />
+          </div>
         </div>
       </div>
     </section>
