@@ -76,39 +76,73 @@ export default function TechGallerySection() {
           {techItems.map((item, index) => (
             <div
               key={index}
-              className="group relative overflow-hidden rounded-2xl cursor-pointer"
+              className="group relative overflow-hidden rounded-2xl cursor-pointer transition-all duration-500 ease-out hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20"
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
+              style={{
+                transform: hoveredIndex === index ? 'translateY(-8px)' : 'translateY(0)',
+                transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
+              }}
             >
-              {/* Image */}
-              <div className="aspect-[4/3] overflow-hidden">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-              </div>
-              
-              {/* Overlay */}
-              <div className={`absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent transition-opacity duration-300 ${
-                hoveredIndex === index ? 'opacity-100' : 'opacity-80'
+              {/* Glow Effect */}
+              <div className={`absolute -inset-1 bg-gradient-to-r from-primary via-accent to-secondary rounded-2xl opacity-0 blur-xl transition-opacity duration-500 ${
+                hoveredIndex === index ? 'opacity-30' : ''
               }`} />
               
-              {/* Content */}
-              <div className="absolute bottom-0 left-0 right-0 p-6">
-                <span className="inline-block text-xs font-medium text-primary bg-primary/10 px-3 py-1 rounded-full mb-3">
-                  {item.category}
-                </span>
-                <h3 className="text-xl font-bold text-foreground mb-1">{item.title}</h3>
-                <p className="text-sm text-muted-foreground mb-4">{item.description}</p>
-                
-                {/* Hover Action */}
-                <div className={`flex items-center gap-2 text-primary transition-all duration-300 ${
-                  hoveredIndex === index ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                }`}>
-                  <span className="text-sm font-medium">Learn more</span>
-                  <ArrowRight size={16} />
+              {/* Card Container */}
+              <div className="relative bg-card rounded-2xl overflow-hidden border border-border/50 transition-all duration-300 group-hover:border-primary/30">
+                {/* Image */}
+                <div className="aspect-[4/3] overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-110 group-hover:brightness-110"
+                  />
+                  {/* Animated Shine Effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
                 </div>
+                
+                {/* Overlay */}
+                <div className={`absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent transition-all duration-500 ${
+                  hoveredIndex === index ? 'opacity-95' : 'opacity-85'
+                }`} />
+                
+                {/* Content */}
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  {/* Category Badge */}
+                  <span className={`inline-block text-xs font-medium text-primary bg-primary/10 border border-primary/20 px-3 py-1 rounded-full mb-3 transition-all duration-300 ${
+                    hoveredIndex === index ? 'bg-primary/20 scale-105' : ''
+                  }`}>
+                    {item.category}
+                  </span>
+                  
+                  {/* Title with underline animation */}
+                  <h3 className="text-xl font-bold text-foreground mb-1 transition-colors duration-300 group-hover:text-primary">
+                    {item.title}
+                  </h3>
+                  
+                  {/* Description */}
+                  <p className={`text-sm text-muted-foreground mb-4 transition-all duration-300 ${
+                    hoveredIndex === index ? 'text-foreground/80' : ''
+                  }`}>
+                    {item.description}
+                  </p>
+                  
+                  {/* Hover Action with animated arrow */}
+                  <div className={`flex items-center gap-2 text-primary transition-all duration-400 ${
+                    hoveredIndex === index ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                  }`}>
+                    <span className="text-sm font-semibold">Learn more</span>
+                    <ArrowRight size={16} className={`transition-transform duration-300 ${
+                      hoveredIndex === index ? 'translate-x-1' : ''
+                    }`} />
+                  </div>
+                </div>
+                
+                {/* Corner Accent */}
+                <div className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-primary/20 to-transparent transition-opacity duration-300 ${
+                  hoveredIndex === index ? 'opacity-100' : 'opacity-0'
+                }`} />
               </div>
             </div>
           ))}
