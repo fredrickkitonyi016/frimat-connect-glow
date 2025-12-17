@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -51,6 +51,37 @@ const techItems = [
 
 export default function TechGallerySection() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const observers: IntersectionObserver[] = [];
+
+    cardRefs.current.forEach((ref, index) => {
+      if (ref) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                // Add staggered delay based on index
+                setTimeout(() => {
+                  setVisibleCards((prev) => new Set([...prev, index]));
+                }, index * 100); // 100ms stagger between each card
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.2, rootMargin: "0px 0px -50px 0px" }
+        );
+        observer.observe(ref);
+        observers.push(observer);
+      }
+    });
+
+    return () => {
+      observers.forEach((observer) => observer.disconnect());
+    };
+  }, []);
 
   return (
     <section id="tech-gallery" className="py-24 bg-muted/30">
@@ -76,12 +107,21 @@ export default function TechGallerySection() {
           {techItems.map((item, index) => (
             <div
               key={index}
-              className="group relative overflow-hidden rounded-2xl cursor-pointer transition-all duration-500 ease-out hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20"
+              ref={(el) => (cardRefs.current[index] = el)}
+              className={`group relative overflow-hidden rounded-2xl cursor-pointer transition-all duration-700 ease-out hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20 ${
+                visibleCards.has(index)
+                  ? 'opacity-100 translate-y-0'
+                  : 'opacity-0 translate-y-12'
+              }`}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
               style={{
-                transform: hoveredIndex === index ? 'translateY(-8px)' : 'translateY(0)',
-                transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
+                transform: visibleCards.has(index)
+                  ? hoveredIndex === index
+                    ? 'translateY(-8px) scale(1.02)'
+                    : 'translateY(0)'
+                  : 'translateY(48px)',
+                transition: 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
               }}
             >
               {/* Glow Effect */}
