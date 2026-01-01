@@ -154,16 +154,28 @@ export default function AboutSection() {
                   </div>
                 ))}
               </div>
+              
+              {/* Explore Services Link */}
+              <button 
+                onClick={() => scrollToSection('#services')}
+                className="group inline-flex items-center gap-2 text-primary font-semibold hover:text-primary/80 transition-colors duration-300 mt-4"
+              >
+                <span className="relative">
+                  Explore Our Services
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
+                </span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+              </button>
             </div>
 
             {/* Internal Links */}
             <div className="flex flex-wrap gap-4">
-              <Button variant="hero" onClick={() => scrollToSection('#services')}>
-                Explore Our Services
+              <Button variant="hero" onClick={() => scrollToSection('#portfolio')}>
+                View Our Work
                 <ArrowRight className="ml-2" size={16} />
               </Button>
-              <Button variant="glass" onClick={() => scrollToSection('#portfolio')}>
-                View Our Work
+              <Button variant="glass" onClick={() => scrollToSection('#contact')}>
+                Get In Touch
               </Button>
             </div>
           </div>
