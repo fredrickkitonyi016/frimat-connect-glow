@@ -1,11 +1,12 @@
-import { CheckCircle, Users, Zap, Shield, ArrowRight, Target, Eye, Sparkles } from "lucide-react";
+import { CheckCircle, Users, Zap, Shield, ArrowRight, Target, Eye, Sparkles, Calendar, Globe, Clock, Award } from "lucide-react";
 import { useCountUp } from "@/hooks/useCountUp";
 import { Button } from "@/components/ui/button";
 
 export default function AboutSection() {
-  const teamCount = useCountUp({ end: 50, suffix: '+', duration: 3000, enableScrollTrigger: false });
-  const countriesCount = useCountUp({ end: 1, duration: 2500, enableScrollTrigger: false });
-  const uptimePercent = useCountUp({ end: 99.9, suffix: '%', duration: 3500, enableScrollTrigger: false });
+  const projectsCount = useCountUp({ end: 150, suffix: '+', duration: 3000, enableScrollTrigger: true });
+  const clientsCount = useCountUp({ end: 80, suffix: '+', duration: 2500, enableScrollTrigger: true });
+  const experienceYears = useCountUp({ end: 10, suffix: '+', duration: 2000, enableScrollTrigger: true });
+  const satisfactionRate = useCountUp({ end: 98, suffix: '%', duration: 3500, enableScrollTrigger: true });
 
   const scrollToSection = (href: string) => {
     document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
@@ -206,26 +207,49 @@ export default function AboutSection() {
             </div>
 
             {/* Company Stats */}
-            <div className="glass-card p-8">
-              <h4 className="text-2xl font-bold text-center text-foreground mb-6">
+            <div className="glass-card p-8 relative overflow-hidden group">
+              {/* Background glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              
+              <h4 className="text-2xl font-bold text-center text-foreground mb-8 relative z-10">
                 Company Highlights
               </h4>
-              <div className="grid grid-cols-2 gap-6 text-center">
-                <div>
-                  <div className="text-3xl font-bold text-primary">2015</div>
-                  <div className="text-sm text-muted-foreground">Founded</div>
+              
+              <div className="grid grid-cols-2 gap-6 relative z-10">
+                {/* Projects Completed */}
+                <div className="group/stat p-4 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 hover:border-primary/40 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/20">
+                  <div className="flex items-center justify-center w-12 h-12 mx-auto mb-3 rounded-xl bg-gradient-to-br from-primary to-primary/70 group-hover/stat:scale-110 transition-transform duration-300">
+                    <Award className="w-6 h-6 text-primary-foreground" />
+                  </div>
+                  <div ref={projectsCount.ref} className="text-3xl font-bold text-primary text-center">{projectsCount.value}</div>
+                  <div className="text-sm text-muted-foreground text-center mt-1">Projects Completed</div>
                 </div>
-                <div>
-                  <div ref={teamCount.ref} className="text-3xl font-bold text-secondary">{teamCount.value}</div>
-                  <div className="text-sm text-muted-foreground">Team Members</div>
+                
+                {/* Happy Clients */}
+                <div className="group/stat p-4 rounded-2xl bg-gradient-to-br from-accent/10 to-accent/5 border border-accent/20 hover:border-accent/40 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-accent/20">
+                  <div className="flex items-center justify-center w-12 h-12 mx-auto mb-3 rounded-xl bg-gradient-to-br from-accent to-accent/70 group-hover/stat:scale-110 transition-transform duration-300">
+                    <Users className="w-6 h-6 text-accent-foreground" />
+                  </div>
+                  <div ref={clientsCount.ref} className="text-3xl font-bold text-accent text-center">{clientsCount.value}</div>
+                  <div className="text-sm text-muted-foreground text-center mt-1">Happy Clients</div>
                 </div>
-                <div>
-                  <div ref={countriesCount.ref} className="text-3xl font-bold text-accent">{countriesCount.value}</div>
-                  <div className="text-sm text-muted-foreground">Countries Served</div>
+                
+                {/* Years Experience */}
+                <div className="group/stat p-4 rounded-2xl bg-gradient-to-br from-secondary/10 to-secondary/5 border border-secondary/20 hover:border-secondary/40 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-secondary/20">
+                  <div className="flex items-center justify-center w-12 h-12 mx-auto mb-3 rounded-xl bg-gradient-to-br from-secondary to-secondary/70 group-hover/stat:scale-110 transition-transform duration-300">
+                    <Calendar className="w-6 h-6 text-secondary-foreground" />
+                  </div>
+                  <div ref={experienceYears.ref} className="text-3xl font-bold text-secondary text-center">{experienceYears.value}</div>
+                  <div className="text-sm text-muted-foreground text-center mt-1">Years Experience</div>
                 </div>
-                <div>
-                  <div ref={uptimePercent.ref} className="text-3xl font-bold text-primary">{uptimePercent.value}</div>
-                  <div className="text-sm text-muted-foreground">Uptime</div>
+                
+                {/* Client Satisfaction */}
+                <div className="group/stat p-4 rounded-2xl bg-gradient-to-br from-primary/10 to-accent/5 border border-primary/20 hover:border-primary/40 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/20">
+                  <div className="flex items-center justify-center w-12 h-12 mx-auto mb-3 rounded-xl bg-gradient-to-br from-primary to-accent group-hover/stat:scale-110 transition-transform duration-300">
+                    <Clock className="w-6 h-6 text-primary-foreground" />
+                  </div>
+                  <div ref={satisfactionRate.ref} className="text-3xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent text-center">{satisfactionRate.value}</div>
+                  <div className="text-sm text-muted-foreground text-center mt-1">Client Satisfaction</div>
                 </div>
               </div>
             </div>
