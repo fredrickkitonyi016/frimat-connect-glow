@@ -1,8 +1,4 @@
 import { 
-  Facebook, 
-  Twitter, 
-  Linkedin, 
-  Instagram, 
   Mail, 
   MessageSquare,
   MapPin,
@@ -10,6 +6,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import frimatLogo from "@/assets/frimat-logo.png";
+import SocialIconsStack from "./SocialIconsStack";
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -124,27 +121,7 @@ export default function Footer() {
 
             <div>
               <h5 className="text-lg font-semibold text-foreground mb-4">Follow Us</h5>
-              <div className="flex gap-3">
-                {[
-                  { icon: Facebook, color: "hover:text-blue-500", url: "https://facebook.com/frimattechnologies" },
-                  { icon: Twitter, color: "hover:text-sky-500", url: "https://twitter.com/frimattechnologies" },
-                  { icon: Linkedin, color: "hover:text-blue-700", url: "https://linkedin.com/company/frimattechnologies" },
-                  { icon: Instagram, color: "hover:text-pink-500", url: "https://instagram.com/frimattechnologies" }
-                ].map((social, index) => {
-                  const Icon = social.icon;
-                  return (
-                    <a 
-                      key={index}
-                      href={social.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`p-2 rounded-lg bg-muted/20 text-muted-foreground ${social.color} transition-all duration-300 hover:scale-110`}
-                    >
-                      <Icon size={20} />
-                    </a>
-                  );
-                })}
-              </div>
+              <SocialIconsStack />
             </div>
           </div>
         </div>
