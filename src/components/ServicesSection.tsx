@@ -7,6 +7,7 @@ import {
   Users
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Card3D from "@/components/Card3D";
 import CyberCafeServicesModal from "@/components/CyberCafeServicesModal";
 import WebDevelopmentModal from "@/components/WebDevelopmentModal";
 import MobileAppModal from "@/components/MobileAppModal";
@@ -188,7 +189,11 @@ export default function ServicesSection() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => {
             return (
-              <div key={index} className="glass-card hover-scale group h-full">
+              <Card3D 
+                key={index} 
+                className="h-full"
+                glowColor={index % 2 === 0 ? "primary" : "accent"}
+              >
                 <div className="space-y-6">
                   {/* Logo */}
                   <div className="relative">
@@ -207,7 +212,6 @@ export default function ServicesSection() {
                         />
                       )}
                     </div>
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary to-accent rounded-2xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
                   </div>
 
                   {/* Content */}
@@ -253,7 +257,7 @@ export default function ServicesSection() {
                     </Button>
                   </div>
                 </div>
-              </div>
+              </Card3D>
             );
           })}
         </div>
