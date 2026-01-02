@@ -1,6 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Calendar, Clock, ArrowRight, User } from "lucide-react";
-import blogImage from "@/assets/portfolio-1.jpg";
+import aiBusinessImage from "@/assets/blog/ai-business.jpg";
+import cybersecurityImage from "@/assets/blog/cybersecurity.jpg";
+import cloudComputingImage from "@/assets/blog/cloud-computing.jpg";
+import webDevImage from "@/assets/blog/web-development.jpg";
+import edgeComputingImage from "@/assets/blog/edge-computing.jpg";
+import mobileDevImage from "@/assets/blog/mobile-development.jpg";
 
 export default function BlogSection() {
   const articles = [
@@ -8,7 +13,7 @@ export default function BlogSection() {
       id: 1,
       title: "The Future of AI in Business: Trends and Predictions for 2024",
       excerpt: "Explore how artificial intelligence is reshaping industries and what businesses need to know to stay competitive in the AI-driven economy.",
-      image: blogImage,
+      image: aiBusinessImage,
       author: "Sarah Johnson",
       date: "Dec 15, 2024",
       readTime: "8 min read",
@@ -20,7 +25,7 @@ export default function BlogSection() {
       id: 2,
       title: "Cybersecurity Best Practices for Small Businesses",
       excerpt: "Essential security measures every small business should implement to protect against cyber threats and data breaches.",
-      image: blogImage,
+      image: cybersecurityImage,
       author: "Michael Chen",
       date: "Dec 12, 2024",
       readTime: "6 min read",
@@ -32,7 +37,7 @@ export default function BlogSection() {
       id: 3,
       title: "Cloud Migration: A Complete Guide for Enterprises",
       excerpt: "Step-by-step guide to successfully migrating your enterprise infrastructure to the cloud with minimal downtime.",
-      image: blogImage,
+      image: cloudComputingImage,
       author: "David Wilson",
       date: "Dec 10, 2024",
       readTime: "12 min read",
@@ -44,7 +49,7 @@ export default function BlogSection() {
       id: 4,
       title: "Building Scalable Web Applications with Modern Frameworks",
       excerpt: "Compare the latest web development frameworks and learn how to choose the right technology stack for your project.",
-      image: blogImage,
+      image: webDevImage,
       author: "Emily Rodriguez",
       date: "Dec 8, 2024",
       readTime: "10 min read",
@@ -56,7 +61,7 @@ export default function BlogSection() {
       id: 5,
       title: "The Rise of Edge Computing: What You Need to Know",
       excerpt: "Understanding edge computing and its impact on performance, latency, and data processing in modern applications.",
-      image: blogImage,
+      image: edgeComputingImage,
       author: "James Liu",
       date: "Dec 5, 2024",
       readTime: "7 min read",
@@ -68,7 +73,7 @@ export default function BlogSection() {
       id: 6,
       title: "Mobile App Development Trends for 2024",
       excerpt: "Latest trends in mobile development including cross-platform frameworks, AI integration, and user experience innovations.",
-      image: blogImage,
+      image: mobileDevImage,
       author: "Anna Thompson",
       date: "Dec 3, 2024",
       readTime: "9 min read",
