@@ -3,9 +3,9 @@ import { useCountUp } from "@/hooks/useCountUp";
 import { Button } from "@/components/ui/button";
 
 export default function AboutSection() {
-  const projectsCount = useCountUp({ end: 150, suffix: '+', duration: 3000, enableScrollTrigger: true });
-  const clientsCount = useCountUp({ end: 80, suffix: '+', duration: 2500, enableScrollTrigger: true });
-  const experienceYears = useCountUp({ end: 10, suffix: '+', duration: 2000, enableScrollTrigger: true });
+  const projectsCount = useCountUp({ end: 35, suffix: '+', duration: 2500, enableScrollTrigger: true });
+  const clientsCount = useCountUp({ end: 100, suffix: '+', duration: 3000, enableScrollTrigger: true });
+  const experienceYears = useCountUp({ end: 6, suffix: '', duration: 2000, enableScrollTrigger: true });
   const satisfactionRate = useCountUp({ end: 98, suffix: '%', duration: 3500, enableScrollTrigger: true });
 
   const scrollToSection = (href: string) => {
@@ -144,10 +144,10 @@ export default function AboutSection() {
               <h3 className="text-2xl font-semibold text-foreground">Why Choose Us?</h3>
               <div className="space-y-3">
                 {[
-                  "10+ years of industry experience",
+                  "6 years of industry experience",
                   "Dedicated support team available 24/7",
                   "Custom solutions tailored to your needs",
-                  "Proven track record with 20 successful projects"
+                  "Proven track record with 35+ successful projects"
                 ].map((item, index) => (
                   <div key={index} className="flex items-center gap-3">
                     <CheckCircle className="text-accent" size={20} />
