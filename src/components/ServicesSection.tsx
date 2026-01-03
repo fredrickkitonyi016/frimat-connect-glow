@@ -172,6 +172,8 @@ export default function ServicesSection() {
   ];
 
   const openServiceModal = (serviceIndex: number) => {
+    console.log("[Services] openServiceModal", serviceIndex, services[serviceIndex]?.title);
+
     const modalMap: Array<() => void> = [
       () => setShowWebDevModal(true),
       () => setShowMobileAppModal(true),
@@ -254,9 +256,7 @@ export default function ServicesSection() {
                       type="button"
                       variant="glass" 
                       className="w-full group"
-                      onMouseDown={(e) => {
-                        // Desktop safety: some browsers can drop click events under 3D transforms.
-                        e.preventDefault();
+                      onPointerUp={(e) => {
                         e.stopPropagation();
                         openServiceModal(index);
                       }}
