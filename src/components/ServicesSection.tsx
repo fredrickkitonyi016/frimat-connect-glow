@@ -171,6 +171,20 @@ export default function ServicesSection() {
     }
   ];
 
+  const openServiceModal = (serviceIndex: number) => {
+    const modalMap: Array<() => void> = [
+      () => setShowWebDevModal(true),
+      () => setShowMobileAppModal(true),
+      () => setShowCloudServicesModal(true),
+      () => setShowCybersecurityModal(true),
+      () => setShowITSupportModal(true),
+      () => setShowEcommerceModal(true),
+      () => setShowCyberCafeModal(true),
+    ];
+
+    modalMap[serviceIndex]?.();
+  };
+
   return (
     <section id="services" className="py-24 relative">
       <div className="container mx-auto px-6">
@@ -237,20 +251,16 @@ export default function ServicesSection() {
                   {/* CTA */}
                   <div className="pt-4">
                     <Button 
+                      type="button"
                       variant="glass" 
                       className="w-full group"
-                      onClick={() => {
-                        const modalMap = [
-                          () => setShowWebDevModal(true),
-                          () => setShowMobileAppModal(true),
-                          () => setShowCloudServicesModal(true),
-                          () => setShowCybersecurityModal(true),
-                          () => setShowITSupportModal(true),
-                          () => setShowEcommerceModal(true),
-                          () => setShowCyberCafeModal(true)
-                        ];
-                        modalMap[index]();
+                      onMouseDown={(e) => {
+                        // Desktop safety: some browsers can drop click events under 3D transforms.
+                        e.preventDefault();
+                        e.stopPropagation();
+                        openServiceModal(index);
                       }}
+                      onClick={() => openServiceModal(index)}
                     >
                       Learn More
                       <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={16} />
