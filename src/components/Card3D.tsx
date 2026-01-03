@@ -127,7 +127,7 @@ export default function Card3D({ children, className = "", glowColor = "primary"
           </div>
 
           {/* Content */}
-          <div className="relative z-10" style={{ transform: "translateZ(5px)" }}>
+          <div className="relative z-10" style={{ transform: "translateZ(5px)", pointerEvents: "auto" }}>
             {children}
           </div>
         </div>
