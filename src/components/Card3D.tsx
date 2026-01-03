@@ -71,17 +71,17 @@ export default function Card3D({ children, className = "", glowColor = "primary"
       >
         {/* 3D Depth layers */}
         <div
-          className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 blur-xl"
+          className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 blur-xl"
           style={{
             transform: "translateZ(-30px)",
             opacity: isHovered ? 0.6 : 0,
             transition: "opacity 0.3s ease-out",
           }}
         />
-        
+
         {/* Glow effect */}
         <div
-          className="absolute inset-0 rounded-2xl"
+          className="pointer-events-none absolute inset-0 rounded-2xl"
           style={{
             background: `radial-gradient(circle at ${50 + transform.rotateY * 2}% ${50 - transform.rotateX * 2}%, ${glowColors[glowColor] || glowColors.primary}, transparent 60%)`,
             opacity: isHovered ? 1 : 0,
@@ -92,10 +92,10 @@ export default function Card3D({ children, className = "", glowColor = "primary"
 
         {/* Main card with glass effect */}
         <div
-          className="relative glass-card h-full overflow-hidden"
+          className="relative z-10 glass-card h-full overflow-hidden"
           style={{
             transform: "translateZ(0)",
-            boxShadow: isHovered 
+            boxShadow: isHovered
               ? `0 25px 50px -12px rgba(0, 0, 0, 0.4), 
                  0 0 40px ${glowColors[glowColor] || glowColors.primary}`
               : "0 10px 30px -10px rgba(0, 0, 0, 0.2)",
