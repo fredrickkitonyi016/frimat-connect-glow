@@ -16,7 +16,6 @@ import {
   Phone,
   Menu,
   X,
-  Receipt,
   ShoppingCart,
   ChevronRight
 } from "lucide-react";
@@ -28,7 +27,6 @@ const navigation = [
   { name: "Shop", href: "#shop", icon: ShoppingBag },
   { name: "Portfolio", href: "#portfolio", icon: Briefcase },
   { name: "Blog", href: "#blog", icon: FileText },
-  { name: "Quotation", href: "#quotation", icon: Receipt },
   { name: "Contact", href: "#contact", icon: Phone },
 ];
 

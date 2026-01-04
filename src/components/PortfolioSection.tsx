@@ -335,9 +335,9 @@ export default function PortfolioSection() {
               <Button 
                 variant="hero" 
                 size="lg"
-                onClick={() => document.querySelector('#quotation')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                Get Free Quotation
+                Get in Touch
               </Button>
               <Button 
                 variant="glass" 

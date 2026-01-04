@@ -171,8 +171,8 @@ export default function AboutSection() {
 
             {/* Internal Links */}
             <div className="flex flex-wrap gap-4">
-              <Button variant="hero" onClick={() => scrollToSection('#quotation')}>
-                Get a Quote
+              <Button variant="hero" onClick={() => scrollToSection('#contact')}>
+                Get in Touch
                 <ArrowRight className="ml-2" size={16} />
               </Button>
               <Button variant="glass" onClick={() => scrollToSection('#portfolio')}>
