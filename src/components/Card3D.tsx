@@ -4,9 +4,10 @@ interface Card3DProps {
   children: ReactNode;
   className?: string;
   glowColor?: string;
+  onClick?: () => void;
 }
 
-export default function Card3D({ children, className = "", glowColor = "primary" }: Card3DProps) {
+export default function Card3D({ children, className = "", glowColor = "primary", onClick }: Card3DProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [transform, setTransform] = useState({ rotateX: 0, rotateY: 0, scale: 1 });
   const [isHovered, setIsHovered] = useState(false);
@@ -54,6 +55,7 @@ export default function Card3D({ children, className = "", glowColor = "primary"
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onClick={onClick}
     >
       {/* Card content wrapper */}
       <div

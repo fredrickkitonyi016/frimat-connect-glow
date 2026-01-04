@@ -207,8 +207,9 @@ export default function ServicesSection() {
             return (
               <Card3D 
                 key={index} 
-                className="h-full"
+                className="h-full cursor-pointer"
                 glowColor={index % 2 === 0 ? "primary" : "accent"}
+                onClick={() => openServiceModal(index)}
               >
                 <div className="space-y-6">
                   {/* Logo */}
@@ -255,12 +256,7 @@ export default function ServicesSection() {
                     <Button 
                       type="button"
                       variant="glass" 
-                      className="w-full group"
-                      onPointerUp={(e) => {
-                        e.stopPropagation();
-                        openServiceModal(index);
-                      }}
-                      onClick={() => openServiceModal(index)}
+                      className="w-full group pointer-events-none"
                     >
                       Learn More
                       <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={16} />
