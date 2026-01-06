@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useCart } from "@/contexts/CartContext";
@@ -42,35 +43,35 @@ const megaMenuData = {
   services: {
     title: "Services",
     items: [
-      { name: "IT Support", href: "#services", icon: Monitor, description: "24/7 technical assistance & maintenance" },
-      { name: "Cybersecurity", href: "#services", icon: Shield, description: "Protect your digital assets" },
-      { name: "Cloud Migration", href: "#services", icon: Cloud, description: "Seamless cloud transition services" },
-      { name: "Custom Development", href: "#services", icon: Code, description: "Tailored software solutions" },
+      { name: "IT Support", href: "/services/it-support", icon: Monitor, description: "24/7 technical assistance & maintenance" },
+      { name: "Cybersecurity", href: "/services/cybersecurity", icon: Shield, description: "Protect your digital assets" },
+      { name: "Cloud Migration", href: "/services/cloud-migration", icon: Cloud, description: "Seamless cloud transition services" },
+      { name: "Custom Development", href: "/services/custom-development", icon: Code, description: "Tailored software solutions" },
     ]
   },
   solutions: {
     title: "Solutions",
     items: [
-      { name: "Healthcare", href: "#services", icon: HeartPulse, description: "Digital health solutions" },
-      { name: "Retail & E-commerce", href: "#services", icon: ShoppingBag, description: "Modern retail technology" },
-      { name: "Finance & Banking", href: "#services", icon: Building2, description: "Secure financial systems" },
-      { name: "Manufacturing", href: "#services", icon: Factory, description: "Industry 4.0 solutions" },
+      { name: "Healthcare", href: "/solutions/healthcare", icon: HeartPulse, description: "Digital health solutions" },
+      { name: "Retail & E-commerce", href: "/solutions/retail", icon: ShoppingBag, description: "Modern retail technology" },
+      { name: "Finance & Banking", href: "/solutions/finance", icon: Building2, description: "Secure financial systems" },
+      { name: "Manufacturing", href: "/solutions/manufacturing", icon: Factory, description: "Industry 4.0 solutions" },
     ]
   },
   technologies: {
     title: "Technologies",
     items: [
-      { name: "Cloud Platforms", href: "#services", icon: Server, description: "AWS, Azure, Google Cloud" },
-      { name: "Development Stack", href: "#services", icon: Layers, description: "Modern frameworks & tools" },
-      { name: "Security Tools", href: "#services", icon: Lock, description: "Enterprise-grade security" },
-      { name: "IoT Platforms", href: "#services", icon: Cpu, description: "Connected device solutions" },
+      { name: "Cloud Platforms", href: "/technologies/cloud-platforms", icon: Server, description: "AWS, Azure, Google Cloud" },
+      { name: "Development Stack", href: "/technologies/development-stack", icon: Layers, description: "Modern frameworks & tools" },
+      { name: "Security Tools", href: "/technologies/security-tools", icon: Lock, description: "Enterprise-grade security" },
+      { name: "IoT Platforms", href: "/technologies/iot-platforms", icon: Cpu, description: "Connected device solutions" },
     ]
   },
   resources: {
     title: "Resources",
     items: [
       { name: "Blog", href: "#blog", icon: BookOpen, description: "Latest tech insights" },
-      { name: "Whitepapers", href: "#blog", icon: FileText, description: "In-depth research & guides" },
+      { name: "Whitepapers", href: "/resources/whitepapers", icon: FileText, description: "In-depth research & guides" },
       { name: "Case Studies", href: "#portfolio", icon: FolderOpen, description: "Success stories" },
       { name: "FAQs", href: "#faq", icon: HelpCircle, description: "Common questions answered" },
     ]
@@ -99,6 +100,8 @@ const mobileNavItems = [
 ];
 
 export default function Navbar() {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [activeSection, setActiveSection] = useState("home");
@@ -150,13 +153,31 @@ export default function Navbar() {
     };
   }, []);
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsMobileMenuOpen(false);
-      setActiveDropdown(null);
-      setExpandedMobileMenu(null);
+  const handleNavigation = (href: string) => {
+    setIsMobileMenuOpen(false);
+    setActiveDropdown(null);
+    setExpandedMobileMenu(null);
+    
+    if (href.startsWith('#')) {
+      // If we're not on the homepage, navigate there first
+      if (location.pathname !== '/') {
+        navigate('/');
+        // Wait for navigation then scroll
+        setTimeout(() => {
+          const element = document.querySelector(href);
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+          }
+        }, 100);
+      } else {
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    } else {
+      // Navigate to the route
+      navigate(href);
     }
   };
 
@@ -191,7 +212,7 @@ export default function Navbar() {
             </button>
 
             {/* Logo */}
-            <button onClick={() => scrollToSection('#home')} className="focus:outline-none group">
+            <button onClick={() => handleNavigation('#home')} className="focus:outline-none group">
               <img 
                 src={frimatLogo} 
                 alt="FRIMAT Technologies" 
@@ -252,7 +273,7 @@ export default function Navbar() {
                         if (item.hasSubmenu && item.menuKey) {
                           setExpandedMobileMenu(isExpanded ? null : item.menuKey);
                         } else {
-                          scrollToSection(item.href);
+                          handleNavigation(item.href);
                         }
                       }}
                       style={{ animationDelay: `${index * 50}ms` }}
@@ -286,7 +307,7 @@ export default function Navbar() {
                             return (
                               <button
                                 key={subItem.name}
-                                onClick={() => scrollToSection(subItem.href)}
+                                onClick={() => handleNavigation(subItem.href)}
                                 className="w-full flex items-center gap-3 p-3 rounded-xl bg-muted/30 hover:bg-primary/10 transition-colors"
                               >
                                 <SubIcon size={18} className="text-primary" />
@@ -308,7 +329,7 @@ export default function Navbar() {
               <div className="pt-4 border-t border-border/50 space-y-2">
                 <a
                   href="#contact"
-                  onClick={(e) => { e.preventDefault(); scrollToSection('#contact'); }}
+                  onClick={(e) => { e.preventDefault(); handleNavigation('#contact'); }}
                   className="flex items-center gap-4 p-4 rounded-2xl bg-primary/10 hover:bg-primary/20 transition-colors"
                 >
                   <div className="p-2 rounded-xl bg-primary/20">
@@ -318,7 +339,7 @@ export default function Navbar() {
                 </a>
                 <a
                   href="#contact"
-                  onClick={(e) => { e.preventDefault(); scrollToSection('#contact'); }}
+                  onClick={(e) => { e.preventDefault(); handleNavigation('#contact'); }}
                   className="flex items-center gap-4 p-4 rounded-2xl bg-muted/50 hover:bg-primary/10 transition-colors"
                 >
                   <div className="p-2 rounded-xl bg-background/50">
@@ -328,7 +349,7 @@ export default function Navbar() {
                 </a>
                 <a
                   href="#about"
-                  onClick={(e) => { e.preventDefault(); scrollToSection('#about'); }}
+                  onClick={(e) => { e.preventDefault(); handleNavigation('#about'); }}
                   className="flex items-center gap-4 p-4 rounded-2xl bg-muted/50 hover:bg-primary/10 transition-colors"
                 >
                   <div className="p-2 rounded-xl bg-background/50">
@@ -338,7 +359,7 @@ export default function Navbar() {
                 </a>
                 <a
                   href="#contact"
-                  onClick={(e) => { e.preventDefault(); scrollToSection('#contact'); }}
+                  onClick={(e) => { e.preventDefault(); handleNavigation('#contact'); }}
                   className="flex items-center gap-4 p-4 rounded-2xl bg-muted/50 hover:bg-primary/10 transition-colors"
                 >
                   <div className="p-2 rounded-xl bg-background/50">
@@ -374,16 +395,16 @@ export default function Navbar() {
                   <span>+254 112 277 289</span>
                 </a>
                 <span className="text-border">|</span>
-                <a href="#contact" onClick={(e) => { e.preventDefault(); scrollToSection('#contact'); }} className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+                <a href="#contact" onClick={(e) => { e.preventDefault(); handleNavigation('#contact'); }} className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
                   <Headphones size={14} />
                   <span>Support / Help Desk</span>
                 </a>
               </div>
               <div className="flex items-center gap-6">
-                <a href="#about" onClick={(e) => { e.preventDefault(); scrollToSection('#about'); }} className="text-muted-foreground hover:text-primary transition-colors">
+                <a href="#about" onClick={(e) => { e.preventDefault(); handleNavigation('#about'); }} className="text-muted-foreground hover:text-primary transition-colors">
                   Partners
                 </a>
-                <a href="#contact" onClick={(e) => { e.preventDefault(); scrollToSection('#contact'); }} className="text-muted-foreground hover:text-primary transition-colors">
+                <a href="#contact" onClick={(e) => { e.preventDefault(); handleNavigation('#contact'); }} className="text-muted-foreground hover:text-primary transition-colors">
                   Careers
                 </a>
                 <ThemeToggle />
@@ -396,7 +417,7 @@ export default function Navbar() {
         <div className="container mx-auto px-6">
           <nav className="flex items-center justify-between h-16 lg:h-18">
             {/* Logo */}
-            <button onClick={() => scrollToSection('#home')} className="focus:outline-none group">
+            <button onClick={() => handleNavigation('#home')} className="focus:outline-none group">
               <img 
                 src={frimatLogo} 
                 alt="FRIMAT Technologies" 
@@ -417,7 +438,7 @@ export default function Navbar() {
                         if (item.hasDropdown && item.menuKey) {
                           handleDropdownToggle(item.menuKey);
                         } else {
-                          scrollToSection(item.href);
+                          handleNavigation(item.href);
                         }
                       }}
                       onMouseEnter={() => {
@@ -456,7 +477,7 @@ export default function Navbar() {
                             return (
                               <button
                                 key={subItem.name}
-                                onClick={() => scrollToSection(subItem.href)}
+                                onClick={() => handleNavigation(subItem.href)}
                                 className="w-full flex items-start gap-3 p-3 rounded-xl hover:bg-primary/10 transition-colors group"
                               >
                                 <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
@@ -508,7 +529,7 @@ export default function Navbar() {
 
               {/* Get a Demo CTA */}
               <Button 
-                onClick={() => scrollToSection('#contact')}
+                onClick={() => handleNavigation('#contact')}
                 className="hidden sm:flex rounded-full px-6 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90"
               >
                 <Rocket size={16} className="mr-2" />
