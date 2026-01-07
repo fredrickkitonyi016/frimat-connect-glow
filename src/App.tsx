@@ -15,6 +15,11 @@ import ITSupport from "./pages/services/ITSupport";
 import Cybersecurity from "./pages/services/Cybersecurity";
 import CloudMigration from "./pages/services/CloudMigration";
 import CustomDevelopment from "./pages/services/CustomDevelopment";
+import WebDevelopment from "./pages/services/WebDevelopment";
+import MobileApps from "./pages/services/MobileApps";
+import CloudServices from "./pages/services/CloudServices";
+import Ecommerce from "./pages/services/Ecommerce";
+import CyberCafe from "./pages/services/CyberCafe";
 
 // Solution Pages
 import Healthcare from "./pages/solutions/Healthcare";
@@ -50,6 +55,11 @@ const App = () => (
             <Route path="/services/cybersecurity" element={<Cybersecurity />} />
             <Route path="/services/cloud-migration" element={<CloudMigration />} />
             <Route path="/services/custom-development" element={<CustomDevelopment />} />
+            <Route path="/services/web-development" element={<WebDevelopment />} />
+            <Route path="/services/mobile-apps" element={<MobileApps />} />
+            <Route path="/services/cloud-services" element={<CloudServices />} />
+            <Route path="/services/ecommerce" element={<Ecommerce />} />
+            <Route path="/services/cyber-cafe" element={<CyberCafe />} />
             
             {/* Solution Routes */}
             <Route path="/solutions/healthcare" element={<Healthcare />} />

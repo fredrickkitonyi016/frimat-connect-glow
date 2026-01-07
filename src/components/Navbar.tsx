@@ -35,7 +35,10 @@ import {
   Headphones,
   Users,
   Briefcase,
-  Info
+  Info,
+  Globe,
+  Smartphone,
+  Printer
 } from "lucide-react";
 
 // Mega menu data structure
@@ -43,10 +46,13 @@ const megaMenuData = {
   services: {
     title: "Services",
     items: [
-      { name: "IT Support", href: "/services/it-support", icon: Monitor, description: "24/7 technical assistance & maintenance" },
+      { name: "Web Development", href: "/services/web-development", icon: Globe, description: "Custom websites & web apps" },
+      { name: "Mobile Apps", href: "/services/mobile-apps", icon: Smartphone, description: "iOS & Android applications" },
+      { name: "Cloud Services", href: "/services/cloud-services", icon: Cloud, description: "AWS, Azure & cloud infrastructure" },
       { name: "Cybersecurity", href: "/services/cybersecurity", icon: Shield, description: "Protect your digital assets" },
-      { name: "Cloud Migration", href: "/services/cloud-migration", icon: Cloud, description: "Seamless cloud transition services" },
-      { name: "Custom Development", href: "/services/custom-development", icon: Code, description: "Tailored software solutions" },
+      { name: "IT Support", href: "/services/it-support", icon: Monitor, description: "24/7 technical assistance" },
+      { name: "E-commerce", href: "/services/ecommerce", icon: ShoppingBag, description: "Online store solutions" },
+      { name: "Cyber Cafe", href: "/services/cyber-cafe", icon: Printer, description: "Digital service center" },
     ]
   },
   solutions: {
