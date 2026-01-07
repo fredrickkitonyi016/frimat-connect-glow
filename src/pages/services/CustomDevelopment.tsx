@@ -13,6 +13,21 @@ const features = [
   { icon: Code, title: "Custom Software", description: "Tailored solutions for unique business challenges" },
 ];
 
+const services = [
+  { name: "Custom Web App (Basic)", price: "KSh 80,000", description: "Simple web application with database" },
+  { name: "Custom Web App (Advanced)", price: "KSh 200,000", description: "Complex app with multiple modules" },
+  { name: "Enterprise Software", price: "KSh 500,000+", description: "Large-scale business systems" },
+  { name: "API Development", price: "KSh 40,000", description: "RESTful or GraphQL API" },
+  { name: "Database Design", price: "KSh 25,000", description: "Optimized database architecture" },
+  { name: "System Integration", price: "KSh 50,000", description: "Connect existing systems" },
+  { name: "UI/UX Design", price: "KSh 35,000", description: "Complete interface design" },
+  { name: "MVP Development", price: "KSh 100,000", description: "Minimum viable product for startups" },
+  { name: "Legacy System Upgrade", price: "KSh 80,000+", description: "Modernize old software" },
+  { name: "Technical Consultation (per day)", price: "KSh 15,000", description: "Expert advice & planning" },
+  { name: "Code Review & Audit", price: "KSh 20,000", description: "Review existing codebase" },
+  { name: "Maintenance & Support (Monthly)", price: "KSh 25,000", description: "Ongoing development support" },
+];
+
 const technologies = [
   "React & Next.js",
   "Node.js & Python",
@@ -47,7 +62,7 @@ export default function CustomDevelopment() {
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button size="lg" asChild>
-                  <a href="#contact-section">Start Your Project</a>
+                  <a href="#services-section">View Pricing</a>
                 </Button>
                 <Button size="lg" variant="outline" asChild>
                   <a href="tel:+254112277289">
@@ -78,14 +93,38 @@ export default function CustomDevelopment() {
           </div>
         </section>
 
+        {/* Services with Pricing */}
+        <section id="services-section" className="py-20 bg-muted/30">
+          <div className="container mx-auto px-6">
+            <h2 className="text-3xl font-bold text-center mb-4">Our Services & Pricing</h2>
+            <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+              Custom software development at competitive Kenyan rates
+            </p>
+            <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-4">
+              {services.map((service, index) => (
+                <div key={index} className="flex items-center justify-between gap-4 p-5 rounded-xl bg-background border border-border hover:border-secondary/50 transition-all">
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <div>
+                      <h3 className="font-semibold">{service.name}</h3>
+                      <p className="text-sm text-muted-foreground">{service.description}</p>
+                    </div>
+                  </div>
+                  <span className="text-primary font-bold whitespace-nowrap">{service.price}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Technologies */}
-        <section className="py-20 bg-muted/30">
+        <section className="py-20">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-center mb-12">Technologies We Use</h2>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 {technologies.map((tech, index) => (
-                  <div key={index} className="flex items-center gap-3 p-4 rounded-xl bg-background border border-border">
+                  <div key={index} className="flex items-center gap-3 p-4 rounded-xl bg-card border border-border">
                     <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
                     <span>{tech}</span>
                   </div>

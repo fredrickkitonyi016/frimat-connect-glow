@@ -1,4 +1,4 @@
-import { ArrowLeft, Cloud, Server, Zap, CheckCircle } from "lucide-react";
+import { ArrowLeft, Cloud, Server, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
@@ -7,15 +7,15 @@ import Footer from "@/components/Footer";
 export default function CloudServices() {
   const navigate = useNavigate();
 
-  const features = [
-    "Cloud infrastructure setup and management",
-    "AWS, Azure, and Google Cloud expertise",
-    "DevOps and CI/CD pipelines",
-    "Microservices architecture",
-    "Auto-scaling and load balancing",
-    "Disaster recovery and backup",
-    "Cost optimization strategies",
-    "24/7 monitoring and support",
+  const services = [
+    { name: "Cloud Setup & Configuration", price: "KSh 25,000", description: "Initial cloud infrastructure setup" },
+    { name: "Cloud Migration (Small)", price: "KSh 40,000", description: "Migrate small business to cloud" },
+    { name: "Cloud Migration (Enterprise)", price: "KSh 150,000", description: "Full enterprise cloud migration" },
+    { name: "Cloud Hosting (Monthly)", price: "KSh 8,000", description: "Managed cloud hosting with support" },
+    { name: "DevOps Setup", price: "KSh 50,000", description: "CI/CD pipelines & automation setup" },
+    { name: "Cloud Security Audit", price: "KSh 30,000", description: "Security assessment & recommendations" },
+    { name: "Backup & Disaster Recovery", price: "KSh 20,000", description: "Automated backup solutions" },
+    { name: "Cloud Optimization", price: "KSh 25,000", description: "Cost optimization & performance tuning" },
   ];
 
   const technologies = [
@@ -36,7 +36,7 @@ export default function CloudServices() {
             Back
           </Button>
 
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <div className="flex items-center gap-4 mb-6">
               <div className="p-4 rounded-2xl bg-primary/10">
                 <Cloud className="text-primary" size={40} />
@@ -56,43 +56,35 @@ export default function CloudServices() {
                 Transform your business with our comprehensive cloud solutions. We help you migrate to the cloud, optimize your infrastructure, and implement best practices for security, performance, and cost efficiency.
               </p>
 
-              <div className="grid md:grid-cols-2 gap-8 mt-12">
-                <div className="glass-card p-6">
-                  <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
-                    <CheckCircle className="text-accent" size={24} />
-                    What We Offer
-                  </h3>
-                  <ul className="space-y-3">
-                    {features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2" />
-                        <span className="text-muted-foreground">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="glass-card p-6">
-                  <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
-                    <Server className="text-primary" size={24} />
-                    Technologies
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {technologies.map((tech, idx) => (
-                      <span key={idx} className="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="mt-6 p-4 rounded-xl bg-accent/10 border border-accent/20">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Zap className="text-accent" size={20} />
-                      <span className="font-semibold">Starting Price</span>
+              {/* Services with Pricing */}
+              <h2 className="text-2xl font-bold mt-12 mb-6 flex items-center gap-2">
+                <CheckCircle className="text-accent" size={28} />
+                Our Services & Pricing
+              </h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                {services.map((service, idx) => (
+                  <div key={idx} className="glass-card p-5 hover:border-primary/50 transition-all">
+                    <div className="flex justify-between items-start mb-2">
+                      <h3 className="font-semibold text-foreground">{service.name}</h3>
+                      <span className="text-primary font-bold whitespace-nowrap ml-2">{service.price}</span>
                     </div>
-                    <p className="text-2xl font-bold text-foreground">KSh 30,000/month</p>
-                    <p className="text-sm text-muted-foreground">Timeline: 1-4 weeks</p>
+                    <p className="text-sm text-muted-foreground">{service.description}</p>
                   </div>
+                ))}
+              </div>
+
+              {/* Technologies */}
+              <div className="glass-card p-6 mt-8">
+                <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                  <Server className="text-primary" size={24} />
+                  Platforms We Support
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {technologies.map((tech, idx) => (
+                    <span key={idx} className="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
+                      {tech}
+                    </span>
+                  ))}
                 </div>
               </div>
 

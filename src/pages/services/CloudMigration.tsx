@@ -13,6 +13,21 @@ const features = [
   { icon: Cloud, title: "Multi-Cloud Strategy", description: "Leverage multiple cloud providers for maximum efficiency" },
 ];
 
+const services = [
+  { name: "Cloud Readiness Assessment", price: "KSh 20,000", description: "Evaluate your migration readiness" },
+  { name: "Small Business Migration", price: "KSh 45,000", description: "Up to 5 servers/applications" },
+  { name: "Medium Business Migration", price: "KSh 120,000", description: "Up to 20 servers/applications" },
+  { name: "Enterprise Migration", price: "KSh 300,000+", description: "Large scale infrastructure migration" },
+  { name: "Database Migration", price: "KSh 30,000", description: "Migrate databases to cloud" },
+  { name: "Email Migration (Google/O365)", price: "KSh 500/mailbox", description: "Migrate to cloud email" },
+  { name: "Application Containerization", price: "KSh 40,000/app", description: "Dockerize legacy applications" },
+  { name: "Cloud Architecture Design", price: "KSh 50,000", description: "Design optimal cloud infrastructure" },
+  { name: "Hybrid Cloud Setup", price: "KSh 80,000", description: "Connect on-premise to cloud" },
+  { name: "Cloud Training (Team)", price: "KSh 25,000", description: "Train your team on cloud tools" },
+  { name: "Post-Migration Support (Monthly)", price: "KSh 20,000/month", description: "Ongoing support & optimization" },
+  { name: "Disaster Recovery Setup", price: "KSh 35,000", description: "Cloud-based backup & recovery" },
+];
+
 const cloudProviders = [
   { name: "Amazon Web Services (AWS)", description: "Market-leading cloud platform" },
   { name: "Microsoft Azure", description: "Enterprise-focused cloud solutions" },
@@ -45,7 +60,7 @@ export default function CloudMigration() {
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button size="lg" asChild>
-                  <a href="#contact-section">Start Migration</a>
+                  <a href="#services-section">View Pricing</a>
                 </Button>
                 <Button size="lg" variant="outline" asChild>
                   <a href="tel:+254112277289">
@@ -76,14 +91,38 @@ export default function CloudMigration() {
           </div>
         </section>
 
+        {/* Services with Pricing */}
+        <section id="services-section" className="py-20 bg-muted/30">
+          <div className="container mx-auto px-6">
+            <h2 className="text-3xl font-bold text-center mb-4">Our Services & Pricing</h2>
+            <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+              Affordable cloud migration solutions for Kenyan businesses
+            </p>
+            <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-4">
+              {services.map((service, index) => (
+                <div key={index} className="flex items-center justify-between gap-4 p-5 rounded-xl bg-background border border-border hover:border-accent/50 transition-all">
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <div>
+                      <h3 className="font-semibold">{service.name}</h3>
+                      <p className="text-sm text-muted-foreground">{service.description}</p>
+                    </div>
+                  </div>
+                  <span className="text-primary font-bold whitespace-nowrap">{service.price}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Cloud Providers */}
-        <section className="py-20 bg-muted/30">
+        <section className="py-20">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-center mb-12">Cloud Platforms We Support</h2>
               <div className="grid md:grid-cols-2 gap-6">
                 {cloudProviders.map((provider, index) => (
-                  <div key={index} className="flex items-center gap-4 p-6 rounded-xl bg-background border border-border">
+                  <div key={index} className="flex items-center gap-4 p-6 rounded-xl bg-card border border-border">
                     <CheckCircle className="h-6 w-6 text-primary flex-shrink-0" />
                     <div>
                       <h3 className="font-semibold">{provider.name}</h3>

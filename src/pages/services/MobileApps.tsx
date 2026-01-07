@@ -1,4 +1,4 @@
-import { ArrowLeft, Smartphone, Code, Zap, CheckCircle } from "lucide-react";
+import { ArrowLeft, Smartphone, Code, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
@@ -7,15 +7,15 @@ import Footer from "@/components/Footer";
 export default function MobileApps() {
   const navigate = useNavigate();
 
-  const features = [
-    "Native iOS and Android development",
-    "Cross-platform with React Native & Flutter",
-    "UI/UX design for mobile",
-    "App store optimization",
-    "Push notifications integration",
-    "Offline-first architecture",
-    "Real-time data synchronization",
-    "Analytics and crash reporting",
+  const services = [
+    { name: "Basic Mobile App (Android)", price: "KSh 80,000", description: "Simple Android app with core features" },
+    { name: "Basic Mobile App (iOS)", price: "KSh 90,000", description: "Simple iOS app with core features" },
+    { name: "Cross-Platform App", price: "KSh 120,000", description: "React Native/Flutter app for both platforms" },
+    { name: "E-commerce Mobile App", price: "KSh 180,000", description: "Full shopping app with M-Pesa integration" },
+    { name: "Enterprise Mobile App", price: "KSh 250,000", description: "Complex app with backend & admin panel" },
+    { name: "App UI/UX Design", price: "KSh 35,000", description: "Professional mobile app design" },
+    { name: "App Store Submission", price: "KSh 10,000", description: "Publishing to Google Play or App Store" },
+    { name: "App Maintenance (Monthly)", price: "KSh 15,000", description: "Updates, bug fixes & support" },
   ];
 
   const technologies = [
@@ -36,7 +36,7 @@ export default function MobileApps() {
             Back
           </Button>
 
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <div className="flex items-center gap-4 mb-6">
               <div className="p-4 rounded-2xl bg-primary/10">
                 <Smartphone className="text-primary" size={40} />
@@ -56,43 +56,35 @@ export default function MobileApps() {
                 We develop powerful mobile applications that provide seamless user experiences across iOS and Android platforms. Our apps are designed for performance, scalability, and maximum user engagement.
               </p>
 
-              <div className="grid md:grid-cols-2 gap-8 mt-12">
-                <div className="glass-card p-6">
-                  <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
-                    <CheckCircle className="text-accent" size={24} />
-                    What We Offer
-                  </h3>
-                  <ul className="space-y-3">
-                    {features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2" />
-                        <span className="text-muted-foreground">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="glass-card p-6">
-                  <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
-                    <Code className="text-primary" size={24} />
-                    Technologies
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {technologies.map((tech, idx) => (
-                      <span key={idx} className="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="mt-6 p-4 rounded-xl bg-accent/10 border border-accent/20">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Zap className="text-accent" size={20} />
-                      <span className="font-semibold">Starting Price</span>
+              {/* Services with Pricing */}
+              <h2 className="text-2xl font-bold mt-12 mb-6 flex items-center gap-2">
+                <CheckCircle className="text-accent" size={28} />
+                Our Services & Pricing
+              </h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                {services.map((service, idx) => (
+                  <div key={idx} className="glass-card p-5 hover:border-primary/50 transition-all">
+                    <div className="flex justify-between items-start mb-2">
+                      <h3 className="font-semibold text-foreground">{service.name}</h3>
+                      <span className="text-primary font-bold whitespace-nowrap ml-2">{service.price}</span>
                     </div>
-                    <p className="text-2xl font-bold text-foreground">KSh 100,000</p>
-                    <p className="text-sm text-muted-foreground">Timeline: 4-12 weeks</p>
+                    <p className="text-sm text-muted-foreground">{service.description}</p>
                   </div>
+                ))}
+              </div>
+
+              {/* Technologies */}
+              <div className="glass-card p-6 mt-8">
+                <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                  <Code className="text-primary" size={24} />
+                  Technologies We Use
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {technologies.map((tech, idx) => (
+                    <span key={idx} className="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
+                      {tech}
+                    </span>
+                  ))}
                 </div>
               </div>
 
