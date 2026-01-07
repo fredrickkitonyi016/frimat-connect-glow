@@ -13,13 +13,19 @@ const features = [
   { icon: Shield, title: "Incident Response", description: "Rapid response and recovery from security breaches" },
 ];
 
-const threats = [
-  "Ransomware Attacks",
-  "Phishing & Social Engineering",
-  "Data Breaches",
-  "Malware & Viruses",
-  "DDoS Attacks",
-  "Insider Threats",
+const services = [
+  { name: "Security Assessment (Basic)", price: "KSh 25,000", description: "Small business security review" },
+  { name: "Security Assessment (Enterprise)", price: "KSh 80,000", description: "Comprehensive enterprise audit" },
+  { name: "Penetration Testing", price: "KSh 50,000+", description: "Ethical hacking to find vulnerabilities" },
+  { name: "Firewall Setup & Config", price: "KSh 15,000", description: "Hardware/software firewall deployment" },
+  { name: "Antivirus Deployment (per device)", price: "KSh 2,500/year", description: "Enterprise antivirus licensing" },
+  { name: "Email Security Setup", price: "KSh 20,000", description: "Anti-spam & phishing protection" },
+  { name: "Security Awareness Training", price: "KSh 30,000", description: "Staff training workshop (up to 20 people)" },
+  { name: "Incident Response", price: "KSh 40,000", description: "Emergency breach response" },
+  { name: "Security Monitoring (Monthly)", price: "KSh 25,000/month", description: "24/7 threat monitoring service" },
+  { name: "Data Encryption Setup", price: "KSh 15,000", description: "Encrypt sensitive business data" },
+  { name: "SSL Certificate Installation", price: "KSh 5,000", description: "Secure your website with HTTPS" },
+  { name: "Backup & Recovery Plan", price: "KSh 20,000", description: "Disaster recovery strategy" },
 ];
 
 export default function Cybersecurity() {
@@ -47,7 +53,7 @@ export default function Cybersecurity() {
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button size="lg" asChild>
-                  <a href="#contact-section">Get Security Assessment</a>
+                  <a href="#services-section">View Pricing</a>
                 </Button>
                 <Button size="lg" variant="outline" asChild>
                   <a href="tel:+254112277289">
@@ -78,19 +84,26 @@ export default function Cybersecurity() {
           </div>
         </section>
 
-        {/* Threats We Protect Against */}
-        <section className="py-20 bg-muted/30">
+        {/* Services with Pricing */}
+        <section id="services-section" className="py-20 bg-muted/30">
           <div className="container mx-auto px-6">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-12">Threats We Protect Against</h2>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {threats.map((threat, index) => (
-                  <div key={index} className="flex items-center gap-3 p-4 rounded-xl bg-background border border-border">
-                    <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
-                    <span>{threat}</span>
+            <h2 className="text-3xl font-bold text-center mb-4">Our Services & Pricing</h2>
+            <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+              Affordable cybersecurity solutions for Kenyan businesses of all sizes
+            </p>
+            <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-4">
+              {services.map((service, index) => (
+                <div key={index} className="flex items-center justify-between gap-4 p-5 rounded-xl bg-background border border-border hover:border-destructive/50 transition-all">
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <div>
+                      <h3 className="font-semibold">{service.name}</h3>
+                      <p className="text-sm text-muted-foreground">{service.description}</p>
+                    </div>
                   </div>
-                ))}
-              </div>
+                  <span className="text-primary font-bold whitespace-nowrap">{service.price}</span>
+                </div>
+              ))}
             </div>
           </div>
         </section>
