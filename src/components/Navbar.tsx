@@ -86,10 +86,11 @@ const megaMenuData = {
 
 const mainNavItems = [
   { name: "Home", href: "#home", hasDropdown: false },
+  { name: "About", href: "/about", hasDropdown: false },
   { name: "Services", href: "#services", hasDropdown: true, menuKey: "services" },
   { name: "Solutions", href: "#services", hasDropdown: true, menuKey: "solutions" },
   { name: "Tech", href: "#services", hasDropdown: true, menuKey: "technologies" },
-  { name: "Case Studies", href: "#portfolio", hasDropdown: false },
+  { name: "Portfolio", href: "/portfolio", hasDropdown: false },
   { name: "Resources", href: "#blog", hasDropdown: true, menuKey: "resources" },
   { name: "Contact", href: "#contact", hasDropdown: false },
 ];

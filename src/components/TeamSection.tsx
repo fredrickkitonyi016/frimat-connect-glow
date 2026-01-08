@@ -3,54 +3,29 @@ import { useState } from "react";
 
 const team = [
   {
-    name: "Francis Maina",
+    name: "Fredrick Kitonyi Kiio",
     role: "CEO & Founder",
-    specialization: "Full-Stack Development",
-    bio: "10+ years of experience in software development and business leadership. Passionate about innovative tech solutions.",
+    specialization: "Full-Stack Development & Business Strategy",
+    bio: "Visionary leader with extensive experience in software development and technology entrepreneurship. Passionate about driving digital transformation for Kenyan businesses.",
     image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=300&fit=crop&crop=face",
-    skills: ["Leadership", "Strategy", "Full-Stack Dev"],
+    skills: ["Leadership", "Full-Stack Dev", "Business Strategy"],
     social: {
-      linkedin: "https://linkedin.com/in/francis-maina",
-      github: "https://github.com/francis-maina",
-      email: "francis@frimat.tech"
+      linkedin: "https://linkedin.com/in/fredrick-kitonyi",
+      github: "https://github.com/fredrick-kitonyi",
+      email: "fredrick@frimat.tech"
     }
   },
   {
-    name: "Rita Kimani",
-    role: "CTO",
-    specialization: "Cybersecurity & Cloud Architecture",
-    bio: "Expert in cybersecurity with extensive experience in cloud infrastructure and system security implementations.",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&h=300&fit=crop&crop=face",
-    skills: ["Cybersecurity", "Cloud Architecture", "DevOps"],
+    name: "Sylvester Karanja",
+    role: "CTO & Co-Founder",
+    specialization: "Cloud Architecture & Cybersecurity",
+    bio: "Expert in cloud infrastructure and cybersecurity with a proven track record of implementing secure, scalable solutions for enterprises across East Africa.",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face",
+    skills: ["Cloud Architecture", "Cybersecurity", "DevOps"],
     social: {
-      linkedin: "https://linkedin.com/in/rita-kimani",
-      github: "https://github.com/rita-kimani", 
-      email: "rita@frimat.tech"
-    }
-  },
-  {
-    name: "Samuel Ochieng",
-    role: "Lead Mobile Developer",
-    specialization: "iOS & Android Development",
-    bio: "Mobile development specialist with a track record of creating award-winning apps for various industries.",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face",
-    skills: ["iOS Development", "Android", "React Native"],
-    social: {
-      linkedin: "https://linkedin.com/in/samuel-ochieng",
-      github: "https://github.com/samuel-ochieng",
-      email: "samuel@frimat.tech"
-    }
-  },
-  {
-    name: "Grace Wanjiku",
-    role: "UI/UX Designer",
-    specialization: "Product Design & User Experience",
-    bio: "Creative designer focused on creating intuitive and beautiful user experiences that drive business results.",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=300&fit=crop&crop=face",
-    skills: ["UI/UX Design", "Prototyping", "User Research"],
-    social: {
-      linkedin: "https://linkedin.com/in/grace-wanjiku",
-      email: "grace@frimat.tech"
+      linkedin: "https://linkedin.com/in/sylvester-karanja",
+      github: "https://github.com/sylvester-karanja", 
+      email: "sylvester@frimat.tech"
     }
   }
 ];
@@ -63,30 +38,30 @@ function TeamMemberCard({ member }: TeamMemberProps) {
   const [imgError, setImgError] = useState(false);
 
   return (
-    <div className="glass-card hover-scale group text-center">
+    <div className="glass-card hover-scale group text-center max-w-md mx-auto">
       <div className="relative mb-6">
         {imgError ? (
-          <div className="w-24 h-24 rounded-full mx-auto bg-muted border-4 border-primary/20 group-hover:border-primary/40 transition-colors flex items-center justify-center">
-            <ImageOff size={32} className="text-muted-foreground" />
+          <div className="w-32 h-32 rounded-full mx-auto bg-muted border-4 border-primary/20 group-hover:border-primary/40 transition-colors flex items-center justify-center">
+            <ImageOff size={40} className="text-muted-foreground" />
           </div>
         ) : (
           <img
             src={member.image}
             alt={member.name}
-            className="w-24 h-24 rounded-full mx-auto object-cover border-4 border-primary/20 group-hover:border-primary/40 transition-colors"
+            className="w-32 h-32 rounded-full mx-auto object-cover border-4 border-primary/20 group-hover:border-primary/40 transition-colors"
             onError={() => setImgError(true)}
           />
         )}
-        <div className="absolute -bottom-2 right-1/2 translate-x-[48px] bg-gradient-to-r from-primary to-accent p-2 rounded-full">
-          <Award size={16} className="text-primary-foreground" />
+        <div className="absolute -bottom-2 right-1/2 translate-x-[56px] bg-gradient-to-r from-primary to-accent p-2 rounded-full">
+          <Award size={18} className="text-primary-foreground" />
         </div>
       </div>
 
-      <h3 className="text-xl font-bold text-foreground mb-1">{member.name}</h3>
-      <p className="text-primary font-semibold mb-2">{member.role}</p>
+      <h3 className="text-2xl font-bold text-foreground mb-1">{member.name}</h3>
+      <p className="text-primary font-semibold text-lg mb-2">{member.role}</p>
       <p className="text-sm text-accent mb-4">{member.specialization}</p>
       
-      <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+      <p className="text-muted-foreground leading-relaxed mb-6">
         {member.bio}
       </p>
 
@@ -95,39 +70,39 @@ function TeamMemberCard({ member }: TeamMemberProps) {
           {member.skills.map((skill, skillIndex) => (
             <span
               key={skillIndex}
-              className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full border border-primary/20"
+              className="px-4 py-1.5 bg-primary/10 text-primary text-sm rounded-full border border-primary/20"
             >
               {skill}
             </span>
           ))}
         </div>
 
-        <div className="flex justify-center gap-3">
+        <div className="flex justify-center gap-4">
           {member.social.linkedin && (
             <a
               href={member.social.linkedin}
-              className="p-2 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
+              className="p-3 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Linkedin size={16} />
+              <Linkedin size={20} />
             </a>
           )}
           {member.social.github && (
             <a
               href={member.social.github}
-              className="p-2 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
+              className="p-3 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Github size={16} />
+              <Github size={20} />
             </a>
           )}
           <a
             href={`mailto:${member.social.email}`}
-            className="p-2 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
+            className="p-3 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
           >
-            <Mail size={16} />
+            <Mail size={20} />
           </a>
         </div>
       </div>
@@ -150,7 +125,7 @@ export default function TeamSection() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
           {team.map((member, index) => (
             <TeamMemberCard key={index} member={member} />
           ))}
