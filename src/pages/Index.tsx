@@ -1,9 +1,7 @@
-import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import ServicesSection from "@/components/ServicesSection";
-import ClientLogosSection from "@/components/ClientLogosSection";
 import TechGallerySection from "@/components/TechGallerySection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import TeamSection from "@/components/TeamSection";
@@ -14,7 +12,6 @@ import PortfolioSection from "@/components/PortfolioSection";
 import BlogSection from "@/components/BlogSection";
 import FAQSection from "@/components/FAQSection";
 import ContactSection from "@/components/ContactSection";
-import QuotationGenerator from "@/components/QuotationGenerator";
 import Footer from "@/components/Footer";
 import { useScrollAnimations, useMouseEffects } from "@/hooks/useScrollAnimations";
 
@@ -34,9 +31,6 @@ const Index = () => {
           <ServicesSection />
         </div>
         <TechGallerySection />
-        <div className="fade-in">
-          <ClientLogosSection />
-        </div>
         <div className="fade-in">
           <TestimonialsSection />
         </div>
@@ -59,9 +53,6 @@ const Index = () => {
         </div>
         <div className="fade-in">
           <ContactSection />
-        </div>
-        <div className="fade-in">
-          <QuotationGenerator />
         </div>
       </main>
       <Footer />

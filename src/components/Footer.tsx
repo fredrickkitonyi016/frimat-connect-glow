@@ -5,16 +5,32 @@ import {
   ArrowUp
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useNavigate, useLocation } from "react-router-dom";
 import frimatLogo from "@/assets/frimat-logo.png";
 import SocialIconsStack from "./SocialIconsStack";
 
 export default function Footer() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const currentYear = new Date().getFullYear();
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const scrollToSection = (href: string) => {
-    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+  const handleNavigation = (href: string) => {
+    if (href.startsWith('#')) {
+      if (location.pathname !== '/') {
+        navigate('/');
+        setTimeout(() => {
+          document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      } else {
+        document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      navigate(href);
+    }
   };
 
   return (
@@ -24,7 +40,7 @@ export default function Footer() {
           {/* Company Info */}
           <div className="space-y-6">
             <div>
-              <button onClick={() => scrollToSection('#home')} className="focus:outline-none mb-4">
+              <button onClick={() => handleNavigation('#home')} className="focus:outline-none mb-4">
                 <img src={frimatLogo} alt="FRIMAT Technologies" className="h-12 w-auto" />
               </button>
               <p className="text-muted-foreground leading-relaxed">
@@ -56,23 +72,19 @@ export default function Footer() {
             <ul className="space-y-3">
               {[
                 { name: "Home", href: "#home" },
-                { name: "About Us", href: "#about" },
+                { name: "About Us", href: "/about" },
                 { name: "Services", href: "#services" },
-                { name: "Portfolio", href: "#portfolio" },
+                { name: "Portfolio", href: "/portfolio" },
                 { name: "Blog", href: "#blog" },
                 { name: "Contact", href: "#contact" }
               ].map((link, index) => (
                 <li key={index}>
-                  <a 
-                    href={link.href}
+                  <button 
+                    onClick={() => handleNavigation(link.href)}
                     className="text-muted-foreground hover:text-primary transition-colors duration-300 hover:underline"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' });
-                    }}
                   >
                     {link.name}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -83,17 +95,20 @@ export default function Footer() {
             <h4 className="text-xl font-bold text-foreground mb-6">Our Services</h4>
             <ul className="space-y-3">
               {[
-                "Web Development",
-                "Mobile Apps",
-                "Cloud Services",
-                "Cybersecurity",
-                "IT Support",
-                "E-commerce Solutions"
+                { name: "Web Development", href: "/services/web-development" },
+                { name: "Mobile Apps", href: "/services/mobile-apps" },
+                { name: "Cloud Services", href: "/services/cloud-services" },
+                { name: "Cybersecurity", href: "/services/cybersecurity" },
+                { name: "IT Support", href: "/services/it-support" },
+                { name: "E-commerce", href: "/services/ecommerce" }
               ].map((service, index) => (
                 <li key={index}>
-                  <span className="text-muted-foreground hover:text-primary transition-colors duration-300 cursor-pointer">
-                    {service}
-                  </span>
+                  <button
+                    onClick={() => navigate(service.href)}
+                    className="text-muted-foreground hover:text-primary transition-colors duration-300"
+                  >
+                    {service.name}
+                  </button>
                 </li>
               ))}
             </ul>
@@ -130,19 +145,19 @@ export default function Footer() {
         <div className="border-t border-border mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-muted-foreground text-sm">
-              © 2024 FRIMAT TECHNOLOGIES. All rights reserved.
+              © {currentYear} FRIMAT TECHNOLOGIES. All rights reserved.
             </div>
             
             <div className="flex items-center gap-6 text-sm">
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <button onClick={() => navigate('/privacy-policy')} className="text-muted-foreground hover:text-primary transition-colors">
                 Privacy Policy
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              </button>
+              <button onClick={() => navigate('/terms-of-service')} className="text-muted-foreground hover:text-primary transition-colors">
                 Terms of Service
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              </button>
+              <button onClick={() => navigate('/cookies-policy')} className="text-muted-foreground hover:text-primary transition-colors">
                 Cookie Policy
-              </a>
+              </button>
             </div>
 
             {/* Scroll to Top */}
