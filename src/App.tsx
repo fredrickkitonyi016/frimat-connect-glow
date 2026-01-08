@@ -36,6 +36,11 @@ import IoTPlatforms from "./pages/technologies/IoTPlatforms";
 // Resource Pages
 import Whitepapers from "./pages/resources/Whitepapers";
 
+// Policy Pages
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
+import CookiesPolicy from "./pages/CookiesPolicy";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -75,6 +80,11 @@ const App = () => (
             
             {/* Resource Routes */}
             <Route path="/resources/whitepapers" element={<Whitepapers />} />
+            
+            {/* Policy Routes */}
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-of-service" element={<TermsOfService />} />
+            <Route path="/cookies-policy" element={<CookiesPolicy />} />
             
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />

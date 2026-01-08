@@ -1,6 +1,7 @@
-import { CheckCircle, Users, Zap, Shield, ArrowRight, Target, Eye, Sparkles, Calendar, Globe, Clock, Award } from "lucide-react";
+import { CheckCircle, Users, Zap, Shield, ArrowRight, Target, Eye, Sparkles, Calendar, Clock, Award } from "lucide-react";
 import { useCountUp } from "@/hooks/useCountUp";
 import { Button } from "@/components/ui/button";
+import frimatLogoWhite from "@/assets/frimat-logo-white.png";
 
 export default function AboutSection() {
   const projectsCount = useCountUp({ end: 35, suffix: '+', duration: 2500, enableScrollTrigger: true });
@@ -32,6 +33,21 @@ export default function AboutSection() {
 
   return (
     <section id="about" className="py-24 relative overflow-hidden">
+      {/* Hero Header */}
+      <div className="container mx-auto px-6 mb-16">
+        <div className="text-center">
+          <img 
+            src={frimatLogoWhite} 
+            alt="FRIMAT Technologies" 
+            className="h-16 md:h-20 mx-auto mb-6 dark:invert-0 invert"
+          />
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+            <span className="bg-gradient-to-r from-rose-600 via-red-500 to-rose-700 bg-clip-text text-transparent">
+              Transform Your Business With Technology
+            </span>
+          </h1>
+        </div>
+      </div>
       <div className="container mx-auto px-6">
         {/* Mission & Vision Cards */}
         <div className="grid md:grid-cols-2 gap-8 mb-20">
