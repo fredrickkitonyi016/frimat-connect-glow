@@ -90,6 +90,7 @@ const mainNavItems = [
   { name: "Services", href: "#services", hasDropdown: true, menuKey: "services" },
   { name: "Solutions", href: "#services", hasDropdown: true, menuKey: "solutions" },
   { name: "Tech", href: "#services", hasDropdown: true, menuKey: "technologies" },
+  { name: "Shop", href: "#shop", hasDropdown: false },
   { name: "Portfolio", href: "#portfolio", hasDropdown: false },
   { name: "Resources", href: "#blog", hasDropdown: true, menuKey: "resources" },
   { name: "Contact", href: "#contact", hasDropdown: false },
