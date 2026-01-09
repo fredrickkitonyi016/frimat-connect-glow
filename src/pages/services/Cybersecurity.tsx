@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import { Shield, ArrowLeft, CheckCircle, Lock, Eye, AlertTriangle, FileSearch, ShieldCheck, Phone, Mail } from "lucide-react";
+import { Shield, ArrowLeft, CheckCircle, Lock, Eye, AlertTriangle, FileSearch, ShieldCheck, Phone, Mail, ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useState } from "react";
 
 const features = [
   { icon: Lock, title: "Network Security", description: "Protect your network from unauthorized access and cyber threats" },
@@ -14,21 +15,23 @@ const features = [
 ];
 
 const services = [
-  { name: "Security Assessment (Basic)", price: "KSh 25,000", description: "Small business security review" },
-  { name: "Security Assessment (Enterprise)", price: "KSh 80,000", description: "Comprehensive enterprise audit" },
-  { name: "Penetration Testing", price: "KSh 50,000+", description: "Ethical hacking to find vulnerabilities" },
-  { name: "Firewall Setup & Config", price: "KSh 15,000", description: "Hardware/software firewall deployment" },
-  { name: "Antivirus Deployment (per device)", price: "KSh 2,500/year", description: "Enterprise antivirus licensing" },
-  { name: "Email Security Setup", price: "KSh 20,000", description: "Anti-spam & phishing protection" },
-  { name: "Security Awareness Training", price: "KSh 30,000", description: "Staff training workshop (up to 20 people)" },
-  { name: "Incident Response", price: "KSh 40,000", description: "Emergency breach response" },
-  { name: "Security Monitoring (Monthly)", price: "KSh 25,000/month", description: "24/7 threat monitoring service" },
-  { name: "Data Encryption Setup", price: "KSh 15,000", description: "Encrypt sensitive business data" },
-  { name: "SSL Certificate Installation", price: "KSh 5,000", description: "Secure your website with HTTPS" },
-  { name: "Backup & Recovery Plan", price: "KSh 20,000", description: "Disaster recovery strategy" },
+  { name: "Security Assessment (Basic)", price: "KSh 25,000", description: "Small business security review", details: "Network vulnerability scan, password policy review, access control audit, and executive summary report with recommendations." },
+  { name: "Security Assessment (Enterprise)", price: "KSh 80,000", description: "Comprehensive enterprise audit", details: "Full infrastructure review, compliance check (ISO 27001, PCI-DSS), risk assessment, and detailed remediation roadmap." },
+  { name: "Penetration Testing", price: "KSh 50,000+", description: "Ethical hacking to find vulnerabilities", details: "Web app, network, and social engineering tests. Detailed findings report with proof-of-concept and priority fixes." },
+  { name: "Firewall Setup & Config", price: "KSh 15,000", description: "Hardware/software firewall deployment", details: "Firewall installation, rule configuration, VPN setup, intrusion prevention, and ongoing monitoring setup." },
+  { name: "Antivirus Deployment (per device)", price: "KSh 2,500/year", description: "Enterprise antivirus licensing", details: "Centralized management console, real-time protection, automated updates, and threat reports." },
+  { name: "Email Security Setup", price: "KSh 20,000", description: "Anti-spam & phishing protection", details: "SPF/DKIM/DMARC configuration, spam filtering, attachment scanning, and phishing simulation training." },
+  { name: "Security Awareness Training", price: "KSh 30,000", description: "Staff training workshop (up to 20 people)", details: "Interactive sessions, phishing simulations, password best practices, and certification for participants." },
+  { name: "Incident Response", price: "KSh 40,000", description: "Emergency breach response", details: "Immediate containment, forensic analysis, evidence preservation, recovery assistance, and post-incident report." },
+  { name: "Security Monitoring (Monthly)", price: "KSh 25,000/month", description: "24/7 threat monitoring service", details: "SIEM integration, real-time alerts, threat hunting, monthly security reports, and dedicated security analyst." },
+  { name: "Data Encryption Setup", price: "KSh 15,000", description: "Encrypt sensitive business data", details: "Full-disk encryption, database encryption, key management, and compliance documentation." },
+  { name: "SSL Certificate Installation", price: "KSh 5,000", description: "Secure your website with HTTPS", details: "Certificate procurement, installation, auto-renewal setup, and security headers configuration." },
+  { name: "Backup & Recovery Plan", price: "KSh 20,000", description: "Disaster recovery strategy", details: "Backup automation, offsite replication, recovery testing, RTO/RPO definition, and documentation." },
 ];
 
 export default function Cybersecurity() {
+  const [expandedService, setExpandedService] = useState<number | null>(null);
+  
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -93,15 +96,31 @@ export default function Cybersecurity() {
             </p>
             <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-4">
               {services.map((service, index) => (
-                <div key={index} className="flex items-center justify-between gap-4 p-5 rounded-xl bg-background border border-border hover:border-destructive/50 transition-all">
-                  <div className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <div>
-                      <h3 className="font-semibold">{service.name}</h3>
-                      <p className="text-sm text-muted-foreground">{service.description}</p>
+                <div key={index} className="flex flex-col gap-2 p-5 rounded-xl bg-background border border-border hover:border-destructive/50 transition-all">
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="flex items-start gap-3">
+                      <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                      <div>
+                        <h3 className="font-semibold">{service.name}</h3>
+                        <p className="text-sm text-muted-foreground">{service.description}</p>
+                      </div>
                     </div>
+                    <span className="text-primary font-bold whitespace-nowrap">{service.price}</span>
                   </div>
-                  <span className="text-primary font-bold whitespace-nowrap">{service.price}</span>
+                  <button
+                    onClick={() => setExpandedService(expandedService === index ? null : index)}
+                    className="flex items-center gap-1 text-sm text-primary hover:text-primary/80 ml-8 font-medium transition-colors"
+                  >
+                    {expandedService === index ? <>Less details <ChevronUp size={16} /></> : <>Learn more <ChevronDown size={16} /></>}
+                  </button>
+                  {expandedService === index && (
+                    <div className="ml-8 pt-2 border-t border-border">
+                      <p className="text-sm text-muted-foreground">{service.details}</p>
+                      <Link to="/#contact" className="inline-flex items-center gap-1 text-sm text-accent hover:text-accent/80 mt-2 font-medium">
+                        Get a quote →
+                      </Link>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>

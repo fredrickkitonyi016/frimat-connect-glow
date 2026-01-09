@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import { Cloud, ArrowLeft, CheckCircle, Server, Database, Zap, RefreshCw, Shield, Phone, Mail } from "lucide-react";
+import { Cloud, ArrowLeft, CheckCircle, Server, Database, Zap, RefreshCw, Shield, Phone, Mail, ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useState } from "react";
 
 const features = [
   { icon: Server, title: "Cloud Assessment", description: "Evaluate your current infrastructure and plan the optimal migration path" },
@@ -14,18 +15,18 @@ const features = [
 ];
 
 const services = [
-  { name: "Cloud Readiness Assessment", price: "KSh 20,000", description: "Evaluate your migration readiness" },
-  { name: "Small Business Migration", price: "KSh 45,000", description: "Up to 5 servers/applications" },
-  { name: "Medium Business Migration", price: "KSh 120,000", description: "Up to 20 servers/applications" },
-  { name: "Enterprise Migration", price: "KSh 300,000+", description: "Large scale infrastructure migration" },
-  { name: "Database Migration", price: "KSh 30,000", description: "Migrate databases to cloud" },
-  { name: "Email Migration (Google/O365)", price: "KSh 500/mailbox", description: "Migrate to cloud email" },
-  { name: "Application Containerization", price: "KSh 40,000/app", description: "Dockerize legacy applications" },
-  { name: "Cloud Architecture Design", price: "KSh 50,000", description: "Design optimal cloud infrastructure" },
-  { name: "Hybrid Cloud Setup", price: "KSh 80,000", description: "Connect on-premise to cloud" },
-  { name: "Cloud Training (Team)", price: "KSh 25,000", description: "Train your team on cloud tools" },
-  { name: "Post-Migration Support (Monthly)", price: "KSh 20,000/month", description: "Ongoing support & optimization" },
-  { name: "Disaster Recovery Setup", price: "KSh 35,000", description: "Cloud-based backup & recovery" },
+  { name: "Cloud Readiness Assessment", price: "KSh 20,000", description: "Evaluate your migration readiness", details: "Infrastructure audit, application compatibility check, cost analysis, migration roadmap, and executive presentation." },
+  { name: "Small Business Migration", price: "KSh 45,000", description: "Up to 5 servers/applications", details: "Full migration with data transfer, DNS updates, testing, 2-week post-migration support, and rollback plan." },
+  { name: "Medium Business Migration", price: "KSh 120,000", description: "Up to 20 servers/applications", details: "Phased migration approach, minimal downtime, staff training, monitoring setup, and 30-day support." },
+  { name: "Enterprise Migration", price: "KSh 300,000+", description: "Large scale infrastructure migration", details: "Dedicated project manager, custom migration strategy, 24/7 support during migration, and 90-day post-migration care." },
+  { name: "Database Migration", price: "KSh 30,000", description: "Migrate databases to cloud", details: "Schema migration, data transfer, performance optimization, replication setup, and zero-downtime strategies." },
+  { name: "Email Migration (Google/O365)", price: "KSh 500/mailbox", description: "Migrate to cloud email", details: "Full mailbox migration, calendar, contacts, user training, and MX record configuration." },
+  { name: "Application Containerization", price: "KSh 40,000/app", description: "Dockerize legacy applications", details: "Dockerfile creation, container optimization, orchestration setup, CI/CD integration, and documentation." },
+  { name: "Cloud Architecture Design", price: "KSh 50,000", description: "Design optimal cloud infrastructure", details: "High-availability design, cost optimization, security best practices, scalability planning, and architecture diagrams." },
+  { name: "Hybrid Cloud Setup", price: "KSh 80,000", description: "Connect on-premise to cloud", details: "VPN/Direct Connect setup, identity federation, data sync, hybrid networking, and seamless user experience." },
+  { name: "Cloud Training (Team)", price: "KSh 25,000", description: "Train your team on cloud tools", details: "Hands-on workshops, console navigation, cost management, security basics, and certification guidance." },
+  { name: "Post-Migration Support (Monthly)", price: "KSh 20,000/month", description: "Ongoing support & optimization", details: "24/7 monitoring, performance tuning, security updates, cost reviews, and unlimited support tickets." },
+  { name: "Disaster Recovery Setup", price: "KSh 35,000", description: "Cloud-based backup & recovery", details: "Automated backups, cross-region replication, recovery testing, documented procedures, and compliance support." },
 ];
 
 const cloudProviders = [
@@ -36,6 +37,8 @@ const cloudProviders = [
 ];
 
 export default function CloudMigration() {
+  const [expandedService, setExpandedService] = useState<number | null>(null);
+  
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -100,15 +103,31 @@ export default function CloudMigration() {
             </p>
             <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-4">
               {services.map((service, index) => (
-                <div key={index} className="flex items-center justify-between gap-4 p-5 rounded-xl bg-background border border-border hover:border-accent/50 transition-all">
-                  <div className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <div>
-                      <h3 className="font-semibold">{service.name}</h3>
-                      <p className="text-sm text-muted-foreground">{service.description}</p>
+                <div key={index} className="flex flex-col gap-2 p-5 rounded-xl bg-background border border-border hover:border-accent/50 transition-all">
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="flex items-start gap-3">
+                      <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                      <div>
+                        <h3 className="font-semibold">{service.name}</h3>
+                        <p className="text-sm text-muted-foreground">{service.description}</p>
+                      </div>
                     </div>
+                    <span className="text-primary font-bold whitespace-nowrap">{service.price}</span>
                   </div>
-                  <span className="text-primary font-bold whitespace-nowrap">{service.price}</span>
+                  <button
+                    onClick={() => setExpandedService(expandedService === index ? null : index)}
+                    className="flex items-center gap-1 text-sm text-primary hover:text-primary/80 ml-8 font-medium transition-colors"
+                  >
+                    {expandedService === index ? <>Less details <ChevronUp size={16} /></> : <>Learn more <ChevronDown size={16} /></>}
+                  </button>
+                  {expandedService === index && (
+                    <div className="ml-8 pt-2 border-t border-border">
+                      <p className="text-sm text-muted-foreground">{service.details}</p>
+                      <Link to="/#contact" className="inline-flex items-center gap-1 text-sm text-accent hover:text-accent/80 mt-2 font-medium">
+                        Get a quote →
+                      </Link>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>

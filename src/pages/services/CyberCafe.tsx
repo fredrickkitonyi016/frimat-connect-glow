@@ -1,30 +1,33 @@
-import { ArrowLeft, Printer, Monitor, CheckCircle } from "lucide-react";
+import { ArrowLeft, Printer, Monitor, CheckCircle, ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useState } from "react";
 
 export default function CyberCafe() {
   const navigate = useNavigate();
 
   const services = [
-    { name: "Black & White Printing", price: "KSh 10/page", description: "Standard A4 document printing" },
-    { name: "Color Printing", price: "KSh 30/page", description: "Full color A4 document printing" },
-    { name: "Photocopying (B&W)", price: "KSh 5/page", description: "Black & white document copying" },
-    { name: "Photocopying (Color)", price: "KSh 20/page", description: "Color document copying" },
-    { name: "Document Scanning", price: "KSh 20/page", description: "Scan to email or USB" },
-    { name: "Lamination (A4)", price: "KSh 100", description: "Protect your documents" },
-    { name: "Binding (Spiral)", price: "KSh 150", description: "Professional document binding" },
-    { name: "Internet Access (per hour)", price: "KSh 50", description: "High-speed browsing" },
-    { name: "CV/Resume Typing", price: "KSh 300", description: "Professional CV formatting" },
-    { name: "Document Typing (per page)", price: "KSh 50", description: "Fast & accurate typing" },
-    { name: "KRA iTax Filing", price: "KSh 500", description: "Tax returns & PIN registration" },
-    { name: "HELB Application/Status", price: "KSh 200", description: "Loan application assistance" },
-    { name: "NHIF Registration", price: "KSh 300", description: "Registration & card printing" },
-    { name: "Passport Photos", price: "KSh 200", description: "4 passport-size photos" },
-    { name: "Good Conduct Application", price: "KSh 500", description: "Online application assistance" },
-    { name: "Computer Training (Basic)", price: "KSh 3,000", description: "MS Office essentials (1 week)" },
+    { name: "Black & White Printing", price: "KSh 10/page", description: "Standard A4 document printing", details: "Laser printing, fast turnaround, bulk discounts available. Both-side printing at KSh 18/page." },
+    { name: "Color Printing", price: "KSh 30/page", description: "Full color A4 document printing", details: "Vivid color output, glossy/matte paper options, photo printing available. A3 size at KSh 60/page." },
+    { name: "Photocopying (B&W)", price: "KSh 5/page", description: "Black & white document copying", details: "ID cards, certificates, documents. Enlargement/reduction available. Bulk rates: 100+ pages at KSh 3/page." },
+    { name: "Photocopying (Color)", price: "KSh 20/page", description: "Color document copying", details: "High-quality color reproduction, perfect for photos and certificates. A3 color at KSh 40/page." },
+    { name: "Document Scanning", price: "KSh 20/page", description: "Scan to email or USB", details: "PDF or image format, high resolution (300-600 DPI), OCR text recognition available. Bulk scanning discounts." },
+    { name: "Lamination (A4)", price: "KSh 100", description: "Protect your documents", details: "Glossy or matte finish, ID cards KSh 50, A3 lamination KSh 200. Perfect for certificates and important documents." },
+    { name: "Binding (Spiral)", price: "KSh 150", description: "Professional document binding", details: "Plastic or wire spiral, up to 100 pages included. Hard cover binding at KSh 300. Perfect for reports and theses." },
+    { name: "Internet Access (per hour)", price: "KSh 50", description: "High-speed browsing", details: "50+ Mbps fiber connection, private workstations, printing from your session. Day pass at KSh 200." },
+    { name: "CV/Resume Typing", price: "KSh 300", description: "Professional CV formatting", details: "Modern templates, ATS-friendly format, professional layout, includes 2 revisions. Cover letter at KSh 150 extra." },
+    { name: "Document Typing (per page)", price: "KSh 50", description: "Fast & accurate typing", details: "Reports, letters, assignments. Same-day delivery for up to 10 pages. Formatting and tables included." },
+    { name: "KRA iTax Filing", price: "KSh 500", description: "Tax returns & PIN registration", details: "PIN application, nil returns, income tax filing, tax compliance certificate. Includes guidance on tax obligations." },
+    { name: "HELB Application/Status", price: "KSh 200", description: "Loan application assistance", details: "New applications, loan status check, clearance certificate, repayment schedule. Includes form filling and submission." },
+    { name: "NHIF Registration", price: "KSh 300", description: "Registration & card printing", details: "New member registration, card replacement, dependent addition, and payment processing assistance." },
+    { name: "Passport Photos", price: "KSh 200", description: "4 passport-size photos", details: "Blue or white background, meets immigration standards, instant delivery. 8 photos at KSh 350." },
+    { name: "Good Conduct Application", price: "KSh 500", description: "Online application assistance", details: "Complete online application, fingerprint guidance, appointment booking, and follow-up assistance." },
+    { name: "Computer Training (Basic)", price: "KSh 3,000", description: "MS Office essentials (1 week)", details: "Word, Excel, PowerPoint basics. Flexible scheduling, practice materials, and certificate of completion." },
   ];
+
+  const [expandedService, setExpandedService] = useState<number | null>(null);
 
   const quickServices = [
     "Printing", "Scanning", "Internet", "iTax", "HELB", "NHIF", "CV Writing", "Training"
@@ -92,6 +95,27 @@ export default function CyberCafe() {
                       <span className="text-primary font-bold whitespace-nowrap ml-2">{service.price}</span>
                     </div>
                     <p className="text-sm text-muted-foreground">{service.description}</p>
+                    <button
+                      onClick={() => setExpandedService(expandedService === idx ? null : idx)}
+                      className="flex items-center gap-1 text-sm text-primary hover:text-primary/80 mt-3 font-medium transition-colors"
+                    >
+                      {expandedService === idx ? (
+                        <>Less details <ChevronUp size={16} /></>
+                      ) : (
+                        <>Learn more <ChevronDown size={16} /></>
+                      )}
+                    </button>
+                    {expandedService === idx && (
+                      <div className="mt-3 pt-3 border-t border-border">
+                        <p className="text-sm text-muted-foreground leading-relaxed">{service.details}</p>
+                        <Link
+                          to="/#contact"
+                          className="inline-flex items-center gap-1 text-sm text-accent hover:text-accent/80 mt-2 font-medium"
+                        >
+                          Get a quote for this service →
+                        </Link>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
