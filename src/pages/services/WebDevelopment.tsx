@@ -1,22 +1,25 @@
-import { ArrowLeft, Globe, Code, CheckCircle } from "lucide-react";
+import { ArrowLeft, Globe, Code, CheckCircle, ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useState } from "react";
 
 export default function WebDevelopment() {
   const navigate = useNavigate();
 
   const services = [
-    { name: "Basic Website (5 pages)", price: "KSh 25,000", description: "Simple static website with responsive design" },
-    { name: "Business Website (10 pages)", price: "KSh 45,000", description: "Professional site with contact forms & SEO" },
-    { name: "E-commerce Website", price: "KSh 75,000", description: "Online store with M-Pesa & payment integration" },
-    { name: "Custom Web Application", price: "KSh 120,000", description: "Tailored web app with database & user auth" },
-    { name: "WordPress Website", price: "KSh 20,000", description: "CMS-based site easy to manage yourself" },
-    { name: "Landing Page", price: "KSh 15,000", description: "Single page for campaigns or promotions" },
-    { name: "Website Redesign", price: "KSh 30,000", description: "Modernize your existing website" },
-    { name: "Website Maintenance (Monthly)", price: "KSh 5,000", description: "Updates, backups & security monitoring" },
+    { name: "Basic Website (5 pages)", price: "KSh 25,000", description: "Simple static website with responsive design", details: "Home, About, Services, Contact, and one custom page. Mobile-responsive, fast loading, SSL certificate, and basic SEO setup included." },
+    { name: "Business Website (10 pages)", price: "KSh 45,000", description: "Professional site with contact forms & SEO", details: "Full business site with blog, team profiles, testimonials, contact forms, Google Maps, Analytics integration, and on-page SEO optimization." },
+    { name: "E-commerce Website", price: "KSh 75,000", description: "Online store with M-Pesa & payment integration", details: "Up to 100 products, shopping cart, M-Pesa/card checkout, order management, inventory tracking, customer accounts, and email notifications." },
+    { name: "Custom Web Application", price: "KSh 120,000", description: "Tailored web app with database & user auth", details: "Custom features, user registration/login, database design, admin dashboard, API development, and role-based access control." },
+    { name: "WordPress Website", price: "KSh 20,000", description: "CMS-based site easy to manage yourself", details: "Premium theme customization, essential plugins, training session on content management, and 14-day support after launch." },
+    { name: "Landing Page", price: "KSh 15,000", description: "Single page for campaigns or promotions", details: "High-converting design, call-to-action optimization, lead capture form, analytics tracking, and A/B testing setup." },
+    { name: "Website Redesign", price: "KSh 30,000", description: "Modernize your existing website", details: "Modern UI refresh, improved UX, mobile optimization, speed optimization, content migration, and SEO preservation." },
+    { name: "Website Maintenance (Monthly)", price: "KSh 5,000", description: "Updates, backups & security monitoring", details: "Weekly backups, security patches, plugin/theme updates, uptime monitoring, and 2 hours of content updates per month." },
   ];
+
+  const [expandedService, setExpandedService] = useState<number | null>(null);
 
   const technologies = [
     "React", "Vue.js", "Next.js", "TypeScript", "Node.js", "PostgreSQL", "MongoDB", "Tailwind CSS"
@@ -69,6 +72,27 @@ export default function WebDevelopment() {
                       <span className="text-primary font-bold whitespace-nowrap ml-2">{service.price}</span>
                     </div>
                     <p className="text-sm text-muted-foreground">{service.description}</p>
+                    <button
+                      onClick={() => setExpandedService(expandedService === idx ? null : idx)}
+                      className="flex items-center gap-1 text-sm text-primary hover:text-primary/80 mt-3 font-medium transition-colors"
+                    >
+                      {expandedService === idx ? (
+                        <>Less details <ChevronUp size={16} /></>
+                      ) : (
+                        <>Learn more <ChevronDown size={16} /></>
+                      )}
+                    </button>
+                    {expandedService === idx && (
+                      <div className="mt-3 pt-3 border-t border-border">
+                        <p className="text-sm text-muted-foreground leading-relaxed">{service.details}</p>
+                        <Link
+                          to="/#contact"
+                          className="inline-flex items-center gap-1 text-sm text-accent hover:text-accent/80 mt-2 font-medium"
+                        >
+                          Get a quote for this service →
+                        </Link>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>

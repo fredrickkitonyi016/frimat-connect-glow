@@ -1,22 +1,25 @@
-import { ArrowLeft, ShoppingCart, Code, CheckCircle } from "lucide-react";
+import { ArrowLeft, ShoppingCart, Code, CheckCircle, ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useState } from "react";
 
 export default function Ecommerce() {
   const navigate = useNavigate();
 
   const services = [
-    { name: "Basic Online Store", price: "KSh 50,000", description: "Simple store with up to 50 products" },
-    { name: "Professional E-commerce", price: "KSh 85,000", description: "Full-featured store with inventory system" },
-    { name: "Enterprise E-commerce", price: "KSh 180,000", description: "Large scale with multiple vendors/branches" },
-    { name: "M-Pesa Integration", price: "KSh 15,000", description: "Add M-Pesa payment to existing store" },
-    { name: "Shopify Store Setup", price: "KSh 30,000", description: "Complete Shopify store configuration" },
-    { name: "WooCommerce Setup", price: "KSh 25,000", description: "WordPress e-commerce store" },
-    { name: "Product Photography", price: "KSh 500/product", description: "Professional product images" },
-    { name: "Store Management (Monthly)", price: "KSh 10,000", description: "Product updates & order support" },
+    { name: "Basic Online Store", price: "KSh 50,000", description: "Simple store with up to 50 products", details: "Product catalog, shopping cart, basic checkout, mobile-responsive design, order notifications, and 14-day post-launch support." },
+    { name: "Professional E-commerce", price: "KSh 85,000", description: "Full-featured store with inventory system", details: "Unlimited products, stock management, multi-currency, discount codes, customer reviews, wishlist, and analytics dashboard." },
+    { name: "Enterprise E-commerce", price: "KSh 180,000", description: "Large scale with multiple vendors/branches", details: "Multi-vendor marketplace, branch management, advanced reporting, API integrations, dedicated account manager, and SLA support." },
+    { name: "M-Pesa Integration", price: "KSh 15,000", description: "Add M-Pesa payment to existing store", details: "Daraja API setup, STK push, payment confirmation callbacks, transaction logging, and reconciliation reports." },
+    { name: "Shopify Store Setup", price: "KSh 30,000", description: "Complete Shopify store configuration", details: "Theme customization, product upload, payment gateways, shipping setup, apps installation, and staff training session." },
+    { name: "WooCommerce Setup", price: "KSh 25,000", description: "WordPress e-commerce store", details: "Theme installation, essential plugins, product import, payment configuration, shipping zones, and email template setup." },
+    { name: "Product Photography", price: "KSh 500/product", description: "Professional product images", details: "Studio-quality photos, white background, multiple angles, basic retouching, and web-optimized file delivery." },
+    { name: "Store Management (Monthly)", price: "KSh 10,000", description: "Product updates & order support", details: "Product listings, price updates, inventory sync, order processing assistance, and customer inquiry support." },
   ];
+
+  const [expandedService, setExpandedService] = useState<number | null>(null);
 
   const technologies = [
     "Shopify", "WooCommerce", "Magento", "M-Pesa", "PayPal", "Stripe", "React", "Node.js"
@@ -69,6 +72,27 @@ export default function Ecommerce() {
                       <span className="text-primary font-bold whitespace-nowrap ml-2">{service.price}</span>
                     </div>
                     <p className="text-sm text-muted-foreground">{service.description}</p>
+                    <button
+                      onClick={() => setExpandedService(expandedService === idx ? null : idx)}
+                      className="flex items-center gap-1 text-sm text-primary hover:text-primary/80 mt-3 font-medium transition-colors"
+                    >
+                      {expandedService === idx ? (
+                        <>Less details <ChevronUp size={16} /></>
+                      ) : (
+                        <>Learn more <ChevronDown size={16} /></>
+                      )}
+                    </button>
+                    {expandedService === idx && (
+                      <div className="mt-3 pt-3 border-t border-border">
+                        <p className="text-sm text-muted-foreground leading-relaxed">{service.details}</p>
+                        <Link
+                          to="/#contact"
+                          className="inline-flex items-center gap-1 text-sm text-accent hover:text-accent/80 mt-2 font-medium"
+                        >
+                          Get a quote for this service →
+                        </Link>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>

@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import { Code, ArrowLeft, CheckCircle, Smartphone, Globe, Database, Palette, Cog, Phone, Mail } from "lucide-react";
+import { Code, ArrowLeft, CheckCircle, Smartphone, Globe, Database, Palette, Cog, Phone, Mail, ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useState } from "react";
 
 const features = [
   { icon: Globe, title: "Web Applications", description: "Custom web apps built with modern frameworks and technologies" },
@@ -14,18 +15,18 @@ const features = [
 ];
 
 const services = [
-  { name: "Custom Web App (Basic)", price: "KSh 80,000", description: "Simple web application with database" },
-  { name: "Custom Web App (Advanced)", price: "KSh 200,000", description: "Complex app with multiple modules" },
-  { name: "Enterprise Software", price: "KSh 500,000+", description: "Large-scale business systems" },
-  { name: "API Development", price: "KSh 40,000", description: "RESTful or GraphQL API" },
-  { name: "Database Design", price: "KSh 25,000", description: "Optimized database architecture" },
-  { name: "System Integration", price: "KSh 50,000", description: "Connect existing systems" },
-  { name: "UI/UX Design", price: "KSh 35,000", description: "Complete interface design" },
-  { name: "MVP Development", price: "KSh 100,000", description: "Minimum viable product for startups" },
-  { name: "Legacy System Upgrade", price: "KSh 80,000+", description: "Modernize old software" },
-  { name: "Technical Consultation (per day)", price: "KSh 15,000", description: "Expert advice & planning" },
-  { name: "Code Review & Audit", price: "KSh 20,000", description: "Review existing codebase" },
-  { name: "Maintenance & Support (Monthly)", price: "KSh 25,000", description: "Ongoing development support" },
+  { name: "Custom Web App (Basic)", price: "KSh 80,000", description: "Simple web application with database", details: "User authentication, CRUD operations, responsive design, admin panel, and deployment. 30-day post-launch support." },
+  { name: "Custom Web App (Advanced)", price: "KSh 200,000", description: "Complex app with multiple modules", details: "Role-based access, real-time features, third-party integrations, advanced reporting, and 60-day support." },
+  { name: "Enterprise Software", price: "KSh 500,000+", description: "Large-scale business systems", details: "Custom ERP/CRM, multi-tenant architecture, enterprise integrations, training, documentation, and SLA support." },
+  { name: "API Development", price: "KSh 40,000", description: "RESTful or GraphQL API", details: "Secure authentication, rate limiting, documentation (Swagger/OpenAPI), versioning, and testing suite." },
+  { name: "Database Design", price: "KSh 25,000", description: "Optimized database architecture", details: "Schema design, indexing strategy, query optimization, migration scripts, and performance recommendations." },
+  { name: "System Integration", price: "KSh 50,000", description: "Connect existing systems", details: "API integrations, data synchronization, webhook handlers, error handling, and monitoring setup." },
+  { name: "UI/UX Design", price: "KSh 35,000", description: "Complete interface design", details: "User research, wireframes, interactive prototypes, design system, and developer handoff documentation." },
+  { name: "MVP Development", price: "KSh 100,000", description: "Minimum viable product for startups", details: "Core features only, rapid development (4-6 weeks), investor-ready, scalable foundation, and iteration support." },
+  { name: "Legacy System Upgrade", price: "KSh 80,000+", description: "Modernize old software", details: "Technology upgrade, code refactoring, security improvements, new UI, and data migration." },
+  { name: "Technical Consultation (per day)", price: "KSh 15,000", description: "Expert advice & planning", details: "Architecture review, technology selection, roadmap planning, team mentoring, and documentation." },
+  { name: "Code Review & Audit", price: "KSh 20,000", description: "Review existing codebase", details: "Security vulnerabilities, performance issues, best practices, technical debt assessment, and improvement plan." },
+  { name: "Maintenance & Support (Monthly)", price: "KSh 25,000", description: "Ongoing development support", details: "Bug fixes, minor features, server maintenance, security patches, and up to 10 hours of development." },
 ];
 
 const technologies = [
@@ -38,6 +39,8 @@ const technologies = [
 ];
 
 export default function CustomDevelopment() {
+  const [expandedService, setExpandedService] = useState<number | null>(null);
+  
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -102,15 +105,31 @@ export default function CustomDevelopment() {
             </p>
             <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-4">
               {services.map((service, index) => (
-                <div key={index} className="flex items-center justify-between gap-4 p-5 rounded-xl bg-background border border-border hover:border-secondary/50 transition-all">
-                  <div className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <div>
-                      <h3 className="font-semibold">{service.name}</h3>
-                      <p className="text-sm text-muted-foreground">{service.description}</p>
+                <div key={index} className="flex flex-col gap-2 p-5 rounded-xl bg-background border border-border hover:border-secondary/50 transition-all">
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="flex items-start gap-3">
+                      <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                      <div>
+                        <h3 className="font-semibold">{service.name}</h3>
+                        <p className="text-sm text-muted-foreground">{service.description}</p>
+                      </div>
                     </div>
+                    <span className="text-primary font-bold whitespace-nowrap">{service.price}</span>
                   </div>
-                  <span className="text-primary font-bold whitespace-nowrap">{service.price}</span>
+                  <button
+                    onClick={() => setExpandedService(expandedService === index ? null : index)}
+                    className="flex items-center gap-1 text-sm text-primary hover:text-primary/80 ml-8 font-medium transition-colors"
+                  >
+                    {expandedService === index ? <>Less details <ChevronUp size={16} /></> : <>Learn more <ChevronDown size={16} /></>}
+                  </button>
+                  {expandedService === index && (
+                    <div className="ml-8 pt-2 border-t border-border">
+                      <p className="text-sm text-muted-foreground">{service.details}</p>
+                      <Link to="/#contact" className="inline-flex items-center gap-1 text-sm text-accent hover:text-accent/80 mt-2 font-medium">
+                        Get a quote →
+                      </Link>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>

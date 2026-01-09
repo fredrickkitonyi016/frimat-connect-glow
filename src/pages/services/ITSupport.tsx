@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import { Monitor, ArrowLeft, CheckCircle, Clock, Users, Headphones, Settings, Wrench, Phone, Mail } from "lucide-react";
+import { Monitor, ArrowLeft, CheckCircle, Clock, Users, Headphones, Settings, Wrench, Phone, Mail, ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useState } from "react";
 
 const features = [
   { icon: Clock, title: "24/7 Support", description: "Round-the-clock technical assistance whenever you need it" },
@@ -14,21 +15,23 @@ const features = [
 ];
 
 const services = [
-  { name: "Remote IT Support (per hour)", price: "KSh 2,000", description: "Instant remote assistance via TeamViewer/AnyDesk" },
-  { name: "On-site Support (per visit)", price: "KSh 3,500", description: "Technician visit within Nairobi" },
-  { name: "Monthly IT Retainer (Basic)", price: "KSh 15,000/month", description: "10 hours support, email & phone" },
-  { name: "Monthly IT Retainer (Pro)", price: "KSh 35,000/month", description: "Unlimited support, priority response" },
-  { name: "Computer Repair", price: "KSh 1,500+", description: "Diagnosis & repair (parts extra)" },
-  { name: "Laptop Screen Replacement", price: "KSh 8,000+", description: "Screen replacement service" },
-  { name: "Virus Removal & Cleanup", price: "KSh 2,000", description: "Complete malware removal" },
-  { name: "Data Recovery", price: "KSh 5,000+", description: "Recover lost or deleted files" },
-  { name: "Network Setup (Small Office)", price: "KSh 15,000", description: "Up to 10 devices, WiFi included" },
-  { name: "Network Setup (Enterprise)", price: "KSh 50,000+", description: "Large scale network infrastructure" },
-  { name: "Software Installation", price: "KSh 500/app", description: "Install & configure software" },
-  { name: "Windows Installation", price: "KSh 2,500", description: "Fresh OS installation with drivers" },
+  { name: "Remote IT Support (per hour)", price: "KSh 2,000", description: "Instant remote assistance via TeamViewer/AnyDesk", details: "Quick troubleshooting, software issues, email setup, and configuration. Average response time under 15 minutes." },
+  { name: "On-site Support (per visit)", price: "KSh 3,500", description: "Technician visit within Nairobi", details: "Hardware diagnostics, network issues, printer setup. Includes first hour; additional hours at KSh 1,500/hr." },
+  { name: "Monthly IT Retainer (Basic)", price: "KSh 15,000/month", description: "10 hours support, email & phone", details: "Priority queue, monthly health check, basic monitoring, and discounted rates on hardware repairs." },
+  { name: "Monthly IT Retainer (Pro)", price: "KSh 35,000/month", description: "Unlimited support, priority response", details: "24/7 emergency line, proactive monitoring, quarterly audits, dedicated account manager, and on-site visits included." },
+  { name: "Computer Repair", price: "KSh 1,500+", description: "Diagnosis & repair (parts extra)", details: "Free diagnosis, motherboard repair, power issues, overheating fixes. 30-day warranty on repairs." },
+  { name: "Laptop Screen Replacement", price: "KSh 8,000+", description: "Screen replacement service", details: "LCD/LED replacement, all brands supported, genuine parts available. Same-day service for common models." },
+  { name: "Virus Removal & Cleanup", price: "KSh 2,000", description: "Complete malware removal", details: "Full system scan, malware removal, browser cleanup, and antivirus installation with 1-year license." },
+  { name: "Data Recovery", price: "KSh 5,000+", description: "Recover lost or deleted files", details: "Deleted files, formatted drives, corrupted storage. Price varies by complexity. No data, no charge policy." },
+  { name: "Network Setup (Small Office)", price: "KSh 15,000", description: "Up to 10 devices, WiFi included", details: "Router configuration, cable management, WiFi optimization, guest network, and basic firewall setup." },
+  { name: "Network Setup (Enterprise)", price: "KSh 50,000+", description: "Large scale network infrastructure", details: "Structured cabling, managed switches, VLANs, VPN setup, and comprehensive network documentation." },
+  { name: "Software Installation", price: "KSh 500/app", description: "Install & configure software", details: "Microsoft Office, accounting software, antivirus, and specialized business applications with activation." },
+  { name: "Windows Installation", price: "KSh 2,500", description: "Fresh OS installation with drivers", details: "Clean Windows install, all drivers, Windows updates, and essential software. Includes data backup if needed." },
 ];
 
 export default function ITSupport() {
+  const [expandedService, setExpandedService] = useState<number | null>(null);
+  
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -93,15 +96,31 @@ export default function ITSupport() {
             </p>
             <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-4">
               {services.map((service, index) => (
-                <div key={index} className="flex items-center justify-between gap-4 p-5 rounded-xl bg-background border border-border hover:border-primary/50 transition-all">
-                  <div className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <div>
-                      <h3 className="font-semibold">{service.name}</h3>
-                      <p className="text-sm text-muted-foreground">{service.description}</p>
+                <div key={index} className="flex flex-col gap-2 p-5 rounded-xl bg-background border border-border hover:border-primary/50 transition-all">
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="flex items-start gap-3">
+                      <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                      <div>
+                        <h3 className="font-semibold">{service.name}</h3>
+                        <p className="text-sm text-muted-foreground">{service.description}</p>
+                      </div>
                     </div>
+                    <span className="text-primary font-bold whitespace-nowrap">{service.price}</span>
                   </div>
-                  <span className="text-primary font-bold whitespace-nowrap">{service.price}</span>
+                  <button
+                    onClick={() => setExpandedService(expandedService === index ? null : index)}
+                    className="flex items-center gap-1 text-sm text-primary hover:text-primary/80 ml-8 font-medium transition-colors"
+                  >
+                    {expandedService === index ? <>Less details <ChevronUp size={16} /></> : <>Learn more <ChevronDown size={16} /></>}
+                  </button>
+                  {expandedService === index && (
+                    <div className="ml-8 pt-2 border-t border-border">
+                      <p className="text-sm text-muted-foreground">{service.details}</p>
+                      <Link to="/#contact" className="inline-flex items-center gap-1 text-sm text-accent hover:text-accent/80 mt-2 font-medium">
+                        Get a quote →
+                      </Link>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
