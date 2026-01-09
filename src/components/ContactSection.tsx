@@ -70,12 +70,29 @@ export default function ContactSection() {
       return;
     }
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    // Build WhatsApp message with all form data
+    const whatsappNumber = "254112277289";
+    const messageLines = [
+      `*New Contact Form Submission*`,
+      ``,
+      `*Name:* ${formData.firstName} ${formData.lastName}`,
+      `*Email:* ${formData.email}`,
+      `*Phone:* ${formData.phone || 'Not provided'}`,
+      `*Service:* ${formData.service || 'Not specified'}`,
+      ``,
+      `*Message:*`,
+      formData.message
+    ];
+    
+    const whatsappMessage = encodeURIComponent(messageLines.join('\n'));
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+    
+    // Open WhatsApp with the message
+    window.open(whatsappUrl, '_blank');
     
     toast({
-      title: "Message Sent!",
-      description: "Thank you for contacting us. We'll get back to you within 24 hours.",
+      title: "Redirecting to WhatsApp!",
+      description: "Complete your message on WhatsApp. We'll respond within 24 hours.",
     });
     
     setFormData({
