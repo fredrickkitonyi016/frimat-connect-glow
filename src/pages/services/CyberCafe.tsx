@@ -4,6 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function CyberCafe() {
   const navigate = useNavigate();
@@ -105,17 +106,27 @@ export default function CyberCafe() {
                         <>Learn more <ChevronDown size={16} /></>
                       )}
                     </button>
-                    {expandedService === idx && (
-                      <div className="mt-3 pt-3 border-t border-border">
-                        <p className="text-sm text-muted-foreground leading-relaxed">{service.details}</p>
-                        <Link
-                          to="/#contact"
-                          className="inline-flex items-center gap-1 text-sm text-accent hover:text-accent/80 mt-2 font-medium"
+                    <AnimatePresence>
+                      {expandedService === idx && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                          className="overflow-hidden"
                         >
-                          Get a quote for this service →
-                        </Link>
-                      </div>
-                    )}
+                          <div className="mt-3 pt-3 border-t border-border">
+                            <p className="text-sm text-muted-foreground leading-relaxed">{service.details}</p>
+                            <Link
+                              to="/#contact"
+                              className="inline-flex items-center gap-1 text-sm text-accent hover:text-accent/80 mt-2 font-medium"
+                            >
+                              Get a quote for this service →
+                            </Link>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 ))}
               </div>
