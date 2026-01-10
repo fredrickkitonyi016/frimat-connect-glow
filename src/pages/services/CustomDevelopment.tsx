@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const features = [
   { icon: Globe, title: "Web Applications", description: "Custom web apps built with modern frameworks and technologies" },
@@ -122,14 +123,24 @@ export default function CustomDevelopment() {
                   >
                     {expandedService === index ? <>Less details <ChevronUp size={16} /></> : <>Learn more <ChevronDown size={16} /></>}
                   </button>
-                  {expandedService === index && (
-                    <div className="ml-8 pt-2 border-t border-border">
-                      <p className="text-sm text-muted-foreground">{service.details}</p>
-                      <Link to="/#contact" className="inline-flex items-center gap-1 text-sm text-accent hover:text-accent/80 mt-2 font-medium">
-                        Get a quote →
-                      </Link>
-                    </div>
-                  )}
+                  <AnimatePresence>
+                    {expandedService === index && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className="overflow-hidden"
+                      >
+                        <div className="ml-8 pt-2 border-t border-border">
+                          <p className="text-sm text-muted-foreground">{service.details}</p>
+                          <Link to="/#contact" className="inline-flex items-center gap-1 text-sm text-accent hover:text-accent/80 mt-2 font-medium">
+                            Get a quote →
+                          </Link>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               ))}
             </div>
