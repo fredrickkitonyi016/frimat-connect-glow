@@ -1,3 +1,4 @@
+# https://www.robotstxt.org/robotstxt.html
 User-agent: Googlebot
 Allow: /
 
@@ -12,3 +13,21 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+# Sitemaps
+Sitemap: https://frimat.co.ke/sitemap.xml
+
+# Crawl-delay for other bots
+Crawl-delay: 1
+
+# Disallow admin and private paths
+Disallow: /api/
+Disallow: /auth
+
+# Allow all assets
+Allow: /assets/
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.webp$
