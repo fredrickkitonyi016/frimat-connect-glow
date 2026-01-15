@@ -53,6 +53,7 @@ const megaMenuData = {
       { name: "IT Support", href: "/services/it-support", icon: Monitor, description: "24/7 technical assistance" },
       { name: "E-commerce", href: "/services/ecommerce", icon: ShoppingBag, description: "Online store solutions" },
       { name: "Cyber Cafe", href: "/services/cyber-cafe", icon: Printer, description: "Digital service center" },
+      { name: "Government Services", href: "/services/government-services", icon: Building2, description: "KRA, HELB, SHA portals" },
     ]
   },
   solutions: {

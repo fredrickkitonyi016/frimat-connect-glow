@@ -20,6 +20,7 @@ import MobileApps from "./pages/services/MobileApps";
 import CloudServices from "./pages/services/CloudServices";
 import Ecommerce from "./pages/services/Ecommerce";
 import CyberCafe from "./pages/services/CyberCafe";
+import GovernmentServices from "./pages/services/GovernmentServices";
 
 // Solution Pages
 import Healthcare from "./pages/solutions/Healthcare";
@@ -65,6 +66,7 @@ const App = () => (
             <Route path="/services/cloud-services" element={<CloudServices />} />
             <Route path="/services/ecommerce" element={<Ecommerce />} />
             <Route path="/services/cyber-cafe" element={<CyberCafe />} />
+            <Route path="/services/government-services" element={<GovernmentServices />} />
             
             {/* Solution Routes */}
             <Route path="/solutions/healthcare" element={<Healthcare />} />
