@@ -100,7 +100,8 @@ export default function Footer() {
                 { name: "Cloud Services", href: "/services/cloud-services" },
                 { name: "Cybersecurity", href: "/services/cybersecurity" },
                 { name: "IT Support", href: "/services/it-support" },
-                { name: "E-commerce", href: "/services/ecommerce" }
+                { name: "E-commerce", href: "/services/ecommerce" },
+                { name: "Government Services", href: "/services/government-services" }
               ].map((service, index) => (
                 <li key={index}>
                   <button
@@ -109,6 +110,34 @@ export default function Footer() {
                   >
                     {service.name}
                   </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Government Portals */}
+          <div>
+            <h4 className="text-xl font-bold text-foreground mb-6">Government Portals</h4>
+            <ul className="space-y-3">
+              {[
+                { name: "KRA iTax", href: "https://itax.kra.go.ke" },
+                { name: "HELB Portal", href: "https://www.helb.co.ke" },
+                { name: "SHA (Health)", href: "https://www.sha.go.ke" },
+                { name: "e-Citizen", href: "https://www.ecitizen.go.ke" },
+                { name: "NSSF Portal", href: "https://www.nssf.or.ke" }
+              ].map((portal, index) => (
+                <li key={index}>
+                  <a
+                    href={portal.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-primary transition-colors duration-300 inline-flex items-center gap-1"
+                  >
+                    {portal.name}
+                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
                 </li>
               ))}
             </ul>
