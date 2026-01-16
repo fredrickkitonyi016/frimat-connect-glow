@@ -29,7 +29,7 @@ export function useScrollAnimations() {
     document.addEventListener('click', handleAnchorClick);
 
     // Intersection Observer for fade-in animations
-    const observerOptions = {
+    const observerOptions: IntersectionObserverInit = {
       threshold: 0.1,
       rootMargin: '0px 0px -50px 0px'
     };
@@ -38,13 +38,32 @@ export function useScrollAnimations() {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
+          // Once visible, we can stop observing for better performance
+          observer.unobserve(entry.target);
         }
       });
     }, observerOptions);
 
-    // Observe all elements with fade-in class
-    const fadeElements = document.querySelectorAll('.fade-in');
-    fadeElements.forEach((el) => observer.observe(el));
+    const observeFadeIns = (root: ParentNode = document) => {
+      const fadeElements = root.querySelectorAll?.('.fade-in') as NodeListOf<Element> | undefined;
+      fadeElements?.forEach((el) => observer.observe(el));
+    };
+
+    // Observe initial elements
+    observeFadeIns(document);
+
+    // Also observe fade-in elements that mount later (e.g., inside Suspense)
+    const mutationObserver = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
+          if (!(node instanceof Element)) return;
+          if (node.classList.contains('fade-in')) observer.observe(node);
+          observeFadeIns(node);
+        });
+      });
+    });
+
+    mutationObserver.observe(document.body, { childList: true, subtree: true });
 
     // Parallax scrolling effect
     const handleScroll = () => {
@@ -71,6 +90,7 @@ export function useScrollAnimations() {
     return () => {
       document.removeEventListener('click', handleAnchorClick);
       observer.disconnect();
+      mutationObserver.disconnect();
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
