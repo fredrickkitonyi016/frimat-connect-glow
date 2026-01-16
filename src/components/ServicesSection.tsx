@@ -26,6 +26,14 @@ import ecommerceLogo from "@/assets/logos/ecommerce-logo.png";
 import cyberCafeLogo from "@/assets/logos/cyber-cafe-logo.png";
 import kraLogo from "@/assets/logos/kra-logo.png";
 
+// Import service images
+import webDevImage from "@/assets/services/web-dev-service.jpg";
+import mobileAppImage from "@/assets/services/mobile-app-service.jpg";
+import cloudServiceImage from "@/assets/services/cloud-service.jpg";
+import cybersecurityImage from "@/assets/services/cybersecurity-service.jpg";
+import itSupportImage from "@/assets/services/it-support-service.jpg";
+import ecommerceImage from "@/assets/services/ecommerce-service.jpg";
+
 export default function ServicesSection() {
   const [selectedService, setSelectedService] = useState<number | null>(null);
   const [showCyberCafeModal, setShowCyberCafeModal] = useState(false);
@@ -39,6 +47,7 @@ export default function ServicesSection() {
   const services = [
     {
       logo: webDevLogo,
+      image: webDevImage,
       title: "Web Development",
       description: "Custom web applications built with modern frameworks and technologies",
       features: ["React & Vue.js", "Full-Stack Development", "API Integration", "Performance Optimization"],
@@ -56,6 +65,7 @@ export default function ServicesSection() {
     },
     {
       logo: mobileAppLogo,
+      image: mobileAppImage,
       title: "Mobile Apps",
       description: "Native and cross-platform mobile applications for iOS and Android",
       features: ["React Native", "Flutter", "iOS Development", "Android Development"],
@@ -73,6 +83,7 @@ export default function ServicesSection() {
     },
     {
       logo: cloudServicesLogo,
+      image: cloudServiceImage,
       title: "Cloud Services",
       description: "Scalable cloud infrastructure and migration services",
       features: ["AWS & Azure", "Cloud Migration", "DevOps", "Microservices"],
@@ -90,6 +101,7 @@ export default function ServicesSection() {
     },
     {
       logo: cybersecurityLogo,
+      image: cybersecurityImage,
       title: "Cybersecurity",
       description: "Comprehensive security solutions to protect your digital assets",
       features: ["Security Audits", "Penetration Testing", "Compliance", "Risk Assessment"],
@@ -107,6 +119,7 @@ export default function ServicesSection() {
     },
     {
       logo: itSupportLogo,
+      image: itSupportImage,
       title: "IT Support",
       description: "24/7 technical support and IT infrastructure management",
       features: ["Help Desk", "Network Management", "System Monitoring", "Maintenance"],
@@ -124,6 +137,7 @@ export default function ServicesSection() {
     },
     {
       logo: ecommerceLogo,
+      image: ecommerceImage,
       title: "E-commerce",
       description: "Complete e-commerce solutions from design to deployment",
       features: ["Shopify", "WooCommerce", "Payment Integration", "Inventory Management"],
@@ -141,6 +155,7 @@ export default function ServicesSection() {
     },
     {
       logo: cyberCafeLogo,
+      image: itSupportImage, // Reusing IT support image for cyber cafe
       kraLogo: kraLogo,
       title: "Cyber Cafe Services",
       description: "Complete cyber cafe solutions for all your digital needs",
@@ -149,7 +164,7 @@ export default function ServicesSection() {
         "Document Scanning", 
         "Internet Access", 
         "Computer Training",
-        "Government Services (KRA iTax, HELB, NHIF)",
+        "Government Services (KRA iTax, HELB, SHA)",
         "Data Recovery & Backup",
         "CV Writing & Typing",
         "Lamination & Binding"
@@ -211,55 +226,71 @@ export default function ServicesSection() {
                 glowColor={index % 2 === 0 ? "primary" : "accent"}
                 onClick={() => openServiceModal(index)}
               >
-                <div className="space-y-6">
-                  {/* Logo */}
-                  <div className="relative">
-                    <div className="p-4 rounded-2xl bg-white/90 backdrop-blur-sm w-fit shadow-lg">
-                      <img 
-                        src={service.logo} 
-                        alt={`${service.title} logo`}
-                        className="w-12 h-12 object-contain"
-                      />
-                      {/* Show KRA logo for cyber cafe services */}
-                      {service.kraLogo && (
+                <div className="space-y-4">
+                  {/* Service Image */}
+                  <div className="relative -mx-6 -mt-6 mb-4 overflow-hidden rounded-t-xl">
+                    <img 
+                      src={service.image} 
+                      alt={`${service.title}`}
+                      className="w-full h-40 object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/30 to-transparent" />
+                    
+                    {/* Logo overlay */}
+                    <div className="absolute bottom-3 left-4">
+                      <div className="p-2.5 rounded-xl bg-white/95 backdrop-blur-sm shadow-lg relative">
                         <img 
-                          src={service.kraLogo} 
-                          alt="KRA logo"
-                          className="w-8 h-8 object-contain absolute -top-1 -right-1 bg-white rounded-full p-1"
+                          src={service.logo} 
+                          alt={`${service.title} logo`}
+                          className="w-10 h-10 object-contain"
                         />
-                      )}
+                        {/* Show KRA logo for cyber cafe services */}
+                        {service.kraLogo && (
+                          <img 
+                            src={service.kraLogo} 
+                            alt="KRA logo"
+                            className="w-6 h-6 object-contain absolute -top-1 -right-1 bg-white rounded-full p-0.5 shadow"
+                          />
+                        )}
+                      </div>
                     </div>
                   </div>
 
                   {/* Content */}
                   <div>
-                    <h3 className="text-2xl font-bold text-foreground mb-3">
+                    <h3 className="text-xl font-bold text-foreground mb-2">
                       {service.title}
                     </h3>
-                    <p className="text-muted-foreground mb-6">
+                    <p className="text-sm text-muted-foreground mb-4">
                       {service.description}
                     </p>
                   </div>
 
-                  {/* Features */}
-                  <div className="space-y-2">
-                    {service.features.map((feature, featureIndex) => (
-                      <div key={featureIndex} className="flex items-center gap-2 text-sm">
-                        <div className="w-1.5 h-1.5 rounded-full bg-accent"></div>
-                        <span className="text-muted-foreground">{feature}</span>
+                  {/* Features - show first 4 */}
+                  <div className="space-y-1.5">
+                    {service.features.slice(0, 4).map((feature, featureIndex) => (
+                      <div key={featureIndex} className="flex items-center gap-2 text-xs">
+                        <div className="w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0"></div>
+                        <span className="text-muted-foreground truncate">{feature}</span>
                       </div>
                     ))}
+                    {service.features.length > 4 && (
+                      <div className="text-xs text-primary font-medium">
+                        +{service.features.length - 4} more features
+                      </div>
+                    )}
                   </div>
 
                   {/* CTA */}
-                  <div className="pt-4">
+                  <div className="pt-2">
                     <Button 
                       type="button"
                       variant="glass" 
                       className="w-full group pointer-events-none"
+                      size="sm"
                     >
                       Learn More
-                      <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={16} />
+                      <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={14} />
                     </Button>
                   </div>
                 </div>
