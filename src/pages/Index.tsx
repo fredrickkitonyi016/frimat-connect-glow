@@ -43,60 +43,72 @@ const Index = () => {
       <Navbar />
       <main id="main-content">
         <HeroSection />
-        <Suspense fallback={<SectionSkeleton />}>
-          <div className="fade-in">
+
+        <div className="fade-in">
+          <Suspense fallback={<SectionSkeleton />}>
             <AboutSection />
-          </div>
-        </Suspense>
-        <Suspense fallback={<SectionSkeleton />}>
-          <div className="fade-in">
+          </Suspense>
+        </div>
+
+        <div className="fade-in">
+          <Suspense fallback={<SectionSkeleton />}>
             <ServicesSection />
-          </div>
-        </Suspense>
+          </Suspense>
+        </div>
+
         <Suspense fallback={<SectionSkeleton />}>
           <TechGallerySection />
         </Suspense>
-        <Suspense fallback={<SectionSkeleton />}>
-          <div className="fade-in">
+
+        <div className="fade-in">
+          <Suspense fallback={<SectionSkeleton />}>
             <TestimonialsSection />
-          </div>
-        </Suspense>
-        <Suspense fallback={<SectionSkeleton />}>
-          <div className="fade-in">
+          </Suspense>
+        </div>
+
+        <div className="fade-in">
+          <Suspense fallback={<SectionSkeleton />}>
             <TeamSection />
-          </div>
-        </Suspense>
-        <Suspense fallback={<SectionSkeleton />}>
-          <div className="fade-in">
+          </Suspense>
+        </div>
+
+        <div className="fade-in">
+          <Suspense fallback={<SectionSkeleton />}>
             <PricingSection />
-          </div>
-        </Suspense>
+          </Suspense>
+        </div>
+
         <Suspense fallback={<SectionSkeleton />}>
           <ShopifyProductsSection />
         </Suspense>
+
         <Suspense fallback={<SectionSkeleton />}>
           <ShopSection />
         </Suspense>
-        <Suspense fallback={<SectionSkeleton />}>
-          <div className="fade-in">
+
+        <div className="fade-in">
+          <Suspense fallback={<SectionSkeleton />}>
             <PortfolioSection />
-          </div>
-        </Suspense>
-        <Suspense fallback={<SectionSkeleton />}>
-          <div className="fade-in">
+          </Suspense>
+        </div>
+
+        <div className="fade-in">
+          <Suspense fallback={<SectionSkeleton />}>
             <BlogSection />
-          </div>
-        </Suspense>
-        <Suspense fallback={<SectionSkeleton />}>
-          <div className="fade-in">
+          </Suspense>
+        </div>
+
+        <div className="fade-in">
+          <Suspense fallback={<SectionSkeleton />}>
             <FAQSection />
-          </div>
-        </Suspense>
-        <Suspense fallback={<SectionSkeleton />}>
-          <div className="fade-in">
+          </Suspense>
+        </div>
+
+        <div className="fade-in">
+          <Suspense fallback={<SectionSkeleton />}>
             <ContactSection />
-          </div>
-        </Suspense>
+          </Suspense>
+        </div>
       </main>
       <Footer />
     </div>
