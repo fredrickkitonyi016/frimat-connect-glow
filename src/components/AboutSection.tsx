@@ -1,14 +1,9 @@
-import { CheckCircle, Users, Zap, Shield, ArrowRight, Target, Eye, Sparkles, Calendar, Clock, Award } from "lucide-react";
-import { useCountUp } from "@/hooks/useCountUp";
+import { CheckCircle, Users, Zap, Shield, ArrowRight, Target, Eye, Sparkles, Rocket, Heart, Globe, Lightbulb } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 import frimatLogoWhite from "@/assets/frimat-logo-white.png";
 
 export default function AboutSection() {
-  const projectsCount = useCountUp({ end: 35, suffix: '+', duration: 2500, enableScrollTrigger: true });
-  const clientsCount = useCountUp({ end: 100, suffix: '+', duration: 3000, enableScrollTrigger: true });
-  const experienceYears = useCountUp({ end: 6, suffix: '', duration: 2000, enableScrollTrigger: true });
-  const satisfactionRate = useCountUp({ end: 98, suffix: '%', duration: 3500, enableScrollTrigger: true });
-
   const scrollToSection = (href: string) => {
     document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -222,53 +217,87 @@ export default function AboutSection() {
               })}
             </div>
 
-            {/* Company Stats */}
-            <div className="glass-card p-8 relative overflow-hidden group">
-              {/* Background glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
-              <h4 className="text-2xl font-bold text-center text-foreground mb-8 relative z-10">
-                Company Highlights
+            {/* What Sets Us Apart - Animated */}
+            <motion.div 
+              className="glass-card p-8 relative overflow-hidden"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6 }}
+            >
+              <h4 className="text-2xl font-bold text-center text-foreground mb-8">
+                What Sets Us Apart
               </h4>
               
-              <div className="grid grid-cols-2 gap-6 relative z-10">
-                {/* Projects Completed */}
-                <div className="group/stat p-4 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 hover:border-primary/40 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/20">
-                  <div className="flex items-center justify-center w-12 h-12 mx-auto mb-3 rounded-xl bg-gradient-to-br from-primary to-primary/70 group-hover/stat:scale-110 transition-transform duration-300">
-                    <Award className="w-6 h-6 text-primary-foreground" />
-                  </div>
-                  <div ref={projectsCount.ref} className="text-3xl font-bold text-primary text-center">{projectsCount.value}</div>
-                  <div className="text-sm text-muted-foreground text-center mt-1">Projects Completed</div>
-                </div>
-                
-                {/* Happy Clients */}
-                <div className="group/stat p-4 rounded-2xl bg-gradient-to-br from-accent/10 to-accent/5 border border-accent/20 hover:border-accent/40 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-accent/20">
-                  <div className="flex items-center justify-center w-12 h-12 mx-auto mb-3 rounded-xl bg-gradient-to-br from-accent to-accent/70 group-hover/stat:scale-110 transition-transform duration-300">
-                    <Users className="w-6 h-6 text-accent-foreground" />
-                  </div>
-                  <div ref={clientsCount.ref} className="text-3xl font-bold text-accent text-center">{clientsCount.value}</div>
-                  <div className="text-sm text-muted-foreground text-center mt-1">Happy Clients</div>
-                </div>
-                
-                {/* Years Experience */}
-                <div className="group/stat p-4 rounded-2xl bg-gradient-to-br from-secondary/10 to-secondary/5 border border-secondary/20 hover:border-secondary/40 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-secondary/20">
-                  <div className="flex items-center justify-center w-12 h-12 mx-auto mb-3 rounded-xl bg-gradient-to-br from-secondary to-secondary/70 group-hover/stat:scale-110 transition-transform duration-300">
-                    <Calendar className="w-6 h-6 text-secondary-foreground" />
-                  </div>
-                  <div ref={experienceYears.ref} className="text-3xl font-bold text-secondary text-center">{experienceYears.value}</div>
-                  <div className="text-sm text-muted-foreground text-center mt-1">Years Experience</div>
-                </div>
-                
-                {/* Client Satisfaction */}
-                <div className="group/stat p-4 rounded-2xl bg-gradient-to-br from-primary/10 to-accent/5 border border-primary/20 hover:border-primary/40 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/20">
-                  <div className="flex items-center justify-center w-12 h-12 mx-auto mb-3 rounded-xl bg-gradient-to-br from-primary to-accent group-hover/stat:scale-110 transition-transform duration-300">
-                    <Clock className="w-6 h-6 text-primary-foreground" />
-                  </div>
-                  <div ref={satisfactionRate.ref} className="text-3xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent text-center">{satisfactionRate.value}</div>
-                  <div className="text-sm text-muted-foreground text-center mt-1">Client Satisfaction</div>
-                </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {[
+                  { icon: Rocket, title: "Fast Delivery", description: "Quick turnaround without compromising quality", color: "primary" },
+                  { icon: Heart, title: "Client-First", description: "Your success is our top priority", color: "accent" },
+                  { icon: Globe, title: "Global Standards", description: "World-class solutions, local expertise", color: "secondary" },
+                  { icon: Lightbulb, title: "Innovation", description: "Cutting-edge tech for modern challenges", color: "primary" },
+                ].map((item, index) => (
+                  <motion.div
+                    key={item.title}
+                    initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                    whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ 
+                      duration: 0.5, 
+                      delay: index * 0.1,
+                      type: "spring",
+                      stiffness: 100
+                    }}
+                    whileHover={{ 
+                      scale: 1.05, 
+                      y: -5,
+                      transition: { duration: 0.2 }
+                    }}
+                    className={`group p-4 rounded-2xl bg-gradient-to-br from-${item.color}/10 to-${item.color}/5 border border-${item.color}/20 hover:border-${item.color}/40 transition-colors duration-300 cursor-pointer`}
+                  >
+                    <motion.div 
+                      className={`flex items-center justify-center w-12 h-12 mx-auto mb-3 rounded-xl bg-gradient-to-br from-${item.color} to-${item.color}/70`}
+                      whileHover={{ rotate: [0, -10, 10, 0] }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      <item.icon className={`w-6 h-6 text-${item.color}-foreground`} />
+                    </motion.div>
+                    <h5 className="text-lg font-semibold text-foreground text-center mb-1">
+                      {item.title}
+                    </h5>
+                    <p className="text-sm text-muted-foreground text-center">
+                      {item.description}
+                    </p>
+                  </motion.div>
+                ))}
               </div>
-            </div>
+              
+              {/* Animated background elements */}
+              <motion.div 
+                className="absolute -top-10 -right-10 w-40 h-40 bg-primary/5 rounded-full blur-3xl"
+                animate={{ 
+                  scale: [1, 1.2, 1],
+                  opacity: [0.3, 0.5, 0.3]
+                }}
+                transition={{ 
+                  duration: 4, 
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
+              <motion.div 
+                className="absolute -bottom-10 -left-10 w-32 h-32 bg-accent/5 rounded-full blur-2xl"
+                animate={{ 
+                  scale: [1, 1.3, 1],
+                  opacity: [0.2, 0.4, 0.2]
+                }}
+                transition={{ 
+                  duration: 5, 
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1
+                }}
+              />
+            </motion.div>
           </div>
         </div>
       </div>
