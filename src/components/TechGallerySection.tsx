@@ -194,7 +194,7 @@ export default function TechGallerySection() {
             variant="outline" 
             size="lg"
             className="border-primary/30 hover:bg-primary/5"
-            onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => window.location.href = '/services'}
           >
             View All Services
             <ExternalLink className="ml-2" size={18} />
