@@ -231,10 +231,10 @@ export default function AboutSection() {
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
-                  { icon: Rocket, title: "Fast Delivery", description: "Quick turnaround without compromising quality", color: "primary" },
-                  { icon: Heart, title: "Client-First", description: "Your success is our top priority", color: "accent" },
-                  { icon: Globe, title: "Global Standards", description: "World-class solutions, local expertise", color: "secondary" },
-                  { icon: Lightbulb, title: "Innovation", description: "Cutting-edge tech for modern challenges", color: "primary" },
+                  { icon: Rocket, title: "Fast Delivery", description: "Quick turnaround without compromising quality", gradient: "from-primary to-primary/70", border: "border-primary/20 hover:border-primary/40", bg: "from-primary/10 to-primary/5" },
+                  { icon: Heart, title: "Client-First", description: "Your success is our top priority", gradient: "from-accent to-accent/70", border: "border-accent/20 hover:border-accent/40", bg: "from-accent/10 to-accent/5" },
+                  { icon: Globe, title: "Global Standards", description: "World-class solutions, local expertise", gradient: "from-secondary to-secondary/70", border: "border-secondary/20 hover:border-secondary/40", bg: "from-secondary/10 to-secondary/5" },
+                  { icon: Lightbulb, title: "Innovation", description: "Cutting-edge tech for modern challenges", gradient: "from-primary to-accent", border: "border-primary/20 hover:border-primary/40", bg: "from-primary/10 to-accent/5" },
                 ].map((item, index) => (
                   <motion.div
                     key={item.title}
@@ -252,14 +252,14 @@ export default function AboutSection() {
                       y: -5,
                       transition: { duration: 0.2 }
                     }}
-                    className={`group p-4 rounded-2xl bg-gradient-to-br from-${item.color}/10 to-${item.color}/5 border border-${item.color}/20 hover:border-${item.color}/40 transition-colors duration-300 cursor-pointer`}
+                    className={`group p-4 rounded-2xl bg-gradient-to-br ${item.bg} border ${item.border} transition-colors duration-300 cursor-pointer`}
                   >
                     <motion.div 
-                      className={`flex items-center justify-center w-12 h-12 mx-auto mb-3 rounded-xl bg-gradient-to-br from-${item.color} to-${item.color}/70`}
+                      className={`flex items-center justify-center w-12 h-12 mx-auto mb-3 rounded-xl bg-gradient-to-br ${item.gradient}`}
                       whileHover={{ rotate: [0, -10, 10, 0] }}
                       transition={{ duration: 0.5 }}
                     >
-                      <item.icon className={`w-6 h-6 text-${item.color}-foreground`} />
+                      <item.icon className="w-6 h-6 text-primary-foreground" />
                     </motion.div>
                     <h5 className="text-lg font-semibold text-foreground text-center mb-1">
                       {item.title}
