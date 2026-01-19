@@ -10,9 +10,9 @@ const team = [
     image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=300&fit=crop&crop=face",
     skills: ["Leadership", "Full-Stack Dev", "Business Strategy"],
     social: {
-      linkedin: "https://linkedin.com/in/fredrick-kitonyi",
-      github: "https://github.com/fredrick-kitonyi",
-      email: "fredrick@frimat.tech"
+      linkedin: "https://www.linkedin.com/company/frimat-technologies",
+      github: "https://github.com/frimattechnologies",
+      email: "frimattechnologies016@gmail.com"
     }
   },
   {
@@ -23,9 +23,9 @@ const team = [
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face",
     skills: ["Cloud Architecture", "Cybersecurity", "DevOps"],
     social: {
-      linkedin: "https://linkedin.com/in/sylvester-karanja",
-      github: "https://github.com/sylvester-karanja", 
-      email: "sylvester@frimat.tech"
+      linkedin: "https://www.linkedin.com/company/frimat-technologies",
+      github: "https://github.com/frimattechnologies", 
+      email: "frimattechnologies016@gmail.com"
     }
   }
 ];

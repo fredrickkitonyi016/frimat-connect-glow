@@ -1,10 +1,11 @@
 import { Check, Star, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 
 const plans = [
   {
     name: "Starter",
-    price: "KES 15,000",
+    price: "KSh 25,000",
     period: "one-time",
     description: "Perfect for small businesses and startups",
     features: [
@@ -22,7 +23,7 @@ const plans = [
   },
   {
     name: "Professional",
-    price: "KES 45,000",
+    price: "KSh 50,000",
     period: "one-time",
     description: "Ideal for growing businesses",
     features: [
@@ -42,7 +43,7 @@ const plans = [
   },
   {
     name: "Enterprise",
-    price: "KES 150,000+",
+    price: "KSh 150,000+",
     period: "project-based",
     description: "Complete solutions for large organizations",
     features: [
@@ -64,19 +65,31 @@ const plans = [
 ];
 
 const additionalServices = [
-  { service: "Mobile App Development", price: "KES 80,000 - 200,000" },
-  { service: "Cybersecurity Audit", price: "KES 25,000" },
-  { service: "Cloud Migration", price: "KES 35,000+" },
-  { service: "KRA Tax Services", price: "KES 2,000 - 5,000" },
-  { service: "IT Support (Monthly)", price: "KES 15,000/month" },
-  { service: "Website Maintenance", price: "KES 8,000/month" }
+  { service: "Basic Mobile App", price: "KSh 100,000" },
+  { service: "Professional Mobile App", price: "KSh 150,000+" },
+  { service: "Cybersecurity Audit", price: "KSh 25,000" },
+  { service: "Cloud Migration", price: "KSh 30,000/month" },
+  { service: "E-commerce Platform", price: "KSh 75,000" },
+  { service: "IT Support (Monthly)", price: "KSh 15,000/month" },
+  { service: "Website Maintenance", price: "KSh 8,000/month" },
+  { service: "CV Writing", price: "KSh 300 - 800" },
+  { service: "Document Scanning", price: "KSh 10/page" },
+  { service: "Printing (B&W)", price: "KSh 10/page" },
+  { service: "Printing (Color)", price: "KSh 20/page" },
+  { service: "KRA iTax Filing", price: "KSh 200 - 500" },
 ];
 
 export default function PricingSection() {
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section id="pricing" className="py-24 relative overflow-hidden">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
           <h2 className="text-4xl font-bold mb-4">
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
               Transparent Pricing
@@ -85,23 +98,32 @@ export default function PricingSection() {
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Choose the perfect plan for your business. No hidden fees, no surprises - just honest pricing for quality work.
           </p>
-        </div>
+        </motion.div>
 
         {/* Main Pricing Plans */}
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
           {plans.map((plan, index) => (
-            <div
+            <motion.div
               key={index}
-              className={`glass-card hover-scale relative ${
-                plan.popular ? 'border-primary border-2' : ''
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ y: -8, scale: 1.02 }}
+              className={`glass-card relative ${
+                plan.popular ? 'border-primary border-2 shadow-lg shadow-primary/20' : ''
               }`}
             >
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <div className="bg-gradient-to-r from-primary to-accent text-background px-6 py-2 rounded-full text-sm font-semibold flex items-center gap-2">
+                  <motion.div 
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    className="bg-gradient-to-r from-primary to-accent text-background px-6 py-2 rounded-full text-sm font-semibold flex items-center gap-2"
+                  >
                     <Star size={16} />
                     Most Popular
-                  </div>
+                  </motion.div>
                 </div>
               )}
 
@@ -116,10 +138,17 @@ export default function PricingSection() {
 
               <div className="space-y-3 mb-8">
                 {plan.features.map((feature, featureIndex) => (
-                  <div key={featureIndex} className="flex items-center gap-3">
+                  <motion.div 
+                    key={featureIndex} 
+                    className="flex items-center gap-3"
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.1 * featureIndex }}
+                  >
                     <Check className="text-accent flex-shrink-0" size={20} />
                     <span className="text-foreground">{feature}</span>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
 
@@ -127,16 +156,23 @@ export default function PricingSection() {
                 variant={plan.buttonVariant}
                 className="w-full"
                 size="lg"
+                onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 {plan.popular && <Zap className="mr-2" size={18} />}
                 {plan.buttonText}
               </Button>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* Additional Services */}
-        <div className="max-w-4xl mx-auto">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="max-w-5xl mx-auto"
+        >
           <div className="text-center mb-8">
             <h3 className="text-2xl font-bold text-foreground mb-4">Additional Services</h3>
             <p className="text-muted-foreground">
@@ -145,25 +181,39 @@ export default function PricingSection() {
           </div>
 
           <div className="glass-card">
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {additionalServices.map((item, index) => (
-                <div key={index} className="flex justify-between items-center p-4 rounded-lg bg-background/50 border border-border/50">
+                <motion.div 
+                  key={index} 
+                  className="flex justify-between items-center p-4 rounded-lg bg-background/50 border border-border/50 hover:border-primary/30 transition-colors"
+                  whileHover={{ scale: 1.02 }}
+                >
                   <span className="font-medium text-foreground">{item.service}</span>
-                  <span className="text-primary font-semibold">{item.price}</span>
-                </div>
+                  <span className="text-primary font-semibold whitespace-nowrap ml-2">{item.price}</span>
+                </motion.div>
               ))}
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="text-center mt-12">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="text-center mt-12"
+        >
           <p className="text-muted-foreground mb-4">
             Need a custom quote? We'd love to discuss your project requirements.
           </p>
-          <Button size="lg" className="hover-scale">
+          <Button 
+            size="lg" 
+            className="hover-scale"
+            onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
+          >
             Contact Us for Custom Quote
           </Button>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -8,11 +8,14 @@ import {
   Facebook,
   Twitter,
   Linkedin,
-  Instagram
+  Instagram,
+  Sparkles,
+  Phone
 } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
+import { motion } from "framer-motion";
 
 const contactSchema = z.object({
   firstName: z.string().min(1, "First name is required").max(50),
@@ -106,10 +109,48 @@ export default function ContactSection() {
     setIsSubmitting(false);
   };
 
+  const socialLinks = [
+    { icon: Facebook, name: "Facebook", color: "from-blue-500 to-blue-600", url: "https://facebook.com/frimattechnologies" },
+    { icon: Twitter, name: "Twitter", color: "from-sky-500 to-sky-600", url: "https://twitter.com/frimattechnologies" },
+    { icon: Linkedin, name: "LinkedIn", color: "from-blue-700 to-blue-800", url: "https://www.linkedin.com/company/frimat-technologies" },
+    { icon: Instagram, name: "Instagram", color: "from-pink-500 to-orange-500", url: "https://instagram.com/frimattechnologies" }
+  ];
+
   return (
-    <section id="contact" className="py-24 relative">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
+    <section id="contact" className="py-24 relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div 
+          className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl"
+          animate={{ 
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.5, 0.3],
+          }}
+          transition={{ duration: 8, repeat: Infinity }}
+        />
+        <motion.div 
+          className="absolute bottom-20 right-10 w-96 h-96 bg-accent/5 rounded-full blur-3xl"
+          animate={{ 
+            scale: [1.2, 1, 1.2],
+            opacity: [0.3, 0.5, 0.3],
+          }}
+          transition={{ duration: 10, repeat: Infinity }}
+        />
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <Sparkles className="text-primary" size={24} />
+            <span className="text-primary font-semibold uppercase tracking-wider text-sm">Let's Connect</span>
+            <Sparkles className="text-primary" size={24} />
+          </div>
           <h2 className="text-5xl font-bold mb-6">
             <span className="text-foreground">Get In </span>
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
@@ -119,18 +160,33 @@ export default function ContactSection() {
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Ready to transform your business with cutting-edge technology? Let's discuss your project and create something amazing together.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Form */}
-          <div className="glass-card">
-            <h3 className="text-3xl font-bold text-foreground mb-8">
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="glass-card relative overflow-hidden"
+          >
+            {/* Decorative gradient */}
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-accent to-primary" />
+            
+            <h3 className="text-3xl font-bold text-foreground mb-8 flex items-center gap-3">
+              <Send className="text-primary" size={28} />
               Send us a Message
             </h3>
             
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid md:grid-cols-2 gap-6">
-                <div>
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.1 }}
+                >
                   <label className="block text-sm font-medium text-foreground mb-2">
                     First Name <span className="text-destructive">*</span>
                   </label>
@@ -139,12 +195,17 @@ export default function ContactSection() {
                     name="firstName"
                     value={formData.firstName}
                     onChange={handleChange}
-                    className={`w-full px-4 py-3 rounded-xl bg-input border ${errors.firstName ? 'border-destructive' : 'border-border'} text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all`}
+                    className={`w-full px-4 py-3 rounded-xl bg-input border ${errors.firstName ? 'border-destructive' : 'border-border'} text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all hover:border-primary/50`}
                     placeholder="John"
                   />
                   {errors.firstName && <p className="text-destructive text-sm mt-1">{errors.firstName}</p>}
-                </div>
-                <div>
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.15 }}
+                >
                   <label className="block text-sm font-medium text-foreground mb-2">
                     Last Name <span className="text-destructive">*</span>
                   </label>
@@ -153,14 +214,19 @@ export default function ContactSection() {
                     name="lastName"
                     value={formData.lastName}
                     onChange={handleChange}
-                    className={`w-full px-4 py-3 rounded-xl bg-input border ${errors.lastName ? 'border-destructive' : 'border-border'} text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all`}
+                    className={`w-full px-4 py-3 rounded-xl bg-input border ${errors.lastName ? 'border-destructive' : 'border-border'} text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all hover:border-primary/50`}
                     placeholder="Doe"
                   />
                   {errors.lastName && <p className="text-destructive text-sm mt-1">{errors.lastName}</p>}
-                </div>
+                </motion.div>
               </div>
 
-              <div>
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+              >
                 <label className="block text-sm font-medium text-foreground mb-2">
                   Email Address <span className="text-destructive">*</span>
                 </label>
@@ -169,13 +235,18 @@ export default function ContactSection() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className={`w-full px-4 py-3 rounded-xl bg-input border ${errors.email ? 'border-destructive' : 'border-border'} text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all`}
+                  className={`w-full px-4 py-3 rounded-xl bg-input border ${errors.email ? 'border-destructive' : 'border-border'} text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all hover:border-primary/50`}
                   placeholder="john.doe@example.com"
                 />
                 {errors.email && <p className="text-destructive text-sm mt-1">{errors.email}</p>}
-              </div>
+              </motion.div>
 
-              <div>
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.25 }}
+              >
                 <label className="block text-sm font-medium text-foreground mb-2">
                   Phone Number
                 </label>
@@ -184,12 +255,17 @@ export default function ContactSection() {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl bg-input border border-border text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                  className="w-full px-4 py-3 rounded-xl bg-input border border-border text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all hover:border-primary/50"
                   placeholder="+254 712 345 678"
                 />
-              </div>
+              </motion.div>
 
-              <div>
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 }}
+              >
                 <label className="block text-sm font-medium text-foreground mb-2">
                   Service Interested In
                 </label>
@@ -197,7 +273,7 @@ export default function ContactSection() {
                   name="service"
                   value={formData.service}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl bg-input border border-border text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                  className="w-full px-4 py-3 rounded-xl bg-input border border-border text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all hover:border-primary/50"
                 >
                   <option value="">Select a service</option>
                   <option value="web-development">Web Development</option>
@@ -206,11 +282,18 @@ export default function ContactSection() {
                   <option value="cybersecurity">Cybersecurity</option>
                   <option value="it-support">IT Support</option>
                   <option value="e-commerce">E-commerce</option>
+                  <option value="cyber-cafe">Cyber Cafe Services</option>
+                  <option value="government-services">Government Services</option>
                   <option value="custom-solution">Custom Solution</option>
                 </select>
-              </div>
+              </motion.div>
 
-              <div>
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.35 }}
+              >
                 <label className="block text-sm font-medium text-foreground mb-2">
                   Message <span className="text-destructive">*</span>
                 </label>
@@ -219,70 +302,100 @@ export default function ContactSection() {
                   value={formData.message}
                   onChange={handleChange}
                   rows={5}
-                  className={`w-full px-4 py-3 rounded-xl bg-input border ${errors.message ? 'border-destructive' : 'border-border'} text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all resize-none`}
+                  className={`w-full px-4 py-3 rounded-xl bg-input border ${errors.message ? 'border-destructive' : 'border-border'} text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all resize-none hover:border-primary/50`}
                   placeholder="Tell us about your project requirements..."
                 />
                 {errors.message && <p className="text-destructive text-sm mt-1">{errors.message}</p>}
-              </div>
+              </motion.div>
 
-              <Button variant="hero" className="w-full" type="submit" disabled={isSubmitting}>
-                {isSubmitting ? (
-                  <>Sending...</>
-                ) : (
-                  <>
-                    <Send className="mr-2" size={20} />
-                    Send Message
-                  </>
-                )}
-              </Button>
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Button variant="hero" className="w-full" type="submit" disabled={isSubmitting}>
+                  {isSubmitting ? (
+                    <>Sending...</>
+                  ) : (
+                    <>
+                      <Send className="mr-2" size={20} />
+                      Send Message via WhatsApp
+                    </>
+                  )}
+                </Button>
+              </motion.div>
             </form>
-          </div>
+          </motion.div>
 
           {/* Contact Information */}
-          <div className="space-y-8">
-            {/* Contact Details */}
-            <div className="glass-card">
-              <h3 className="text-3xl font-bold text-foreground mb-8">
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="space-y-6"
+          >
+            {/* Contact Details Card */}
+            <div className="glass-card relative overflow-hidden">
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-accent via-primary to-accent" />
+              
+              <h3 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
+                <Phone className="text-accent" size={24} />
                 Contact Information
               </h3>
               
-              <div className="space-y-6">
-                <a href="mailto:frimattechnologies016@gmail.com" className="flex items-start gap-4 group hover:bg-muted/10 p-2 rounded-xl transition-colors">
-                  <div className="p-3 rounded-xl bg-gradient-to-br from-primary to-accent">
-                    <Mail className="text-primary-foreground" size={24} />
+              <div className="space-y-4">
+                <motion.a 
+                  href="mailto:frimattechnologies016@gmail.com" 
+                  className="flex items-start gap-4 group p-4 rounded-xl hover:bg-primary/5 transition-all border border-transparent hover:border-primary/20"
+                  whileHover={{ x: 5 }}
+                >
+                  <div className="p-3 rounded-xl bg-gradient-to-br from-primary to-accent shadow-lg">
+                    <Mail className="text-primary-foreground" size={22} />
                   </div>
                   <div>
                     <h4 className="text-lg font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">Email</h4>
                     <p className="text-muted-foreground">frimattechnologies016@gmail.com</p>
                     <p className="text-sm text-accent">We reply within 24 hours</p>
                   </div>
-                </a>
+                </motion.a>
 
-                <a href="https://wa.me/254112277289" target="_blank" rel="noopener noreferrer" className="flex items-start gap-4 group hover:bg-muted/10 p-2 rounded-xl transition-colors">
-                  <div className="p-3 rounded-xl bg-gradient-to-br from-secondary to-accent">
-                    <MessageSquare className="text-secondary-foreground" size={24} />
+                <motion.a 
+                  href="https://wa.me/254112277289" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-start gap-4 group p-4 rounded-xl hover:bg-accent/5 transition-all border border-transparent hover:border-accent/20"
+                  whileHover={{ x: 5 }}
+                >
+                  <div className="p-3 rounded-xl bg-gradient-to-br from-green-500 to-green-600 shadow-lg">
+                    <MessageSquare className="text-white" size={22} />
                   </div>
                   <div>
-                    <h4 className="text-lg font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">WhatsApp</h4>
-                    <p className="text-muted-foreground">+254112277289</p>
+                    <h4 className="text-lg font-semibold text-foreground mb-1 group-hover:text-accent transition-colors">WhatsApp</h4>
+                    <p className="text-muted-foreground">+254 112 277 289</p>
                     <p className="text-sm text-accent">Available 24/7 for urgent inquiries</p>
                   </div>
-                </a>
+                </motion.a>
 
-                <a href="https://maps.google.com/?q=Nairobi,Kenya" target="_blank" rel="noopener noreferrer" className="flex items-start gap-4 group hover:bg-muted/10 p-2 rounded-xl transition-colors">
-                  <div className="p-3 rounded-xl bg-gradient-to-br from-accent to-primary">
-                    <MapPin className="text-accent-foreground" size={24} />
+                <motion.a 
+                  href="https://maps.google.com/?q=Nairobi,Kenya" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-start gap-4 group p-4 rounded-xl hover:bg-secondary/5 transition-all border border-transparent hover:border-secondary/20"
+                  whileHover={{ x: 5 }}
+                >
+                  <div className="p-3 rounded-xl bg-gradient-to-br from-secondary to-accent shadow-lg">
+                    <MapPin className="text-secondary-foreground" size={22} />
                   </div>
                   <div>
-                    <h4 className="text-lg font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">Office</h4>
+                    <h4 className="text-lg font-semibold text-foreground mb-1 group-hover:text-secondary transition-colors">Office</h4>
                     <p className="text-muted-foreground">Nairobi, Kenya</p>
                     <p className="text-sm text-accent">Visit by appointment</p>
                   </div>
-                </a>
+                </motion.a>
 
-                <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-xl bg-gradient-to-br from-primary to-secondary">
-                    <Clock className="text-primary-foreground" size={24} />
+                <div className="flex items-start gap-4 p-4">
+                  <div className="p-3 rounded-xl bg-gradient-to-br from-primary to-secondary shadow-lg">
+                    <Clock className="text-primary-foreground" size={22} />
                   </div>
                   <div>
                     <h4 className="text-lg font-semibold text-foreground mb-1">Business Hours</h4>
@@ -295,48 +408,67 @@ export default function ContactSection() {
             </div>
 
             {/* Social Media */}
-            <div className="glass-card">
-              <h3 className="text-2xl font-bold text-foreground mb-6">
+            <motion.div 
+              className="glass-card"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <h3 className="text-xl font-bold text-foreground mb-4">
                 Follow Us
               </h3>
               
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { icon: Facebook, name: "Facebook", color: "from-blue-500 to-blue-600", url: "https://facebook.com/frimattechnologies" },
-                  { icon: Twitter, name: "Twitter", color: "from-sky-500 to-sky-600", url: "https://twitter.com/frimattechnologies" },
-                  { icon: Linkedin, name: "LinkedIn", color: "from-blue-700 to-blue-800", url: "https://linkedin.com/company/frimattechnologies" },
-                  { icon: Instagram, name: "Instagram", color: "from-pink-500 to-orange-500", url: "https://instagram.com/frimattechnologies" }
-                ].map((social, index) => {
+              <div className="grid grid-cols-2 gap-3">
+                {socialLinks.map((social, index) => {
                   const Icon = social.icon;
                   return (
-                    <a 
+                    <motion.a 
                       key={index}
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`flex items-center gap-3 p-4 rounded-xl bg-gradient-to-r ${social.color} text-white hover-scale group`}
+                      className={`flex items-center gap-3 p-4 rounded-xl bg-gradient-to-r ${social.color} text-white group`}
+                      whileHover={{ scale: 1.05, y: -2 }}
+                      whileTap={{ scale: 0.95 }}
                     >
                       <Icon size={20} />
                       <span className="font-medium">{social.name}</span>
-                    </a>
+                    </motion.a>
                   );
                 })}
               </div>
-            </div>
+            </motion.div>
 
             {/* Quick Response Promise */}
-            <div className="glass-card text-center">
-              <div className="p-3 rounded-xl bg-gradient-to-br from-accent to-primary w-fit mx-auto mb-4">
-                <Send className="text-accent-foreground" size={24} />
+            <motion.div 
+              className="glass-card text-center relative overflow-hidden"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5" />
+              <div className="relative z-10">
+                <motion.div 
+                  className="p-4 rounded-full bg-gradient-to-br from-accent to-primary w-fit mx-auto mb-4"
+                  animate={{ 
+                    scale: [1, 1.1, 1],
+                    rotate: [0, 5, -5, 0]
+                  }}
+                  transition={{ duration: 3, repeat: Infinity }}
+                >
+                  <Sparkles className="text-accent-foreground" size={28} />
+                </motion.div>
+                <h3 className="text-xl font-bold text-foreground mb-2">
+                  Quick Response Guarantee
+                </h3>
+                <p className="text-muted-foreground">
+                  We value your time. All inquiries receive a response within <span className="text-primary font-semibold">2 hours</span> during business hours.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-2">
-                Quick Response Guarantee
-              </h3>
-              <p className="text-muted-foreground">
-                We value your time. All inquiries receive a response within 2 hours during business hours.
-              </p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>
