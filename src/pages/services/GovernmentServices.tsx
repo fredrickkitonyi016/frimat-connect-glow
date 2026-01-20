@@ -32,7 +32,7 @@ const governmentServices = [
     icon: Heart,
     description: "Health insurance registration, card replacement, and dependent management",
     services: ["New Member Registration", "Card Replacement", "Add Dependents", "Check Contributions", "Hospital Accreditation"],
-    portalUrl: "https://www.sha.go.ke",
+    portalUrl: "https://sha.go.ke",
     assistancePrice: "KSh 300",
     color: "from-red-500 to-red-700"
   },
