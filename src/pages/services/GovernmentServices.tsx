@@ -1,4 +1,4 @@
-import { ArrowLeft, ExternalLink, FileText, GraduationCap, Heart, Building2, Shield, Users } from "lucide-react";
+import { ArrowLeft, ExternalLink, FileText, GraduationCap, Heart, Building2, Shield, Users, Car, Fingerprint, Plane, Briefcase, Scale, Home, Baby, Landmark, Globe, BookOpen, Wifi, CreditCard, Building, TreePine } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
@@ -65,6 +65,146 @@ const governmentServices = [
     portalUrl: "https://shif.sha.go.ke",
     assistancePrice: "KSh 300",
     color: "from-teal-500 to-teal-700"
+  },
+  {
+    name: "NTSA",
+    fullName: "National Transport and Safety Authority",
+    icon: Car,
+    description: "Driving license applications, vehicle registration, and PSV permits",
+    services: ["Driving License Application", "Interim License", "License Renewal", "Vehicle Registration", "PSV Permits", "Logbook Transfer"],
+    portalUrl: "https://tims.ntsa.go.ke",
+    assistancePrice: "KSh 500",
+    color: "from-amber-500 to-amber-700"
+  },
+  {
+    name: "DCI",
+    fullName: "Directorate of Criminal Investigations",
+    icon: Fingerprint,
+    description: "Certificate of Good Conduct applications and criminal background checks",
+    services: ["Good Conduct Certificate", "Background Check", "Police Clearance", "Status Check", "Appointment Booking"],
+    portalUrl: "https://ecitizen.go.ke/good-conduct",
+    assistancePrice: "KSh 500",
+    color: "from-slate-500 to-slate-700"
+  },
+  {
+    name: "Immigration",
+    fullName: "Department of Immigration Services",
+    icon: Plane,
+    description: "Passport applications, visa services, and foreign national permits",
+    services: ["Passport Application", "Passport Renewal", "Visa Application", "Work Permit", "Special Pass", "Alien Card"],
+    portalUrl: "https://fns.immigration.go.ke",
+    assistancePrice: "KSh 500",
+    color: "from-sky-500 to-sky-700"
+  },
+  {
+    name: "BRS",
+    fullName: "Business Registration Service",
+    icon: Briefcase,
+    description: "Company registration, business name search, and compliance certificates",
+    services: ["Company Registration", "Business Name Registration", "Name Search", "CR12 Certificate", "Annual Returns", "Director Changes"],
+    portalUrl: "https://brs.go.ke",
+    assistancePrice: "KSh 500",
+    color: "from-indigo-500 to-indigo-700"
+  },
+  {
+    name: "Judiciary",
+    fullName: "Kenya Judiciary e-Filing",
+    icon: Scale,
+    description: "Court case filing, case tracking, and legal document submissions",
+    services: ["Case Filing", "Case Search", "Document Filing", "Court Fees Payment", "Hearing Dates", "Judgment Search"],
+    portalUrl: "https://efiling.judiciary.go.ke",
+    assistancePrice: "KSh 500",
+    color: "from-rose-500 to-rose-700"
+  },
+  {
+    name: "Lands Ministry",
+    fullName: "Ministry of Lands - Ardhisasa",
+    icon: Home,
+    description: "Land registration, title deed search, and property transactions",
+    services: ["Title Search", "Land Registration", "Title Deed Application", "Land Rates", "Survey Maps", "Consent to Transfer"],
+    portalUrl: "https://ardhisasa.lands.go.ke",
+    assistancePrice: "KSh 500",
+    color: "from-emerald-500 to-emerald-700"
+  },
+  {
+    name: "Civil Registration",
+    fullName: "Department of Civil Registration",
+    icon: Baby,
+    description: "Birth certificates, death certificates, and vital statistics",
+    services: ["Birth Certificate", "Death Certificate", "Late Registration", "Adoption Certificate", "Name Change", "Correction of Particulars"],
+    portalUrl: "https://crs.ecitizen.go.ke",
+    assistancePrice: "KSh 300",
+    color: "from-pink-500 to-pink-700"
+  },
+  {
+    name: "CBK",
+    fullName: "Central Bank of Kenya",
+    icon: Landmark,
+    description: "Foreign exchange rates, banking licenses, and monetary services",
+    services: ["Exchange Rates", "Bank Licensing", "Money Remittance", "Credit Reference", "Currency Information"],
+    portalUrl: "https://www.centralbank.go.ke",
+    assistancePrice: "KSh 300",
+    color: "from-yellow-500 to-yellow-700"
+  },
+  {
+    name: "KEPHIS",
+    fullName: "Kenya Plant Health Inspectorate Service",
+    icon: TreePine,
+    description: "Plant health certification, seed inspection, and phytosanitary services",
+    services: ["Phytosanitary Certificate", "Seed Certification", "Plant Import Permit", "Pesticide Registration", "Produce Inspection"],
+    portalUrl: "https://kephisportal.kephis.org",
+    assistancePrice: "KSh 500",
+    color: "from-lime-500 to-lime-700"
+  },
+  {
+    name: "KIPI",
+    fullName: "Kenya Industrial Property Institute",
+    icon: BookOpen,
+    description: "Trademark registration, patent applications, and intellectual property",
+    services: ["Trademark Registration", "Patent Application", "Industrial Design", "Copyright", "IP Search", "Brand Protection"],
+    portalUrl: "https://kipi.go.ke",
+    assistancePrice: "KSh 500",
+    color: "from-violet-500 to-violet-700"
+  },
+  {
+    name: "CA",
+    fullName: "Communications Authority of Kenya",
+    icon: Wifi,
+    description: "Frequency allocation, broadcasting licenses, and telecom regulation",
+    services: ["Frequency License", "Broadcasting License", "Type Approval", "Domain Registration", "Equipment Authorization"],
+    portalUrl: "https://ca.go.ke",
+    assistancePrice: "KSh 500",
+    color: "from-cyan-500 to-cyan-700"
+  },
+  {
+    name: "NHIF Legacy",
+    fullName: "National Hospital Insurance Fund (Legacy)",
+    icon: CreditCard,
+    description: "Access legacy NHIF services and contribution history",
+    services: ["Contribution History", "Legacy Claims", "Member Statement", "Card Status", "Employer Remittance"],
+    portalUrl: "https://www.nhif.or.ke",
+    assistancePrice: "KSh 200",
+    color: "from-red-400 to-red-600"
+  },
+  {
+    name: "NEMA",
+    fullName: "National Environment Management Authority",
+    icon: Globe,
+    description: "Environmental impact assessments and compliance certificates",
+    services: ["EIA License", "Environmental Audit", "Effluent Discharge", "Noise Permit", "NEMA Compliance"],
+    portalUrl: "https://portal.nema.go.ke",
+    assistancePrice: "KSh 500",
+    color: "from-green-600 to-green-800"
+  },
+  {
+    name: "County Services",
+    fullName: "Nairobi County e-Services",
+    icon: Building,
+    description: "County permits, licenses, and local government services",
+    services: ["Single Business Permit", "Building Plans Approval", "Land Rates", "Parking Permits", "Advertisement License"],
+    portalUrl: "https://eservices.nairobi.go.ke",
+    assistancePrice: "KSh 500",
+    color: "from-blue-600 to-blue-800"
   }
 ];
 
