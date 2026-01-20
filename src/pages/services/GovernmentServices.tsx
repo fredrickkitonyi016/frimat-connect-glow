@@ -1,8 +1,22 @@
-import { ArrowLeft, ExternalLink, FileText, GraduationCap, Heart, Building2, Shield, Users, Car, Fingerprint, Plane, Briefcase, Scale, Home, Baby, Landmark, Globe, BookOpen, Wifi, CreditCard, Building, TreePine } from "lucide-react";
+import { useState, useMemo } from "react";
+import { ArrowLeft, ExternalLink, FileText, GraduationCap, Heart, Building2, Shield, Users, Car, Fingerprint, Plane, Briefcase, Scale, Home, Baby, Landmark, Globe, BookOpen, Wifi, CreditCard, Building, TreePine, Search, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { motion, AnimatePresence } from "framer-motion";
+
+// Categories for filtering
+const categories = [
+  { id: "all", name: "All Services" },
+  { id: "tax", name: "Tax & Revenue" },
+  { id: "health", name: "Health & Insurance" },
+  { id: "identity", name: "Identity & Immigration" },
+  { id: "business", name: "Business & Legal" },
+  { id: "property", name: "Property & Land" },
+  { id: "regulatory", name: "Regulatory & Compliance" },
+];
 
 // Government service portals
 const governmentServices = [
@@ -10,6 +24,7 @@ const governmentServices = [
     name: "KRA iTax",
     fullName: "Kenya Revenue Authority - iTax Portal",
     icon: FileText,
+    category: "tax",
     description: "File tax returns, apply for KRA PIN, get tax compliance certificates",
     services: ["PIN Application", "Nil Returns Filing", "Income Tax Filing", "Tax Compliance Certificate", "VAT Registration"],
     portalUrl: "https://itax.kra.go.ke",
@@ -20,6 +35,7 @@ const governmentServices = [
     name: "HELB",
     fullName: "Higher Education Loans Board",
     icon: GraduationCap,
+    category: "regulatory",
     description: "Student loan applications, status checks, and clearance certificates",
     services: ["Loan Application", "Loan Status Check", "Clearance Certificate", "Repayment Schedule", "Employer Deduction"],
     portalUrl: "https://www.helb.co.ke",
@@ -30,6 +46,7 @@ const governmentServices = [
     name: "SHA",
     fullName: "Social Health Authority (formerly NHIF)",
     icon: Heart,
+    category: "health",
     description: "Health insurance registration, card replacement, and dependent management",
     services: ["New Member Registration", "Card Replacement", "Add Dependents", "Check Contributions", "Hospital Accreditation"],
     portalUrl: "https://sha.go.ke",
@@ -40,6 +57,7 @@ const governmentServices = [
     name: "NSSF",
     fullName: "National Social Security Fund",
     icon: Shield,
+    category: "health",
     description: "Social security registration, contribution statements, and benefits claims",
     services: ["Member Registration", "Statement Request", "Benefits Claims", "Contribution Check", "Employer Registration"],
     portalUrl: "https://www.nssf.or.ke",
@@ -50,6 +68,7 @@ const governmentServices = [
     name: "e-Citizen",
     fullName: "Kenya e-Citizen Portal",
     icon: Building2,
+    category: "identity",
     description: "Access various government services including passport, ID, and business registration",
     services: ["Passport Application", "ID Application", "Business Registration", "Good Conduct", "Birth Certificate"],
     portalUrl: "https://www.ecitizen.go.ke",
@@ -60,6 +79,7 @@ const governmentServices = [
     name: "SHIF",
     fullName: "Social Health Insurance Fund",
     icon: Users,
+    category: "health",
     description: "Universal health coverage registration and management",
     services: ["SHIF Registration", "Contribution Payment", "Benefits Check", "Facility Selection", "Claims Status"],
     portalUrl: "https://shif.sha.go.ke",
@@ -70,6 +90,7 @@ const governmentServices = [
     name: "NTSA",
     fullName: "National Transport and Safety Authority",
     icon: Car,
+    category: "regulatory",
     description: "Driving license applications, vehicle registration, and PSV permits",
     services: ["Driving License Application", "Interim License", "License Renewal", "Vehicle Registration", "PSV Permits", "Logbook Transfer"],
     portalUrl: "https://tims.ntsa.go.ke",
@@ -80,6 +101,7 @@ const governmentServices = [
     name: "DCI",
     fullName: "Directorate of Criminal Investigations",
     icon: Fingerprint,
+    category: "identity",
     description: "Certificate of Good Conduct applications and criminal background checks",
     services: ["Good Conduct Certificate", "Background Check", "Police Clearance", "Status Check", "Appointment Booking"],
     portalUrl: "https://ecitizen.go.ke/good-conduct",
@@ -90,6 +112,7 @@ const governmentServices = [
     name: "Immigration",
     fullName: "Department of Immigration Services",
     icon: Plane,
+    category: "identity",
     description: "Passport applications, visa services, and foreign national permits",
     services: ["Passport Application", "Passport Renewal", "Visa Application", "Work Permit", "Special Pass", "Alien Card"],
     portalUrl: "https://fns.immigration.go.ke",
@@ -100,6 +123,7 @@ const governmentServices = [
     name: "BRS",
     fullName: "Business Registration Service",
     icon: Briefcase,
+    category: "business",
     description: "Company registration, business name search, and compliance certificates",
     services: ["Company Registration", "Business Name Registration", "Name Search", "CR12 Certificate", "Annual Returns", "Director Changes"],
     portalUrl: "https://brs.go.ke",
@@ -110,6 +134,7 @@ const governmentServices = [
     name: "Judiciary",
     fullName: "Kenya Judiciary e-Filing",
     icon: Scale,
+    category: "business",
     description: "Court case filing, case tracking, and legal document submissions",
     services: ["Case Filing", "Case Search", "Document Filing", "Court Fees Payment", "Hearing Dates", "Judgment Search"],
     portalUrl: "https://efiling.judiciary.go.ke",
@@ -120,6 +145,7 @@ const governmentServices = [
     name: "Lands Ministry",
     fullName: "Ministry of Lands - Ardhisasa",
     icon: Home,
+    category: "property",
     description: "Land registration, title deed search, and property transactions",
     services: ["Title Search", "Land Registration", "Title Deed Application", "Land Rates", "Survey Maps", "Consent to Transfer"],
     portalUrl: "https://ardhisasa.lands.go.ke",
@@ -130,6 +156,7 @@ const governmentServices = [
     name: "Civil Registration",
     fullName: "Department of Civil Registration",
     icon: Baby,
+    category: "identity",
     description: "Birth certificates, death certificates, and vital statistics",
     services: ["Birth Certificate", "Death Certificate", "Late Registration", "Adoption Certificate", "Name Change", "Correction of Particulars"],
     portalUrl: "https://crs.ecitizen.go.ke",
@@ -140,6 +167,7 @@ const governmentServices = [
     name: "CBK",
     fullName: "Central Bank of Kenya",
     icon: Landmark,
+    category: "regulatory",
     description: "Foreign exchange rates, banking licenses, and monetary services",
     services: ["Exchange Rates", "Bank Licensing", "Money Remittance", "Credit Reference", "Currency Information"],
     portalUrl: "https://www.centralbank.go.ke",
@@ -150,6 +178,7 @@ const governmentServices = [
     name: "KEPHIS",
     fullName: "Kenya Plant Health Inspectorate Service",
     icon: TreePine,
+    category: "regulatory",
     description: "Plant health certification, seed inspection, and phytosanitary services",
     services: ["Phytosanitary Certificate", "Seed Certification", "Plant Import Permit", "Pesticide Registration", "Produce Inspection"],
     portalUrl: "https://kephisportal.kephis.org",
@@ -160,6 +189,7 @@ const governmentServices = [
     name: "KIPI",
     fullName: "Kenya Industrial Property Institute",
     icon: BookOpen,
+    category: "business",
     description: "Trademark registration, patent applications, and intellectual property",
     services: ["Trademark Registration", "Patent Application", "Industrial Design", "Copyright", "IP Search", "Brand Protection"],
     portalUrl: "https://kipi.go.ke",
@@ -170,6 +200,7 @@ const governmentServices = [
     name: "CA",
     fullName: "Communications Authority of Kenya",
     icon: Wifi,
+    category: "regulatory",
     description: "Frequency allocation, broadcasting licenses, and telecom regulation",
     services: ["Frequency License", "Broadcasting License", "Type Approval", "Domain Registration", "Equipment Authorization"],
     portalUrl: "https://ca.go.ke",
@@ -180,6 +211,7 @@ const governmentServices = [
     name: "NHIF Legacy",
     fullName: "National Hospital Insurance Fund (Legacy)",
     icon: CreditCard,
+    category: "health",
     description: "Access legacy NHIF services and contribution history",
     services: ["Contribution History", "Legacy Claims", "Member Statement", "Card Status", "Employer Remittance"],
     portalUrl: "https://www.nhif.or.ke",
@@ -190,6 +222,7 @@ const governmentServices = [
     name: "NEMA",
     fullName: "National Environment Management Authority",
     icon: Globe,
+    category: "regulatory",
     description: "Environmental impact assessments and compliance certificates",
     services: ["EIA License", "Environmental Audit", "Effluent Discharge", "Noise Permit", "NEMA Compliance"],
     portalUrl: "https://portal.nema.go.ke",
@@ -200,6 +233,7 @@ const governmentServices = [
     name: "County Services",
     fullName: "Nairobi County e-Services",
     icon: Building,
+    category: "property",
     description: "County permits, licenses, and local government services",
     services: ["Single Business Permit", "Building Plans Approval", "Land Rates", "Parking Permits", "Advertisement License"],
     portalUrl: "https://eservices.nairobi.go.ke",
@@ -210,6 +244,23 @@ const governmentServices = [
 
 export default function GovernmentServices() {
   const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState("");
+  const [activeCategory, setActiveCategory] = useState("all");
+
+  // Filter services based on search and category
+  const filteredServices = useMemo(() => {
+    return governmentServices.filter((service) => {
+      const matchesSearch = 
+        service.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        service.fullName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        service.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        service.services.some(s => s.toLowerCase().includes(searchQuery.toLowerCase()));
+      
+      const matchesCategory = activeCategory === "all" || service.category === activeCategory;
+      
+      return matchesSearch && matchesCategory;
+    });
+  }, [searchQuery, activeCategory]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -248,83 +299,170 @@ export default function GovernmentServices() {
               </span>
             </h1>
             
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
               Access essential government services with our professional assistance. 
               We help you navigate KRA iTax, HELB, SHA, and more.
             </p>
+
+            {/* Search Bar */}
+            <div className="max-w-xl mx-auto relative">
+              <div className="relative">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground" size={20} />
+                <Input
+                  type="text"
+                  placeholder="Search for a service (e.g., KRA, passport, driving license...)"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="pl-12 pr-10 py-6 text-lg bg-background/80 backdrop-blur-sm border-primary/20 focus:border-primary"
+                />
+                {searchQuery && (
+                  <button
+                    onClick={() => setSearchQuery("")}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    <X size={18} />
+                  </button>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Category Filter */}
+      <section className="py-6 border-b border-border/50 sticky top-20 bg-background/95 backdrop-blur-sm z-40">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-wrap gap-2 justify-center">
+            {categories.map((category) => (
+              <button
+                key={category.id}
+                onClick={() => setActiveCategory(category.id)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                  activeCategory === category.id
+                    ? "bg-primary text-primary-foreground shadow-lg shadow-primary/25"
+                    : "bg-muted text-muted-foreground hover:bg-primary/10 hover:text-primary"
+                }`}
+              >
+                {category.name}
+              </button>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Services Grid */}
-      <section className="py-20">
+      <section className="py-12">
         <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {governmentServices.map((service, index) => {
-              const Icon = service.icon;
-              return (
-                <div 
-                  key={index}
-                  className="glass-card group hover:border-primary/50 transition-all duration-300 overflow-hidden"
-                >
-                  {/* Header with gradient */}
-                  <div className={`bg-gradient-to-r ${service.color} p-6 -m-6 mb-6`}>
-                    <div className="flex items-center justify-between">
-                      <div className="p-3 rounded-xl bg-white/20 backdrop-blur-sm">
-                        <Icon className="text-white" size={28} />
-                      </div>
-                      <span className="text-white/80 text-sm font-medium">
-                        Assistance: {service.assistancePrice}
-                      </span>
-                    </div>
-                    <h3 className="text-2xl font-bold text-white mt-4">{service.name}</h3>
-                    <p className="text-white/80 text-sm">{service.fullName}</p>
-                  </div>
-
-                  {/* Content */}
-                  <div className="space-y-4 pt-2">
-                    <p className="text-muted-foreground">{service.description}</p>
-                    
-                    {/* Services List */}
-                    <div className="space-y-2">
-                      <h4 className="font-semibold text-foreground text-sm">Available Services:</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {service.services.map((item, idx) => (
-                          <span 
-                            key={idx}
-                            className="px-2 py-1 rounded-md bg-muted text-muted-foreground text-xs"
-                          >
-                            {item}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Actions */}
-                    <div className="flex gap-3 pt-4">
-                      <a
-                        href={service.portalUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex-1"
-                      >
-                        <Button variant="glass" className="w-full group/btn">
-                          Visit Portal
-                          <ExternalLink size={16} className="ml-2 group-hover/btn:translate-x-1 transition-transform" />
-                        </Button>
-                      </a>
-                      <Button 
-                        variant="hero"
-                        onClick={() => navigate('/#contact')}
-                      >
-                        Get Help
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+          {/* Results count */}
+          <div className="mb-6 text-muted-foreground">
+            Showing {filteredServices.length} of {governmentServices.length} services
+            {searchQuery && <span className="ml-1">for "<span className="text-primary font-medium">{searchQuery}</span>"</span>}
           </div>
+
+          <AnimatePresence mode="wait">
+            {filteredServices.length > 0 ? (
+              <motion.div 
+                key="results"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+              >
+                {filteredServices.map((service, index) => {
+                  const Icon = service.icon;
+                  return (
+                    <motion.div 
+                      key={service.name}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.05 }}
+                      className="glass-card group hover:border-primary/50 transition-all duration-300 overflow-hidden"
+                    >
+                      {/* Header with gradient */}
+                      <div className={`bg-gradient-to-r ${service.color} p-6 -m-6 mb-6`}>
+                        <div className="flex items-center justify-between">
+                          <div className="p-3 rounded-xl bg-white/20 backdrop-blur-sm">
+                            <Icon className="text-white" size={28} />
+                          </div>
+                          <span className="text-white/80 text-sm font-medium">
+                            Assistance: {service.assistancePrice}
+                          </span>
+                        </div>
+                        <h3 className="text-2xl font-bold text-white mt-4">{service.name}</h3>
+                        <p className="text-white/80 text-sm">{service.fullName}</p>
+                      </div>
+
+                      {/* Content */}
+                      <div className="space-y-4 pt-2">
+                        <p className="text-muted-foreground">{service.description}</p>
+                        
+                        {/* Services List */}
+                        <div className="space-y-2">
+                          <h4 className="font-semibold text-foreground text-sm">Available Services:</h4>
+                          <div className="flex flex-wrap gap-2">
+                            {service.services.map((item, idx) => (
+                              <span 
+                                key={idx}
+                                className="px-2 py-1 rounded-md bg-muted text-muted-foreground text-xs"
+                              >
+                                {item}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Actions */}
+                        <div className="flex gap-3 pt-4">
+                          <a
+                            href={service.portalUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex-1"
+                          >
+                            <Button variant="glass" className="w-full group/btn">
+                              Visit Portal
+                              <ExternalLink size={16} className="ml-2 group-hover/btn:translate-x-1 transition-transform" />
+                            </Button>
+                          </a>
+                          <Button 
+                            variant="hero"
+                            onClick={() => navigate('/#contact')}
+                          >
+                            Get Help
+                          </Button>
+                        </div>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </motion.div>
+            ) : (
+              <motion.div 
+                key="no-results"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                className="text-center py-16"
+              >
+                <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-muted flex items-center justify-center">
+                  <Search className="w-10 h-10 text-muted-foreground" />
+                </div>
+                <h3 className="text-2xl font-semibold mb-2">No services found</h3>
+                <p className="text-muted-foreground mb-6">
+                  Try adjusting your search or filter to find what you're looking for.
+                </p>
+                <Button 
+                  variant="glass" 
+                  onClick={() => {
+                    setSearchQuery("");
+                    setActiveCategory("all");
+                  }}
+                >
+                  Clear filters
+                </Button>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </section>
 
