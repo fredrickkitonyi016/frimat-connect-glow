@@ -1,4 +1,4 @@
-import { ArrowLeft, Globe, Smartphone, Cloud, Shield, Monitor, ShoppingBag, Printer, Building2, Code, Palette, Database, Server } from "lucide-react";
+import { ArrowLeft, Globe, Smartphone, Cloud, Shield, Monitor, ShoppingBag, Printer, Building2, Code, Palette, Database, Server, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate, Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
@@ -21,7 +21,8 @@ const allServices = [
     image: webDevService,
     href: "/services/web-development",
     pricing: "Starting from KSh 25,000",
-    features: ["Responsive Design", "CMS Integration", "SEO Optimization", "E-commerce Ready"]
+    features: ["Responsive Design", "CMS Integration", "SEO Optimization", "E-commerce Ready"],
+    gradient: "from-blue-500 to-cyan-500"
   },
   {
     title: "Mobile Apps",
@@ -30,7 +31,8 @@ const allServices = [
     image: mobileAppService,
     href: "/services/mobile-apps",
     pricing: "Starting from KSh 100,000",
-    features: ["iOS & Android", "Cross-platform", "App Store Optimization", "Push Notifications"]
+    features: ["iOS & Android", "Cross-platform", "App Store Optimization", "Push Notifications"],
+    gradient: "from-purple-500 to-pink-500"
   },
   {
     title: "Cloud Services",
@@ -39,7 +41,8 @@ const allServices = [
     image: cloudService,
     href: "/services/cloud-services",
     pricing: "Starting from KSh 30,000/month",
-    features: ["AWS & Azure", "Cloud Migration", "Auto-scaling", "Backup & Recovery"]
+    features: ["AWS & Azure", "Cloud Migration", "Auto-scaling", "Backup & Recovery"],
+    gradient: "from-sky-500 to-indigo-500"
   },
   {
     title: "Cybersecurity",
@@ -48,7 +51,8 @@ const allServices = [
     image: cybersecurityService,
     href: "/services/cybersecurity",
     pricing: "Starting from KSh 25,000",
-    features: ["Security Audits", "Penetration Testing", "Compliance", "24/7 Monitoring"]
+    features: ["Security Audits", "Penetration Testing", "Compliance", "24/7 Monitoring"],
+    gradient: "from-red-500 to-orange-500"
   },
   {
     title: "IT Support",
@@ -57,7 +61,8 @@ const allServices = [
     image: itSupportService,
     href: "/services/it-support",
     pricing: "Starting from KSh 15,000/month",
-    features: ["24/7 Support", "Network Management", "System Monitoring", "On-site & Remote"]
+    features: ["24/7 Support", "Network Management", "System Monitoring", "On-site & Remote"],
+    gradient: "from-green-500 to-emerald-500"
   },
   {
     title: "E-commerce",
@@ -66,7 +71,8 @@ const allServices = [
     image: ecommerceService,
     href: "/services/ecommerce",
     pricing: "Starting from KSh 75,000",
-    features: ["Online Stores", "Payment Integration", "Inventory System", "Analytics"]
+    features: ["Online Stores", "Payment Integration", "Inventory System", "Analytics"],
+    gradient: "from-amber-500 to-yellow-500"
   },
   {
     title: "Cyber Cafe Services",
@@ -75,7 +81,8 @@ const allServices = [
     image: itSupportService,
     href: "/services/cyber-cafe",
     pricing: "Starting from KSh 10/page",
-    features: ["Printing & Scanning", "Internet Access", "CV Writing", "Government Services"]
+    features: ["Printing & Scanning", "Internet Access", "CV Writing", "Government Services"],
+    gradient: "from-teal-500 to-cyan-500"
   },
   {
     title: "Government Services",
@@ -84,7 +91,8 @@ const allServices = [
     image: itSupportService,
     href: "/services/government-services",
     pricing: "KSh 200 - 500",
-    features: ["KRA iTax", "HELB Applications", "SHA Registration", "e-Citizen Services"]
+    features: ["KRA iTax", "HELB Applications", "SHA Registration", "e-Citizen Services"],
+    gradient: "from-rose-500 to-red-500"
   },
   {
     title: "Custom Development",
@@ -93,7 +101,8 @@ const allServices = [
     image: webDevService,
     href: "/services/custom-development",
     pricing: "Project-based",
-    features: ["Custom Software", "API Development", "Automation", "System Integration"]
+    features: ["Custom Software", "API Development", "Automation", "System Integration"],
+    gradient: "from-violet-500 to-purple-500"
   },
   {
     title: "Cloud Migration",
@@ -102,7 +111,8 @@ const allServices = [
     image: cloudService,
     href: "/services/cloud-migration",
     pricing: "Starting from KSh 50,000",
-    features: ["Assessment", "Migration Planning", "Data Transfer", "Training"]
+    features: ["Assessment", "Migration Planning", "Data Transfer", "Training"],
+    gradient: "from-indigo-500 to-blue-500"
   },
   {
     title: "UI/UX Design",
@@ -111,7 +121,8 @@ const allServices = [
     image: webDevService,
     href: "/services/web-development",
     pricing: "Starting from KSh 30,000",
-    features: ["Wireframing", "Prototyping", "Visual Design", "User Testing"]
+    features: ["Wireframing", "Prototyping", "Visual Design", "User Testing"],
+    gradient: "from-pink-500 to-rose-500"
   },
   {
     title: "Database Solutions",
@@ -120,7 +131,8 @@ const allServices = [
     image: cloudService,
     href: "/services/cloud-services",
     pricing: "Starting from KSh 25,000",
-    features: ["Database Design", "Optimization", "Migration", "Backup Systems"]
+    features: ["Database Design", "Optimization", "Migration", "Backup Systems"],
+    gradient: "from-emerald-500 to-teal-500"
   }
 ];
 
@@ -176,64 +188,99 @@ export default function AllServices() {
               return (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.05 }}
-                  whileHover={{ y: -8 }}
-                  className="glass-card group overflow-hidden"
                 >
-                  {/* Image */}
-                  <div className="relative -mx-6 -mt-6 mb-4 overflow-hidden">
-                    <img 
-                      src={service.image} 
-                      alt={service.title}
-                      className="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/30 to-transparent" />
-                    <div className="absolute bottom-3 left-4">
-                      <div className="p-2.5 rounded-xl bg-primary/90 backdrop-blur-sm">
-                        <Icon className="text-primary-foreground" size={24} />
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="space-y-4">
-                    <div>
-                      <h3 className="text-xl font-bold text-foreground mb-2">
-                        {service.title}
-                      </h3>
-                      <p className="text-sm text-muted-foreground line-clamp-3">
-                        {service.description}
-                      </p>
-                    </div>
-
-                    {/* Features */}
-                    <div className="flex flex-wrap gap-2">
-                      {service.features.map((feature, idx) => (
-                        <span 
-                          key={idx}
-                          className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full"
+                  <Link to={service.href} className="block h-full">
+                    <motion.div 
+                      className="glass-card group overflow-hidden h-full relative"
+                      whileHover={{ y: -8, scale: 1.02 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    >
+                      {/* Image with overlay */}
+                      <div className="relative -mx-6 -mt-6 mb-4 overflow-hidden">
+                        <motion.img 
+                          src={service.image} 
+                          alt={service.title}
+                          className="w-full h-44 object-cover"
+                          whileHover={{ scale: 1.1 }}
+                          transition={{ duration: 0.6 }}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+                        
+                        {/* Animated Icon */}
+                        <motion.div 
+                          className="absolute bottom-3 left-4"
+                          whileHover={{ scale: 1.1, rotate: 5 }}
+                          transition={{ type: "spring", stiffness: 400 }}
                         >
-                          {feature}
-                        </span>
-                      ))}
-                    </div>
+                          <div className={`p-3 rounded-xl bg-gradient-to-br ${service.gradient} shadow-lg shadow-primary/20`}>
+                            <Icon className="text-white" size={26} />
+                          </div>
+                        </motion.div>
+                        
+                        {/* Hover shine effect */}
+                        <motion.div 
+                          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
+                        />
+                      </div>
 
-                    {/* Pricing */}
-                    <div className="p-3 rounded-xl bg-accent/10 border border-accent/20">
-                      <span className="text-accent font-bold">{service.pricing}</span>
-                    </div>
+                      {/* Content */}
+                      <div className="space-y-4">
+                        <div>
+                          <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
+                            {service.title}
+                          </h3>
+                          <p className="text-sm text-muted-foreground line-clamp-3">
+                            {service.description}
+                          </p>
+                        </div>
 
-                    {/* CTA */}
-                    <Link to={service.href}>
-                      <Button variant="glass" className="w-full group">
-                        Learn More
-                        <ArrowLeft className="ml-2 rotate-180 group-hover:translate-x-1 transition-transform" size={16} />
-                      </Button>
-                    </Link>
-                  </div>
+                        {/* Features with stagger animation */}
+                        <div className="flex flex-wrap gap-2">
+                          {service.features.map((feature, idx) => (
+                            <motion.span 
+                              key={idx}
+                              className="px-2.5 py-1 bg-primary/10 text-primary text-xs rounded-full border border-primary/20 group-hover:bg-primary/20 transition-colors duration-300"
+                              initial={{ opacity: 0, scale: 0.8 }}
+                              whileInView={{ opacity: 1, scale: 1 }}
+                              viewport={{ once: true }}
+                              transition={{ delay: index * 0.05 + idx * 0.05 }}
+                            >
+                              {feature}
+                            </motion.span>
+                          ))}
+                        </div>
+
+                        {/* Pricing with glow effect */}
+                        <motion.div 
+                          className="p-3 rounded-xl bg-accent/10 border border-accent/20 group-hover:border-accent/40 group-hover:shadow-lg group-hover:shadow-accent/10 transition-all duration-300"
+                          whileHover={{ scale: 1.02 }}
+                        >
+                          <span className="text-accent font-bold">{service.pricing}</span>
+                        </motion.div>
+
+                        {/* CTA with arrow animation */}
+                        <div className="pt-2">
+                          <div className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg bg-primary/10 text-primary font-medium group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                            Learn More
+                            <motion.span
+                              className="inline-block"
+                              initial={{ x: 0 }}
+                              whileHover={{ x: 5 }}
+                            >
+                              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
+                            </motion.span>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      {/* Corner accent */}
+                      <div className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl ${service.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-bl-full`} />
+                    </motion.div>
+                  </Link>
                 </motion.div>
               );
             })}
