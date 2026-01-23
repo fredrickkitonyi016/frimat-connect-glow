@@ -43,23 +43,23 @@ import {
   Database
 } from "lucide-react";
 
-// Mega menu data structure
+// Mega menu data structure with gradients matching AllServices page
 const megaMenuData = {
   services: {
     title: "Services",
     items: [
-      { name: "Web Development", href: "/services/web-development", icon: Globe, description: "Custom websites & web apps" },
-      { name: "Mobile Apps", href: "/services/mobile-apps", icon: Smartphone, description: "iOS & Android applications" },
-      { name: "Cloud Services", href: "/services/cloud-services", icon: Cloud, description: "AWS, Azure & cloud infrastructure" },
-      { name: "Cybersecurity", href: "/services/cybersecurity", icon: Shield, description: "Protect your digital assets" },
-      { name: "IT Support", href: "/services/it-support", icon: Monitor, description: "24/7 technical assistance" },
-      { name: "E-commerce", href: "/services/ecommerce", icon: ShoppingBag, description: "Online store solutions" },
-      { name: "Cyber Cafe", href: "/services/cyber-cafe", icon: Printer, description: "Digital service center" },
-      { name: "Government Services", href: "/services/government-services", icon: Building2, description: "KRA, HELB, SHA portals" },
-      { name: "Custom Development", href: "/services/custom-development", icon: Code, description: "Bespoke software solutions" },
-      { name: "Cloud Migration", href: "/services/cloud-migration", icon: Server, description: "Seamless cloud transitions" },
-      { name: "UI/UX Design", href: "/services/web-development", icon: Palette, description: "Beautiful digital experiences" },
-      { name: "Database Solutions", href: "/services/cloud-services", icon: Database, description: "Scalable data management" },
+      { name: "Web Development", href: "/services/web-development", icon: Globe, description: "Custom websites & web apps", gradient: "from-blue-500 to-cyan-500" },
+      { name: "Mobile Apps", href: "/services/mobile-apps", icon: Smartphone, description: "iOS & Android applications", gradient: "from-purple-500 to-pink-500" },
+      { name: "Cloud Services", href: "/services/cloud-services", icon: Cloud, description: "AWS, Azure & cloud infrastructure", gradient: "from-sky-500 to-indigo-500" },
+      { name: "Cybersecurity", href: "/services/cybersecurity", icon: Shield, description: "Protect your digital assets", gradient: "from-red-500 to-orange-500" },
+      { name: "IT Support", href: "/services/it-support", icon: Monitor, description: "24/7 technical assistance", gradient: "from-green-500 to-emerald-500" },
+      { name: "E-commerce", href: "/services/ecommerce", icon: ShoppingBag, description: "Online store solutions", gradient: "from-amber-500 to-yellow-500" },
+      { name: "Cyber Cafe", href: "/services/cyber-cafe", icon: Printer, description: "Digital service center", gradient: "from-teal-500 to-cyan-500" },
+      { name: "Government Services", href: "/services/government-services", icon: Building2, description: "KRA, HELB, SHA portals", gradient: "from-rose-500 to-red-500" },
+      { name: "Custom Development", href: "/services/custom-development", icon: Code, description: "Bespoke software solutions", gradient: "from-violet-500 to-purple-500" },
+      { name: "Cloud Migration", href: "/services/cloud-migration", icon: Server, description: "Seamless cloud transitions", gradient: "from-indigo-500 to-blue-500" },
+      { name: "UI/UX Design", href: "/services/web-development", icon: Palette, description: "Beautiful digital experiences", gradient: "from-pink-500 to-rose-500" },
+      { name: "Database Solutions", href: "/services/cloud-services", icon: Database, description: "Scalable data management", gradient: "from-emerald-500 to-teal-500" },
     ]
   },
   solutions: {
@@ -476,35 +476,51 @@ export default function Navbar() {
                     {/* Mega Menu Dropdown */}
                     {item.hasDropdown && menuData && (
                       <div 
-                        className={`absolute top-full left-0 mt-2 w-80 bg-background/95 backdrop-blur-xl border border-border/50 rounded-2xl shadow-2xl overflow-hidden transition-all duration-300 ${
+                        className={`absolute top-full left-0 mt-2 bg-background border border-border/50 rounded-2xl shadow-2xl overflow-hidden transition-all duration-300 z-50 ${
+                          item.menuKey === 'services' ? 'w-[580px]' : 'w-80'
+                        } ${
                           activeDropdown === item.menuKey 
                             ? "opacity-100 visible translate-y-0" 
                             : "opacity-0 invisible -translate-y-2"
                         }`}
                         onMouseLeave={() => setActiveDropdown(null)}
                       >
-                        <div className="p-2">
-                          <div className="px-4 py-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                        <div className="p-3">
+                          <div className="px-3 py-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider border-b border-border/30 mb-2">
                             {menuData.title}
                           </div>
-                          {menuData.items.map((subItem) => {
-                            const SubIcon = subItem.icon;
-                            return (
+                          <div className={`${item.menuKey === 'services' ? 'grid grid-cols-2 gap-1' : 'space-y-1'}`}>
+                            {menuData.items.map((subItem) => {
+                              const SubIcon = subItem.icon;
+                              const gradient = (subItem as any).gradient || 'from-primary to-accent';
+                              return (
+                                <button
+                                  key={subItem.name}
+                                  onClick={() => handleNavigation(subItem.href)}
+                                  className="w-full flex items-start gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all duration-200 group"
+                                >
+                                  <div className={`p-2 rounded-lg bg-gradient-to-br ${gradient} shadow-md group-hover:shadow-lg group-hover:scale-110 transition-all duration-200`}>
+                                    <SubIcon size={18} className="text-white" />
+                                  </div>
+                                  <div className="text-left flex-1 min-w-0">
+                                    <div className="font-medium text-foreground group-hover:text-primary transition-colors truncate">{subItem.name}</div>
+                                    <div className="text-xs text-muted-foreground truncate">{subItem.description}</div>
+                                  </div>
+                                </button>
+                              );
+                            })}
+                          </div>
+                          {item.menuKey === 'services' && (
+                            <div className="mt-3 pt-3 border-t border-border/30">
                               <button
-                                key={subItem.name}
-                                onClick={() => handleNavigation(subItem.href)}
-                                className="w-full flex items-start gap-3 p-3 rounded-xl hover:bg-primary/10 transition-colors group"
+                                onClick={() => handleNavigation('/services')}
+                                className="w-full flex items-center justify-center gap-2 p-3 rounded-xl bg-primary/10 hover:bg-primary hover:text-primary-foreground text-primary font-medium transition-all duration-200 group"
                               >
-                                <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                                  <SubIcon size={18} className="text-primary" />
-                                </div>
-                                <div className="text-left">
-                                  <div className="font-medium text-foreground group-hover:text-primary transition-colors">{subItem.name}</div>
-                                  <div className="text-xs text-muted-foreground">{subItem.description}</div>
-                                </div>
+                                View All Services
+                                <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
                               </button>
-                            );
-                          })}
+                            </div>
+                          )}
                         </div>
                       </div>
                     )}
