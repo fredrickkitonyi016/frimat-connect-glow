@@ -38,7 +38,9 @@ import {
   Info,
   Globe,
   Smartphone,
-  Printer
+  Printer,
+  Palette,
+  Database
 } from "lucide-react";
 
 // Mega menu data structure
@@ -54,6 +56,10 @@ const megaMenuData = {
       { name: "E-commerce", href: "/services/ecommerce", icon: ShoppingBag, description: "Online store solutions" },
       { name: "Cyber Cafe", href: "/services/cyber-cafe", icon: Printer, description: "Digital service center" },
       { name: "Government Services", href: "/services/government-services", icon: Building2, description: "KRA, HELB, SHA portals" },
+      { name: "Custom Development", href: "/services/custom-development", icon: Code, description: "Bespoke software solutions" },
+      { name: "Cloud Migration", href: "/services/cloud-migration", icon: Server, description: "Seamless cloud transitions" },
+      { name: "UI/UX Design", href: "/services/web-development", icon: Palette, description: "Beautiful digital experiences" },
+      { name: "Database Solutions", href: "/services/cloud-services", icon: Database, description: "Scalable data management" },
     ]
   },
   solutions: {
