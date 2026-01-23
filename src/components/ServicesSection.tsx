@@ -43,6 +43,7 @@ export default function ServicesSection() {
   const [showCybersecurityModal, setShowCybersecurityModal] = useState(false);
   const [showITSupportModal, setShowITSupportModal] = useState(false);
   const [showEcommerceModal, setShowEcommerceModal] = useState(false);
+  const [showGovernmentServicesModal, setShowGovernmentServicesModal] = useState(false);
 
   const services = [
     {
@@ -183,6 +184,36 @@ export default function ServicesSection() {
         "Extended operating hours",
         "Expert technical support"
       ]
+    },
+    {
+      logo: kraLogo,
+      image: itSupportImage,
+      title: "Government Services",
+      description: "Expert assistance with Kenyan government online portals and applications",
+      features: [
+        "KRA iTax Filing",
+        "HELB Applications",
+        "SHA (NHIF) Registration",
+        "NSSF Services",
+        "e-Citizen Portal",
+        "Good Conduct (DCI)",
+        "NTSA Services",
+        "Passport Applications"
+      ],
+      detailedDescription: "Navigate Kenya's government digital services with ease. Our experts provide hands-on assistance with tax filing, health insurance, social security, and all e-Citizen services.",
+      portfolio: ["Tax returns filing", "License renewals", "Certificate applications", "Registration services"],
+      pricing: "KSh 200 - 500 per service",
+      timeline: "Same day service",
+      benefits: [
+        "Expert portal navigation",
+        "Error-free submissions",
+        "Quick turnaround time",
+        "Document preparation help",
+        "Status tracking assistance",
+        "Affordable service fees",
+        "All major portals covered",
+        "Personalized guidance"
+      ]
     }
   ];
 
@@ -197,6 +228,7 @@ export default function ServicesSection() {
       () => setShowITSupportModal(true),
       () => setShowEcommerceModal(true),
       () => setShowCyberCafeModal(true),
+      () => setShowGovernmentServicesModal(true),
     ];
 
     modalMap[serviceIndex]?.();
@@ -485,6 +517,82 @@ export default function ServicesSection() {
       <CybersecurityModal open={showCybersecurityModal} onOpenChange={setShowCybersecurityModal} />
       <ITSupportModal open={showITSupportModal} onOpenChange={setShowITSupportModal} />
       <EcommerceModal open={showEcommerceModal} onOpenChange={setShowEcommerceModal} />
+      
+      {/* Government Services Modal */}
+      {showGovernmentServicesModal && (
+        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md overflow-y-auto animate-fade-in">
+          <div className="min-h-screen flex items-center justify-center p-4">
+            <div className="bg-background/95 backdrop-blur-xl border border-border rounded-2xl shadow-2xl max-w-4xl w-full animate-scale-in">
+              <div className="relative p-6">
+                <button
+                  onClick={() => setShowGovernmentServicesModal(false)}
+                  className="absolute top-4 right-4 p-2 rounded-full bg-background/80 hover:bg-accent/20 border border-border transition-all z-10"
+                >
+                  <X size={20} className="text-foreground" />
+                </button>
+                
+                <div className="space-y-6">
+                  <div className="flex items-start gap-4">
+                    <div className="p-4 rounded-2xl bg-primary/10 border border-primary/20">
+                      <img src={kraLogo} alt="Government Services" className="w-16 h-16 object-contain" />
+                    </div>
+                    <div>
+                      <h3 className="text-3xl font-bold text-foreground mb-2">Government Services</h3>
+                      <p className="text-muted-foreground">Expert assistance with all Kenyan government online portals</p>
+                    </div>
+                  </div>
+                  
+                  <div className="grid md:grid-cols-2 gap-4">
+                    {[
+                      { name: "KRA iTax", desc: "Tax returns, PIN registration, compliance certificates" },
+                      { name: "HELB", desc: "Loan applications, repayment, compliance" },
+                      { name: "SHA (NHIF)", desc: "Registration, contributions, card replacement" },
+                      { name: "NSSF", desc: "Registration, statements, claims" },
+                      { name: "e-Citizen", desc: "All government services portal" },
+                      { name: "DCI Good Conduct", desc: "Certificate of good conduct applications" },
+                      { name: "NTSA", desc: "Driving license, vehicle registration" },
+                      { name: "Immigration", desc: "Passport applications and renewals" },
+                    ].map((service, idx) => (
+                      <div key={idx} className="p-4 rounded-xl bg-muted/50 border border-border hover:border-primary/50 transition-colors">
+                        <h4 className="font-semibold text-foreground">{service.name}</h4>
+                        <p className="text-sm text-muted-foreground">{service.desc}</p>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  <div className="p-4 rounded-xl bg-accent/10 border border-accent/20">
+                    <span className="font-semibold text-foreground">Pricing: </span>
+                    <span className="text-xl font-bold text-accent">KSh 200 - 500 per service</span>
+                  </div>
+                  
+                  <div className="flex gap-4">
+                    <Button 
+                      variant="hero" 
+                      className="flex-1"
+                      onClick={() => {
+                        setShowGovernmentServicesModal(false);
+                        window.location.href = '/services/government-services';
+                      }}
+                    >
+                      View All Services
+                    </Button>
+                    <Button 
+                      variant="glass" 
+                      className="flex-1"
+                      onClick={() => {
+                        setShowGovernmentServicesModal(false);
+                        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                    >
+                      Contact Us
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
