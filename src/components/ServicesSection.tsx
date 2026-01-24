@@ -1,30 +1,20 @@
-import { useState } from "react";
 import { 
   ArrowRight,
-  X,
-  CheckCircle,
-  Clock,
-  Users
+  Globe,
+  Smartphone,
+  Cloud,
+  Shield,
+  Monitor,
+  ShoppingBag,
+  Printer,
+  Building2,
+  Code,
+  Server,
+  Palette,
+  Database
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import Card3D from "@/components/Card3D";
-import CyberCafeServicesModal from "@/components/CyberCafeServicesModal";
-import WebDevelopmentModal from "@/components/WebDevelopmentModal";
-import MobileAppModal from "@/components/MobileAppModal";
-import CloudServicesModal from "@/components/CloudServicesModal";
-import CybersecurityModal from "@/components/CybersecurityModal";
-import ITSupportModal from "@/components/ITSupportModal";
-import EcommerceModal from "@/components/EcommerceModal";
-
-// Import service logos
-import webDevLogo from "@/assets/logos/web-dev-logo.png";
-import mobileAppLogo from "@/assets/logos/mobile-app-logo.png";
-import cloudServicesLogo from "@/assets/logos/cloud-services-logo.png";
-import cybersecurityLogo from "@/assets/logos/cybersecurity-logo.png";
-import itSupportLogo from "@/assets/logos/it-support-logo.png";
-import ecommerceLogo from "@/assets/logos/ecommerce-logo.png";
-import cyberCafeLogo from "@/assets/logos/cyber-cafe-logo.png";
-import kraLogo from "@/assets/logos/kra-logo.png";
 
 // Import service images
 import webDevImage from "@/assets/services/web-dev-service.jpg";
@@ -35,207 +25,121 @@ import itSupportImage from "@/assets/services/it-support-service.jpg";
 import ecommerceImage from "@/assets/services/ecommerce-service.jpg";
 
 export default function ServicesSection() {
-  const [selectedService, setSelectedService] = useState<number | null>(null);
-  const [showCyberCafeModal, setShowCyberCafeModal] = useState(false);
-  const [showWebDevModal, setShowWebDevModal] = useState(false);
-  const [showMobileAppModal, setShowMobileAppModal] = useState(false);
-  const [showCloudServicesModal, setShowCloudServicesModal] = useState(false);
-  const [showCybersecurityModal, setShowCybersecurityModal] = useState(false);
-  const [showITSupportModal, setShowITSupportModal] = useState(false);
-  const [showEcommerceModal, setShowEcommerceModal] = useState(false);
-  const [showGovernmentServicesModal, setShowGovernmentServicesModal] = useState(false);
+  const navigate = useNavigate();
 
   const services = [
     {
-      logo: webDevLogo,
+      icon: Globe,
+      gradient: "from-blue-500 to-cyan-500",
       image: webDevImage,
       title: "Web Development",
       description: "Custom web applications built with modern frameworks and technologies",
       features: ["React & Vue.js", "Full-Stack Development", "API Integration", "Performance Optimization"],
-      detailedDescription: "Our web development team creates cutting-edge websites and web applications using the latest technologies. We specialize in responsive design, user experience optimization, and scalable architecture.",
-      portfolio: ["E-commerce platforms", "Corporate websites", "SaaS applications", "Progressive web apps"],
-      pricing: "Starting from KSh 50,000",
-      timeline: "2-8 weeks",
-      benefits: [
-        "Responsive design across all devices",
-        "SEO optimized for better visibility",
-        "Fast loading times and performance",
-        "Secure and scalable architecture",
-        "Ongoing maintenance and support"
-      ]
+      href: "/services/web-development"
     },
     {
-      logo: mobileAppLogo,
+      icon: Smartphone,
+      gradient: "from-purple-500 to-pink-500",
       image: mobileAppImage,
       title: "Mobile Apps",
       description: "Native and cross-platform mobile applications for iOS and Android",
       features: ["React Native", "Flutter", "iOS Development", "Android Development"],
-      detailedDescription: "We develop powerful mobile applications that provide seamless user experiences across iOS and Android platforms. Our apps are designed for performance, scalability, and user engagement.",
-      portfolio: ["Business apps", "E-commerce mobile apps", "Social networking apps", "Utility applications"],
-      pricing: "Starting from KSh 100,000",
-      timeline: "4-12 weeks",
-      benefits: [
-        "Cross-platform compatibility",
-        "Native performance and feel",
-        "App store optimization",
-        "Push notifications and analytics",
-        "Regular updates and maintenance"
-      ]
+      href: "/services/mobile-apps"
     },
     {
-      logo: cloudServicesLogo,
+      icon: Cloud,
+      gradient: "from-sky-500 to-indigo-500",
       image: cloudServiceImage,
       title: "Cloud Services",
       description: "Scalable cloud infrastructure and migration services",
       features: ["AWS & Azure", "Cloud Migration", "DevOps", "Microservices"],
-      detailedDescription: "Transform your business with our comprehensive cloud solutions. We help you migrate to the cloud, optimize your infrastructure, and implement best practices for security and performance.",
-      portfolio: ["Cloud migrations", "Infrastructure setup", "Disaster recovery", "Auto-scaling solutions"],
-      pricing: "Starting from KSh 30,000/month",
-      timeline: "1-4 weeks",
-      benefits: [
-        "Reduced operational costs",
-        "Enhanced security and compliance",
-        "Automatic scaling and load balancing",
-        "24/7 monitoring and support",
-        "Disaster recovery and backup"
-      ]
+      href: "/services/cloud-services"
     },
     {
-      logo: cybersecurityLogo,
+      icon: Shield,
+      gradient: "from-red-500 to-orange-500",
       image: cybersecurityImage,
       title: "Cybersecurity",
       description: "Comprehensive security solutions to protect your digital assets",
       features: ["Security Audits", "Penetration Testing", "Compliance", "Risk Assessment"],
-      detailedDescription: "Protect your business from cyber threats with our comprehensive security services. We provide proactive security measures, threat detection, and compliance solutions.",
-      portfolio: ["Security assessments", "Firewall configuration", "Compliance audits", "Incident response"],
-      pricing: "Starting from KSh 25,000",
-      timeline: "1-3 weeks",
-      benefits: [
-        "Proactive threat detection",
-        "Compliance with industry standards",
-        "24/7 security monitoring",
-        "Incident response and recovery",
-        "Regular security updates"
-      ]
+      href: "/services/cybersecurity"
     },
     {
-      logo: itSupportLogo,
+      icon: Monitor,
+      gradient: "from-green-500 to-emerald-500",
       image: itSupportImage,
       title: "IT Support",
       description: "24/7 technical support and IT infrastructure management",
       features: ["Help Desk", "Network Management", "System Monitoring", "Maintenance"],
-      detailedDescription: "Keep your business running smoothly with our comprehensive IT support services. We provide round-the-clock technical assistance and proactive system maintenance.",
-      portfolio: ["Network setup", "System administration", "Hardware support", "Software troubleshooting"],
-      pricing: "Starting from KSh 15,000/month",
-      timeline: "Immediate support",
-      benefits: [
-        "24/7 technical support",
-        "Proactive system monitoring",
-        "Quick issue resolution",
-        "Regular system maintenance",
-        "Remote and on-site support"
-      ]
+      href: "/services/it-support"
     },
     {
-      logo: ecommerceLogo,
+      icon: ShoppingBag,
+      gradient: "from-amber-500 to-yellow-500",
       image: ecommerceImage,
       title: "E-commerce",
       description: "Complete e-commerce solutions from design to deployment",
       features: ["Shopify", "WooCommerce", "Payment Integration", "Inventory Management"],
-      detailedDescription: "Launch your online store with our comprehensive e-commerce solutions. We handle everything from design and development to payment processing and inventory management.",
-      portfolio: ["Online stores", "Marketplace integration", "Payment gateways", "Inventory systems"],
-      pricing: "Starting from KSh 75,000",
-      timeline: "3-6 weeks",
-      benefits: [
-        "Mobile-optimized shopping experience",
-        "Secure payment processing",
-        "Inventory management system",
-        "SEO and marketing tools",
-        "Analytics and reporting"
-      ]
+      href: "/services/ecommerce"
     },
     {
-      logo: cyberCafeLogo,
-      image: itSupportImage, // Reusing IT support image for cyber cafe
-      kraLogo: kraLogo,
-      title: "Cyber Cafe Services",
+      icon: Printer,
+      gradient: "from-teal-500 to-cyan-500",
+      image: itSupportImage,
+      title: "Cyber Cafe",
       description: "Complete cyber cafe solutions for all your digital needs",
-      features: [
-        "Printing & Photocopying", 
-        "Document Scanning", 
-        "Internet Access", 
-        "Computer Training",
-        "Government Services (KRA iTax, HELB, SHA)",
-        "Data Recovery & Backup",
-        "CV Writing & Typing",
-        "Lamination & Binding"
-      ],
-      detailedDescription: "Your one-stop digital service center offering comprehensive cyber cafe services. From document processing to government service assistance, we handle all your digital needs with professional efficiency.",
-      portfolio: ["Document services", "Government applications", "Training programs", "Business support"],
-      pricing: "Starting from KSh 10 per service",
-      timeline: "Immediate service",
-      benefits: [
-        "Professional document processing",
-        "Government service assistance",
-        "Computer literacy training",
-        "High-speed internet access",
-        "Secure data handling",
-        "Competitive pricing",
-        "Extended operating hours",
-        "Expert technical support"
-      ]
+      features: ["Printing & Photocopying", "Document Scanning", "Internet Access", "Computer Training"],
+      href: "/services/cyber-cafe"
     },
     {
-      logo: kraLogo,
+      icon: Building2,
+      gradient: "from-rose-500 to-red-500",
       image: itSupportImage,
       title: "Government Services",
-      description: "Expert assistance with Kenyan government online portals and applications",
-      features: [
-        "KRA iTax Filing",
-        "HELB Applications",
-        "SHA (NHIF) Registration",
-        "NSSF Services",
-        "e-Citizen Portal",
-        "Good Conduct (DCI)",
-        "NTSA Services",
-        "Passport Applications"
-      ],
-      detailedDescription: "Navigate Kenya's government digital services with ease. Our experts provide hands-on assistance with tax filing, health insurance, social security, and all e-Citizen services.",
-      portfolio: ["Tax returns filing", "License renewals", "Certificate applications", "Registration services"],
-      pricing: "KSh 200 - 500 per service",
-      timeline: "Same day service",
-      benefits: [
-        "Expert portal navigation",
-        "Error-free submissions",
-        "Quick turnaround time",
-        "Document preparation help",
-        "Status tracking assistance",
-        "Affordable service fees",
-        "All major portals covered",
-        "Personalized guidance"
-      ]
+      description: "Expert assistance with Kenyan government online portals",
+      features: ["KRA iTax Filing", "HELB Applications", "SHA Registration", "e-Citizen Portal"],
+      href: "/services/government-services"
+    },
+    {
+      icon: Code,
+      gradient: "from-violet-500 to-purple-500",
+      image: webDevImage,
+      title: "Custom Development",
+      description: "Bespoke software solutions tailored to your business needs",
+      features: ["Custom Software", "Enterprise Solutions", "System Integration", "Legacy Modernization"],
+      href: "/services/custom-development"
+    },
+    {
+      icon: Server,
+      gradient: "from-indigo-500 to-blue-500",
+      image: cloudServiceImage,
+      title: "Cloud Migration",
+      description: "Seamless transition of your infrastructure to the cloud",
+      features: ["Migration Planning", "Data Transfer", "Zero Downtime", "Post-Migration Support"],
+      href: "/services/cloud-migration"
+    },
+    {
+      icon: Palette,
+      gradient: "from-pink-500 to-rose-500",
+      image: webDevImage,
+      title: "UI/UX Design",
+      description: "Beautiful digital experiences that delight users",
+      features: ["User Research", "Wireframing", "Prototyping", "Design Systems"],
+      href: "/services/web-development"
+    },
+    {
+      icon: Database,
+      gradient: "from-emerald-500 to-teal-500",
+      image: cloudServiceImage,
+      title: "Database Solutions",
+      description: "Scalable data management and optimization services",
+      features: ["Database Design", "Performance Tuning", "Data Migration", "Backup & Recovery"],
+      href: "/services/cloud-services"
     }
   ];
 
-  const openServiceModal = (serviceIndex: number) => {
-    console.log("[Services] openServiceModal", serviceIndex, services[serviceIndex]?.title);
-
-    const modalMap: Array<() => void> = [
-      () => setShowWebDevModal(true),
-      () => setShowMobileAppModal(true),
-      () => setShowCloudServicesModal(true),
-      () => setShowCybersecurityModal(true),
-      () => setShowITSupportModal(true),
-      () => setShowEcommerceModal(true),
-      () => setShowCyberCafeModal(true),
-      () => setShowGovernmentServicesModal(true),
-    ];
-
-    modalMap[serviceIndex]?.();
-  };
-
   return (
-    <section id="services" className="py-24 relative">
+    <section id="services" className="py-24 relative bg-background">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-5xl font-bold mb-6">
@@ -249,86 +153,81 @@ export default function ServicesSection() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {services.map((service, index) => {
+            const Icon = service.icon;
             return (
-              <Card3D 
-                key={index} 
-                className="h-full cursor-pointer"
-                glowColor={index % 2 === 0 ? "primary" : "accent"}
-                onClick={() => openServiceModal(index)}
+              <div 
+                key={index}
+                onClick={() => navigate(service.href)}
+                className="group cursor-pointer bg-card rounded-2xl overflow-hidden border border-border hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2"
               >
-                <div className="space-y-4">
-                  {/* Service Image */}
-                  <div className="relative -mx-6 -mt-6 mb-4 overflow-hidden rounded-t-xl">
-                    <img 
-                      src={service.image} 
-                      alt={`${service.title}`}
-                      className="w-full h-40 object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/30 to-transparent" />
-                    
-                    {/* Logo overlay */}
-                    <div className="absolute bottom-3 left-4">
-                      <div className="p-2.5 rounded-xl bg-white/95 backdrop-blur-sm shadow-lg relative">
-                        <img 
-                          src={service.logo} 
-                          alt={`${service.title} logo`}
-                          className="w-10 h-10 object-contain"
-                        />
-                        {/* Show KRA logo for cyber cafe services */}
-                        {service.kraLogo && (
-                          <img 
-                            src={service.kraLogo} 
-                            alt="KRA logo"
-                            className="w-6 h-6 object-contain absolute -top-1 -right-1 bg-white rounded-full p-0.5 shadow"
-                          />
-                        )}
+                {/* Service Image */}
+                <div className="relative h-36 overflow-hidden">
+                  <img 
+                    src={service.image} 
+                    alt={service.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
+                  
+                  {/* Icon overlay */}
+                  <div className="absolute bottom-3 left-4">
+                    <div className="p-3 rounded-xl bg-white shadow-lg">
+                      <div className={`p-2 rounded-lg bg-gradient-to-br ${service.gradient}`}>
+                        <Icon className="w-5 h-5 text-white" />
                       </div>
                     </div>
                   </div>
+                </div>
 
-                  {/* Content */}
-                  <div>
-                    <h3 className="text-xl font-bold text-foreground mb-2">
-                      {service.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground mb-4">
-                      {service.description}
-                    </p>
-                  </div>
+                {/* Content */}
+                <div className="p-5 space-y-3">
+                  <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors">
+                    {service.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {service.description}
+                  </p>
 
-                  {/* Features - show first 4 */}
-                  <div className="space-y-1.5">
-                    {service.features.slice(0, 4).map((feature, featureIndex) => (
-                      <div key={featureIndex} className="flex items-center gap-2 text-xs">
-                        <div className="w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0"></div>
-                        <span className="text-muted-foreground truncate">{feature}</span>
+                  {/* Features */}
+                  <div className="space-y-2 pt-2">
+                    {service.features.map((feature, featureIndex) => (
+                      <div key={featureIndex} className="flex items-center gap-2 text-sm">
+                        <div className="w-2 h-2 rounded-full bg-accent flex-shrink-0" />
+                        <span className="text-muted-foreground">{feature}</span>
                       </div>
                     ))}
-                    {service.features.length > 4 && (
-                      <div className="text-xs text-primary font-medium">
-                        +{service.features.length - 4} more features
-                      </div>
-                    )}
                   </div>
 
-                  {/* CTA */}
-                  <div className="pt-2">
+                  {/* CTA Button */}
+                  <div className="pt-3">
                     <Button 
-                      type="button"
                       variant="glass" 
-                      className="w-full group pointer-events-none"
-                      size="sm"
+                      className="w-full group/btn bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white border-0"
+                      size="default"
                     >
                       Learn More
-                      <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={14} />
+                      <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                     </Button>
                   </div>
                 </div>
-              </Card3D>
+              </div>
             );
           })}
+        </div>
+
+        {/* View All Services Button */}
+        <div className="text-center mt-12">
+          <Button 
+            variant="outline" 
+            size="lg"
+            onClick={() => navigate('/services')}
+            className="group"
+          >
+            View All Services
+            <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </Button>
         </div>
 
         {/* CTA Section */}
@@ -359,240 +258,6 @@ export default function ServicesSection() {
           </div>
         </div>
       </div>
-
-      {/* Detailed Service Modal */}
-      {selectedService !== null && (
-        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md overflow-y-auto animate-fade-in">
-          <div className="min-h-screen flex items-center justify-center p-4">
-            <div className="bg-background/95 backdrop-blur-xl border border-border rounded-2xl shadow-2xl max-w-4xl w-full animate-scale-in">
-              <div className="relative p-4 md:p-6">
-                {/* Close Button */}
-                <button
-                  onClick={() => setSelectedService(null)}
-                  className="absolute top-2 right-2 p-2 rounded-full bg-background/80 hover:bg-accent/20 border border-border transition-all z-10"
-                >
-                  <X size={16} className="text-foreground" />
-                </button>
-
-              {(() => {
-                const service = services[selectedService];
-                return (
-                  <div className="space-y-8">
-                    {/* Header */}
-                    <div className="flex items-start gap-6">
-                      <div className="p-4 rounded-2xl bg-white/90 backdrop-blur-sm shadow-lg relative">
-                        <img 
-                          src={service.logo} 
-                          alt={`${service.title} logo`}
-                          className="w-16 h-16 object-contain"
-                        />
-                        {/* Show KRA logo for cyber cafe services */}
-                        {service.kraLogo && (
-                          <img 
-                            src={service.kraLogo} 
-                            alt="KRA logo"
-                            className="w-10 h-10 object-contain absolute -top-2 -right-2 bg-white rounded-full p-1"
-                          />
-                        )}
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="text-3xl font-bold text-foreground mb-2">
-                          {service.title}
-                        </h3>
-                        <p className="text-lg text-muted-foreground">
-                          {service.detailedDescription}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Service Details Grid */}
-                    <div className="grid md:grid-cols-2 gap-8">
-                      {/* Benefits */}
-                      <div>
-                        <h4 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
-                          <CheckCircle className="text-accent" size={20} />
-                          Key Benefits
-                        </h4>
-                        <ul className="space-y-3">
-                          {service.benefits.map((benefit, idx) => (
-                            <li key={idx} className="flex items-start gap-2">
-                              <div className="w-1.5 h-1.5 rounded-full bg-accent mt-2"></div>
-                              <span className="text-muted-foreground">{benefit}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      {/* Portfolio & Details */}
-                      <div className="space-y-6">
-                        <div>
-                          <h4 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
-                            <Users className="text-accent" size={20} />
-                            What We Deliver
-                          </h4>
-                          <ul className="space-y-2">
-                            {service.portfolio.map((item, idx) => (
-                              <li key={idx} className="flex items-center gap-2">
-                                <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
-                                <span className="text-muted-foreground">{item}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-
-                        {/* Pricing & Timeline */}
-                        <div className="space-y-4">
-                          <div className="p-4 rounded-xl bg-primary/20 border border-primary/30">
-                            <div className="flex items-center gap-2 mb-2">
-                              <Clock className="text-primary" size={16} />
-                              <span className="font-semibold text-foreground">Timeline</span>
-                            </div>
-                            <p className="text-foreground font-medium">{service.timeline}</p>
-                          </div>
-                          <div className="p-4 rounded-xl bg-accent/20 border border-accent/30">
-                            <span className="font-semibold text-foreground block mb-1">Pricing</span>
-                            <p className="text-xl font-bold text-accent">{service.pricing}</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Technologies/Features */}
-                    <div>
-                      <h4 className="text-xl font-semibold text-foreground mb-4">
-                        Technologies & Features
-                      </h4>
-                      <div className="flex flex-wrap gap-3">
-                        {service.features.map((feature, idx) => (
-                          <span
-                            key={idx}
-                            className="px-4 py-2 rounded-full bg-secondary/30 border border-secondary/50 text-sm font-medium text-foreground"
-                          >
-                            {feature}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* CTA Buttons */}
-                    <div className="flex gap-4 pt-4">
-                      <Button 
-                        variant="hero" 
-                        className="flex-1"
-                        onClick={() => {
-                          setSelectedService(null);
-                          document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
-                        }}
-                      >
-                        Get Quote
-                      </Button>
-                      <Button 
-                        variant="glass" 
-                        className="flex-1"
-                        onClick={() => {
-                          setSelectedService(null);
-                          document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                        }}
-                      >
-                        Contact Us
-                      </Button>
-                    </div>
-                  </div>
-                );
-              })()}
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Service Modals */}
-      <CyberCafeServicesModal 
-        isOpen={showCyberCafeModal}
-        onClose={() => setShowCyberCafeModal(false)}
-      />
-      <WebDevelopmentModal open={showWebDevModal} onOpenChange={setShowWebDevModal} />
-      <MobileAppModal open={showMobileAppModal} onOpenChange={setShowMobileAppModal} />
-      <CloudServicesModal open={showCloudServicesModal} onOpenChange={setShowCloudServicesModal} />
-      <CybersecurityModal open={showCybersecurityModal} onOpenChange={setShowCybersecurityModal} />
-      <ITSupportModal open={showITSupportModal} onOpenChange={setShowITSupportModal} />
-      <EcommerceModal open={showEcommerceModal} onOpenChange={setShowEcommerceModal} />
-      
-      {/* Government Services Modal */}
-      {showGovernmentServicesModal && (
-        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md overflow-y-auto animate-fade-in">
-          <div className="min-h-screen flex items-center justify-center p-4">
-            <div className="bg-background/95 backdrop-blur-xl border border-border rounded-2xl shadow-2xl max-w-4xl w-full animate-scale-in">
-              <div className="relative p-6">
-                <button
-                  onClick={() => setShowGovernmentServicesModal(false)}
-                  className="absolute top-4 right-4 p-2 rounded-full bg-background/80 hover:bg-accent/20 border border-border transition-all z-10"
-                >
-                  <X size={20} className="text-foreground" />
-                </button>
-                
-                <div className="space-y-6">
-                  <div className="flex items-start gap-4">
-                    <div className="p-4 rounded-2xl bg-primary/10 border border-primary/20">
-                      <img src={kraLogo} alt="Government Services" className="w-16 h-16 object-contain" />
-                    </div>
-                    <div>
-                      <h3 className="text-3xl font-bold text-foreground mb-2">Government Services</h3>
-                      <p className="text-muted-foreground">Expert assistance with all Kenyan government online portals</p>
-                    </div>
-                  </div>
-                  
-                  <div className="grid md:grid-cols-2 gap-4">
-                    {[
-                      { name: "KRA iTax", desc: "Tax returns, PIN registration, compliance certificates" },
-                      { name: "HELB", desc: "Loan applications, repayment, compliance" },
-                      { name: "SHA (NHIF)", desc: "Registration, contributions, card replacement" },
-                      { name: "NSSF", desc: "Registration, statements, claims" },
-                      { name: "e-Citizen", desc: "All government services portal" },
-                      { name: "DCI Good Conduct", desc: "Certificate of good conduct applications" },
-                      { name: "NTSA", desc: "Driving license, vehicle registration" },
-                      { name: "Immigration", desc: "Passport applications and renewals" },
-                    ].map((service, idx) => (
-                      <div key={idx} className="p-4 rounded-xl bg-muted/50 border border-border hover:border-primary/50 transition-colors">
-                        <h4 className="font-semibold text-foreground">{service.name}</h4>
-                        <p className="text-sm text-muted-foreground">{service.desc}</p>
-                      </div>
-                    ))}
-                  </div>
-                  
-                  <div className="p-4 rounded-xl bg-accent/10 border border-accent/20">
-                    <span className="font-semibold text-foreground">Pricing: </span>
-                    <span className="text-xl font-bold text-accent">KSh 200 - 500 per service</span>
-                  </div>
-                  
-                  <div className="flex gap-4">
-                    <Button 
-                      variant="hero" 
-                      className="flex-1"
-                      onClick={() => {
-                        setShowGovernmentServicesModal(false);
-                        window.location.href = '/services/government-services';
-                      }}
-                    >
-                      View All Services
-                    </Button>
-                    <Button 
-                      variant="glass" 
-                      className="flex-1"
-                      onClick={() => {
-                        setShowGovernmentServicesModal(false);
-                        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                      }}
-                    >
-                      Contact Us
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   );
 }
