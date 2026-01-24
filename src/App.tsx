@@ -28,12 +28,14 @@ import Healthcare from "./pages/solutions/Healthcare";
 import Retail from "./pages/solutions/Retail";
 import Finance from "./pages/solutions/Finance";
 import Manufacturing from "./pages/solutions/Manufacturing";
+import AllSolutions from "./pages/solutions/AllSolutions";
 
 // Technology Pages
 import CloudPlatforms from "./pages/technologies/CloudPlatforms";
 import DevelopmentStack from "./pages/technologies/DevelopmentStack";
 import SecurityTools from "./pages/technologies/SecurityTools";
 import IoTPlatforms from "./pages/technologies/IoTPlatforms";
+import AllTechnologies from "./pages/technologies/AllTechnologies";
 
 // Resource Pages
 import Whitepapers from "./pages/resources/Whitepapers";
@@ -71,12 +73,14 @@ const App = () => (
             <Route path="/services" element={<AllServices />} />
             
             {/* Solution Routes */}
+            <Route path="/solutions" element={<AllSolutions />} />
             <Route path="/solutions/healthcare" element={<Healthcare />} />
             <Route path="/solutions/retail" element={<Retail />} />
             <Route path="/solutions/finance" element={<Finance />} />
             <Route path="/solutions/manufacturing" element={<Manufacturing />} />
             
             {/* Technology Routes */}
+            <Route path="/technologies" element={<AllTechnologies />} />
             <Route path="/technologies/cloud-platforms" element={<CloudPlatforms />} />
             <Route path="/technologies/development-stack" element={<DevelopmentStack />} />
             <Route path="/technologies/security-tools" element={<SecurityTools />} />
