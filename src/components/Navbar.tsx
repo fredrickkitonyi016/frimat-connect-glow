@@ -94,9 +94,9 @@ const megaMenuData = {
 const mainNavItems = [
   { name: "Home", href: "#home", hasDropdown: false },
   { name: "About", href: "#about", hasDropdown: false },
-  { name: "Services", href: "/services", hasDropdown: true, menuKey: "services" },
-  { name: "Solutions", href: "/services", hasDropdown: true, menuKey: "solutions" },
-  { name: "Tech", href: "/services", hasDropdown: true, menuKey: "technologies" },
+  { name: "Services", href: "/services", hasDropdown: true, menuKey: "services", activeSection: "services" },
+  { name: "Solutions", href: "/solutions", hasDropdown: true, menuKey: "solutions" },
+  { name: "Tech", href: "/technologies", hasDropdown: true, menuKey: "technologies" },
   { name: "Shop", href: "#shop", hasDropdown: false },
   { name: "Portfolio", href: "#portfolio", hasDropdown: false },
   { name: "Resources", href: "#blog", hasDropdown: true, menuKey: "resources" },
@@ -442,8 +442,8 @@ export default function Navbar() {
 
             {/* Desktop Navigation with Mega Menus */}
             <div className="hidden md:flex items-center gap-1" ref={dropdownRef}>
-              {mainNavItems.map((item) => {
-                const isActive = activeSection === item.href.substring(1);
+            {mainNavItems.map((item) => {
+                const isActive = item.activeSection ? activeSection === item.activeSection : activeSection === item.href.substring(1);
                 const menuData = item.menuKey ? megaMenuData[item.menuKey as keyof typeof megaMenuData] : null;
 
                 return (
