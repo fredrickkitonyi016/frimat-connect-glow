@@ -65,28 +65,28 @@ const megaMenuData = {
   solutions: {
     title: "Solutions",
     items: [
-      { name: "Healthcare", href: "/solutions/healthcare", icon: HeartPulse, description: "Digital health solutions" },
-      { name: "Retail & E-commerce", href: "/solutions/retail", icon: ShoppingBag, description: "Modern retail technology" },
-      { name: "Finance & Banking", href: "/solutions/finance", icon: Building2, description: "Secure financial systems" },
-      { name: "Manufacturing", href: "/solutions/manufacturing", icon: Factory, description: "Industry 4.0 solutions" },
+      { name: "Healthcare", href: "/solutions/healthcare", icon: HeartPulse, description: "Digital health solutions", gradient: "from-red-500 to-pink-500" },
+      { name: "Retail & E-commerce", href: "/solutions/retail", icon: ShoppingBag, description: "Modern retail technology", gradient: "from-amber-500 to-orange-500" },
+      { name: "Finance & Banking", href: "/solutions/finance", icon: Building2, description: "Secure financial systems", gradient: "from-green-500 to-emerald-500" },
+      { name: "Manufacturing", href: "/solutions/manufacturing", icon: Factory, description: "Industry 4.0 solutions", gradient: "from-blue-500 to-indigo-500" },
     ]
   },
   technologies: {
     title: "Technologies",
     items: [
-      { name: "Cloud Platforms", href: "/technologies/cloud-platforms", icon: Server, description: "AWS, Azure, Google Cloud" },
-      { name: "Development Stack", href: "/technologies/development-stack", icon: Layers, description: "Modern frameworks & tools" },
-      { name: "Security Tools", href: "/technologies/security-tools", icon: Lock, description: "Enterprise-grade security" },
-      { name: "IoT Platforms", href: "/technologies/iot-platforms", icon: Cpu, description: "Connected device solutions" },
+      { name: "Cloud Platforms", href: "/technologies/cloud-platforms", icon: Server, description: "AWS, Azure, Google Cloud", gradient: "from-sky-500 to-blue-500" },
+      { name: "Development Stack", href: "/technologies/development-stack", icon: Layers, description: "Modern frameworks & tools", gradient: "from-purple-500 to-violet-500" },
+      { name: "Security Tools", href: "/technologies/security-tools", icon: Lock, description: "Enterprise-grade security", gradient: "from-red-500 to-orange-500" },
+      { name: "IoT Platforms", href: "/technologies/iot-platforms", icon: Cpu, description: "Connected device solutions", gradient: "from-teal-500 to-cyan-500" },
     ]
   },
   resources: {
     title: "Resources",
     items: [
-      { name: "Blog", href: "#blog", icon: BookOpen, description: "Latest tech insights" },
-      { name: "Whitepapers", href: "/resources/whitepapers", icon: FileText, description: "In-depth research & guides" },
-      { name: "Case Studies", href: "#portfolio", icon: FolderOpen, description: "Success stories" },
-      { name: "FAQs", href: "#faq", icon: HelpCircle, description: "Common questions answered" },
+      { name: "Blog", href: "#blog", icon: BookOpen, description: "Latest tech insights", gradient: "from-pink-500 to-rose-500" },
+      { name: "Whitepapers", href: "/resources/whitepapers", icon: FileText, description: "In-depth research & guides", gradient: "from-indigo-500 to-purple-500" },
+      { name: "Case Studies", href: "#portfolio", icon: FolderOpen, description: "Success stories", gradient: "from-emerald-500 to-teal-500" },
+      { name: "FAQs", href: "#faq", icon: HelpCircle, description: "Common questions answered", gradient: "from-amber-500 to-yellow-500" },
     ]
   }
 };
