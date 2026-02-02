@@ -1,123 +1,118 @@
-import { Link } from "react-router-dom";
-import { Factory, ArrowLeft, CheckCircle, Cog, BarChart, Cpu, Truck, Settings, Phone, Mail } from "lucide-react";
+import { ArrowLeft, Factory, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
-const features = [
-  { icon: Cog, title: "Smart Manufacturing", description: "IoT-enabled production systems for efficiency and quality" },
-  { icon: BarChart, title: "Production Analytics", description: "Real-time monitoring and predictive maintenance insights" },
-  { icon: Cpu, title: "Automation Solutions", description: "Robotics and process automation for improved productivity" },
-  { icon: Truck, title: "Supply Chain", description: "End-to-end visibility and optimization of your supply chain" },
-  { icon: Settings, title: "ERP Integration", description: "Seamless integration with SAP, Oracle, and other ERP systems" },
-  { icon: Factory, title: "Digital Twin", description: "Virtual replicas for simulation and optimization" },
-];
-
-const capabilities = [
-  "Predictive Maintenance",
-  "Quality Control Systems",
-  "Real-time Production Monitoring",
-  "Inventory Optimization",
-  "Energy Management",
-  "Compliance Tracking",
-];
+import cloudServiceImage from "@/assets/services/cloud-service.jpg";
 
 export default function Manufacturing() {
+  const navigate = useNavigate();
+
+  const features = [
+    "Smart Manufacturing",
+    "Production Analytics",
+    "Automation Solutions",
+    "Supply Chain"
+  ];
+
+  const capabilities = [
+    "Predictive Maintenance",
+    "Quality Control Systems",
+    "Real-time Production Monitoring",
+    "Inventory Optimization",
+    "Energy Management",
+    "Compliance Tracking",
+  ];
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <main className="pt-24">
-        {/* Hero Section */}
-        <section className="py-20 bg-gradient-to-br from-secondary/10 via-background to-accent/10">
-          <div className="container mx-auto px-6">
-            <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary mb-8 transition-colors">
-              <ArrowLeft size={20} />
-              Back to Home
-            </Link>
-            <div className="max-w-4xl">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="p-4 rounded-2xl bg-secondary/10">
-                  <Factory className="h-12 w-12 text-secondary" />
+      <main className="pt-32 pb-20">
+        <div className="container mx-auto px-6">
+          <Button 
+            variant="ghost" 
+            onClick={() => navigate(-1)}
+            className="mb-8 hover:bg-primary/10"
+          >
+            <ArrowLeft className="mr-2" size={20} />
+            Back
+          </Button>
+
+          <div className="max-w-5xl mx-auto">
+            {/* Hero Card - Matching Services Section Style */}
+            <div className="bg-card rounded-2xl overflow-hidden border border-border mb-12">
+              {/* Header Image */}
+              <div className="relative h-64 md:h-80 overflow-hidden">
+                <img 
+                  src={cloudServiceImage} 
+                  alt="Manufacturing Solutions"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
+                
+                {/* Icon overlay */}
+                <div className="absolute bottom-4 left-6">
+                  <div className="p-4 rounded-xl bg-white shadow-lg">
+                    <div className="p-3 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-500">
+                      <Factory className="w-8 h-8 text-white" />
+                    </div>
+                  </div>
                 </div>
-                <h1 className="text-4xl md:text-5xl font-bold">Manufacturing Solutions</h1>
               </div>
-              <p className="text-xl text-muted-foreground mb-8">
-                Industry 4.0 solutions that transform your manufacturing operations. 
-                Embrace smart manufacturing with IoT, automation, and data-driven insights.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Button size="lg" asChild>
-                  <a href="#contact-section">Transform Your Factory</a>
-                </Button>
-                <Button size="lg" variant="outline" asChild>
-                  <a href="tel:+254112277289">
-                    <Phone className="mr-2 h-4 w-4" />
-                    Schedule Consultation
-                  </a>
-                </Button>
+
+              {/* Content */}
+              <div className="p-8 space-y-4">
+                <h1 className="text-3xl md:text-4xl font-bold text-foreground">
+                  Manufacturing Solutions
+                </h1>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Industry 4.0 solutions for smart manufacturing
+                </p>
+
+                {/* Features with bullet points */}
+                <div className="space-y-3 pt-4">
+                  {features.map((feature, idx) => (
+                    <div key={idx} className="flex items-center gap-3 text-base">
+                      <div className="w-2.5 h-2.5 rounded-full bg-accent flex-shrink-0" />
+                      <span className="text-muted-foreground">{feature}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        </section>
 
-        {/* Features Grid */}
-        <section className="py-20">
-          <div className="container mx-auto px-6">
-            <h2 className="text-3xl font-bold text-center mb-12">Industry 4.0 Solutions</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {features.map((feature, index) => (
-                <div key={index} className="p-6 rounded-2xl bg-card border border-border hover:border-secondary/50 transition-all hover:shadow-lg">
-                  <div className="p-3 rounded-xl bg-secondary/10 w-fit mb-4">
-                    <feature.icon className="h-6 w-6 text-secondary" />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                  <p className="text-muted-foreground">{feature.description}</p>
+            {/* Detailed Description */}
+            <div className="prose prose-lg dark:prose-invert max-w-none mb-12">
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Industry 4.0 solutions that transform your manufacturing operations. Embrace smart manufacturing with IoT, automation, and data-driven insights.
+              </p>
+            </div>
+
+            {/* Capabilities */}
+            <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+              <CheckCircle className="text-accent" size={28} />
+              Key Capabilities
+            </h2>
+            <div className="grid md:grid-cols-2 gap-4 mb-12">
+              {capabilities.map((capability, idx) => (
+                <div key={idx} className="glass-card p-5 hover:border-primary/50 transition-all flex items-center gap-3">
+                  <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
+                  <span className="text-foreground">{capability}</span>
                 </div>
               ))}
             </div>
-          </div>
-        </section>
 
-        {/* Capabilities */}
-        <section className="py-20 bg-muted/30">
-          <div className="container mx-auto px-6">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-12">Key Capabilities</h2>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {capabilities.map((capability, index) => (
-                  <div key={index} className="flex items-center gap-3 p-4 rounded-xl bg-background border border-border">
-                    <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
-                    <span>{capability}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section id="contact-section" className="py-20 bg-secondary text-secondary-foreground">
-          <div className="container mx-auto px-6 text-center">
-            <h2 className="text-3xl font-bold mb-4">Ready for Industry 4.0?</h2>
-            <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
-              Let's discuss how smart manufacturing can revolutionize your operations.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Button size="lg" variant="secondary" className="bg-secondary-foreground text-secondary hover:bg-secondary-foreground/90" asChild>
-                <a href="mailto:info@frimat.co.ke">
-                  <Mail className="mr-2 h-4 w-4" />
-                  Email Us
-                </a>
-              </Button>
-              <Button size="lg" variant="outline" className="border-secondary-foreground text-secondary-foreground hover:bg-secondary-foreground hover:text-secondary" asChild>
-                <a href="tel:+254112277289">
-                  <Phone className="mr-2 h-4 w-4" />
-                  +254 112 277 289
-                </a>
+            <div className="text-center">
+              <Button 
+                variant="hero" 
+                size="lg"
+                onClick={() => navigate('/#contact')}
+              >
+                Transform Your Factory
               </Button>
             </div>
           </div>
-        </section>
+        </div>
       </main>
       <Footer />
     </div>
