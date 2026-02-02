@@ -1,123 +1,118 @@
-import { Link } from "react-router-dom";
-import { ShoppingBag, ArrowLeft, CheckCircle, CreditCard, Package, BarChart, Smartphone, Globe, Phone, Mail } from "lucide-react";
+import { ArrowLeft, ShoppingBag, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
-const features = [
-  { icon: Globe, title: "E-commerce Platforms", description: "Custom online stores built for conversion and growth" },
-  { icon: CreditCard, title: "Payment Integration", description: "Secure payment gateways including M-Pesa and cards" },
-  { icon: Package, title: "Inventory Management", description: "Real-time stock tracking and automated reordering" },
-  { icon: BarChart, title: "Sales Analytics", description: "Data-driven insights to optimize your retail performance" },
-  { icon: Smartphone, title: "Mobile Commerce", description: "Native and PWA shopping apps for on-the-go customers" },
-  { icon: ShoppingBag, title: "POS Systems", description: "Modern point-of-sale solutions for physical stores" },
-];
-
-const integrations = [
-  "M-Pesa & Mobile Money",
-  "Shopify & WooCommerce",
-  "Inventory Systems",
-  "Shipping & Logistics",
-  "CRM Platforms",
-  "Accounting Software",
-];
+import ecommerceImage from "@/assets/services/ecommerce-service.jpg";
 
 export default function Retail() {
+  const navigate = useNavigate();
+
+  const features = [
+    "E-commerce Platforms",
+    "Payment Integration",
+    "Inventory Management",
+    "Sales Analytics"
+  ];
+
+  const integrations = [
+    "M-Pesa & Mobile Money",
+    "Shopify & WooCommerce",
+    "Inventory Systems",
+    "Shipping & Logistics",
+    "CRM Platforms",
+    "Accounting Software",
+  ];
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <main className="pt-24">
-        {/* Hero Section */}
-        <section className="py-20 bg-gradient-to-br from-accent/10 via-background to-secondary/10">
-          <div className="container mx-auto px-6">
-            <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary mb-8 transition-colors">
-              <ArrowLeft size={20} />
-              Back to Home
-            </Link>
-            <div className="max-w-4xl">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="p-4 rounded-2xl bg-accent/10">
-                  <ShoppingBag className="h-12 w-12 text-accent" />
+      <main className="pt-32 pb-20">
+        <div className="container mx-auto px-6">
+          <Button 
+            variant="ghost" 
+            onClick={() => navigate(-1)}
+            className="mb-8 hover:bg-primary/10"
+          >
+            <ArrowLeft className="mr-2" size={20} />
+            Back
+          </Button>
+
+          <div className="max-w-5xl mx-auto">
+            {/* Hero Card - Matching Services Section Style */}
+            <div className="bg-card rounded-2xl overflow-hidden border border-border mb-12">
+              {/* Header Image */}
+              <div className="relative h-64 md:h-80 overflow-hidden">
+                <img 
+                  src={ecommerceImage} 
+                  alt="Retail & E-commerce Solutions"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
+                
+                {/* Icon overlay */}
+                <div className="absolute bottom-4 left-6">
+                  <div className="p-4 rounded-xl bg-white shadow-lg">
+                    <div className="p-3 rounded-lg bg-gradient-to-br from-orange-500 to-amber-500">
+                      <ShoppingBag className="w-8 h-8 text-white" />
+                    </div>
+                  </div>
                 </div>
-                <h1 className="text-4xl md:text-5xl font-bold">Retail & E-commerce</h1>
               </div>
-              <p className="text-xl text-muted-foreground mb-8">
-                Modern retail technology solutions to grow your business online and offline. 
-                From custom e-commerce platforms to integrated POS systems, we help you sell smarter.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Button size="lg" asChild>
-                  <a href="#contact-section">Launch Your Store</a>
-                </Button>
-                <Button size="lg" variant="outline" asChild>
-                  <a href="tel:+254112277289">
-                    <Phone className="mr-2 h-4 w-4" />
-                    Get a Quote
-                  </a>
-                </Button>
+
+              {/* Content */}
+              <div className="p-8 space-y-4">
+                <h1 className="text-3xl md:text-4xl font-bold text-foreground">
+                  Retail & E-commerce
+                </h1>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Modern retail technology to grow your business
+                </p>
+
+                {/* Features with bullet points */}
+                <div className="space-y-3 pt-4">
+                  {features.map((feature, idx) => (
+                    <div key={idx} className="flex items-center gap-3 text-base">
+                      <div className="w-2.5 h-2.5 rounded-full bg-accent flex-shrink-0" />
+                      <span className="text-muted-foreground">{feature}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        </section>
 
-        {/* Features Grid */}
-        <section className="py-20">
-          <div className="container mx-auto px-6">
-            <h2 className="text-3xl font-bold text-center mb-12">Our Retail Solutions</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {features.map((feature, index) => (
-                <div key={index} className="p-6 rounded-2xl bg-card border border-border hover:border-accent/50 transition-all hover:shadow-lg">
-                  <div className="p-3 rounded-xl bg-accent/10 w-fit mb-4">
-                    <feature.icon className="h-6 w-6 text-accent" />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                  <p className="text-muted-foreground">{feature.description}</p>
+            {/* Detailed Description */}
+            <div className="prose prose-lg dark:prose-invert max-w-none mb-12">
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Modern retail technology solutions to grow your business online and offline. From custom e-commerce platforms to integrated POS systems, we help you sell smarter.
+              </p>
+            </div>
+
+            {/* Integrations */}
+            <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+              <CheckCircle className="text-accent" size={28} />
+              Integrations We Support
+            </h2>
+            <div className="grid md:grid-cols-2 gap-4 mb-12">
+              {integrations.map((integration, idx) => (
+                <div key={idx} className="glass-card p-5 hover:border-primary/50 transition-all flex items-center gap-3">
+                  <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
+                  <span className="text-foreground">{integration}</span>
                 </div>
               ))}
             </div>
-          </div>
-        </section>
 
-        {/* Integrations */}
-        <section className="py-20 bg-muted/30">
-          <div className="container mx-auto px-6">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-12">Integrations We Support</h2>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {integrations.map((integration, index) => (
-                  <div key={index} className="flex items-center gap-3 p-4 rounded-xl bg-background border border-border">
-                    <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
-                    <span>{integration}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section id="contact-section" className="py-20 bg-accent text-accent-foreground">
-          <div className="container mx-auto px-6 text-center">
-            <h2 className="text-3xl font-bold mb-4">Ready to Grow Your Retail Business?</h2>
-            <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
-              Let's build a retail technology solution that drives sales and delights customers.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Button size="lg" variant="secondary" asChild>
-                <a href="mailto:info@frimat.co.ke">
-                  <Mail className="mr-2 h-4 w-4" />
-                  Email Us
-                </a>
-              </Button>
-              <Button size="lg" variant="outline" className="border-accent-foreground text-accent-foreground hover:bg-accent-foreground hover:text-accent" asChild>
-                <a href="tel:+254112277289">
-                  <Phone className="mr-2 h-4 w-4" />
-                  +254 112 277 289
-                </a>
+            <div className="text-center">
+              <Button 
+                variant="hero" 
+                size="lg"
+                onClick={() => navigate('/#contact')}
+              >
+                Launch Your Store
               </Button>
             </div>
           </div>
-        </section>
+        </div>
       </main>
       <Footer />
     </div>
