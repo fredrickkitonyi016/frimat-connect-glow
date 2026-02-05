@@ -58,7 +58,7 @@ const megaMenuData = {
       { name: "Government Services", href: "/services/government-services", icon: Building2, description: "KRA, HELB, SHA portals", gradient: "from-rose-500 to-red-500" },
       { name: "Custom Development", href: "/services/custom-development", icon: Code, description: "Bespoke software solutions", gradient: "from-violet-500 to-purple-500" },
       { name: "Cloud Migration", href: "/services/cloud-migration", icon: Server, description: "Seamless cloud transitions", gradient: "from-indigo-500 to-blue-500" },
-      { name: "UI/UX Design", href: "/services/web-development", icon: Palette, description: "Beautiful digital experiences", gradient: "from-pink-500 to-rose-500" },
+      { name: "Creative & Design", href: "/services/creative-design", icon: Palette, description: "Logo, branding & graphics", gradient: "from-pink-500 to-rose-500" },
       { name: "Database Solutions", href: "/services/cloud-services", icon: Database, description: "Scalable data management", gradient: "from-emerald-500 to-teal-500" },
     ]
   },
