@@ -7,6 +7,7 @@ import { useScrollAnimations, useMouseEffects } from "@/hooks/useScrollAnimation
 
 // Lazy load below-the-fold components for performance
 const AboutSection = lazy(() => import("@/components/AboutSection"));
+const PromotionalBanner = lazy(() => import("@/components/PromotionalBanner"));
 const ServicesSection = lazy(() => import("@/components/ServicesSection"));
 const TechGallerySection = lazy(() => import("@/components/TechGallerySection"));
 const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection"));
@@ -47,6 +48,12 @@ const Index = () => {
         <div className="fade-in">
           <Suspense fallback={<SectionSkeleton />}>
             <AboutSection />
+          </Suspense>
+        </div>
+
+        <div className="fade-in">
+          <Suspense fallback={<SectionSkeleton />}>
+            <PromotionalBanner />
           </Suspense>
         </div>
 

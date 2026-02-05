@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import webDevImage from "@/assets/services/web-dev-service.jpg";
+import graphicDesignImage from "@/assets/ads/graphic-design-ad.jpg";
 
 export default function CreativeDesign() {
   const navigate = useNavigate();
@@ -56,7 +56,7 @@ export default function CreativeDesign() {
               {/* Header Image */}
               <div className="relative h-64 md:h-80 overflow-hidden">
                 <img 
-                  src={webDevImage} 
+                  src={graphicDesignImage} 
                   alt="Creative & Design"
                   className="w-full h-full object-cover"
                 />
@@ -64,9 +64,9 @@ export default function CreativeDesign() {
                 
                 {/* Icon overlay */}
                 <div className="absolute bottom-4 left-6">
-                  <div className="p-4 rounded-xl bg-white shadow-lg">
+                  <div className="p-4 rounded-xl bg-card shadow-lg">
                     <div className="p-3 rounded-lg bg-gradient-to-br from-pink-500 to-rose-500">
-                      <Palette className="w-8 h-8 text-white" />
+                      <Palette className="w-8 h-8 text-primary-foreground" />
                     </div>
                   </div>
                 </div>
