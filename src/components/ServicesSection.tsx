@@ -122,10 +122,10 @@ export default function ServicesSection() {
       icon: Palette,
       gradient: "from-pink-500 to-rose-500",
       image: webDevImage,
-      title: "UI/UX Design",
-      description: "Beautiful digital experiences that delight users",
-      features: ["User Research", "Wireframing", "Prototyping", "Design Systems"],
-      href: "/services/web-development"
+      title: "Creative & Design",
+      description: "Professional graphic design services for your brand",
+      features: ["Logo Design", "Brand Identity", "Marketing Materials", "Social Media Graphics"],
+      href: "/services/creative-design"
     },
     {
       icon: Database,
