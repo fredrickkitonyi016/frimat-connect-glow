@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle, Shield, Zap } from "lucide-react";
+import { ArrowRight, CheckCircle, Shield, Zap, Sparkles } from "lucide-react";
 import heroImage from "@/assets/hero-corporate.jpg";
 import { useCountUp } from "@/hooks/useCountUp";
 import { motion } from "framer-motion";
@@ -49,6 +49,14 @@ export default function HeroSection() {
     }),
   };
 
+  // Generate particles for animation
+  const particles = Array.from({ length: 20 }, (_, i) => ({
+    id: i,
+    left: `${Math.random() * 100}%`,
+    delay: Math.random() * 5,
+    duration: 10 + Math.random() * 10,
+  }));
+
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
@@ -60,24 +68,67 @@ export default function HeroSection() {
           backgroundPosition: 'center',
         }}
       />
-      {/* Professional gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background/95 via-background/85 to-primary/20 z-[1]" />
       
-      {/* Modern mesh gradient */}
+      {/* Cyberpunk gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background/95 via-background/90 to-primary/10 z-[1]" />
+      
+      {/* Animated mesh gradient */}
       <div 
-        className="absolute inset-0 z-[2] opacity-60"
+        className="absolute inset-0 z-[2] opacity-80"
         style={{
           background: 'var(--gradient-mesh)',
         }}
       />
       
-      {/* Subtle grid pattern */}
-      <div 
-        className="absolute inset-0 z-[2] opacity-[0.02]"
+      {/* Cyber grid pattern */}
+      <div className="absolute inset-0 z-[2] cyber-grid opacity-30" />
+      
+      {/* Floating particles */}
+      <div className="tech-particles z-[3]">
+        {particles.map((particle) => (
+          <div
+            key={particle.id}
+            className="particle"
+            style={{
+              left: particle.left,
+              animationDelay: `${particle.delay}s`,
+              animationDuration: `${particle.duration}s`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Glow orbs */}
+      <motion.div
+        className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full z-[2]"
         style={{
-          backgroundImage: `linear-gradient(hsl(var(--primary)) 1px, transparent 1px), 
-                           linear-gradient(90deg, hsl(var(--primary)) 1px, transparent 1px)`,
-          backgroundSize: '60px 60px'
+          background: 'radial-gradient(circle, hsl(var(--primary) / 0.15), transparent 70%)',
+          filter: 'blur(60px)',
+        }}
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.3, 0.5, 0.3],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+      <motion.div
+        className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full z-[2]"
+        style={{
+          background: 'radial-gradient(circle, hsl(var(--secondary) / 0.15), transparent 70%)',
+          filter: 'blur(60px)',
+        }}
+        animate={{
+          scale: [1.2, 1, 1.2],
+          opacity: [0.4, 0.6, 0.4],
+        }}
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+          ease: "easeInOut",
         }}
       />
 
@@ -94,18 +145,18 @@ export default function HeroSection() {
             {/* Badge */}
             <motion.div 
               variants={itemVariants}
-              className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 px-4 py-2 rounded-full backdrop-blur-sm"
+              className="inline-flex items-center gap-2 bg-primary/10 border border-primary/30 px-4 py-2 rounded-full backdrop-blur-sm hover:bg-primary/20 transition-all duration-300 cursor-default"
             >
-              <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+              <Sparkles className="w-4 h-4 text-primary animate-pulse" />
               <span className="text-sm font-medium text-foreground">Leading Technology Partner in Kenya</span>
             </motion.div>
 
             {/* Main Heading */}
             <motion.div variants={itemVariants} className="space-y-4">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] font-display">
                 <span className="text-foreground">Transform Your</span>
                 <br />
-                <span className="bg-gradient-to-r from-primary via-primary to-accent bg-clip-text text-transparent">
+                <span className="gradient-text">
                   Business with
                 </span>
                 <br />
@@ -121,8 +172,8 @@ export default function HeroSection() {
             {/* Features */}
             <motion.div variants={itemVariants} className="flex flex-wrap gap-6">
               {features.map((feature, index) => (
-                <div key={index} className="flex items-center gap-2 text-muted-foreground">
-                  <feature.icon className="text-primary" size={18} />
+                <div key={index} className="flex items-center gap-2 text-muted-foreground group hover:text-foreground transition-colors">
+                  <feature.icon className="text-primary group-hover:drop-shadow-[0_0_8px_hsl(var(--primary)/0.6)] transition-all" size={18} />
                   <span className="text-sm font-medium">{feature.text}</span>
                 </div>
               ))}
@@ -140,9 +191,9 @@ export default function HeroSection() {
                 <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
               </Button>
               <Button 
-                variant="outline" 
+                variant="neon" 
                 size="lg" 
-                className="text-base border-primary/30 hover:bg-primary/5 backdrop-blur-sm"
+                className="text-base backdrop-blur-sm"
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 Schedule Consultation
@@ -158,16 +209,16 @@ export default function HeroSection() {
                 variants={cardVariants}
                 initial="hidden"
                 animate="visible"
-                className="bg-card/80 backdrop-blur-md border border-border/50 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                className="glass-card hover-lift group"
               >
-                <div ref={projectsCount.ref} className="text-4xl font-bold text-primary mb-2">{projectsCount.value}</div>
+                <div ref={projectsCount.ref} className="text-4xl font-bold text-primary mb-2 font-display stat-counter group-hover:drop-shadow-[0_0_10px_hsl(var(--primary)/0.5)] transition-all">{projectsCount.value}</div>
                 <div className="text-sm text-muted-foreground font-medium">Projects Delivered</div>
-                <div className="mt-3 h-1 bg-muted rounded-full overflow-hidden">
+                <div className="mt-3 progress-cyber">
                   <motion.div 
-                    className="h-full bg-gradient-to-r from-primary to-accent rounded-full"
+                    className="progress-cyber-bar"
                     initial={{ width: 0 }}
                     animate={{ width: '75%' }}
-                    transition={{ delay: 0.8, duration: 1, ease: "easeOut" }}
+                    transition={{ delay: 0.8, duration: 1.2, ease: "easeOut" }}
                   />
                 </div>
               </motion.div>
@@ -176,16 +227,17 @@ export default function HeroSection() {
                 variants={cardVariants}
                 initial="hidden"
                 animate="visible"
-                className="bg-card/80 backdrop-blur-md border border-border/50 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                className="glass-card hover-lift group"
               >
-                <div ref={uptimeCount.ref} className="text-4xl font-bold text-primary mb-2">{uptimeCount.value}</div>
+                <div ref={uptimeCount.ref} className="text-4xl font-bold text-accent mb-2 font-display stat-counter group-hover:drop-shadow-[0_0_10px_hsl(var(--accent)/0.5)] transition-all">{uptimeCount.value}</div>
                 <div className="text-sm text-muted-foreground font-medium">Support Available</div>
-                <div className="mt-3 h-1 bg-muted rounded-full overflow-hidden">
+                <div className="mt-3 progress-cyber">
                   <motion.div 
-                    className="h-full bg-gradient-to-r from-accent to-secondary rounded-full"
+                    className="progress-cyber-bar"
+                    style={{ background: 'linear-gradient(90deg, hsl(var(--accent)), hsl(var(--primary)))' }}
                     initial={{ width: 0 }}
                     animate={{ width: '100%' }}
-                    transition={{ delay: 0.9, duration: 1, ease: "easeOut" }}
+                    transition={{ delay: 0.9, duration: 1.2, ease: "easeOut" }}
                   />
                 </div>
               </motion.div>
@@ -196,16 +248,17 @@ export default function HeroSection() {
                 variants={cardVariants}
                 initial="hidden"
                 animate="visible"
-                className="bg-card/80 backdrop-blur-md border border-border/50 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                className="glass-card hover-lift group"
               >
-                <div ref={clientsCount.ref} className="text-4xl font-bold text-primary mb-2">{clientsCount.value}</div>
+                <div ref={clientsCount.ref} className="text-4xl font-bold text-secondary mb-2 font-display stat-counter group-hover:drop-shadow-[0_0_10px_hsl(var(--secondary)/0.5)] transition-all">{clientsCount.value}</div>
                 <div className="text-sm text-muted-foreground font-medium">Happy Clients</div>
-                <div className="mt-3 h-1 bg-muted rounded-full overflow-hidden">
+                <div className="mt-3 progress-cyber">
                   <motion.div 
-                    className="h-full bg-gradient-to-r from-secondary to-primary rounded-full"
+                    className="progress-cyber-bar"
+                    style={{ background: 'linear-gradient(90deg, hsl(var(--secondary)), hsl(var(--primary)))' }}
                     initial={{ width: 0 }}
                     animate={{ width: '83%' }}
-                    transition={{ delay: 1, duration: 1, ease: "easeOut" }}
+                    transition={{ delay: 1, duration: 1.2, ease: "easeOut" }}
                   />
                 </div>
               </motion.div>
@@ -214,16 +267,16 @@ export default function HeroSection() {
                 variants={cardVariants}
                 initial="hidden"
                 animate="visible"
-                className="bg-card/80 backdrop-blur-md border border-border/50 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                className="glass-card hover-lift group"
               >
-                <div ref={ratingCount.ref} className="text-4xl font-bold text-primary mb-2">{ratingCount.value}</div>
+                <div ref={ratingCount.ref} className="text-4xl font-bold text-primary mb-2 font-display stat-counter group-hover:drop-shadow-[0_0_10px_hsl(var(--primary)/0.5)] transition-all">{ratingCount.value}</div>
                 <div className="text-sm text-muted-foreground font-medium">Customer Reviews</div>
-                <div className="mt-3 h-1 bg-muted rounded-full overflow-hidden">
+                <div className="mt-3 progress-cyber">
                   <motion.div 
-                    className="h-full bg-gradient-to-r from-primary to-accent rounded-full"
+                    className="progress-cyber-bar"
                     initial={{ width: 0 }}
                     animate={{ width: '100%' }}
-                    transition={{ delay: 1.1, duration: 1, ease: "easeOut" }}
+                    transition={{ delay: 1.1, duration: 1.2, ease: "easeOut" }}
                   />
                 </div>
               </motion.div>
@@ -237,17 +290,17 @@ export default function HeroSection() {
           className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 lg:hidden"
         >
           {[
-            { ref: projectsCount.ref, value: projectsCount.value, label: "Projects" },
-            { ref: clientsCount.ref, value: clientsCount.value, label: "Clients" },
-            { ref: uptimeCount.ref, value: uptimeCount.value, label: "Support" },
-            { ref: ratingCount.ref, value: ratingCount.value, label: "Rating" },
+            { ref: projectsCount.ref, value: projectsCount.value, label: "Projects", color: "primary" },
+            { ref: clientsCount.ref, value: clientsCount.value, label: "Clients", color: "secondary" },
+            { ref: uptimeCount.ref, value: uptimeCount.value, label: "Support", color: "accent" },
+            { ref: ratingCount.ref, value: ratingCount.value, label: "Rating", color: "primary" },
           ].map((stat, index) => (
             <motion.div 
               key={index}
               variants={itemVariants}
-              className="bg-card/60 backdrop-blur-md border border-border/30 rounded-xl p-4 text-center"
+              className="glass-card text-center hover-lift"
             >
-              <div ref={stat.ref} className="text-2xl font-bold text-primary">{stat.value}</div>
+              <div ref={stat.ref} className={`text-2xl font-bold text-${stat.color} font-display stat-counter`}>{stat.value}</div>
               <div className="text-xs text-muted-foreground">{stat.label}</div>
             </motion.div>
           ))}
@@ -263,7 +316,7 @@ export default function HeroSection() {
       >
         <div className="flex flex-col items-center gap-2">
           <span className="text-xs text-muted-foreground font-medium">Scroll to explore</span>
-          <div className="w-6 h-10 border-2 border-primary/50 rounded-full flex justify-center backdrop-blur-sm">
+          <div className="w-6 h-10 border-2 border-primary/50 rounded-full flex justify-center backdrop-blur-sm hover:border-primary transition-colors">
             <motion.div 
               className="w-1 h-3 bg-primary rounded-full mt-2"
               animate={{ y: [0, 8, 0] }}
