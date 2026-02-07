@@ -36,7 +36,7 @@ export default function Footer() {
   return (
     <footer className="relative bg-gradient-to-b from-background to-card border-t border-border">
       <div className="container mx-auto px-6 py-16">
-        <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-5 md:grid-cols-2 gap-12">
           {/* Company Info */}
           <div className="space-y-6">
             <div>
@@ -101,6 +101,7 @@ export default function Footer() {
                 { name: "Cybersecurity", href: "/services/cybersecurity" },
                 { name: "IT Support", href: "/services/it-support" },
                 { name: "E-commerce", href: "/services/ecommerce" },
+                { name: "Creative & Design", href: "/services/creative-design" },
                 { name: "Government Services", href: "/services/government-services" }
               ].map((service, index) => (
                 <li key={index}>

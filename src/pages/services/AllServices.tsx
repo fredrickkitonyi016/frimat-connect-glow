@@ -115,13 +115,13 @@ const allServices = [
     gradient: "from-indigo-500 to-blue-500"
   },
   {
-    title: "UI/UX Design",
-    description: "User-centered design services including wireframing, prototyping, and visual design. Creating intuitive and beautiful digital experiences.",
+    title: "Creative & Design",
+    description: "Professional graphic design, logo creation, branding, and visual identity services. Creating memorable brand experiences that stand out.",
     icon: Palette,
     image: webDevService,
-    href: "/services/web-development",
-    pricing: "Starting from KSh 30,000",
-    features: ["Wireframing", "Prototyping", "Visual Design", "User Testing"],
+    href: "/services/creative-design",
+    pricing: "Starting from KSh 5,000",
+    features: ["Logo Design", "Branding", "Print Design", "Social Media Graphics"],
     gradient: "from-pink-500 to-rose-500"
   },
   {
