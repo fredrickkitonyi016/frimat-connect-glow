@@ -1,10 +1,26 @@
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle, Shield, Zap, Sparkles } from "lucide-react";
-import heroImage from "@/assets/hero-corporate.jpg";
 import { useCountUp } from "@/hooks/useCountUp";
 import { motion } from "framer-motion";
+import HeroSlider from "./HeroSlider";
 
 export default function HeroSection() {
+  const [mousePosition, setMousePosition] = useState({ x: 0.5, y: 0.5 });
+
+  // Track mouse position for parallax
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({
+        x: e.clientX / window.innerWidth,
+        y: e.clientY / window.innerHeight,
+      });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
   const projectsCount = useCountUp({ end: 20, duration: 3000, enableScrollTrigger: false });
   const clientsCount = useCountUp({ end: 100, suffix: '+', duration: 3500, enableScrollTrigger: false });
   const uptimeCount = useCountUp({ end: 24, suffix: '/7', duration: 2000, enableScrollTrigger: false });
@@ -59,29 +75,8 @@ export default function HeroSection() {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div 
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: `url(${heroImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      />
-      
-      {/* Cyberpunk gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background/95 via-background/90 to-primary/10 z-[1]" />
-      
-      {/* Animated mesh gradient */}
-      <div 
-        className="absolute inset-0 z-[2] opacity-80"
-        style={{
-          background: 'var(--gradient-mesh)',
-        }}
-      />
-      
-      {/* Cyber grid pattern */}
-      <div className="absolute inset-0 z-[2] cyber-grid opacity-30" />
+      {/* Background Slider with Parallax */}
+      <HeroSlider mousePosition={mousePosition} />
       
       {/* Floating particles */}
       <div className="tech-particles z-[3]">
