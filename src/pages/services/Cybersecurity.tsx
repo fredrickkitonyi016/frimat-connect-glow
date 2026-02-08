@@ -1,27 +1,83 @@
-import { ArrowLeft, Shield, Code, CheckCircle, ChevronDown, ChevronUp } from "lucide-react";
+import { ArrowLeft, Shield, Code, CheckCircle, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import cybersecurityImage from "@/assets/services/cybersecurity-service.jpg";
+import ServiceDetailModal from "@/components/ServiceDetailModal";
+
+interface ServiceItem {
+  name: string;
+  price: string;
+  description: string;
+  details: string;
+  features?: string[];
+}
 
 export default function Cybersecurity() {
   const navigate = useNavigate();
+  const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
 
-  const services = [
-    { name: "Security Assessment (Basic)", price: "KSh 25,000", description: "Small business security review", details: "Network vulnerability scan, password policy review, access control audit, and executive summary report with recommendations." },
-    { name: "Security Assessment (Enterprise)", price: "KSh 80,000", description: "Comprehensive enterprise audit", details: "Full infrastructure review, compliance check (ISO 27001, PCI-DSS), risk assessment, and detailed remediation roadmap." },
-    { name: "Penetration Testing", price: "KSh 50,000+", description: "Ethical hacking to find vulnerabilities", details: "Web app, network, and social engineering tests. Detailed findings report with proof-of-concept and priority fixes." },
-    { name: "Firewall Setup & Config", price: "KSh 15,000", description: "Hardware/software firewall deployment", details: "Firewall installation, rule configuration, VPN setup, intrusion prevention, and ongoing monitoring setup." },
-    { name: "Antivirus Deployment (per device)", price: "KSh 2,500/year", description: "Enterprise antivirus licensing", details: "Centralized management console, real-time protection, automated updates, and threat reports." },
-    { name: "Email Security Setup", price: "KSh 20,000", description: "Anti-spam & phishing protection", details: "SPF/DKIM/DMARC configuration, spam filtering, attachment scanning, and phishing simulation training." },
-    { name: "Security Awareness Training", price: "KSh 30,000", description: "Staff training workshop (up to 20 people)", details: "Interactive sessions, phishing simulations, password best practices, and certification for participants." },
-    { name: "Incident Response", price: "KSh 40,000", description: "Emergency breach response", details: "Immediate containment, forensic analysis, evidence preservation, recovery assistance, and post-incident report." },
+  const services: ServiceItem[] = [
+    { 
+      name: "Security Assessment (Basic)", 
+      price: "KSh 25,000", 
+      description: "Small business security review", 
+      details: "Network vulnerability scan, password policy review, access control audit, and executive summary report with recommendations.",
+      features: ["Vulnerability Scan", "Password Policy Review", "Access Control Audit", "Executive Report"]
+    },
+    { 
+      name: "Security Assessment (Enterprise)", 
+      price: "KSh 80,000", 
+      description: "Comprehensive enterprise audit", 
+      details: "Full infrastructure review, compliance check (ISO 27001, PCI-DSS), risk assessment, and detailed remediation roadmap.",
+      features: ["Full Infrastructure Review", "Compliance Check", "Risk Assessment", "Remediation Roadmap"]
+    },
+    { 
+      name: "Penetration Testing", 
+      price: "KSh 50,000+", 
+      description: "Ethical hacking to find vulnerabilities", 
+      details: "Web app, network, and social engineering tests. Detailed findings report with proof-of-concept and priority fixes.",
+      features: ["Web App Testing", "Network Testing", "Social Engineering", "Proof-of-Concept Report"]
+    },
+    { 
+      name: "Firewall Setup & Config", 
+      price: "KSh 15,000", 
+      description: "Hardware/software firewall deployment", 
+      details: "Firewall installation, rule configuration, VPN setup, intrusion prevention, and ongoing monitoring setup.",
+      features: ["Firewall Installation", "Rule Configuration", "VPN Setup", "Intrusion Prevention"]
+    },
+    { 
+      name: "Antivirus Deployment (per device)", 
+      price: "KSh 2,500/year", 
+      description: "Enterprise antivirus licensing", 
+      details: "Centralized management console, real-time protection, automated updates, and threat reports.",
+      features: ["Centralized Management", "Real-time Protection", "Auto Updates", "Threat Reports"]
+    },
+    { 
+      name: "Email Security Setup", 
+      price: "KSh 20,000", 
+      description: "Anti-spam & phishing protection", 
+      details: "SPF/DKIM/DMARC configuration, spam filtering, attachment scanning, and phishing simulation training.",
+      features: ["SPF/DKIM/DMARC", "Spam Filtering", "Attachment Scanning", "Phishing Training"]
+    },
+    { 
+      name: "Security Awareness Training", 
+      price: "KSh 30,000", 
+      description: "Staff training workshop (up to 20 people)", 
+      details: "Interactive sessions, phishing simulations, password best practices, and certification for participants.",
+      features: ["Interactive Sessions", "Phishing Simulations", "Password Training", "Certification"]
+    },
+    { 
+      name: "Incident Response", 
+      price: "KSh 40,000", 
+      description: "Emergency breach response", 
+      details: "Immediate containment, forensic analysis, evidence preservation, recovery assistance, and post-incident report.",
+      features: ["Immediate Containment", "Forensic Analysis", "Evidence Preservation", "Recovery Assistance"]
+    },
   ];
-
-  const [expandedService, setExpandedService] = useState<number | null>(null);
 
   const technologies = [
     "Firewall", "SIEM", "IDS/IPS", "Endpoint Protection", "Encryption", "VPN", "MFA", "Vulnerability Scanner"
@@ -49,9 +105,8 @@ export default function Cybersecurity() {
           </Button>
 
           <div className="max-w-5xl mx-auto">
-            {/* Hero Card - Matching Services Section Style */}
+            {/* Hero Card */}
             <div className="bg-card rounded-2xl overflow-hidden border border-border mb-12">
-              {/* Header Image */}
               <div className="relative h-64 md:h-80 overflow-hidden">
                 <img 
                   src={cybersecurityImage} 
@@ -60,7 +115,6 @@ export default function Cybersecurity() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
                 
-                {/* Icon overlay */}
                 <div className="absolute bottom-4 left-6">
                   <div className="p-4 rounded-xl bg-white shadow-lg">
                     <div className="p-3 rounded-lg bg-gradient-to-br from-red-500 to-orange-500">
@@ -70,7 +124,6 @@ export default function Cybersecurity() {
                 </div>
               </div>
 
-              {/* Content */}
               <div className="p-8 space-y-4">
                 <h1 className="text-3xl md:text-4xl font-bold text-foreground">
                   Cybersecurity
@@ -79,7 +132,6 @@ export default function Cybersecurity() {
                   Comprehensive security solutions to protect your digital assets
                 </p>
 
-                {/* Features with bullet points */}
                 <div className="space-y-3 pt-4">
                   {features.map((feature, idx) => (
                     <div key={idx} className="flex items-center gap-3 text-base">
@@ -91,62 +143,36 @@ export default function Cybersecurity() {
               </div>
             </div>
 
-            {/* Detailed Description */}
             <div className="prose prose-lg dark:prose-invert max-w-none mb-12">
               <p className="text-lg text-muted-foreground leading-relaxed">
                 Protect your digital assets with enterprise-grade security solutions. Our comprehensive cybersecurity services safeguard your business from evolving cyber threats with proactive monitoring, testing, and incident response.
               </p>
             </div>
 
-            {/* Services with Pricing */}
             <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
               <CheckCircle className="text-accent" size={28} />
               Our Services & Pricing
             </h2>
             <div className="grid md:grid-cols-2 gap-4 mb-12">
               {services.map((service, idx) => (
-                <div key={idx} className="glass-card p-5 hover:border-primary/50 transition-all">
+                <motion.div 
+                  key={idx} 
+                  className="glass-card p-5 hover:border-primary/50 transition-all cursor-pointer group"
+                  whileHover={{ scale: 1.02, y: -4 }}
+                  onClick={() => setSelectedService(service)}
+                >
                   <div className="flex justify-between items-start mb-2">
-                    <h3 className="font-semibold text-foreground">{service.name}</h3>
+                    <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">{service.name}</h3>
                     <span className="text-primary font-bold whitespace-nowrap ml-2">{service.price}</span>
                   </div>
-                  <p className="text-sm text-muted-foreground">{service.description}</p>
-                  <button
-                    onClick={() => setExpandedService(expandedService === idx ? null : idx)}
-                    className="flex items-center gap-1 text-sm text-primary hover:text-primary/80 mt-3 font-medium transition-colors"
-                  >
-                    {expandedService === idx ? (
-                      <>Less details <ChevronUp size={16} /></>
-                    ) : (
-                      <>Learn more <ChevronDown size={16} /></>
-                    )}
+                  <p className="text-sm text-muted-foreground mb-3">{service.description}</p>
+                  <button className="flex items-center gap-1 text-sm text-accent hover:text-accent/80 font-medium transition-colors">
+                    Learn more <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                   </button>
-                  <AnimatePresence>
-                    {expandedService === idx && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: "easeInOut" }}
-                        className="overflow-hidden"
-                      >
-                        <div className="mt-3 pt-3 border-t border-border">
-                          <p className="text-sm text-muted-foreground leading-relaxed">{service.details}</p>
-                          <Link
-                            to="/#contact"
-                            className="inline-flex items-center gap-1 text-sm text-accent hover:text-accent/80 mt-2 font-medium"
-                          >
-                            Get a quote for this service →
-                          </Link>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
+                </motion.div>
               ))}
             </div>
 
-            {/* Technologies */}
             <div className="glass-card p-6 mb-12">
               <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
                 <Code className="text-primary" size={24} />
@@ -174,6 +200,12 @@ export default function Cybersecurity() {
         </div>
       </main>
       <Footer />
+
+      <ServiceDetailModal 
+        isOpen={!!selectedService}
+        onClose={() => setSelectedService(null)}
+        service={selectedService}
+      />
     </div>
   );
 }
