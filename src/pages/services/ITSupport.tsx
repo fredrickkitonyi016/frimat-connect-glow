@@ -1,27 +1,83 @@
-import { ArrowLeft, Monitor, Code, CheckCircle, ChevronDown, ChevronUp } from "lucide-react";
+import { ArrowLeft, Monitor, Code, CheckCircle, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate, Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import itSupportImage from "@/assets/services/it-support-service.jpg";
+import ServiceDetailModal from "@/components/ServiceDetailModal";
+
+interface ServiceItem {
+  name: string;
+  price: string;
+  description: string;
+  details: string;
+  features?: string[];
+}
 
 export default function ITSupport() {
   const navigate = useNavigate();
+  const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
 
-  const services = [
-    { name: "Remote IT Support (per hour)", price: "KSh 2,000", description: "Instant remote assistance via TeamViewer/AnyDesk", details: "Quick troubleshooting, software issues, email setup, and configuration. Average response time under 15 minutes." },
-    { name: "On-site Support (per visit)", price: "KSh 3,500", description: "Technician visit within Nairobi", details: "Hardware diagnostics, network issues, printer setup. Includes first hour; additional hours at KSh 1,500/hr." },
-    { name: "Monthly IT Retainer (Basic)", price: "KSh 15,000/month", description: "10 hours support, email & phone", details: "Priority queue, monthly health check, basic monitoring, and discounted rates on hardware repairs." },
-    { name: "Monthly IT Retainer (Pro)", price: "KSh 35,000/month", description: "Unlimited support, priority response", details: "24/7 emergency line, proactive monitoring, quarterly audits, dedicated account manager, and on-site visits included." },
-    { name: "Computer Repair", price: "KSh 1,500+", description: "Diagnosis & repair (parts extra)", details: "Free diagnosis, motherboard repair, power issues, overheating fixes. 30-day warranty on repairs." },
-    { name: "Laptop Screen Replacement", price: "KSh 8,000+", description: "Screen replacement service", details: "LCD/LED replacement, all brands supported, genuine parts available. Same-day service for common models." },
-    { name: "Virus Removal & Cleanup", price: "KSh 2,000", description: "Complete malware removal", details: "Full system scan, malware removal, browser cleanup, and antivirus installation with 1-year license." },
-    { name: "Data Recovery", price: "KSh 5,000+", description: "Recover lost or deleted files", details: "Deleted files, formatted drives, corrupted storage. Price varies by complexity. No data, no charge policy." },
+  const services: ServiceItem[] = [
+    { 
+      name: "Remote IT Support (per hour)", 
+      price: "KSh 2,000", 
+      description: "Instant remote assistance via TeamViewer/AnyDesk", 
+      details: "Quick troubleshooting, software issues, email setup, and configuration. Average response time under 15 minutes.",
+      features: ["TeamViewer/AnyDesk Access", "Quick Troubleshooting", "Email Setup", "Software Configuration"]
+    },
+    { 
+      name: "On-site Support (per visit)", 
+      price: "KSh 3,500", 
+      description: "Technician visit within Nairobi", 
+      details: "Hardware diagnostics, network issues, printer setup. Includes first hour; additional hours at KSh 1,500/hr.",
+      features: ["Hardware Diagnostics", "Network Issues", "Printer Setup", "On-site Service"]
+    },
+    { 
+      name: "Monthly IT Retainer (Basic)", 
+      price: "KSh 15,000/month", 
+      description: "10 hours support, email & phone", 
+      details: "Priority queue, monthly health check, basic monitoring, and discounted rates on hardware repairs.",
+      features: ["10 Hours Support", "Priority Queue", "Monthly Health Check", "Discounted Repairs"]
+    },
+    { 
+      name: "Monthly IT Retainer (Pro)", 
+      price: "KSh 35,000/month", 
+      description: "Unlimited support, priority response", 
+      details: "24/7 emergency line, proactive monitoring, quarterly audits, dedicated account manager, and on-site visits included.",
+      features: ["Unlimited Support", "24/7 Emergency Line", "Quarterly Audits", "Dedicated Account Manager"]
+    },
+    { 
+      name: "Computer Repair", 
+      price: "KSh 1,500+", 
+      description: "Diagnosis & repair (parts extra)", 
+      details: "Free diagnosis, motherboard repair, power issues, overheating fixes. 30-day warranty on repairs.",
+      features: ["Free Diagnosis", "Motherboard Repair", "Power Issues", "30-Day Warranty"]
+    },
+    { 
+      name: "Laptop Screen Replacement", 
+      price: "KSh 8,000+", 
+      description: "Screen replacement service", 
+      details: "LCD/LED replacement, all brands supported, genuine parts available. Same-day service for common models.",
+      features: ["LCD/LED Replacement", "All Brands Supported", "Genuine Parts", "Same-Day Service"]
+    },
+    { 
+      name: "Virus Removal & Cleanup", 
+      price: "KSh 2,000", 
+      description: "Complete malware removal", 
+      details: "Full system scan, malware removal, browser cleanup, and antivirus installation with 1-year license.",
+      features: ["Full System Scan", "Malware Removal", "Browser Cleanup", "1-Year Antivirus"]
+    },
+    { 
+      name: "Data Recovery", 
+      price: "KSh 5,000+", 
+      description: "Recover lost or deleted files", 
+      details: "Deleted files, formatted drives, corrupted storage. Price varies by complexity. No data, no charge policy.",
+      features: ["Deleted File Recovery", "Formatted Drive Recovery", "Corrupted Storage", "No Data No Charge"]
+    },
   ];
-
-  const [expandedService, setExpandedService] = useState<number | null>(null);
 
   const technologies = [
     "Remote Desktop", "Network Admin", "Hardware Repair", "Windows", "Linux", "macOS", "Active Directory", "Backup Solutions"
@@ -105,44 +161,23 @@ export default function ITSupport() {
             </h2>
             <div className="grid md:grid-cols-2 gap-4 mb-12">
               {services.map((service, idx) => (
-                <div key={idx} className="glass-card p-5 hover:border-primary/50 transition-all">
+                <motion.div 
+                  key={idx} 
+                  className="glass-card p-5 hover:border-primary/50 transition-all cursor-pointer group"
+                  whileHover={{ scale: 1.02, y: -4 }}
+                  onClick={() => setSelectedService(service)}
+                >
                   <div className="flex justify-between items-start mb-2">
-                    <h3 className="font-semibold text-foreground">{service.name}</h3>
+                    <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">{service.name}</h3>
                     <span className="text-primary font-bold whitespace-nowrap ml-2">{service.price}</span>
                   </div>
-                  <p className="text-sm text-muted-foreground">{service.description}</p>
+                  <p className="text-sm text-muted-foreground mb-3">{service.description}</p>
                   <button
-                    onClick={() => setExpandedService(expandedService === idx ? null : idx)}
-                    className="flex items-center gap-1 text-sm text-primary hover:text-primary/80 mt-3 font-medium transition-colors"
+                    className="flex items-center gap-1 text-sm text-accent hover:text-accent/80 font-medium transition-colors"
                   >
-                    {expandedService === idx ? (
-                      <>Less details <ChevronUp size={16} /></>
-                    ) : (
-                      <>Learn more <ChevronDown size={16} /></>
-                    )}
+                    Learn more <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                   </button>
-                  <AnimatePresence>
-                    {expandedService === idx && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: "easeInOut" }}
-                        className="overflow-hidden"
-                      >
-                        <div className="mt-3 pt-3 border-t border-border">
-                          <p className="text-sm text-muted-foreground leading-relaxed">{service.details}</p>
-                          <Link
-                            to="/#contact"
-                            className="inline-flex items-center gap-1 text-sm text-accent hover:text-accent/80 mt-2 font-medium"
-                          >
-                            Get a quote for this service →
-                          </Link>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
+                </motion.div>
               ))}
             </div>
 
@@ -174,6 +209,13 @@ export default function ITSupport() {
         </div>
       </main>
       <Footer />
+
+      {/* Service Detail Modal */}
+      <ServiceDetailModal 
+        isOpen={!!selectedService}
+        onClose={() => setSelectedService(null)}
+        service={selectedService}
+      />
     </div>
   );
 }
