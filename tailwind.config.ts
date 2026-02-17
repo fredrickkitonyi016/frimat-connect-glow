@@ -19,8 +19,8 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['Inter', 'system-ui', 'sans-serif'],
-				display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+				sans: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
+				display: ['Syne', 'system-ui', 'sans-serif'],
 				mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
 			},
 			colors: {
@@ -70,13 +70,13 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Cyber theme colors
+			// Cosmos Enterprise colors
 				cyber: {
-					blue: '#0ea5e9',
-					purple: '#8b5cf6',
-					cyan: '#22d3ee',
+					blue: '#0A2472',
+					purple: '#5B21B6',
+					cyan: '#06B6D4',
 					red: '#ef4444',
-					dark: '#0f172a',
+					dark: '#0B1120',
 				}
 			},
 			borderRadius: {
