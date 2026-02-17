@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -11,58 +11,58 @@ Premium cyberpunk aesthetic with cinematic visuals.
 
 @layer base {
   :root {
-    /* Light Mode - Futuristic Tech Theme */
-    --background: 220 20% 97%;
-    --foreground: 222 47% 11%;
+    /* Light Mode - Cosmos Enterprise Theme */
+    --background: 220 25% 97%;
+    --foreground: 224 71% 15%;
     
-    /* Cyber Blue Primary */
-    --primary: 199 89% 48%;
-    --primary-foreground: 222 47% 11%;
-    --primary-glow: 199 89% 58%;
+    /* Corporate Azure Primary */
+    --primary: 224 80% 24%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 224 80% 34%;
     
-    /* Electric Purple Secondary */
-    --secondary: 258 90% 66%;
+    /* Quantum Violet Secondary */
+    --secondary: 263 77% 42%;
     --secondary-foreground: 0 0% 100%;
-    --secondary-glow: 258 90% 76%;
+    --secondary-glow: 263 77% 52%;
     
-    /* Neon Cyan Accent */
-    --accent: 187 92% 48%;
-    --accent-foreground: 222 47% 11%;
-    --accent-glow: 187 92% 58%;
+    /* Cybernetic Cyan Accent */
+    --accent: 189 94% 43%;
+    --accent-foreground: 224 71% 15%;
+    --accent-glow: 189 94% 53%;
     
-    /* Tech Red for highlights */
+    /* Destructive */
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
     
     /* Cards & Surfaces */
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
-    --card-glass: 220 20% 98%;
+    --card-foreground: 224 71% 15%;
+    --card-glass: 220 25% 98%;
     
     /* Muted Elements */
-    --muted: 220 14% 92%;
-    --muted-foreground: 220 9% 46%;
+    --muted: 214 32% 91%;
+    --muted-foreground: 215 16% 47%;
     
     /* Borders & Inputs */
-    --border: 220 13% 88%;
-    --input: 220 14% 96%;
-    --ring: 199 89% 48%;
+    --border: 214 32% 88%;
+    --input: 214 32% 96%;
+    --ring: 224 80% 24%;
     
     /* Popover */
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover-foreground: 224 71% 15%;
     
-    /* Modern Gradients - Futuristic */
-    --gradient-primary: linear-gradient(135deg, hsl(199 89% 48%), hsl(258 90% 66%));
-    --gradient-hero: linear-gradient(180deg, hsl(220 20% 97%), hsl(220 25% 95%), hsl(258 20% 97%));
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 100% / 0.95), hsl(220 20% 98% / 0.9));
-    --gradient-button: linear-gradient(135deg, hsl(199 89% 48%), hsl(187 92% 48%));
-    --gradient-glow: radial-gradient(ellipse at center, hsl(199 89% 48% / 0.1), transparent 70%);
-    --gradient-mesh: radial-gradient(at 40% 20%, hsl(199 89% 48% / 0.08) 0px, transparent 50%),
-                     radial-gradient(at 80% 0%, hsl(258 90% 66% / 0.06) 0px, transparent 50%),
-                     radial-gradient(at 0% 50%, hsl(187 92% 48% / 0.06) 0px, transparent 50%);
-    --gradient-cyber: linear-gradient(135deg, hsl(199 89% 48%), hsl(258 90% 66%), hsl(187 92% 48%));
-    --gradient-neon: linear-gradient(90deg, hsl(199 89% 48%), hsl(258 90% 66%), hsl(187 92% 48%), hsl(199 89% 48%));
+    /* Prestige Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(224 80% 24%), hsl(263 77% 42%), hsl(189 94% 43%));
+    --gradient-hero: linear-gradient(180deg, hsl(220 25% 97%), hsl(224 30% 95%), hsl(263 20% 97%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100% / 0.95), hsl(220 25% 98% / 0.9));
+    --gradient-button: linear-gradient(135deg, hsl(224 80% 24%), hsl(263 77% 42%));
+    --gradient-glow: radial-gradient(ellipse at center, hsl(224 80% 24% / 0.1), transparent 70%);
+    --gradient-mesh: radial-gradient(at 40% 20%, hsl(224 80% 24% / 0.08) 0px, transparent 50%),
+                     radial-gradient(at 80% 0%, hsl(263 77% 42% / 0.06) 0px, transparent 50%),
+                     radial-gradient(at 0% 50%, hsl(189 94% 43% / 0.06) 0px, transparent 50%);
+    --gradient-cyber: linear-gradient(135deg, hsl(224 80% 24%), hsl(263 77% 42%), hsl(189 94% 43%));
+    --gradient-neon: linear-gradient(90deg, hsl(224 80% 24%), hsl(263 77% 42%), hsl(189 94% 43%), hsl(224 80% 24%));
     
     /* Enhanced Glassmorphism */
     --glass-bg: hsl(0 0% 100% / 0.7);
@@ -99,58 +99,58 @@ Premium cyberpunk aesthetic with cinematic visuals.
   }
 
   .dark {
-    /* Dark Mode - Cyberpunk Futuristic Theme */
-    --background: 222 47% 6%;
+    /* Dark Mode - Cosmos Enterprise Theme */
+    --background: 225 58% 7%;
     --foreground: 210 40% 98%;
     
-    /* Cyber Blue Primary */
-    --primary: 199 89% 48%;
-    --primary-foreground: 222 47% 6%;
-    --primary-glow: 199 89% 60%;
+    /* Corporate Azure Primary */
+    --primary: 224 80% 44%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 224 80% 55%;
     
-    /* Electric Purple Secondary */
-    --secondary: 258 90% 66%;
+    /* Quantum Violet Secondary */
+    --secondary: 263 77% 52%;
     --secondary-foreground: 0 0% 100%;
-    --secondary-glow: 258 90% 76%;
+    --secondary-glow: 263 77% 62%;
     
-    /* Neon Cyan Accent */
-    --accent: 187 92% 48%;
-    --accent-foreground: 222 47% 6%;
-    --accent-glow: 187 92% 60%;
+    /* Cybernetic Cyan Accent */
+    --accent: 189 94% 43%;
+    --accent-foreground: 225 58% 7%;
+    --accent-glow: 189 94% 55%;
     
-    /* Tech Red for highlights */
+    /* Destructive */
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
     
-    /* Cards & Surfaces - Deep charcoal */
-    --card: 222 47% 9%;
+    /* Cards & Surfaces - Midnight Carbon */
+    --card: 225 58% 10%;
     --card-foreground: 210 40% 98%;
-    --card-glass: 222 47% 11%;
+    --card-glass: 225 58% 12%;
     
     /* Muted Elements */
-    --muted: 217 33% 17%;
+    --muted: 224 33% 17%;
     --muted-foreground: 215 20% 65%;
     
     /* Borders & Inputs */
-    --border: 217 33% 20%;
-    --input: 217 33% 14%;
-    --ring: 199 89% 48%;
+    --border: 224 33% 20%;
+    --input: 224 33% 14%;
+    --ring: 224 80% 44%;
     
     /* Popover */
-    --popover: 222 47% 9%;
+    --popover: 225 58% 10%;
     --popover-foreground: 210 40% 98%;
     
-    /* Modern Gradients - Cyberpunk */
-    --gradient-primary: linear-gradient(135deg, hsl(199 89% 48%), hsl(258 90% 66%));
-    --gradient-hero: linear-gradient(180deg, hsl(222 47% 6%), hsl(222 50% 8%), hsl(258 30% 10%));
-    --gradient-card: linear-gradient(145deg, hsl(222 47% 9% / 0.9), hsl(222 47% 12% / 0.8));
-    --gradient-button: linear-gradient(135deg, hsl(199 89% 48%), hsl(187 92% 48%));
-    --gradient-glow: radial-gradient(ellipse at center, hsl(199 89% 48% / 0.15), transparent 70%);
-    --gradient-mesh: radial-gradient(at 40% 20%, hsl(199 89% 48% / 0.12) 0px, transparent 50%),
-                     radial-gradient(at 80% 0%, hsl(258 90% 66% / 0.1) 0px, transparent 50%),
-                     radial-gradient(at 0% 50%, hsl(187 92% 48% / 0.08) 0px, transparent 50%);
-    --gradient-cyber: linear-gradient(135deg, hsl(199 89% 48%), hsl(258 90% 66%), hsl(187 92% 48%));
-    --gradient-neon: linear-gradient(90deg, hsl(199 89% 48%), hsl(258 90% 66%), hsl(187 92% 48%), hsl(199 89% 48%));
+    /* Cosmos Gradients - Dark */
+    --gradient-primary: linear-gradient(135deg, hsl(224 80% 44%), hsl(263 77% 52%), hsl(189 94% 43%));
+    --gradient-hero: linear-gradient(180deg, hsl(225 58% 7%), hsl(224 50% 10%), hsl(263 40% 12%));
+    --gradient-card: linear-gradient(145deg, hsl(225 58% 10% / 0.9), hsl(225 58% 13% / 0.8));
+    --gradient-button: linear-gradient(135deg, hsl(224 80% 44%), hsl(263 77% 52%));
+    --gradient-glow: radial-gradient(ellipse at center, hsl(224 80% 44% / 0.15), transparent 70%);
+    --gradient-mesh: radial-gradient(at 40% 20%, hsl(224 80% 44% / 0.12) 0px, transparent 50%),
+                     radial-gradient(at 80% 0%, hsl(263 77% 52% / 0.1) 0px, transparent 50%),
+                     radial-gradient(at 0% 50%, hsl(189 94% 43% / 0.08) 0px, transparent 50%);
+    --gradient-cyber: linear-gradient(135deg, hsl(224 80% 44%), hsl(263 77% 52%), hsl(189 94% 43%));
+    --gradient-neon: linear-gradient(90deg, hsl(224 80% 44%), hsl(263 77% 52%), hsl(189 94% 43%), hsl(224 80% 44%));
     
     /* Enhanced Glassmorphism - Dark */
     --glass-bg: hsl(222 47% 10% / 0.6);
@@ -189,18 +189,20 @@ Premium cyberpunk aesthetic with cinematic visuals.
 
   body {
     @apply bg-background text-foreground overflow-x-hidden;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
     background: var(--gradient-hero);
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Space Grotesk', system-ui, sans-serif;
-    font-weight: 600;
+    font-family: 'Syne', system-ui, sans-serif;
+    font-weight: 700;
     letter-spacing: -0.02em;
+    text-transform: uppercase;
   }
 
   code, pre, .font-mono {
     font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-feature-settings: 'liga' 1, 'tnum' 1;
   }
 
   /* Improved Focus States */

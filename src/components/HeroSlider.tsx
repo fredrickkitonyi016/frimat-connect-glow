@@ -3,18 +3,18 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 // Import hero images
-import cyberpunkCity from "@/assets/hero/cyberpunk-city.jpg";
-import holographicUI from "@/assets/hero/holographic-ui.jpg";
-import quantumComputing from "@/assets/hero/quantum-computing.jpg";
-import futuristicGadgets from "@/assets/hero/futuristic-gadgets.jpg";
-import aiNeuralNetwork from "@/assets/hero/ai-neural-network.jpg";
+import genesisProtocol from "@/assets/hero/genesis-protocol.jpg";
+import innovationNexus from "@/assets/hero/innovation-nexus.jpg";
+import globalConvergence from "@/assets/hero/global-convergence.jpg";
+import techRenaissance from "@/assets/hero/tech-renaissance.jpg";
+import sustainableFuture from "@/assets/hero/sustainable-future.jpg";
 
 const slides = [
-  { image: cyberpunkCity, alt: "Cyberpunk cityscape with neon lights" },
-  { image: holographicUI, alt: "Holographic UI interface" },
-  { image: quantumComputing, alt: "Quantum computing visualization" },
-  { image: futuristicGadgets, alt: "Futuristic gadgets array" },
-  { image: aiNeuralNetwork, alt: "AI neural network visualization" },
+  { image: genesisProtocol, alt: "The Genesis Protocol - Floating holographic corporate headquarters" },
+  { image: innovationNexus, alt: "The Innovation Nexus - DNA helix of light and circuits" },
+  { image: globalConvergence, alt: "The Global Convergence - Connected financial districts" },
+  { image: techRenaissance, alt: "The Technological Renaissance - Quantum laboratory" },
+  { image: sustainableFuture, alt: "The Sustainable Future - Eco-futuristic smart city" },
 ];
 
 interface HeroSliderProps {
