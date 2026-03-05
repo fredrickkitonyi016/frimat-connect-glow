@@ -78,6 +78,51 @@ export default function ITSupport() {
     },
   ];
 
+  const phoneRepairs: ServiceItem[] = [
+    {
+      name: "Phone Screen Replacement",
+      price: "KSh 3,000+",
+      description: "Cracked or broken screen repair for all brands",
+      details: "Samsung, iPhone, Huawei, Tecno, Infinix, and more. Genuine and aftermarket options available. Same-day service for most models.",
+      features: ["All Brands Supported", "Genuine & Aftermarket Parts", "Same-Day Service", "90-Day Warranty"]
+    },
+    {
+      name: "Battery Replacement",
+      price: "KSh 1,500+",
+      description: "Restore your phone's battery life",
+      details: "Original batteries for most smartphone brands. Includes diagnostics and battery health report. 60-day warranty on all replacements.",
+      features: ["Original Batteries", "Health Diagnostics", "60-Day Warranty", "Quick Turnaround"]
+    },
+    {
+      name: "Charging Port Repair",
+      price: "KSh 1,000+",
+      description: "Fix loose or non-functional charging ports",
+      details: "Micro-USB, USB-C, and Lightning port repairs. Includes cleaning, replacement, and testing. Most repairs completed within 1 hour.",
+      features: ["All Port Types", "Cleaning & Replacement", "1-Hour Turnaround", "Testing Included"]
+    },
+    {
+      name: "Water Damage Repair",
+      price: "KSh 2,500+",
+      description: "Rescue water-damaged phones",
+      details: "Ultrasonic cleaning, component-level repair, and data recovery attempts. Success rate depends on damage severity. No fix, no charge.",
+      features: ["Ultrasonic Cleaning", "Component Repair", "Data Recovery", "No Fix No Charge"]
+    },
+    {
+      name: "Software Issues & Unlocking",
+      price: "KSh 1,000+",
+      description: "Fix stuck phones, boot loops, and FRP locks",
+      details: "Factory reset, firmware flashing, FRP bypass, and OS updates. Includes virus removal and app optimization.",
+      features: ["Firmware Flashing", "FRP Bypass", "OS Updates", "Virus Removal"]
+    },
+    {
+      name: "Camera & Speaker Repair",
+      price: "KSh 1,500+",
+      description: "Fix faulty cameras, speakers, or microphones",
+      details: "Front/rear camera replacement, earpiece and loudspeaker repair, microphone fixes. Genuine parts for popular brands.",
+      features: ["Camera Replacement", "Speaker Repair", "Microphone Fix", "Genuine Parts"]
+    },
+  ];
+
   const technologies = [
     "Remote Desktop", "Network Admin", "Hardware Repair", "Windows", "Linux", "macOS", "Active Directory", "Backup Solutions"
   ];
