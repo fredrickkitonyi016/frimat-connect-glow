@@ -400,6 +400,7 @@ export default function Navbar() {
         </div>
 
         <CartDrawer open={isCartOpen} onOpenChange={setIsCartOpen} />
+        <HelpCentreModal isOpen={isHelpOpen} onClose={() => setIsHelpOpen(false)} />
       </>
     );
   }
