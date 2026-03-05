@@ -129,6 +129,7 @@ export default function Navbar() {
   const isMobile = useIsMobile();
   const { totalItems } = useCart();
   const shopifyCartItems = useCartStore(state => state.items);
+  const [isHelpOpen, setIsHelpOpen] = useState(false);
   const shopifyTotalItems = shopifyCartItems.reduce((sum, item) => sum + item.quantity, 0);
   const combinedTotalItems = totalItems + shopifyTotalItems;
 
