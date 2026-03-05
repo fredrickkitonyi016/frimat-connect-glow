@@ -1,4 +1,4 @@
-import { ArrowLeft, Monitor, Code, CheckCircle, ArrowRight } from "lucide-react";
+import { ArrowLeft, Monitor, Code, CheckCircle, ArrowRight, Smartphone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate, Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
@@ -76,6 +76,51 @@ export default function ITSupport() {
       description: "Recover lost or deleted files", 
       details: "Deleted files, formatted drives, corrupted storage. Price varies by complexity. No data, no charge policy.",
       features: ["Deleted File Recovery", "Formatted Drive Recovery", "Corrupted Storage", "No Data No Charge"]
+    },
+  ];
+
+  const phoneRepairs: ServiceItem[] = [
+    {
+      name: "Phone Screen Replacement",
+      price: "KSh 3,000+",
+      description: "Cracked or broken screen repair for all brands",
+      details: "Samsung, iPhone, Huawei, Tecno, Infinix, and more. Genuine and aftermarket options available. Same-day service for most models.",
+      features: ["All Brands Supported", "Genuine & Aftermarket Parts", "Same-Day Service", "90-Day Warranty"]
+    },
+    {
+      name: "Battery Replacement",
+      price: "KSh 1,500+",
+      description: "Restore your phone's battery life",
+      details: "Original batteries for most smartphone brands. Includes diagnostics and battery health report. 60-day warranty on all replacements.",
+      features: ["Original Batteries", "Health Diagnostics", "60-Day Warranty", "Quick Turnaround"]
+    },
+    {
+      name: "Charging Port Repair",
+      price: "KSh 1,000+",
+      description: "Fix loose or non-functional charging ports",
+      details: "Micro-USB, USB-C, and Lightning port repairs. Includes cleaning, replacement, and testing. Most repairs completed within 1 hour.",
+      features: ["All Port Types", "Cleaning & Replacement", "1-Hour Turnaround", "Testing Included"]
+    },
+    {
+      name: "Water Damage Repair",
+      price: "KSh 2,500+",
+      description: "Rescue water-damaged phones",
+      details: "Ultrasonic cleaning, component-level repair, and data recovery attempts. Success rate depends on damage severity. No fix, no charge.",
+      features: ["Ultrasonic Cleaning", "Component Repair", "Data Recovery", "No Fix No Charge"]
+    },
+    {
+      name: "Software Issues & Unlocking",
+      price: "KSh 1,000+",
+      description: "Fix stuck phones, boot loops, and FRP locks",
+      details: "Factory reset, firmware flashing, FRP bypass, and OS updates. Includes virus removal and app optimization.",
+      features: ["Firmware Flashing", "FRP Bypass", "OS Updates", "Virus Removal"]
+    },
+    {
+      name: "Camera & Speaker Repair",
+      price: "KSh 1,500+",
+      description: "Fix faulty cameras, speakers, or microphones",
+      details: "Front/rear camera replacement, earpiece and loudspeaker repair, microphone fixes. Genuine parts for popular brands.",
+      features: ["Camera Replacement", "Speaker Repair", "Microphone Fix", "Genuine Parts"]
     },
   ];
 
@@ -161,6 +206,33 @@ export default function ITSupport() {
             </h2>
             <div className="grid md:grid-cols-2 gap-4 mb-12">
               {services.map((service, idx) => (
+                <motion.div 
+                  key={idx} 
+                  className="glass-card p-5 hover:border-primary/50 transition-all cursor-pointer group"
+                  whileHover={{ scale: 1.02, y: -4 }}
+                  onClick={() => setSelectedService(service)}
+                >
+                  <div className="flex justify-between items-start mb-2">
+                    <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">{service.name}</h3>
+                    <span className="text-primary font-bold whitespace-nowrap ml-2">{service.price}</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-3">{service.description}</p>
+                  <button
+                    className="flex items-center gap-1 text-sm text-accent hover:text-accent/80 font-medium transition-colors"
+                  >
+                    Learn more <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                  </button>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Phone Repair Section */}
+            <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+              <Smartphone className="text-accent" size={28} />
+              Phone Repair Services & Pricing
+            </h2>
+            <div className="grid md:grid-cols-2 gap-4 mb-12">
+              {phoneRepairs.map((service, idx) => (
                 <motion.div 
                   key={idx} 
                   className="glass-card p-5 hover:border-primary/50 transition-all cursor-pointer group"
