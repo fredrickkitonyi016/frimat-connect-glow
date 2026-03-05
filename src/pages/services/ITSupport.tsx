@@ -1,4 +1,5 @@
 import { ArrowLeft, Monitor, Code, CheckCircle, ArrowRight, Smartphone } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { useNavigate, Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
