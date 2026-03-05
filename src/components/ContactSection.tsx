@@ -285,6 +285,14 @@ export default function ContactSection() {
                   <option value="cyber-cafe">Cyber Cafe Services</option>
                   <option value="government-services">Government Services</option>
                   <option value="custom-solution">Custom Solution</option>
+                  <optgroup label="Phone Repair">
+                    <option value="phone-screen-replacement">Phone Screen Replacement</option>
+                    <option value="phone-battery-replacement">Battery Replacement</option>
+                    <option value="charging-port-repair">Charging Port Repair</option>
+                    <option value="water-damage-repair">Water Damage Repair</option>
+                    <option value="phone-software-unlocking">Software Issues & Unlocking</option>
+                    <option value="camera-speaker-repair">Camera & Speaker Repair</option>
+                  </optgroup>
                 </select>
               </motion.div>
 

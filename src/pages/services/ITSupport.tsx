@@ -225,6 +225,33 @@ export default function ITSupport() {
               ))}
             </div>
 
+            {/* Phone Repair Section */}
+            <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+              <Smartphone className="text-accent" size={28} />
+              Phone Repair Services & Pricing
+            </h2>
+            <div className="grid md:grid-cols-2 gap-4 mb-12">
+              {phoneRepairs.map((service, idx) => (
+                <motion.div 
+                  key={idx} 
+                  className="glass-card p-5 hover:border-primary/50 transition-all cursor-pointer group"
+                  whileHover={{ scale: 1.02, y: -4 }}
+                  onClick={() => setSelectedService(service)}
+                >
+                  <div className="flex justify-between items-start mb-2">
+                    <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">{service.name}</h3>
+                    <span className="text-primary font-bold whitespace-nowrap ml-2">{service.price}</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-3">{service.description}</p>
+                  <button
+                    className="flex items-center gap-1 text-sm text-accent hover:text-accent/80 font-medium transition-colors"
+                  >
+                    Learn more <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                  </button>
+                </motion.div>
+              ))}
+            </div>
+
             {/* Technologies */}
             <div className="glass-card p-6 mb-12">
               <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
