@@ -19,8 +19,8 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
-				display: ['Syne', 'system-ui', 'sans-serif'],
+				sans: ['Times New Roman', 'Georgia', 'Cambria', 'serif'],
+				display: ['Times New Roman', 'Georgia', 'Palatino Linotype', 'serif'],
 				mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
 			},
 			colors: {
