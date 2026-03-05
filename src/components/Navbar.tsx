@@ -422,9 +422,14 @@ export default function Navbar() {
                   <span>+254 112 277 289</span>
                 </a>
                 <span className="text-border">|</span>
-                <a href="#contact" onClick={(e) => { e.preventDefault(); handleNavigation('#contact'); }} className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+                <button onClick={() => setIsHelpOpen(true)} className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
                   <Headphones size={14} />
                   <span>Support / Help Desk</span>
+                </button>
+                <span className="text-border">|</span>
+                <a href="https://wa.me/254112277289?text=Hello%20FRIMAT%20Technologies!" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+                  <Globe size={14} />
+                  <span>Portal</span>
                 </a>
               </div>
               <div className="flex items-center gap-6">
