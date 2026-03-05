@@ -7,6 +7,7 @@ import { CartDrawer } from "@/components/CartDrawer";
 import { useCartStore } from "@/stores/cartStore";
 import ThemeToggle from "@/components/ThemeToggle";
 import frimatLogo from "@/assets/frimat-logo.png";
+import HelpCentreModal from "@/components/HelpCentreModal";
 import { 
   Home, 
   Phone,
