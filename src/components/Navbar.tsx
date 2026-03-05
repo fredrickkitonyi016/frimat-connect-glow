@@ -354,15 +354,25 @@ export default function Navbar() {
                   </div>
                   <span className="text-lg font-semibold text-primary">Get a Demo</span>
                 </a>
-                <a
-                  href="#contact"
-                  onClick={(e) => { e.preventDefault(); handleNavigation('#contact'); }}
-                  className="flex items-center gap-4 p-4 rounded-2xl bg-muted/50 hover:bg-primary/10 transition-colors"
+                <button
+                  onClick={() => { setIsMobileMenuOpen(false); setIsHelpOpen(true); }}
+                  className="flex items-center gap-4 p-4 rounded-2xl bg-muted/50 hover:bg-primary/10 transition-colors w-full text-left"
                 >
                   <div className="p-2 rounded-xl bg-background/50">
                     <Headphones size={22} />
                   </div>
                   <span className="text-lg font-semibold">Support / Help Desk</span>
+                </button>
+                <a
+                  href="https://wa.me/254112277289?text=Hello%20FRIMAT%20Technologies!"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 p-4 rounded-2xl bg-muted/50 hover:bg-primary/10 transition-colors"
+                >
+                  <div className="p-2 rounded-xl bg-background/50">
+                    <Globe size={22} />
+                  </div>
+                  <span className="text-lg font-semibold">Portal</span>
                 </a>
                 <a
                   href="#about"
