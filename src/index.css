@@ -194,7 +194,7 @@ Premium cyberpunk aesthetic with cinematic visuals.
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Syne', system-ui, sans-serif;
+    font-family: 'Times New Roman', Georgia, 'Palatino Linotype', serif;
     font-weight: 700;
     letter-spacing: -0.02em;
     text-transform: uppercase;
@@ -205,7 +205,40 @@ Premium cyberpunk aesthetic with cinematic visuals.
     font-feature-settings: 'liga' 1, 'tnum' 1;
   }
 
-  /* Improved Focus States */
+  /* Device-adaptive typography */
+  html {
+    font-size: 16px;
+  }
+
+  /* Tablets */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    html { font-size: 15px; }
+    body { letter-spacing: 0.01em; }
+    h1 { font-size: 2.25rem; }
+    h2 { font-size: 1.75rem; }
+  }
+
+  /* Desktop */
+  @media (min-width: 1025px) {
+    html { font-size: 16px; }
+    h1 { font-size: 3rem; }
+    h2 { font-size: 2.25rem; }
+  }
+
+  /* Large screens */
+  @media (min-width: 1440px) {
+    html { font-size: 17px; }
+  }
+
+  /* Mobile - tighter spacing */
+  @media (max-width: 767px) {
+    html { font-size: 14px; }
+    body { letter-spacing: 0; }
+    h1 { font-size: 1.75rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.25rem; }
+  }
+
   *:focus-visible {
     @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
   }
