@@ -12,12 +12,14 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from '@/hooks/use-toast';
-import { CheckCircle } from 'lucide-react';
+import { CheckCircle, CreditCard, ShieldCheck } from 'lucide-react';
 
 interface CheckoutModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }
+
+const PAYSTACK_PUBLIC_KEY = import.meta.env.VITE_PAYSTACK_PUBLIC_KEY || '';
 
 export const CheckoutModal = ({ open, onOpenChange }: CheckoutModalProps) => {
   const { items, totalPrice, clearCart } = useCart();
@@ -30,53 +32,100 @@ export const CheckoutModal = ({ open, onOpenChange }: CheckoutModalProps) => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const generateReference = () => {
+    return `FRIMAT-${Date.now()}-${Math.random().toString(36).substring(2, 8).toUpperCase()}`;
+  };
+
+  const handlePayWithPaystack = (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!formData.name || !formData.email || !formData.phone || !formData.address) {
+      toast({
+        title: 'Missing Information',
+        description: 'Please fill in all required fields.',
+        variant: 'destructive',
+      });
+      return;
+    }
+
+    if (!PAYSTACK_PUBLIC_KEY || PAYSTACK_PUBLIC_KEY.includes('xxxx')) {
+      toast({
+        title: 'Payment Not Configured',
+        description: 'Paystack has not been configured yet. Please contact support.',
+        variant: 'destructive',
+      });
+      return;
+    }
+
     setIsSubmitting(true);
 
-    // Simulate order processing
-    await new Promise(resolve => setTimeout(resolve, 1500));
-
-    toast({
-      title: "Order Placed Successfully!",
-      description: "We'll contact you shortly to confirm your order.",
+    const handler = window.PaystackPop.setup({
+      key: PAYSTACK_PUBLIC_KEY,
+      email: formData.email,
+      amount: totalPrice * 100, // Paystack expects amount in cents
+      currency: 'KES',
+      ref: generateReference(),
+      metadata: {
+        custom_fields: [
+          { display_name: 'Customer Name', variable_name: 'customer_name', value: formData.name },
+          { display_name: 'Phone', variable_name: 'phone', value: formData.phone },
+          { display_name: 'Address', variable_name: 'address', value: formData.address },
+          { display_name: 'Notes', variable_name: 'notes', value: formData.notes },
+          { display_name: 'Items', variable_name: 'items', value: JSON.stringify(items.map(i => ({ name: i.name, qty: i.quantity, price: i.price }))) },
+        ],
+      },
+      callback: (response) => {
+        toast({
+          title: '🎉 Payment Successful!',
+          description: `Transaction ref: ${response.reference}. We'll contact you shortly.`,
+        });
+        clearCart();
+        setFormData({ name: '', email: '', phone: '', address: '', notes: '' });
+        setIsSubmitting(false);
+        onOpenChange(false);
+      },
+      onClose: () => {
+        setIsSubmitting(false);
+        toast({
+          title: 'Payment Cancelled',
+          description: 'You cancelled the payment. Your cart is still intact.',
+        });
+      },
     });
 
-    clearCart();
-    setFormData({ name: '', email: '', phone: '', address: '', notes: '' });
-    setIsSubmitting(false);
-    onOpenChange(false);
+    handler.openIframe();
   };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle className="text-2xl" style={{ color: '#ff6a00' }}>
-            Checkout
+          <DialogTitle className="text-2xl flex items-center gap-2" style={{ color: '#ff6a00' }}>
+            <CreditCard className="h-6 w-6" />
+            Secure Checkout
           </DialogTitle>
         </DialogHeader>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handlePayWithPaystack} className="space-y-6">
           {/* Order Summary */}
-          <div className="bg-gray-50 p-4 rounded-lg">
-            <h3 className="font-semibold mb-3" style={{ color: '#333' }}>
+          <div className="bg-muted/50 p-4 rounded-lg border border-border">
+            <h3 className="font-semibold mb-3 text-foreground">
               Order Summary ({items.length} items)
             </h3>
             <div className="space-y-2 max-h-40 overflow-y-auto">
               {items.map((item) => (
                 <div key={item.id} className="flex justify-between text-sm">
-                  <span style={{ color: '#666' }}>
-                    {item.name} x {item.quantity}
+                  <span className="text-muted-foreground">
+                    {item.name} × {item.quantity}
                   </span>
-                  <span style={{ color: '#333' }}>
+                  <span className="text-foreground font-medium">
                     KSh {(item.price * item.quantity).toLocaleString()}
                   </span>
                 </div>
               ))}
             </div>
-            <div className="border-t mt-3 pt-3 flex justify-between font-bold">
-              <span style={{ color: '#333' }}>Total:</span>
+            <div className="border-t border-border mt-3 pt-3 flex justify-between font-bold text-lg">
+              <span className="text-foreground">Total:</span>
               <span style={{ color: '#ff6a00' }}>
                 KSh {totalPrice.toLocaleString()}
               </span>
@@ -85,10 +134,10 @@ export const CheckoutModal = ({ open, onOpenChange }: CheckoutModalProps) => {
 
           {/* Contact Information */}
           <div className="space-y-4">
-            <h3 className="font-semibold" style={{ color: '#333' }}>
+            <h3 className="font-semibold text-foreground">
               Contact Information
             </h3>
-            
+
             <div className="space-y-2">
               <Label htmlFor="name">Full Name *</Label>
               <Input
@@ -150,6 +199,12 @@ export const CheckoutModal = ({ open, onOpenChange }: CheckoutModalProps) => {
             </div>
           </div>
 
+          {/* Security Badge */}
+          <div className="flex items-center gap-2 text-sm text-muted-foreground bg-muted/30 p-3 rounded-lg">
+            <ShieldCheck className="h-5 w-5 text-green-500 shrink-0" />
+            <span>Payments are securely processed by <strong>Paystack</strong>. Your card details are never stored on our servers.</span>
+          </div>
+
           <DialogFooter>
             <Button
               type="button"
@@ -161,7 +216,7 @@ export const CheckoutModal = ({ open, onOpenChange }: CheckoutModalProps) => {
             </Button>
             <Button
               type="submit"
-              disabled={isSubmitting}
+              disabled={isSubmitting || items.length === 0}
               className="gap-2"
               style={{ backgroundColor: '#ff6a00', color: 'white' }}
             >
@@ -170,7 +225,7 @@ export const CheckoutModal = ({ open, onOpenChange }: CheckoutModalProps) => {
               ) : (
                 <>
                   <CheckCircle className="h-4 w-4" />
-                  Place Order
+                  Pay KSh {totalPrice.toLocaleString()}
                 </>
               )}
             </Button>
