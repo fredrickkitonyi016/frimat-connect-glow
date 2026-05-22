@@ -120,13 +120,13 @@ export default function BlogSection() {
           className="text-center mb-16"
         >
           <h2 className="text-5xl font-bold mb-6">
-            <span className="text-foreground">Tech </span>
+            <span className="text-foreground">The </span>
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Blog
+              Journal
             </span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Stay updated with the latest trends, insights, and best practices in technology and digital innovation.
+            A periodical of considered reflection upon the unfolding currents of invention — composed for the patient reader of the digital arts.
           </p>
         </motion.div>
 
@@ -337,23 +337,23 @@ export default function BlogSection() {
         >
           <div className="glass-card p-8 max-w-4xl mx-auto">
             <h3 className="text-3xl font-bold text-foreground mb-4">
-              Stay Updated with Tech Insights
+              Receive Our Considered Reflections
             </h3>
             <p className="text-xl text-muted-foreground mb-8">
-              Subscribe to our newsletter and never miss the latest tech trends and industry insights.
+              Enrol upon our periodical and the most consequential currents of technology shall arrive, with composed regularity, in your correspondence.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
               <input 
                 type="email" 
-                placeholder="Enter your email"
+                placeholder="Your electronic address"
                 className="flex-1 px-4 py-3 rounded-xl bg-input border border-border text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
               />
               <Button variant="hero">
-                Subscribe
+                Enrol
               </Button>
             </div>
             <p className="text-sm text-muted-foreground mt-4">
-              Join 1000+ tech professionals who read our weekly insights.
+              Joined already by upwards of a thousand discerning practitioners of the technological arts.
             </p>
             <div className="flex flex-wrap justify-center gap-4 mt-6">
               <Button 

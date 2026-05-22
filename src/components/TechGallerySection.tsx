@@ -89,16 +89,16 @@ export default function TechGallerySection() {
         {/* Header */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 px-4 py-2 rounded-full mb-6">
-            <span className="text-sm font-medium text-primary">Our Expertise</span>
+            <span className="text-sm font-medium text-primary">Our Métier</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="text-foreground">Technology </span>
+            <span className="text-foreground">Technological </span>
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Solutions
+              Instruments
             </span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Explore our comprehensive range of technology services designed to drive your business forward
+            Survey, at your leisure, the comprehensive array of digital instruments composed to advance your enterprise with discernment.
           </p>
         </div>
 

@@ -148,17 +148,17 @@ export default function ContactSection() {
         >
           <div className="flex items-center justify-center gap-2 mb-4">
             <Sparkles className="text-primary" size={24} />
-            <span className="text-primary font-semibold uppercase tracking-wider text-sm">Let's Connect</span>
+            <span className="text-primary font-semibold uppercase tracking-wider text-sm">An Audience Awaits</span>
             <Sparkles className="text-primary" size={24} />
           </div>
           <h2 className="text-5xl font-bold mb-6">
-            <span className="text-foreground">Get In </span>
+            <span className="text-foreground">Initiate the </span>
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Touch
+              Correspondence
             </span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Ready to transform your business with cutting-edge technology? Let's discuss your project and create something amazing together.
+            Should you be disposed to reimagine your enterprise through considered invention, we invite you to commence the conversation — and to compose, in collaboration, something of lasting consequence.
           </p>
         </motion.div>
 
@@ -176,7 +176,7 @@ export default function ContactSection() {
             
             <h3 className="text-3xl font-bold text-foreground mb-8 flex items-center gap-3">
               <Send className="text-primary" size={28} />
-              Send us a Message
+              Address Us a Considered Missive
             </h3>
             
             <form className="space-y-6" onSubmit={handleSubmit}>
