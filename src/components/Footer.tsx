@@ -44,9 +44,9 @@ export default function Footer() {
                 <img src={frimatLogo} alt="FRIMAT Technologies" className="h-12 w-auto" />
               </button>
               <p className="text-muted-foreground leading-relaxed">
-                Connecting Innovation. Delivering Solutions.
+                Conjoining invention with consequence.
                 <br />
-                <span className="text-accent">Where Technology Meets Excellence</span>
+                <span className="text-accent">Where rarefied technology attends the pursuit of excellence.</span>
               </p>
             </div>
             
@@ -68,15 +68,15 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-xl font-bold text-foreground mb-6">Quick Links</h4>
+            <h4 className="text-xl font-bold text-foreground mb-6">Promenade</h4>
             <ul className="space-y-3">
               {[
-                { name: "Home", href: "#home" },
-                { name: "About Us", href: "#about" },
-                { name: "Services", href: "#services" },
-                { name: "Portfolio", href: "#portfolio" },
-                { name: "Blog", href: "#blog" },
-                { name: "Contact", href: "#contact" }
+                { name: "Foyer", href: "#home" },
+                { name: "Upon Our House", href: "#about" },
+                { name: "Repertoire", href: "#services" },
+                { name: "Œuvre", href: "#portfolio" },
+                { name: "Journal", href: "#blog" },
+                { name: "Correspondence", href: "#contact" }
               ].map((link, index) => (
                 <li key={index}>
                   <button 
@@ -92,7 +92,7 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="text-xl font-bold text-foreground mb-6">Our Services</h4>
+            <h4 className="text-xl font-bold text-foreground mb-6">Our Disciplines</h4>
             <ul className="space-y-3">
               {[
                 { name: "Web Development", href: "/services/web-development" },
@@ -118,7 +118,7 @@ export default function Footer() {
 
           {/* Government Portals */}
           <div>
-            <h4 className="text-xl font-bold text-foreground mb-6">Government Portals</h4>
+            <h4 className="text-xl font-bold text-foreground mb-6">Sovereign Portals</h4>
             <ul className="space-y-3">
               {[
                 { name: "KRA iTax", href: "https://itax.kra.go.ke" },
@@ -147,15 +147,15 @@ export default function Footer() {
           {/* Newsletter & Social */}
           <div className="space-y-6">
             <div>
-              <h4 className="text-xl font-bold text-foreground mb-6">Stay Connected</h4>
+              <h4 className="text-xl font-bold text-foreground mb-6">In Correspondence</h4>
               <p className="text-muted-foreground mb-4">
-                Subscribe to our newsletter for the latest tech insights and updates.
+                Enrol upon our periodical and receive our most considered reflections upon the digital arts.
               </p>
               
               <div className="flex gap-2">
                 <input 
                   type="email" 
-                  placeholder="Your email"
+                  placeholder="Your electronic address"
                   className="flex-1 px-3 py-2 rounded-lg bg-input border border-border text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                 />
                 <Button variant="glass" size="sm">
@@ -165,7 +165,7 @@ export default function Footer() {
             </div>
 
             <div>
-              <h5 className="text-lg font-semibold text-foreground mb-4">Follow Us</h5>
+              <h5 className="text-lg font-semibold text-foreground mb-4">Attend Our Salons</h5>
               <SocialIconsStack />
             </div>
           </div>
@@ -175,7 +175,7 @@ export default function Footer() {
         <div className="border-t border-border mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-muted-foreground text-sm">
-              © {currentYear} FRIMAT TECHNOLOGIES. All rights reserved.
+              © {currentYear} FRIMAT TECHNOLOGIES. Every right reserved in perpetuity.
             </div>
             
             <div className="flex items-center gap-6 text-sm">

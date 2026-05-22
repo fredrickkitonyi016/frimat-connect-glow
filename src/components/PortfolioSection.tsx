@@ -158,11 +158,11 @@ export default function PortfolioSection() {
           <h2 className="text-5xl font-bold mb-6">
             <span className="text-foreground">Our </span>
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Portfolio
+              Œuvre
             </span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Explore our successful projects and see how we've helped businesses transform their digital presence.
+            A considered survey of commissions consummated — each a study in the patient reinvention of an enterprise's digital register.
           </p>
         </div>
 
@@ -326,10 +326,10 @@ export default function PortfolioSection() {
         <div className="text-center mt-16">
           <div className="glass-card p-8 max-w-4xl mx-auto">
             <h3 className="text-3xl font-bold text-foreground mb-4">
-              Ready to Start Your Project?
+              Disposed to Commence Your Own Commission?
             </h3>
             <p className="text-xl text-muted-foreground mb-8">
-              Let us help you build something amazing. Get a free consultation today.
+              Permit us a private audience, without obligation, in which to chart the contours of what may yet be composed together.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
@@ -337,7 +337,7 @@ export default function PortfolioSection() {
                 size="lg"
                 onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                Get in Touch
+                Initiate Correspondence
               </Button>
               <Button 
                 variant="glass" 
