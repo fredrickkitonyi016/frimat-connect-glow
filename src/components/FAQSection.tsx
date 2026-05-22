@@ -2,36 +2,36 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 
 const faqs = [
   {
-    question: "What services does FRIMAT offer?",
-    answer: "We offer comprehensive technology solutions including web development, mobile app development, cybersecurity, cloud services, IT support, e-commerce solutions, and KRA tax services. Our team specializes in creating custom solutions tailored to your business needs."
+    question: "Which disciplines compose FRIMAT's repertoire?",
+    answer: "Ours is a comprehensive armory of digital instruments: web couture, mobile ateliers, cyber bastions, sovereign cloud foundations, perpetual concierge, mercantile architecture, and Kenya Revenue Authority stewardship. Each commission is composed in concert with the particular cadence of the enterprise entrusted to us."
   },
   {
-    question: "How long does a typical project take?",
-    answer: "Project timelines vary depending on complexity and scope. Simple websites typically take 2-4 weeks, while complex web applications or mobile apps can take 8-16 weeks. We provide detailed timelines during our initial consultation and keep you updated throughout the development process."
+    question: "What is the customary duration of a commission?",
+    answer: "Durations are contingent upon scope and intricacy. A composed presentation site is ordinarily consummated within two to four weeks, whilst more elaborate web compositions or mobile ateliers may occupy eight to sixteen weeks. A detailed chronicle of milestones is rendered at the inception of the commission, and you are kept apprised, without interval, throughout the unfolding."
   },
   {
-    question: "Do you provide ongoing support after project completion?",
-    answer: "Yes! We offer comprehensive maintenance and support packages. This includes regular updates, security monitoring, bug fixes, and technical support. We believe in long-term partnerships with our clients and ensure your technology solutions continue to perform optimally."
+    question: "Is stewardship furnished after the unveiling?",
+    answer: "Indeed. A devoted concierge of maintenance accompanies every commission — comprising periodic refinements, vigilant security observation, the redress of imperfections, and attentive technical counsel. Ours is a discipline of enduring patronage, not transient transaction."
   },
   {
-    question: "What is your development process?",
-    answer: "Our development process follows industry best practices: Discovery & Planning → Design & Prototyping → Development & Testing → Deployment → Maintenance. We maintain transparent communication throughout and provide regular updates on project progress."
+    question: "By what process is a commission conducted?",
+    answer: "Our process unfolds with patrician composure: Discovery and conception → Composition and prototyping → Construction and examination → Unveiling → Perpetual stewardship. Communication remains transparent and unhurried throughout."
   },
   {
-    question: "Do you work with small businesses or only large corporations?",
-    answer: "We work with businesses of all sizes! From startups and small businesses to large corporations, we tailor our solutions to fit your budget and requirements. Our cyber cafe services are particularly popular with local businesses and individuals."
+    question: "Do you attend enterprises both modest and grand?",
+    answer: "We attend institutions of every stature, from emergent ventures to enterprises of considerable patrimony. Our tariffs and methods are contoured to your particular means and ambitions; our cyber salon, in particular, has long served the discerning individual and the local merchant alike."
   },
   {
-    question: "How do you ensure the security of our data?",
-    answer: "Security is our top priority. We implement industry-standard security measures including SSL encryption, secure coding practices, regular security audits, and compliance with data protection regulations. Our cybersecurity team ensures your digital assets are protected."
+    question: "By what means is the sanctity of our data preserved?",
+    answer: "Security is the lodestar of our discipline. We deploy SSL cryptography, codified secure practice, periodic forensic audits, and an unbroken concord with statutory data protection. Our cyber bastions division ensures that your digital patrimony remains inviolable."
   },
   {
-    question: "Can you help with KRA tax compliance?",
-    answer: "Absolutely! Our cyber cafe offers comprehensive KRA services including tax return filing, compliance assistance, and digital certificate management. We help individuals and businesses navigate Kenya's digital tax requirements efficiently."
+    question: "Will you attend matters of KRA tax concordance?",
+    answer: "Without exception. Our cyber salon attends every dimension of KRA stewardship — the lodging of returns, statutory counsel, and the curation of digital certifications — guiding both individuals and enterprises through the Republic's digital fiscal architecture with composed authority."
   },
   {
-    question: "What technologies do you specialize in?",
-    answer: "We specialize in modern technologies including React, Node.js, Python, mobile development (iOS/Android), cloud platforms (AWS, Azure, Google Cloud), and various databases. We stay updated with the latest tech trends to provide cutting-edge solutions."
+    question: "In which technologies do you possess particular distinction?",
+    answer: "Our disciplines comprise React, Node.js, and Python; mobile composition for iOS and Android; the cloud firmaments of AWS, Azure, and Google Cloud; and an array of data foundations. We remain attentive to the unfolding currents of invention, that our counsel may forever bear the imprint of contemporaneity."
   }
 ];
 
@@ -42,11 +42,11 @@ export default function FAQSection() {
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4">
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Frequently Asked Questions
+              Inquiries, Considered & Answered
             </span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Got questions? We've got answers. Find everything you need to know about our services and process.
+            That which is most commonly enquired of us, attended with patient candour and intended to illumine our disciplines, our cadence, and our method.
           </p>
         </div>
 

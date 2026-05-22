@@ -8,17 +8,17 @@ import graphicDesignAd from "@/assets/ads/graphic-design-ad.jpg";
 const promotions = [
   {
     image: computerRepairAd,
-    title: "Computer Repair Services",
-    description: "Fast & reliable computer repair at affordable prices",
+    title: "Restoration of the Computing Instrument",
+    description: "Swift, considered restoration of your computing instruments, at tariffs of evident propriety.",
     link: "/services/it-support",
-    cta: "Book Now"
+    cta: "Reserve Your Audience"
   },
   {
     image: graphicDesignAd,
-    title: "Graphic Design Services",
-    description: "Professional branding & design solutions",
+    title: "The Atelier of Graphic Composition",
+    description: "Brand expression and graphic composition of refined editorial register.",
     link: "/services/creative-design",
-    cta: "Learn More"
+    cta: "Discover Further"
   }
 ];
 
@@ -34,13 +34,13 @@ export default function PromotionalBanner() {
           className="text-center mb-12"
         >
           <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-medium mb-4">
-            Featured Services
+            Distinguished Commissions
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Our <span className="text-primary">Special Offers</span>
+            Our <span className="text-primary">Considered Offerings</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Discover our premium services designed to help your business thrive
+            A selection of our most consequential disciplines, composed for the discerning enterprise in pursuit of distinction.
           </p>
         </motion.div>
 

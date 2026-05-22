@@ -4,62 +4,62 @@ import { motion } from "framer-motion";
 
 const plans = [
   {
-    name: "Starter",
+    name: "Inception",
     price: "KSh 25,000",
-    period: "one-time",
-    description: "Perfect for small businesses and startups",
+    period: "singular commission",
+    description: "An assured opening for emergent ventures of refined intent.",
     features: [
-      "Basic Website (5 pages)",
-      "Mobile Responsive Design",
-      "Contact Form Integration",
-      "Basic SEO Setup",
-      "1 Month Free Support",
-      "SSL Certificate",
-      "Domain Setup Assistance"
+      "A composed website of five considered pages",
+      "Responsive composition for every device",
+      "Discreet contact confluence",
+      "Foundational SEO orchestration",
+      "One month of attentive stewardship",
+      "Cryptographic SSL assurance",
+      "Counsel upon domain enrolment"
     ],
     popular: false,
-    buttonText: "Get Started",
+    buttonText: "Commence the Endeavour",
     buttonVariant: "outline" as const
   },
   {
-    name: "Professional",
+    name: "Atelier",
     price: "KSh 50,000",
-    period: "one-time",
-    description: "Ideal for growing businesses",
+    period: "singular commission",
+    description: "Appointed for enterprises of evident ambition and ascendant trajectory.",
     features: [
-      "Custom Web Application",
-      "Content Management System",
-      "E-commerce Integration",
-      "Advanced SEO Optimization",
-      "3 Months Free Support",
-      "Performance Optimization",
-      "Analytics Integration",
-      "Social Media Integration",
-      "Email Marketing Setup"
+      "A bespoke web composition",
+      "Editorial governance suite",
+      "Mercantile confluence",
+      "Advanced SEO refinement",
+      "Three months of attentive stewardship",
+      "Unhurried performance calibration",
+      "Analytical instrumentation",
+      "Social confluence",
+      "Epistolary marketing apparatus"
     ],
     popular: true,
-    buttonText: "Most Popular",
+    buttonText: "The Connoisseur's Selection",
     buttonVariant: "default" as const
   },
   {
-    name: "Enterprise",
+    name: "Imperium",
     price: "KSh 150,000+",
-    period: "project-based",
-    description: "Complete solutions for large organizations",
+    period: "by considered commission",
+    description: "Comprehensive instruments for institutions of considerable stature.",
     features: [
-      "Custom Enterprise Solution",
-      "Mobile App Development",
-      "Advanced Security Implementation",
-      "Cloud Infrastructure Setup",
-      "12 Months Premium Support",
-      "Staff Training Included",
-      "24/7 Monitoring",
-      "Scalable Architecture",
-      "API Development",
-      "Database Optimization"
+      "A bespoke enterprise composition",
+      "Mobile atelier",
+      "Stratified security implementation",
+      "Sovereign cloud foundation",
+      "Twelve months of privileged stewardship",
+      "Tutelage of staff included",
+      "Round-the-clock vigilance",
+      "Elastic architectural composition",
+      "API composition",
+      "Refinement of data foundations"
     ],
     popular: false,
-    buttonText: "Contact Sales",
+    buttonText: "Audience with Our Council",
     buttonVariant: "outline" as const
   }
 ];
@@ -92,11 +92,11 @@ export default function PricingSection() {
         >
           <h2 className="text-4xl font-bold mb-4">
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Transparent Pricing
+              Tariffs of Candour
             </span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Choose the perfect plan for your business. No hidden fees, no surprises - just honest pricing for quality work.
+            Select the tariff most consonant with your ambitions. No latent levies, no inflorescent surprises — only honest reckoning for considered craftsmanship.
           </p>
         </motion.div>
 
@@ -122,7 +122,7 @@ export default function PricingSection() {
                     className="bg-gradient-to-r from-primary to-accent text-background px-6 py-2 rounded-full text-sm font-semibold flex items-center gap-2"
                   >
                     <Star size={16} />
-                    Most Popular
+                    Most Cherished
                   </motion.div>
                 </div>
               )}
@@ -174,9 +174,9 @@ export default function PricingSection() {
           className="max-w-5xl mx-auto"
         >
           <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold text-foreground mb-4">Additional Services</h3>
+            <h3 className="text-2xl font-bold text-foreground mb-4">Auxiliary Commissions</h3>
             <p className="text-muted-foreground">
-              Need something specific? Check out our additional services and their pricing.
+              Should your purpose require something more particular, our ledger of auxiliary commissions and their respective tariffs lies below.
             </p>
           </div>
 
@@ -204,14 +204,14 @@ export default function PricingSection() {
           className="text-center mt-12"
         >
           <p className="text-muted-foreground mb-4">
-            Need a custom quote? We'd love to discuss your project requirements.
+            Should you desire a tariff conceived expressly for your endeavour, we should be delighted to confer upon its particulars.
           </p>
           <Button 
             size="lg" 
             className="hover-scale"
             onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            Contact Us for Custom Quote
+            Request a Considered Estimate
           </Button>
         </motion.div>
       </div>
