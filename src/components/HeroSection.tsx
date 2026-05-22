@@ -27,9 +27,9 @@ export default function HeroSection() {
   const ratingCount = useCountUp({ end: 5, suffix: ' Star Rating', duration: 2500, enableScrollTrigger: false });
 
   const features = [
-    { icon: CheckCircle, text: "Trusted by 100+ businesses" },
-    { icon: Shield, text: "Enterprise-grade security" },
-    { icon: Zap, text: "Fast & reliable solutions" },
+    { icon: CheckCircle, text: "Entrusted by upwards of one hundred discerning enterprises" },
+    { icon: Shield, text: "Fortified with institutional-grade cryptographic assurances" },
+    { icon: Zap, text: "Engineered for unhurried velocity and uncompromising reliability" },
   ];
 
   const containerVariants = {
@@ -143,24 +143,23 @@ export default function HeroSection() {
               className="inline-flex items-center gap-2 bg-primary/10 border border-primary/30 px-4 py-2 rounded-full backdrop-blur-sm hover:bg-primary/20 transition-all duration-300 cursor-default"
             >
               <Sparkles className="w-4 h-4 text-primary animate-pulse" />
-              <span className="text-sm font-medium text-foreground">Leading Technology Partner in Kenya</span>
+              <span className="text-sm font-medium text-foreground">Kenya's Preeminent Atelier of Digital Engineering</span>
             </motion.div>
 
             {/* Main Heading */}
             <motion.div variants={itemVariants} className="space-y-4">
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] font-display">
-                <span className="text-foreground">Transform Your</span>
+                <span className="text-foreground">Architecting the</span>
                 <br />
                 <span className="gradient-text">
-                  Business with
+                  Quiet Revolution
                 </span>
                 <br />
-                <span className="text-foreground">Technology</span>
+                <span className="text-foreground">of Modern Enterprise</span>
               </h1>
               
               <p className="text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed">
-                FRIMAT Technologies delivers enterprise-grade IT solutions, from web development to cybersecurity, 
-                helping businesses across Kenya achieve digital excellence.
+                FRIMAT Technologies orchestrates a discerning suite of digital instruments — from bespoke web ateliers to sovereign-grade cybersecurity — guiding Kenyan enterprises through a measured ascent toward enduring digital distinction.
               </p>
             </motion.div>
 
@@ -182,7 +181,7 @@ export default function HeroSection() {
                 className="group text-base btn-modern" 
                 onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                Explore Our Services
+                Peruse the Atelier
                 <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
               </Button>
               <Button 
@@ -191,7 +190,7 @@ export default function HeroSection() {
                 className="text-base backdrop-blur-sm"
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                Schedule Consultation
+                Request a Private Consultation
               </Button>
             </motion.div>
           </div>
@@ -207,7 +206,7 @@ export default function HeroSection() {
                 className="glass-card hover-lift group"
               >
                 <div ref={projectsCount.ref} className="text-4xl font-bold text-primary mb-2 font-display stat-counter group-hover:drop-shadow-[0_0_10px_hsl(var(--primary)/0.5)] transition-all">{projectsCount.value}</div>
-                <div className="text-sm text-muted-foreground font-medium">Projects Delivered</div>
+                <div className="text-sm text-muted-foreground font-medium">Commissions Consummated</div>
                 <div className="mt-3 progress-cyber">
                   <motion.div 
                     className="progress-cyber-bar"
@@ -225,7 +224,7 @@ export default function HeroSection() {
                 className="glass-card hover-lift group"
               >
                 <div ref={uptimeCount.ref} className="text-4xl font-bold text-accent mb-2 font-display stat-counter group-hover:drop-shadow-[0_0_10px_hsl(var(--accent)/0.5)] transition-all">{uptimeCount.value}</div>
-                <div className="text-sm text-muted-foreground font-medium">Support Available</div>
+                <div className="text-sm text-muted-foreground font-medium">Perpetual Stewardship</div>
                 <div className="mt-3 progress-cyber">
                   <motion.div 
                     className="progress-cyber-bar"
@@ -246,7 +245,7 @@ export default function HeroSection() {
                 className="glass-card hover-lift group"
               >
                 <div ref={clientsCount.ref} className="text-4xl font-bold text-secondary mb-2 font-display stat-counter group-hover:drop-shadow-[0_0_10px_hsl(var(--secondary)/0.5)] transition-all">{clientsCount.value}</div>
-                <div className="text-sm text-muted-foreground font-medium">Happy Clients</div>
+                <div className="text-sm text-muted-foreground font-medium">Esteemed Clientele</div>
                 <div className="mt-3 progress-cyber">
                   <motion.div 
                     className="progress-cyber-bar"
@@ -265,7 +264,7 @@ export default function HeroSection() {
                 className="glass-card hover-lift group"
               >
                 <div ref={ratingCount.ref} className="text-4xl font-bold text-primary mb-2 font-display stat-counter group-hover:drop-shadow-[0_0_10px_hsl(var(--primary)/0.5)] transition-all">{ratingCount.value}</div>
-                <div className="text-sm text-muted-foreground font-medium">Customer Reviews</div>
+                <div className="text-sm text-muted-foreground font-medium">Unanimous Acclaim</div>
                 <div className="mt-3 progress-cyber">
                   <motion.div 
                     className="progress-cyber-bar"
@@ -310,7 +309,7 @@ export default function HeroSection() {
         transition={{ delay: 1.5, duration: 0.5 }}
       >
         <div className="flex flex-col items-center gap-2">
-          <span className="text-xs text-muted-foreground font-medium">Scroll to explore</span>
+          <span className="text-xs text-muted-foreground font-medium">Descend, and discover</span>
           <div className="w-6 h-10 border-2 border-primary/50 rounded-full flex justify-center backdrop-blur-sm hover:border-primary transition-colors">
             <motion.div 
               className="w-1 h-3 bg-primary rounded-full mt-2"
