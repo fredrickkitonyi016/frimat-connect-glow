@@ -5,7 +5,7 @@ const testimonials = [
     name: "Sarah Johnson",
     role: "CEO, TechStart Solutions",
     company: "TechStart Solutions",
-    content: "FRIMAT reconstituted our enterprise with an uncommon delicacy of digital invention. Within a mere three months, our cultivated presence upon the web had ascended threefold — quietly, decisively, and to lasting effect.",
+    content: "FRIMAT transformed our business with smart digital solutions. In just three months, our online presence grew 3x — quietly and effectively.",
     rating: 5,
     avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face"
   },
@@ -13,7 +13,7 @@ const testimonials = [
     name: "Michael Chen",
     role: "IT Director, GlobalCorp",
     company: "GlobalCorp",
-    content: "A consummate exercise in cybernetic fortification. The discernment of their council preserved us from latent peril and conferred a tranquillity of mind that has proven, in itself, an asset of incalculable measure.",
+    content: "Excellent cybersecurity work. Their advice saved us from real risks and gave us peace of mind that's worth every shilling.",
     rating: 5,
     avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
   },
@@ -21,7 +21,7 @@ const testimonials = [
     name: "Emily Rodriguez",
     role: "Founder, E-Commerce Plus",
     company: "E-Commerce Plus",
-    content: "The mobile atelier they composed for us surpassed every expectation we had dared entertain. Our patrons engaged with a fervour two-and-a-half times more pronounced, and our commerce ascended with comparable distinction.",
+    content: "The mobile app they built for us was beyond our expectations. Customer engagement jumped 2.5x and our sales followed.",
     rating: 5,
     avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face"
   },
@@ -29,7 +29,7 @@ const testimonials = [
     name: "David Kumar",
     role: "Operations Manager, LogiFlow",
     company: "LogiFlow",
-    content: "Their cloud stewardship rendered our operations a study in elegant economy. Forty per cent of expenditure was discreetly relinquished, whilst efficiency was elevated to a register we had not previously inhabited.",
+    content: "Their cloud services made our operations smoother and cheaper. We cut costs by 40% while improving efficiency.",
     rating: 5,
     avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
   }
@@ -42,11 +42,11 @@ export default function TestimonialsSection() {
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4">
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              In the Voices of Our Patrons
+              What Our Clients Say
             </span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Permit our patrons themselves to render the verdict. Their testimonies, gathered below, articulate with rare precision the character of our collaboration.
+            Don't just take our word for it. Here's what our clients have to say about working with us.
           </p>
         </div>
 

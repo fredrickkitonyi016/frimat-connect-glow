@@ -4,11 +4,11 @@ import { useState } from "react";
 const team = [
   {
     name: "Fredrick Kitonyi Kiio",
-    role: "Principal & Founder",
-    specialization: "Comprehensive Composition & Strategic Counsel",
-    bio: "A founder of cultivated vision and considered tenure within the disciplines of software composition and technological entrepreneurship — devoted to the patient digital reinvention of the Kenyan enterprise.",
+    role: "Founder & CEO",
+    specialization: "Full-Stack Development & Strategy",
+    bio: "Founder with strong experience in software development and tech entrepreneurship — passionate about helping Kenyan businesses go digital.",
     image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=300&fit=crop&crop=face",
-    skills: ["Stewardship", "Comprehensive Composition", "Strategic Counsel"],
+    skills: ["Leadership", "Full-Stack Dev", "Strategy"],
     social: {
       linkedin: "https://www.linkedin.com/company/frimat-technologies",
       github: "https://github.com/frimattechnologies",
@@ -17,11 +17,11 @@ const team = [
   },
   {
     name: "Sylvester Karanja",
-    role: "Chief Technologist & Co-Founder",
-    specialization: "Cloud Architecture & Cyber Bastions",
-    bio: "A connoisseur of cloud architecture and cybernetic fortification, whose ledger of secure and elastic compositions for the institutions of East Africa is both extensive and well-attested.",
+    role: "CTO & Co-Founder",
+    specialization: "Cloud Architecture & Cybersecurity",
+    bio: "Cloud and cybersecurity expert with a strong track record of building secure, scalable systems for East African businesses.",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face",
-    skills: ["Cloud Architecture", "Cyber Bastions", "DevOps Choreography"],
+    skills: ["Cloud Architecture", "Cybersecurity", "DevOps"],
     social: {
       linkedin: "https://www.linkedin.com/company/frimat-technologies",
       github: "https://github.com/frimattechnologies", 
@@ -117,11 +117,11 @@ export default function TeamSection() {
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4">
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              The Confederation Behind the Atelier
+              Meet Our Team
             </span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            The connoisseurs to whom FRIMAT owes its character — an assembly of distinguished tenure and complementary discernment.
+            The people behind FRIMAT — a skilled team with experience and shared passion for tech.
           </p>
         </div>
 

@@ -32,108 +32,108 @@ export default function ServicesSection() {
       icon: Globe,
       gradient: "from-blue-500 to-cyan-500",
       image: webDevImage,
-      title: "Web Couture",
-      description: "Bespoke digital edifices, composed in the contemporary architectural vernacular.",
-      features: ["React & Vue.js ateliers", "Composition from foundation to façade", "Sovereign API confluences", "Studied performance refinement"],
+      title: "Web Development",
+      description: "Custom websites and web apps built with modern technology.",
+      features: ["React & Vue.js apps", "Full-stack development", "API integration", "Performance optimization"],
       href: "/services/web-development"
     },
     {
       icon: Smartphone,
       gradient: "from-purple-500 to-pink-500",
       image: mobileAppImage,
-      title: "Mobile Ateliers",
-      description: "Native and unified mobile compositions for the iOS and Android constellations.",
-      features: ["React Native craftsmanship", "Flutter elegance", "iOS sensibilities", "Android disciplines"],
+      title: "Mobile Apps",
+      description: "Native and cross-platform apps for iOS and Android.",
+      features: ["React Native", "Flutter", "iOS development", "Android development"],
       href: "/services/mobile-apps"
     },
     {
       icon: Cloud,
       gradient: "from-sky-500 to-indigo-500",
       image: cloudServiceImage,
-      title: "Sovereign Cloud",
-      description: "Elastic cloud foundations and migrations conducted with patrician calm.",
-      features: ["AWS & Azure stewardship", "Migrations sans tumult", "DevOps choreography", "Microservice tessellation"],
+      title: "Cloud Services",
+      description: "Scalable cloud infrastructure and smooth migrations.",
+      features: ["AWS & Azure", "Easy migration", "DevOps setup", "Microservices"],
       href: "/services/cloud-services"
     },
     {
       icon: Shield,
       gradient: "from-red-500 to-orange-500",
       image: cybersecurityImage,
-      title: "Cyber Bastions",
-      description: "Comprehensive safeguards in defence of your digital patrimony.",
-      features: ["Forensic security examinations", "Penetration auditing", "Regulatory concordance", "Stratified risk appraisal"],
+      title: "Cybersecurity",
+      description: "Complete protection for your digital assets.",
+      features: ["Security audits", "Penetration testing", "Compliance", "Risk assessment"],
       href: "/services/cybersecurity"
     },
     {
       icon: Monitor,
       gradient: "from-green-500 to-emerald-500",
       image: itSupportImage,
-      title: "Perpetual Concierge",
-      description: "A round-the-clock concierge of technical stewardship for your infrastructure.",
-      features: ["Attentive help desk", "Network custodianship", "Vigilant system observation", "Methodical maintenance"],
+      title: "IT Support",
+      description: "Round-the-clock technical support for your business.",
+      features: ["Help desk", "Network management", "System monitoring", "Maintenance"],
       href: "/services/it-support"
     },
     {
       icon: ShoppingBag,
       gradient: "from-amber-500 to-yellow-500",
       image: ecommerceImage,
-      title: "Mercantile Architecture",
-      description: "An unbroken e-commerce experience, from initial sketch to graceful deployment.",
-      features: ["Shopify ateliers", "WooCommerce craftsmanship", "Payment confluences", "Inventory orchestration"],
+      title: "E-commerce",
+      description: "End-to-end online store solutions, from design to launch.",
+      features: ["Shopify stores", "WooCommerce", "Payment integration", "Inventory management"],
       href: "/services/ecommerce"
     },
     {
       icon: Printer,
       gradient: "from-teal-500 to-cyan-500",
       image: itSupportImage,
-      title: "Cyber Salon",
-      description: "A consummately appointed cyber salon for every quotidian digital errand.",
-      features: ["Printing & reprography", "Document digitisation", "Internet hospitality", "Computer tutelage"],
+      title: "Cyber Cafe",
+      description: "A fully equipped cyber cafe for all your daily digital needs.",
+      features: ["Printing & scanning", "Document services", "Internet access", "Computer training"],
       href: "/services/cyber-cafe"
     },
     {
       icon: Building2,
       gradient: "from-rose-500 to-red-500",
       image: itSupportImage,
-      title: "Sovereign Affairs",
-      description: "Studied counsel upon the Republic's digital portals and statutory rituals.",
-      features: ["KRA iTax submissions", "HELB petitions", "SHA enrolments", "e-Citizen liaison"],
+      title: "Government Services",
+      description: "Help with Kenyan government portals and online services.",
+      features: ["KRA iTax filing", "HELB applications", "SHA registration", "e-Citizen support"],
       href: "/services/government-services"
     },
     {
       icon: Code,
       gradient: "from-violet-500 to-purple-500",
       image: webDevImage,
-      title: "Bespoke Composition",
-      description: "Singularly composed software, conceived to your enterprise's particular cadence.",
-      features: ["Bespoke software", "Enterprise instruments", "System confluences", "Modernisation of legacy"],
+      title: "Custom Development",
+      description: "Tailor-made software built around your specific needs.",
+      features: ["Custom software", "Business tools", "System integration", "Legacy upgrades"],
       href: "/services/custom-development"
     },
     {
       icon: Server,
       gradient: "from-indigo-500 to-blue-500",
       image: cloudServiceImage,
-      title: "Cloud Translation",
-      description: "An unhurried, unblemished translation of your infrastructure to the cloud firmament.",
-      features: ["Migratory cartography", "Discreet data transfer", "Continuity without interruption", "Stewardship post-migration"],
+      title: "Cloud Migration",
+      description: "Smooth and safe migration of your systems to the cloud.",
+      features: ["Migration planning", "Secure data transfer", "Zero downtime", "Post-migration support"],
       href: "/services/cloud-migration"
     },
     {
       icon: Palette,
       gradient: "from-pink-500 to-rose-500",
       image: webDevImage,
-      title: "Creative Atelier",
-      description: "Refined graphic and brand expression for the discerning enterprise.",
-      features: ["Logo composition", "Brand identity", "Marketing instruments", "Social media imagery"],
+      title: "Creative & Design",
+      description: "Professional graphic design and branding for your business.",
+      features: ["Logo design", "Brand identity", "Marketing materials", "Social media graphics"],
       href: "/services/creative-design"
     },
     {
       icon: Database,
       gradient: "from-emerald-500 to-teal-500",
       image: cloudServiceImage,
-      title: "Data Stewardship",
-      description: "Considered custodianship and refinement of your most consequential asset.",
-      features: ["Schematic composition", "Performance refinement", "Data translation", "Restoration & assurance"],
+      title: "Database Solutions",
+      description: "Reliable management and optimization of your business data.",
+      features: ["Database design", "Performance tuning", "Data migration", "Backup & recovery"],
       href: "/services/cloud-services"
     }
   ];
@@ -145,11 +145,11 @@ export default function ServicesSection() {
           <h2 className="text-5xl font-bold mb-6">
             <span className="text-foreground">Our </span>
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Repertoire
+              Services
             </span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            From the first inspiration to the final unveiling, ours is a comprehensive armory of digital instruments — composed to advance commerce with discernment and to attend to invention with patience.
+            From idea to launch, we offer a full range of digital services to help your business grow and succeed online.
           </p>
         </div>
 
@@ -207,7 +207,7 @@ export default function ServicesSection() {
                       className="w-full group/btn bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white border-0"
                       size="default"
                     >
-                      Discover Further
+                      Learn More
                       <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                     </Button>
                   </div>
@@ -225,7 +225,7 @@ export default function ServicesSection() {
             onClick={() => navigate('/services')}
             className="group"
           >
-            Survey the Entire Repertoire
+            View All Services
             <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Button>
         </div>
@@ -234,10 +234,10 @@ export default function ServicesSection() {
         <div className="text-center mt-16">
           <div className="glass-card p-8 max-w-4xl mx-auto">
             <h3 className="text-3xl font-bold text-foreground mb-4">
-              Disposed to Reinvent the Architecture of Your Enterprise?
+              Ready to Transform Your Business?
             </h3>
             <p className="text-xl text-muted-foreground mb-8">
-              Permit us a private audience in which to chart, in unhurried detail, the path toward your technological ambitions.
+              Let's talk about how we can help you reach your technology goals.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
@@ -245,14 +245,14 @@ export default function ServicesSection() {
                 size="lg"
                 onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                Initiate Correspondence
+                Get in Touch
               </Button>
               <Button 
                 variant="glass" 
                 size="lg"
                 onClick={() => document.querySelector('#portfolio')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                Survey Our Œuvre
+                View Our Work
               </Button>
             </div>
           </div>
