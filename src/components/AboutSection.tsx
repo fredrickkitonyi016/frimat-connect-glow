@@ -11,18 +11,18 @@ export default function AboutSection() {
   const features = [
     {
       icon: Zap,
-      title: "Singular Invention",
-      description: "Bespoke technological instruments, conceived in concert with the particular cadence of your enterprise."
+      title: "Innovative Solutions",
+      description: "Custom technology built to match the way your business works."
     },
     {
       icon: Users,
-      title: "An Assembly of Connoisseurs",
-      description: "A confederation of seasoned practitioners whose métier is the patient cultivation of digital excellence."
+      title: "Expert Team",
+      description: "A skilled team focused on delivering great digital results."
     },
     {
       icon: Shield,
-      title: "Inviolable Foundations",
-      description: "Institutional-grade safeguards and an unwavering 99.9 percent continuity, guaranteed in perpetuity."
+      title: "Secure & Reliable",
+      description: "Enterprise-grade security with 99.9% uptime, guaranteed."
     }
   ];
 
@@ -38,7 +38,7 @@ export default function AboutSection() {
           />
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
             <span className="bg-gradient-to-r from-rose-600 via-red-500 to-rose-700 bg-clip-text text-transparent">
-              An Atelier for the Reinvention of Enterprise
+              Helping Businesses Grow with Technology
             </span>
           </h1>
         </div>
@@ -72,18 +72,18 @@ export default function AboutSection() {
               
               {/* Title */}
               <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors duration-300">
-                The Considered Reinvention of Enterprise
+                Making Technology Work for Every Business
               </h3>
               
               {/* Description */}
               <p className="text-muted-foreground leading-relaxed mb-6">
-                To dissolve the long-standing distance between rarefied technological invention and the quotidian operations of commerce — equipping institutions to innovate with discernment, to expand with intent, and to flourish, unhurriedly, within the architecture of the digital epoch.
+                We bridge the gap between advanced technology and everyday business. Our goal is to help companies of all sizes innovate, grow, and succeed in the digital world.
               </p>
               
               {/* Decorative Line */}
               <div className="flex items-center gap-3">
                 <div className="h-1 w-12 bg-gradient-to-r from-primary to-accent rounded-full group-hover:w-20 transition-all duration-500" />
-                <span className="text-sm text-primary font-medium">Invent • Illumine • Endure</span>
+                <span className="text-sm text-primary font-medium">Innovate • Inspire • Deliver</span>
               </div>
             </div>
           </div>
@@ -114,18 +114,18 @@ export default function AboutSection() {
               
               {/* Title */}
               <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4 group-hover:text-accent transition-colors duration-300">
-                A Quiet Stewardship of Global Invention
+                A Leader in Global Technology Innovation
               </h3>
               
               {/* Description */}
               <p className="text-muted-foreground leading-relaxed mb-6">
-                To assume an enduring stewardship of technological innovation upon the international stage — counselling enterprises, irrespective of stature, in the deliberate orchestration of their digital ascendancy, and conceiving a future in which technology serves as an instrument of well-considered, boundless possibility.
+                To become a global leader in tech — helping businesses of every size use digital tools to grow, compete, and unlock new possibilities.
               </p>
               
               {/* Decorative Line */}
               <div className="flex items-center gap-3">
                 <div className="h-1 w-12 bg-gradient-to-r from-accent to-secondary rounded-full group-hover:w-20 transition-all duration-500" />
-                <span className="text-sm text-accent font-medium">Envisage • Compose • Endure</span>
+                <span className="text-sm text-accent font-medium">Envision • Build • Lead</span>
               </div>
             </div>
           </div>
@@ -136,24 +136,24 @@ export default function AboutSection() {
           <div className="space-y-8">
             <div className="space-y-4">
               <h2 className="text-5xl font-bold">
-                <span className="text-foreground">Upon </span>
+                <span className="text-foreground">About </span>
                 <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                   FRIMAT
                 </span>
               </h2>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                We are a sovereign house of technological invention, devoted to the considered transfiguration of commerce through digital instruments of singular character. Ours is the discipline of translating rarefied innovation into the legible vernacular of enduring enterprise.
+                We're a Kenyan technology company building digital tools that help businesses run better. We turn complex tech into simple, practical solutions you can actually use.
               </p>
             </div>
 
             <div className="space-y-4">
-              <h3 className="text-2xl font-semibold text-foreground">Why an Audience with Us?</h3>
+              <h3 className="text-2xl font-semibold text-foreground">Why Choose Us?</h3>
               <div className="space-y-3">
                 {[
-                  "Six years of cultivated tenure within the discipline",
-                  "A devoted concierge of stewardship, available without intermission",
-                  "Singularly composed solutions, contoured to your particular cadence",
-                  "An unbroken ledger of more than thirty-five commissions consummated with distinction"
+                  "6+ years of experience in the industry",
+                  "Dedicated support, available whenever you need us",
+                  "Custom solutions built around your business",
+                  "35+ successful projects delivered"
                 ].map((item, index) => (
                   <div key={index} className="flex items-center gap-3">
                     <CheckCircle className="text-accent" size={20} />
@@ -168,7 +168,7 @@ export default function AboutSection() {
                 className="group inline-flex items-center gap-2 text-primary font-semibold hover:text-primary/80 transition-colors duration-300 mt-4"
               >
                 <span className="relative">
-                  Peruse the Repertoire
+                  Explore Our Services
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
                 </span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -178,11 +178,11 @@ export default function AboutSection() {
             {/* Internal Links */}
             <div className="flex flex-wrap gap-4">
               <Button variant="hero" onClick={() => scrollToSection('#contact')}>
-                Initiate Correspondence
+                Contact Us
                 <ArrowRight className="ml-2" size={16} />
               </Button>
               <Button variant="glass" onClick={() => scrollToSection('#portfolio')}>
-                Survey Our Œuvre
+                View Our Work
               </Button>
             </div>
           </div>
@@ -221,15 +221,15 @@ export default function AboutSection() {
               transition={{ duration: 0.6 }}
             >
               <h4 className="text-2xl font-bold text-center text-foreground mb-8">
-                That Which Distinguishes Us
+                What Sets Us Apart
               </h4>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
-                  { icon: Rocket, title: "Unhurried Velocity", description: "Brisk consummation that yet refuses any concession of refinement.", gradient: "from-primary to-primary/70", border: "border-primary/20 hover:border-primary/40", bg: "from-primary/10 to-primary/5" },
-                  { icon: Heart, title: "Patronage Above All", description: "Your ascendancy is the singular axis upon which our endeavours turn.", gradient: "from-accent to-accent/70", border: "border-accent/20 hover:border-accent/40", bg: "from-accent/10 to-accent/5" },
-                  { icon: Globe, title: "Cosmopolitan Standards", description: "Work of international register, tempered by an intimate Kenyan sensibility.", gradient: "from-secondary to-secondary/70", border: "border-secondary/20 hover:border-secondary/40", bg: "from-secondary/10 to-secondary/5" },
-                  { icon: Lightbulb, title: "Studied Invention", description: "Rarefied instruments, brought to bear upon the contemporary predicament.", gradient: "from-primary to-accent", border: "border-primary/20 hover:border-primary/40", bg: "from-primary/10 to-accent/5" },
+                  { icon: Rocket, title: "Fast Delivery", description: "Quick turnaround without sacrificing quality.", gradient: "from-primary to-primary/70", border: "border-primary/20 hover:border-primary/40", bg: "from-primary/10 to-primary/5" },
+                  { icon: Heart, title: "Client First", description: "Your success is what drives everything we do.", gradient: "from-accent to-accent/70", border: "border-accent/20 hover:border-accent/40", bg: "from-accent/10 to-accent/5" },
+                  { icon: Globe, title: "Global Standards", description: "World-class work with a local Kenyan touch.", gradient: "from-secondary to-secondary/70", border: "border-secondary/20 hover:border-secondary/40", bg: "from-secondary/10 to-secondary/5" },
+                  { icon: Lightbulb, title: "Smart Innovation", description: "Modern tools applied to real business problems.", gradient: "from-primary to-accent", border: "border-primary/20 hover:border-primary/40", bg: "from-primary/10 to-accent/5" },
                 ].map((item, index) => (
                   <motion.div
                     key={item.title}

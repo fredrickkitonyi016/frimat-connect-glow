@@ -2,36 +2,36 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 
 const faqs = [
   {
-    question: "Which disciplines compose FRIMAT's repertoire?",
-    answer: "Ours is a comprehensive armory of digital instruments: web couture, mobile ateliers, cyber bastions, sovereign cloud foundations, perpetual concierge, mercantile architecture, and Kenya Revenue Authority stewardship. Each commission is composed in concert with the particular cadence of the enterprise entrusted to us."
+    question: "What services does FRIMAT offer?",
+    answer: "We offer a full range of digital services: web development, mobile apps, cybersecurity, cloud services, IT support, e-commerce, and KRA tax help. Every project is tailored to your business needs."
   },
   {
-    question: "What is the customary duration of a commission?",
-    answer: "Durations are contingent upon scope and intricacy. A composed presentation site is ordinarily consummated within two to four weeks, whilst more elaborate web compositions or mobile ateliers may occupy eight to sixteen weeks. A detailed chronicle of milestones is rendered at the inception of the commission, and you are kept apprised, without interval, throughout the unfolding."
+    question: "How long does a typical project take?",
+    answer: "It depends on the scope. A simple website usually takes 2-4 weeks, while bigger web projects or mobile apps can take 8-16 weeks. We give you a clear timeline at the start and keep you updated throughout."
   },
   {
-    question: "Is stewardship furnished after the unveiling?",
-    answer: "Indeed. A devoted concierge of maintenance accompanies every commission — comprising periodic refinements, vigilant security observation, the redress of imperfections, and attentive technical counsel. Ours is a discipline of enduring patronage, not transient transaction."
+    question: "Do you offer support after launch?",
+    answer: "Yes. Every project includes ongoing support — regular updates, security monitoring, bug fixes, and technical help. We build lasting partnerships, not one-time deals."
   },
   {
-    question: "By what process is a commission conducted?",
-    answer: "Our process unfolds with patrician composure: Discovery and conception → Composition and prototyping → Construction and examination → Unveiling → Perpetual stewardship. Communication remains transparent and unhurried throughout."
+    question: "How do you handle projects?",
+    answer: "Our process is simple: Discovery and planning → Design and prototyping → Development and testing → Launch → Ongoing support. We keep things clear and communicate openly the whole way."
   },
   {
-    question: "Do you attend enterprises both modest and grand?",
-    answer: "We attend institutions of every stature, from emergent ventures to enterprises of considerable patrimony. Our tariffs and methods are contoured to your particular means and ambitions; our cyber salon, in particular, has long served the discerning individual and the local merchant alike."
+    question: "Do you work with small and large businesses?",
+    answer: "Yes, we work with businesses of all sizes — from startups to large companies. Our prices and services adjust to fit your budget and goals. Our cyber cafe also serves individuals and small local businesses."
   },
   {
-    question: "By what means is the sanctity of our data preserved?",
-    answer: "Security is the lodestar of our discipline. We deploy SSL cryptography, codified secure practice, periodic forensic audits, and an unbroken concord with statutory data protection. Our cyber bastions division ensures that your digital patrimony remains inviolable."
+    question: "How do you protect our data?",
+    answer: "Security is a top priority. We use SSL encryption, secure coding practices, regular security audits, and follow data protection laws. Our cybersecurity team makes sure your digital assets stay safe."
   },
   {
-    question: "Will you attend matters of KRA tax concordance?",
-    answer: "Without exception. Our cyber salon attends every dimension of KRA stewardship — the lodging of returns, statutory counsel, and the curation of digital certifications — guiding both individuals and enterprises through the Republic's digital fiscal architecture with composed authority."
+    question: "Do you help with KRA tax filing?",
+    answer: "Absolutely. Our cyber cafe handles all KRA services — tax filing, compliance advice, and digital certificates — for both individuals and businesses."
   },
   {
-    question: "In which technologies do you possess particular distinction?",
-    answer: "Our disciplines comprise React, Node.js, and Python; mobile composition for iOS and Android; the cloud firmaments of AWS, Azure, and Google Cloud; and an array of data foundations. We remain attentive to the unfolding currents of invention, that our counsel may forever bear the imprint of contemporaneity."
+    question: "What technologies do you specialize in?",
+    answer: "We work with React, Node.js, and Python; iOS and Android development; AWS, Azure, and Google Cloud; and various databases. We stay up-to-date with the latest tech to give you the best solutions."
   }
 ];
 
@@ -42,11 +42,11 @@ export default function FAQSection() {
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4">
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Inquiries, Considered & Answered
+              Frequently Asked Questions
             </span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            That which is most commonly enquired of us, attended with patient candour and intended to illumine our disciplines, our cadence, and our method.
+            Quick answers to common questions about our services, process, and how we work.
           </p>
         </div>
 

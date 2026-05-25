@@ -8,17 +8,17 @@ import graphicDesignAd from "@/assets/ads/graphic-design-ad.jpg";
 const promotions = [
   {
     image: computerRepairAd,
-    title: "Restoration of the Computing Instrument",
-    description: "Swift, considered restoration of your computing instruments, at tariffs of evident propriety.",
+    title: "Computer Repair Services",
+    description: "Fast, reliable computer repairs at fair prices.",
     link: "/services/it-support",
-    cta: "Reserve Your Audience"
+    cta: "Book Now"
   },
   {
     image: graphicDesignAd,
-    title: "The Atelier of Graphic Composition",
-    description: "Brand expression and graphic composition of refined editorial register.",
+    title: "Graphic Design Studio",
+    description: "Professional branding and graphic design that stands out.",
     link: "/services/creative-design",
-    cta: "Discover Further"
+    cta: "Learn More"
   }
 ];
 
@@ -34,13 +34,13 @@ export default function PromotionalBanner() {
           className="text-center mb-12"
         >
           <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-medium mb-4">
-            Distinguished Commissions
+            Featured Services
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Our <span className="text-primary">Considered Offerings</span>
+            Our <span className="text-primary">Top Picks</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            A selection of our most consequential disciplines, composed for the discerning enterprise in pursuit of distinction.
+            A look at some of our most popular services, built to help your business stand out.
           </p>
         </motion.div>
 
@@ -55,18 +55,15 @@ export default function PromotionalBanner() {
               className="group relative"
             >
               <div className="relative overflow-hidden rounded-2xl shadow-2xl border border-border/50 bg-card">
-                {/* Image Container */}
                 <div className="relative aspect-square overflow-hidden">
                   <img
                     src={promo.image}
                     alt={promo.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  {/* Gradient Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
                 </div>
 
-                {/* Content Overlay */}
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                   <h3 className="text-xl md:text-2xl font-bold text-foreground mb-2">
                     {promo.title}
@@ -86,7 +83,6 @@ export default function PromotionalBanner() {
                   </Link>
                 </div>
 
-                {/* Decorative elements */}
                 <div className="absolute top-4 right-4 w-16 h-16 rounded-full bg-primary/20 blur-2xl" />
                 <div className="absolute bottom-20 left-4 w-24 h-24 rounded-full bg-accent/20 blur-3xl" />
               </div>
