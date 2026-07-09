@@ -26,7 +26,7 @@ const governmentPortals = [
     url: "https://itax.kra.go.ke",
     price: "KSh 500",
     description: "Tax returns & PIN registration",
-    color: "from-blue-500 to-blue-600"
+    color: "from-amber-500 to-orange-600"
   },
   {
     name: "HELB",

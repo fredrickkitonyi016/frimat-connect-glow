@@ -38,7 +38,7 @@ const solutions = [
   },
   {
     icon: Factory,
-    gradient: "from-blue-500 to-indigo-500",
+    gradient: "from-amber-500 to-amber-500",
     title: "Manufacturing",
     description: "Industry 4.0 solutions for smart factories and optimized production",
     features: ["IoT Integration", "Predictive Maintenance", "Supply Chain Management", "Quality Control"],

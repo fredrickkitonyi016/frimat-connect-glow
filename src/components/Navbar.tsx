@@ -49,16 +49,16 @@ const megaMenuData = {
   services: {
     title: "Services",
     items: [
-      { name: "Web Development", href: "/services/web-development", icon: Globe, description: "Custom websites & web apps", gradient: "from-blue-500 to-cyan-500" },
-      { name: "Mobile Apps", href: "/services/mobile-apps", icon: Smartphone, description: "iOS & Android applications", gradient: "from-purple-500 to-pink-500" },
-      { name: "Cloud Services", href: "/services/cloud-services", icon: Cloud, description: "AWS, Azure & cloud infrastructure", gradient: "from-sky-500 to-indigo-500" },
+      { name: "Web Development", href: "/services/web-development", icon: Globe, description: "Custom websites & web apps", gradient: "from-amber-500 to-amber-500" },
+      { name: "Mobile Apps", href: "/services/mobile-apps", icon: Smartphone, description: "iOS & Android applications", gradient: "from-amber-500 to-pink-500" },
+      { name: "Cloud Services", href: "/services/cloud-services", icon: Cloud, description: "AWS, Azure & cloud infrastructure", gradient: "from-amber-500 to-amber-500" },
       { name: "Cybersecurity", href: "/services/cybersecurity", icon: Shield, description: "Protect your digital assets", gradient: "from-red-500 to-orange-500" },
       { name: "IT Support", href: "/services/it-support", icon: Monitor, description: "24/7 technical assistance", gradient: "from-green-500 to-emerald-500" },
       { name: "E-commerce", href: "/services/ecommerce", icon: ShoppingBag, description: "Online store solutions", gradient: "from-amber-500 to-yellow-500" },
-      { name: "Cyber Cafe", href: "/services/cyber-cafe", icon: Printer, description: "Digital service center", gradient: "from-teal-500 to-cyan-500" },
+      { name: "Cyber Cafe", href: "/services/cyber-cafe", icon: Printer, description: "Digital service center", gradient: "from-teal-500 to-amber-500" },
       { name: "Government Services", href: "/services/government-services", icon: Building2, description: "KRA, HELB, SHA portals", gradient: "from-rose-500 to-red-500" },
-      { name: "Custom Development", href: "/services/custom-development", icon: Code, description: "Bespoke software solutions", gradient: "from-violet-500 to-purple-500" },
-      { name: "Cloud Migration", href: "/services/cloud-migration", icon: Server, description: "Seamless cloud transitions", gradient: "from-indigo-500 to-blue-500" },
+      { name: "Custom Development", href: "/services/custom-development", icon: Code, description: "Bespoke software solutions", gradient: "from-amber-500 to-amber-500" },
+      { name: "Cloud Migration", href: "/services/cloud-migration", icon: Server, description: "Seamless cloud transitions", gradient: "from-amber-500 to-amber-500" },
       { name: "Creative & Design", href: "/services/creative-design", icon: Palette, description: "Logo, branding & graphics", gradient: "from-pink-500 to-rose-500" },
       { name: "Database Solutions", href: "/services/cloud-services", icon: Database, description: "Scalable data management", gradient: "from-emerald-500 to-teal-500" },
     ]
@@ -69,23 +69,23 @@ const megaMenuData = {
       { name: "Healthcare", href: "/solutions/healthcare", icon: HeartPulse, description: "Digital health solutions", gradient: "from-red-500 to-pink-500" },
       { name: "Retail & E-commerce", href: "/solutions/retail", icon: ShoppingBag, description: "Modern retail technology", gradient: "from-amber-500 to-orange-500" },
       { name: "Finance & Banking", href: "/solutions/finance", icon: Building2, description: "Secure financial systems", gradient: "from-green-500 to-emerald-500" },
-      { name: "Manufacturing", href: "/solutions/manufacturing", icon: Factory, description: "Industry 4.0 solutions", gradient: "from-blue-500 to-indigo-500" },
+      { name: "Manufacturing", href: "/solutions/manufacturing", icon: Factory, description: "Industry 4.0 solutions", gradient: "from-amber-500 to-amber-500" },
     ]
   },
   technologies: {
     title: "Technologies",
     items: [
-      { name: "Cloud Platforms", href: "/technologies/cloud-platforms", icon: Server, description: "AWS, Azure, Google Cloud", gradient: "from-sky-500 to-blue-500" },
-      { name: "Development Stack", href: "/technologies/development-stack", icon: Layers, description: "Modern frameworks & tools", gradient: "from-purple-500 to-violet-500" },
+      { name: "Cloud Platforms", href: "/technologies/cloud-platforms", icon: Server, description: "AWS, Azure, Google Cloud", gradient: "from-amber-500 to-amber-500" },
+      { name: "Development Stack", href: "/technologies/development-stack", icon: Layers, description: "Modern frameworks & tools", gradient: "from-amber-500 to-amber-500" },
       { name: "Security Tools", href: "/technologies/security-tools", icon: Lock, description: "Enterprise-grade security", gradient: "from-red-500 to-orange-500" },
-      { name: "IoT Platforms", href: "/technologies/iot-platforms", icon: Cpu, description: "Connected device solutions", gradient: "from-teal-500 to-cyan-500" },
+      { name: "IoT Platforms", href: "/technologies/iot-platforms", icon: Cpu, description: "Connected device solutions", gradient: "from-teal-500 to-amber-500" },
     ]
   },
   resources: {
     title: "Resources",
     items: [
       { name: "Blog", href: "#blog", icon: BookOpen, description: "Latest tech insights", gradient: "from-pink-500 to-rose-500" },
-      { name: "Whitepapers", href: "/resources/whitepapers", icon: FileText, description: "In-depth research & guides", gradient: "from-indigo-500 to-purple-500" },
+      { name: "Whitepapers", href: "/resources/whitepapers", icon: FileText, description: "In-depth research & guides", gradient: "from-amber-500 to-amber-500" },
       { name: "Case Studies", href: "#portfolio", icon: FolderOpen, description: "Success stories", gradient: "from-emerald-500 to-teal-500" },
       { name: "FAQs", href: "#faq", icon: HelpCircle, description: "Common questions answered", gradient: "from-amber-500 to-yellow-500" },
     ]

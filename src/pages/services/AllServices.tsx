@@ -22,7 +22,7 @@ const allServices = [
     href: "/services/web-development",
     pricing: "Starting from KSh 25,000",
     features: ["Responsive Design", "CMS Integration", "SEO Optimization", "E-commerce Ready"],
-    gradient: "from-blue-500 to-cyan-500"
+    gradient: "from-amber-500 to-amber-500"
   },
   {
     title: "Mobile Apps",
@@ -32,7 +32,7 @@ const allServices = [
     href: "/services/mobile-apps",
     pricing: "Starting from KSh 100,000",
     features: ["iOS & Android", "Cross-platform", "App Store Optimization", "Push Notifications"],
-    gradient: "from-purple-500 to-pink-500"
+    gradient: "from-amber-500 to-pink-500"
   },
   {
     title: "Cloud Services",
@@ -42,7 +42,7 @@ const allServices = [
     href: "/services/cloud-services",
     pricing: "Starting from KSh 30,000/month",
     features: ["AWS & Azure", "Cloud Migration", "Auto-scaling", "Backup & Recovery"],
-    gradient: "from-sky-500 to-indigo-500"
+    gradient: "from-amber-500 to-amber-500"
   },
   {
     title: "Cybersecurity",
@@ -82,7 +82,7 @@ const allServices = [
     href: "/services/cyber-cafe",
     pricing: "Starting from KSh 10/page",
     features: ["Printing & Scanning", "Internet Access", "CV Writing", "Government Services"],
-    gradient: "from-teal-500 to-cyan-500"
+    gradient: "from-teal-500 to-amber-500"
   },
   {
     title: "Government Services",
@@ -102,7 +102,7 @@ const allServices = [
     href: "/services/custom-development",
     pricing: "Project-based",
     features: ["Custom Software", "API Development", "Automation", "System Integration"],
-    gradient: "from-violet-500 to-purple-500"
+    gradient: "from-amber-500 to-amber-500"
   },
   {
     title: "Cloud Migration",
@@ -112,7 +112,7 @@ const allServices = [
     href: "/services/cloud-migration",
     pricing: "Starting from KSh 50,000",
     features: ["Assessment", "Migration Planning", "Data Transfer", "Training"],
-    gradient: "from-indigo-500 to-blue-500"
+    gradient: "from-amber-500 to-amber-500"
   },
   {
     title: "Creative & Design",

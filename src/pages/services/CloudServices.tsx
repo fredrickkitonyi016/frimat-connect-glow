@@ -117,7 +117,7 @@ export default function CloudServices() {
                 
                 <div className="absolute bottom-4 left-6">
                   <div className="p-4 rounded-xl bg-white shadow-lg">
-                    <div className="p-3 rounded-lg bg-gradient-to-br from-sky-500 to-indigo-500">
+                    <div className="p-3 rounded-lg bg-gradient-to-br from-amber-500 to-amber-500">
                       <Cloud className="w-8 h-8 text-white" />
                     </div>
                   </div>

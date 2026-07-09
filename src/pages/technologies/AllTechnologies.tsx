@@ -14,7 +14,7 @@ import {
 const technologies = [
   {
     icon: Server,
-    gradient: "from-sky-500 to-blue-500",
+    gradient: "from-amber-500 to-amber-500",
     title: "Cloud Platforms",
     description: "Enterprise-grade cloud infrastructure powered by leading providers",
     features: ["Amazon Web Services (AWS)", "Microsoft Azure", "Google Cloud Platform", "Multi-Cloud Strategy"],
@@ -22,7 +22,7 @@ const technologies = [
   },
   {
     icon: Layers,
-    gradient: "from-purple-500 to-violet-500",
+    gradient: "from-amber-500 to-amber-500",
     title: "Development Stack",
     description: "Modern frameworks and tools for building scalable applications",
     features: ["React & Next.js", "Node.js & Python", "TypeScript", "GraphQL & REST APIs"],
@@ -38,7 +38,7 @@ const technologies = [
   },
   {
     icon: Cpu,
-    gradient: "from-teal-500 to-cyan-500",
+    gradient: "from-teal-500 to-amber-500",
     title: "IoT Platforms",
     description: "Connected device solutions for smart operations and monitoring",
     features: ["Sensor Networks", "Edge Computing", "Real-time Analytics", "Device Management"],
