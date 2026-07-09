@@ -2,6 +2,7 @@ import { CheckCircle, Users, Zap, Shield, ArrowRight, Target, Eye, Sparkles, Roc
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import frimatLogoWhite from "@/assets/frimat-logo-white.png";
+import AmbientVideoBackground from "./AmbientVideoBackground";
 
 export default function AboutSection() {
   const scrollToSection = (href: string) => {
@@ -28,8 +29,12 @@ export default function AboutSection() {
 
   return (
     <section id="about" className="py-24 relative overflow-hidden">
+      <AmbientVideoBackground
+        src="https://videos.pexels.com/video-files/2887463/2887463-hd_1920_1080_30fps.mp4"
+        overlayOpacity={0.82}
+      />
       {/* Hero Header */}
-      <div className="container mx-auto px-6 mb-16">
+      <div className="container mx-auto px-6 mb-16 relative z-10">
         <div className="text-center">
           <img 
             src={frimatLogoWhite} 

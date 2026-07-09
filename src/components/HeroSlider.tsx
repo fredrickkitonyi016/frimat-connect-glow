@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import AmbientVideoBackground from "./AmbientVideoBackground";
 
 // Import hero images
 import genesisProtocol from "@/assets/hero/genesis-protocol.jpg";
@@ -59,6 +60,13 @@ export default function HeroSlider({ mousePosition }: HeroSliderProps) {
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
+      {/* Ambient looping video base layer */}
+      <AmbientVideoBackground
+        src="https://videos.pexels.com/video-files/3141210/3141210-uhd_2560_1440_25fps.mp4"
+        overlayOpacity={0.55}
+        className="z-0"
+      />
+
       {/* Slide Images with Parallax */}
       <AnimatePresence mode="wait">
         <motion.div
