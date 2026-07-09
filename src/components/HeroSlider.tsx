@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import AmbientVideoBackground from "./AmbientVideoBackground";
 
 // Import hero images
 import genesisProtocol from "@/assets/hero/genesis-protocol.jpg";
