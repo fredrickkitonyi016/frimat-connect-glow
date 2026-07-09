@@ -140,8 +140,12 @@ export default function ServicesSection() {
   ];
 
   return (
-    <section id="services" className="py-24 relative bg-background">
-      <div className="container mx-auto px-6">
+    <section id="services" className="py-24 relative overflow-hidden bg-background">
+      <AmbientVideoBackground
+        src="https://videos.pexels.com/video-files/7565418/7565418-hd_1920_1080_25fps.mp4"
+        overlayOpacity={0.85}
+      />
+      <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-5xl font-bold mb-6">
             <span className="text-foreground">Our </span>
