@@ -16,6 +16,7 @@ import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
 import { motion } from "framer-motion";
+import AmbientVideoBackground from "./AmbientVideoBackground";
 
 const contactSchema = z.object({
   firstName: z.string().min(1, "First name is required").max(50),
