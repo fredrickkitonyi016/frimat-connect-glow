@@ -11,168 +11,167 @@ Premium cyberpunk aesthetic with cinematic visuals.
 
 @layer base {
   :root {
-    /* Light Mode - Cosmos Enterprise Theme */
-    --background: 220 25% 97%;
-    --foreground: 224 71% 15%;
-    
-    /* Corporate Azure Primary */
-    --primary: 224 80% 24%;
-    --primary-foreground: 0 0% 100%;
-    --primary-glow: 224 80% 34%;
-    
-    /* Quantum Violet Secondary */
-    --secondary: 263 77% 42%;
-    --secondary-foreground: 0 0% 100%;
-    --secondary-glow: 263 77% 52%;
-    
-    /* Cybernetic Cyan Accent */
-    --accent: 189 94% 43%;
-    --accent-foreground: 224 71% 15%;
-    --accent-glow: 189 94% 53%;
-    
+    /* Light Mode - Obsidian & Copper Theme */
+    --background: 30 20% 96%;
+    --foreground: 24 20% 10%;
+
+    /* Cyber Copper Primary */
+    --primary: 22 95% 48%;
+    --primary-foreground: 30 25% 98%;
+    --primary-glow: 28 100% 58%;
+
+    /* Deep Ember Secondary */
+    --secondary: 18 85% 40%;
+    --secondary-foreground: 30 25% 98%;
+    --secondary-glow: 18 90% 52%;
+
+    /* Vibrant Orange Accent */
+    --accent: 32 100% 52%;
+    --accent-foreground: 24 20% 10%;
+    --accent-glow: 36 100% 62%;
+
     /* Destructive */
-    --destructive: 0 84% 60%;
+    --destructive: 0 84% 55%;
     --destructive-foreground: 0 0% 100%;
-    
+
     /* Cards & Surfaces */
     --card: 0 0% 100%;
-    --card-foreground: 224 71% 15%;
-    --card-glass: 220 25% 98%;
-    
+    --card-foreground: 24 20% 10%;
+    --card-glass: 30 20% 98%;
+
     /* Muted Elements */
-    --muted: 214 32% 91%;
-    --muted-foreground: 215 16% 47%;
-    
+    --muted: 30 15% 90%;
+    --muted-foreground: 24 10% 40%;
+
     /* Borders & Inputs */
-    --border: 214 32% 88%;
-    --input: 214 32% 96%;
-    --ring: 224 80% 24%;
-    
+    --border: 30 15% 85%;
+    --input: 30 15% 94%;
+    --ring: 22 95% 48%;
+
     /* Popover */
     --popover: 0 0% 100%;
-    --popover-foreground: 224 71% 15%;
-    
-    /* Prestige Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(224 80% 24%), hsl(263 77% 42%), hsl(189 94% 43%));
-    --gradient-hero: linear-gradient(180deg, hsl(220 25% 97%), hsl(224 30% 95%), hsl(263 20% 97%));
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 100% / 0.95), hsl(220 25% 98% / 0.9));
-    --gradient-button: linear-gradient(135deg, hsl(224 80% 24%), hsl(263 77% 42%));
-    --gradient-glow: radial-gradient(ellipse at center, hsl(224 80% 24% / 0.1), transparent 70%);
-    --gradient-mesh: radial-gradient(at 40% 20%, hsl(224 80% 24% / 0.08) 0px, transparent 50%),
-                     radial-gradient(at 80% 0%, hsl(263 77% 42% / 0.06) 0px, transparent 50%),
-                     radial-gradient(at 0% 50%, hsl(189 94% 43% / 0.06) 0px, transparent 50%);
-    --gradient-cyber: linear-gradient(135deg, hsl(224 80% 24%), hsl(263 77% 42%), hsl(189 94% 43%));
-    --gradient-neon: linear-gradient(90deg, hsl(224 80% 24%), hsl(263 77% 42%), hsl(189 94% 43%), hsl(224 80% 24%));
-    
-    /* Enhanced Glassmorphism */
+    --popover-foreground: 24 20% 10%;
+
+    /* Copper Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(22 95% 48%), hsl(28 100% 58%), hsl(36 100% 62%));
+    --gradient-hero: linear-gradient(180deg, hsl(30 20% 96%), hsl(28 25% 94%), hsl(24 20% 92%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100% / 0.95), hsl(30 20% 98% / 0.9));
+    --gradient-button: linear-gradient(135deg, hsl(22 95% 48%), hsl(32 100% 55%));
+    --gradient-glow: radial-gradient(ellipse at center, hsl(22 95% 48% / 0.12), transparent 70%);
+    --gradient-mesh: radial-gradient(at 40% 20%, hsl(22 95% 48% / 0.1) 0px, transparent 50%),
+                     radial-gradient(at 80% 0%, hsl(32 100% 55% / 0.08) 0px, transparent 50%),
+                     radial-gradient(at 0% 50%, hsl(18 85% 45% / 0.08) 0px, transparent 50%);
+    --gradient-cyber: linear-gradient(135deg, hsl(22 95% 48%), hsl(32 100% 55%), hsl(36 100% 62%));
+    --gradient-neon: linear-gradient(90deg, hsl(22 95% 48%), hsl(28 100% 58%), hsl(36 100% 62%), hsl(22 95% 48%));
+
+    /* Glassmorphism */
     --glass-bg: hsl(0 0% 100% / 0.7);
-    --glass-border: hsl(220 13% 88% / 0.5);
-    --glass-shadow: 0 8px 32px hsl(222 47% 11% / 0.08), 0 2px 8px hsl(222 47% 11% / 0.04);
-    
-    /* Modern Shadows */
-    --shadow-sm: 0 1px 2px hsl(222 47% 11% / 0.04);
-    --shadow-md: 0 4px 12px hsl(222 47% 11% / 0.06);
-    --shadow-lg: 0 12px 40px hsl(222 47% 11% / 0.08);
-    --shadow-xl: 0 24px 60px hsl(222 47% 11% / 0.12);
-    --shadow-glow: 0 0 40px hsl(199 89% 48% / 0.2);
-    --shadow-neon: 0 0 20px hsl(199 89% 48% / 0.4), 0 0 40px hsl(258 90% 66% / 0.2);
-    
-    /* Smooth Animations */
+    --glass-border: hsl(24 20% 85% / 0.5);
+    --glass-shadow: 0 8px 32px hsl(24 30% 10% / 0.08), 0 2px 8px hsl(24 30% 10% / 0.04);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px hsl(24 30% 10% / 0.05);
+    --shadow-md: 0 4px 12px hsl(24 30% 10% / 0.08);
+    --shadow-lg: 0 12px 40px hsl(24 30% 10% / 0.1);
+    --shadow-xl: 0 24px 60px hsl(24 30% 10% / 0.14);
+    --shadow-glow: 0 0 40px hsl(22 95% 48% / 0.25);
+    --shadow-neon: 0 0 20px hsl(22 95% 48% / 0.45), 0 0 40px hsl(32 100% 55% / 0.25);
+
+    /* Animations */
     --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-    
-    /* Layout */
+
     --radius: 0.75rem;
     --radius-lg: 1rem;
     --radius-xl: 1.5rem;
 
     --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 222 47% 11%;
-    --sidebar-primary: 199 89% 48%;
+    --sidebar-foreground: 24 20% 10%;
+    --sidebar-primary: 22 95% 48%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 14% 96%;
-    --sidebar-accent-foreground: 222 47% 11%;
-    --sidebar-border: 220 13% 90%;
-    --sidebar-ring: 199 89% 48%;
+    --sidebar-accent: 30 15% 94%;
+    --sidebar-accent-foreground: 24 20% 10%;
+    --sidebar-border: 30 15% 88%;
+    --sidebar-ring: 22 95% 48%;
   }
 
   .dark {
-    /* Dark Mode - Cosmos Enterprise Theme */
-    --background: 225 58% 7%;
-    --foreground: 210 40% 98%;
-    
-    /* Corporate Azure Primary */
-    --primary: 224 80% 44%;
-    --primary-foreground: 0 0% 100%;
-    --primary-glow: 224 80% 55%;
-    
-    /* Quantum Violet Secondary */
-    --secondary: 263 77% 52%;
-    --secondary-foreground: 0 0% 100%;
-    --secondary-glow: 263 77% 62%;
-    
-    /* Cybernetic Cyan Accent */
-    --accent: 189 94% 43%;
-    --accent-foreground: 225 58% 7%;
-    --accent-glow: 189 94% 55%;
-    
+    /* Dark Mode - Obsidian & Cyber Copper */
+    --background: 24 14% 5%;
+    --foreground: 30 25% 96%;
+
+    /* Cyber Copper Primary */
+    --primary: 22 100% 55%;
+    --primary-foreground: 24 20% 6%;
+    --primary-glow: 28 100% 65%;
+
+    /* Deep Ember Secondary */
+    --secondary: 18 90% 48%;
+    --secondary-foreground: 30 25% 96%;
+    --secondary-glow: 18 95% 58%;
+
+    /* Vibrant Orange Accent */
+    --accent: 32 100% 58%;
+    --accent-foreground: 24 20% 6%;
+    --accent-glow: 36 100% 68%;
+
     /* Destructive */
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
-    
-    /* Cards & Surfaces - Midnight Carbon */
-    --card: 225 58% 10%;
-    --card-foreground: 210 40% 98%;
-    --card-glass: 225 58% 12%;
-    
-    /* Muted Elements */
-    --muted: 224 33% 17%;
-    --muted-foreground: 215 20% 65%;
-    
-    /* Borders & Inputs */
-    --border: 224 33% 20%;
-    --input: 224 33% 14%;
-    --ring: 224 80% 44%;
-    
-    /* Popover */
-    --popover: 225 58% 10%;
-    --popover-foreground: 210 40% 98%;
-    
-    /* Cosmos Gradients - Dark */
-    --gradient-primary: linear-gradient(135deg, hsl(224 80% 44%), hsl(263 77% 52%), hsl(189 94% 43%));
-    --gradient-hero: linear-gradient(180deg, hsl(225 58% 7%), hsl(224 50% 10%), hsl(263 40% 12%));
-    --gradient-card: linear-gradient(145deg, hsl(225 58% 10% / 0.9), hsl(225 58% 13% / 0.8));
-    --gradient-button: linear-gradient(135deg, hsl(224 80% 44%), hsl(263 77% 52%));
-    --gradient-glow: radial-gradient(ellipse at center, hsl(224 80% 44% / 0.15), transparent 70%);
-    --gradient-mesh: radial-gradient(at 40% 20%, hsl(224 80% 44% / 0.12) 0px, transparent 50%),
-                     radial-gradient(at 80% 0%, hsl(263 77% 52% / 0.1) 0px, transparent 50%),
-                     radial-gradient(at 0% 50%, hsl(189 94% 43% / 0.08) 0px, transparent 50%);
-    --gradient-cyber: linear-gradient(135deg, hsl(224 80% 44%), hsl(263 77% 52%), hsl(189 94% 43%));
-    --gradient-neon: linear-gradient(90deg, hsl(224 80% 44%), hsl(263 77% 52%), hsl(189 94% 43%), hsl(224 80% 44%));
-    
-    /* Enhanced Glassmorphism - Dark */
-    --glass-bg: hsl(222 47% 10% / 0.6);
-    --glass-border: hsl(199 89% 48% / 0.15);
-    --glass-shadow: 0 8px 32px hsl(199 89% 48% / 0.1), 0 2px 8px hsl(0 0% 0% / 0.3);
-    
-    /* Modern Shadows - Glowing */
-    --shadow-sm: 0 1px 2px hsl(0 0% 0% / 0.3);
-    --shadow-md: 0 4px 12px hsl(0 0% 0% / 0.4);
-    --shadow-lg: 0 12px 40px hsl(0 0% 0% / 0.5);
-    --shadow-xl: 0 24px 60px hsl(0 0% 0% / 0.6);
-    --shadow-glow: 0 0 60px hsl(199 89% 48% / 0.25);
-    --shadow-neon: 0 0 20px hsl(199 89% 48% / 0.5), 0 0 40px hsl(258 90% 66% / 0.3), 0 0 60px hsl(187 92% 48% / 0.2);
+    --destructive-foreground: 30 25% 96%;
 
-    --sidebar-background: 222 47% 8%;
-    --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 199 89% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 222 47% 12%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 217 33% 18%;
-    --sidebar-ring: 199 89% 48%;
+    /* Cards & Surfaces - Obsidian */
+    --card: 24 14% 8%;
+    --card-foreground: 30 25% 96%;
+    --card-glass: 24 14% 10%;
+
+    /* Muted Elements */
+    --muted: 24 12% 14%;
+    --muted-foreground: 30 12% 65%;
+
+    /* Borders & Inputs */
+    --border: 24 15% 18%;
+    --input: 24 15% 12%;
+    --ring: 22 100% 55%;
+
+    /* Popover */
+    --popover: 24 14% 8%;
+    --popover-foreground: 30 25% 96%;
+
+    /* Obsidian Copper Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(22 100% 55%), hsl(28 100% 65%), hsl(36 100% 62%));
+    --gradient-hero: linear-gradient(180deg, hsl(24 14% 5%), hsl(22 18% 7%), hsl(20 20% 9%));
+    --gradient-card: linear-gradient(145deg, hsl(24 14% 8% / 0.9), hsl(24 14% 11% / 0.8));
+    --gradient-button: linear-gradient(135deg, hsl(22 100% 55%), hsl(32 100% 58%));
+    --gradient-glow: radial-gradient(ellipse at center, hsl(22 100% 55% / 0.2), transparent 70%);
+    --gradient-mesh: radial-gradient(at 40% 20%, hsl(22 100% 55% / 0.15) 0px, transparent 50%),
+                     radial-gradient(at 80% 0%, hsl(32 100% 58% / 0.12) 0px, transparent 50%),
+                     radial-gradient(at 0% 50%, hsl(18 90% 48% / 0.1) 0px, transparent 50%);
+    --gradient-cyber: linear-gradient(135deg, hsl(22 100% 55%), hsl(32 100% 58%), hsl(36 100% 68%));
+    --gradient-neon: linear-gradient(90deg, hsl(22 100% 55%), hsl(28 100% 65%), hsl(36 100% 68%), hsl(22 100% 55%));
+
+    /* Glassmorphism - Obsidian */
+    --glass-bg: hsl(24 14% 7% / 0.65);
+    --glass-border: hsl(22 100% 55% / 0.18);
+    --glass-shadow: 0 8px 32px hsl(22 100% 55% / 0.1), 0 2px 8px hsl(0 0% 0% / 0.4);
+
+    /* Shadows - Copper Glow */
+    --shadow-sm: 0 1px 2px hsl(0 0% 0% / 0.4);
+    --shadow-md: 0 4px 12px hsl(0 0% 0% / 0.5);
+    --shadow-lg: 0 12px 40px hsl(0 0% 0% / 0.6);
+    --shadow-xl: 0 24px 60px hsl(0 0% 0% / 0.7);
+    --shadow-glow: 0 0 60px hsl(22 100% 55% / 0.3);
+    --shadow-neon: 0 0 20px hsl(22 100% 55% / 0.55), 0 0 40px hsl(32 100% 58% / 0.35), 0 0 60px hsl(36 100% 62% / 0.2);
+
+    --sidebar-background: 24 14% 5%;
+    --sidebar-foreground: 30 25% 96%;
+    --sidebar-primary: 22 100% 55%;
+    --sidebar-primary-foreground: 24 20% 6%;
+    --sidebar-accent: 24 14% 10%;
+    --sidebar-accent-foreground: 30 25% 96%;
+    --sidebar-border: 24 15% 16%;
+    --sidebar-ring: 22 100% 55%;
   }
 }
 
