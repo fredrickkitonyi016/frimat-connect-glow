@@ -119,6 +119,10 @@ export default function ContactSection() {
 
   return (
     <section id="contact" className="py-24 relative overflow-hidden">
+      <AmbientVideoBackground
+        src="https://videos.pexels.com/video-files/3141210/3141210-uhd_2560_1440_25fps.mp4"
+        overlayOpacity={0.85}
+      />
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div 
