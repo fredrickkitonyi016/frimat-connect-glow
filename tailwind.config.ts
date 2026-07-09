@@ -70,13 +70,16 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-			// Cosmos Enterprise colors
+			// Obsidian & Cyber Copper colors
 				cyber: {
-					blue: '#0A2472',
-					purple: '#5B21B6',
-					cyan: '#06B6D4',
+					blue: '#7A2E0E',      // deep ember (legacy alias)
+					purple: '#B34700',    // burnt copper (legacy alias)
+					cyan: '#FF7A1A',      // vibrant orange (legacy alias)
 					red: '#ef4444',
-					dark: '#0B1120',
+					dark: '#0D0A08',      // obsidian
+					copper: '#FF6A00',
+					ember: '#E8541C',
+					amber: '#FFB347',
 				}
 			},
 			borderRadius: {

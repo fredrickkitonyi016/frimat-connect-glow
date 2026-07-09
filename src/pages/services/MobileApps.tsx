@@ -117,7 +117,7 @@ export default function MobileApps() {
                 
                 <div className="absolute bottom-4 left-6">
                   <div className="p-4 rounded-xl bg-white shadow-lg">
-                    <div className="p-3 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500">
+                    <div className="p-3 rounded-lg bg-gradient-to-br from-amber-500 to-pink-500">
                       <Smartphone className="w-8 h-8 text-white" />
                     </div>
                   </div>

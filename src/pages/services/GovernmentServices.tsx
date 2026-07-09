@@ -29,7 +29,7 @@ const governmentServices = [
     services: ["PIN Application", "Nil Returns Filing", "Income Tax Filing", "Tax Compliance Certificate", "VAT Registration"],
     portalUrl: "https://itax.kra.go.ke",
     assistancePrice: "KSh 500",
-    color: "from-blue-500 to-blue-700"
+    color: "from-amber-500 to-orange-700"
   },
   {
     name: "HELB",
@@ -62,7 +62,7 @@ const governmentServices = [
     services: ["Member Registration", "Statement Request", "Benefits Claims", "Contribution Check", "Employer Registration"],
     portalUrl: "https://www.nssf.or.ke",
     assistancePrice: "KSh 300",
-    color: "from-purple-500 to-purple-700"
+    color: "from-amber-500 to-red-700"
   },
   {
     name: "e-Citizen",
@@ -117,7 +117,7 @@ const governmentServices = [
     services: ["Passport Application", "Passport Renewal", "Visa Application", "Work Permit", "Special Pass", "Alien Card"],
     portalUrl: "https://fns.immigration.go.ke",
     assistancePrice: "KSh 500",
-    color: "from-sky-500 to-sky-700"
+    color: "from-amber-500 to-orange-700"
   },
   {
     name: "BRS",
@@ -128,7 +128,7 @@ const governmentServices = [
     services: ["Company Registration", "Business Name Registration", "Name Search", "CR12 Certificate", "Annual Returns", "Director Changes"],
     portalUrl: "https://brs.go.ke",
     assistancePrice: "KSh 500",
-    color: "from-indigo-500 to-indigo-700"
+    color: "from-amber-500 to-orange-700"
   },
   {
     name: "Judiciary",
@@ -194,7 +194,7 @@ const governmentServices = [
     services: ["Trademark Registration", "Patent Application", "Industrial Design", "Copyright", "IP Search", "Brand Protection"],
     portalUrl: "https://kipi.go.ke",
     assistancePrice: "KSh 500",
-    color: "from-violet-500 to-violet-700"
+    color: "from-amber-500 to-red-700"
   },
   {
     name: "CA",
@@ -205,7 +205,7 @@ const governmentServices = [
     services: ["Frequency License", "Broadcasting License", "Type Approval", "Domain Registration", "Equipment Authorization"],
     portalUrl: "https://ca.go.ke",
     assistancePrice: "KSh 500",
-    color: "from-cyan-500 to-cyan-700"
+    color: "from-amber-500 to-orange-700"
   },
   {
     name: "NHIF Legacy",
@@ -238,7 +238,7 @@ const governmentServices = [
     services: ["Single Business Permit", "Building Plans Approval", "Land Rates", "Parking Permits", "Advertisement License"],
     portalUrl: "https://eservices.nairobi.go.ke",
     assistancePrice: "KSh 500",
-    color: "from-blue-600 to-blue-800"
+    color: "from-orange-600 to-orange-800"
   }
 ];
 

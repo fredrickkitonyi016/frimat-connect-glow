@@ -30,7 +30,7 @@ export default function ServicesSection() {
   const services = [
     {
       icon: Globe,
-      gradient: "from-blue-500 to-cyan-500",
+      gradient: "from-amber-500 to-amber-500",
       image: webDevImage,
       title: "Web Development",
       description: "Custom websites and web apps built with modern technology.",
@@ -39,7 +39,7 @@ export default function ServicesSection() {
     },
     {
       icon: Smartphone,
-      gradient: "from-purple-500 to-pink-500",
+      gradient: "from-amber-500 to-pink-500",
       image: mobileAppImage,
       title: "Mobile Apps",
       description: "Native and cross-platform apps for iOS and Android.",
@@ -48,7 +48,7 @@ export default function ServicesSection() {
     },
     {
       icon: Cloud,
-      gradient: "from-sky-500 to-indigo-500",
+      gradient: "from-amber-500 to-amber-500",
       image: cloudServiceImage,
       title: "Cloud Services",
       description: "Scalable cloud infrastructure and smooth migrations.",
@@ -84,7 +84,7 @@ export default function ServicesSection() {
     },
     {
       icon: Printer,
-      gradient: "from-teal-500 to-cyan-500",
+      gradient: "from-teal-500 to-amber-500",
       image: itSupportImage,
       title: "Cyber Cafe",
       description: "A fully equipped cyber cafe for all your daily digital needs.",
@@ -102,7 +102,7 @@ export default function ServicesSection() {
     },
     {
       icon: Code,
-      gradient: "from-violet-500 to-purple-500",
+      gradient: "from-amber-500 to-amber-500",
       image: webDevImage,
       title: "Custom Development",
       description: "Tailor-made software built around your specific needs.",
@@ -111,7 +111,7 @@ export default function ServicesSection() {
     },
     {
       icon: Server,
-      gradient: "from-indigo-500 to-blue-500",
+      gradient: "from-amber-500 to-amber-500",
       image: cloudServiceImage,
       title: "Cloud Migration",
       description: "Smooth and safe migration of your systems to the cloud.",
