@@ -2,6 +2,7 @@ import { CheckCircle, Users, Zap, Shield, ArrowRight, Target, Eye, Sparkles, Roc
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import frimatLogoWhite from "@/assets/frimat-logo-white.png";
+import AmbientVideoBackground from "./AmbientVideoBackground";
 
 export default function AboutSection() {
   const scrollToSection = (href: string) => {
