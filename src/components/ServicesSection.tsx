@@ -23,6 +23,7 @@ import cloudServiceImage from "@/assets/services/cloud-service.jpg";
 import cybersecurityImage from "@/assets/services/cybersecurity-service.jpg";
 import itSupportImage from "@/assets/services/it-support-service.jpg";
 import ecommerceImage from "@/assets/services/ecommerce-service.jpg";
+import AmbientVideoBackground from "./AmbientVideoBackground";
 
 export default function ServicesSection() {
   const navigate = useNavigate();
