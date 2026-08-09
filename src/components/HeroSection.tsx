@@ -3,7 +3,9 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle, Shield, Zap, Sparkles } from "lucide-react";
 import { useCountUp } from "@/hooks/useCountUp";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import HeroSlider from "./HeroSlider";
+
 
 export default function HeroSection() {
   const [mousePosition, setMousePosition] = useState({ x: 0.5, y: 0.5 });
@@ -150,17 +152,17 @@ export default function HeroSection() {
             {/* Main Heading */}
             <motion.div variants={itemVariants} className="space-y-4">
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] font-display">
-                <span className="text-foreground">Building the</span>
+                <span className="text-foreground">Security, Internet</span>
                 <br />
                 <span className="gradient-text">
-                  Future of Business
+                  &amp; Tech Repairs
                 </span>
                 <br />
-                <span className="text-foreground">with Smart Technology</span>
+                <span className="text-foreground">Done Right</span>
               </h1>
               
               <p className="text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed">
-                FRIMAT Technologies helps Kenyan businesses grow with simple, powerful tech — from websites and mobile apps to cloud, security, and IT support. Real solutions that work.
+                FRIMAT Technologies installs CCTV and WiFi, repairs phones, laptops and TVs, secures your business online, and sells genuine tech — across Nairobi, Kiambu, Machakos and Kajiado.
               </p>
             </motion.div>
 
@@ -180,20 +182,21 @@ export default function HeroSection() {
                 variant="hero" 
                 size="lg" 
                 className="group text-base btn-modern" 
-                onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => navigate('/book-service')}
               >
-                See Our Services
+                Get a Free Quote
                 <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
               </Button>
               <Button 
                 variant="neon" 
                 size="lg" 
                 className="text-base backdrop-blur-sm"
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => navigate('/shop')}
               >
-                Talk to Us
+                Browse the Shop
               </Button>
             </motion.div>
+
           </div>
 
           {/* Right Side - Stats Cards */}
