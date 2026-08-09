@@ -21,16 +21,17 @@ export default function HeroSection() {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  const projectsCount = useCountUp({ end: 20, duration: 3000, enableScrollTrigger: false });
-  const clientsCount = useCountUp({ end: 100, suffix: '+', duration: 3500, enableScrollTrigger: false });
+  const projectsCount = useCountUp({ end: 10000, suffix: '+', duration: 3000, enableScrollTrigger: false });
+  const clientsCount = useCountUp({ end: 2500, suffix: '+', duration: 3500, enableScrollTrigger: false });
   const uptimeCount = useCountUp({ end: 24, suffix: '/7', duration: 2000, enableScrollTrigger: false });
-  const ratingCount = useCountUp({ end: 5, suffix: ' Star Rating', duration: 2500, enableScrollTrigger: false });
+  const ratingCount = useCountUp({ end: 15, suffix: '+ Years', duration: 2500, enableScrollTrigger: false });
 
   const features = [
-    { icon: CheckCircle, text: "Trusted by 100+ businesses" },
-    { icon: Shield, text: "Enterprise-grade security" },
-    { icon: Zap, text: "Fast and reliable" },
+    { icon: CheckCircle, text: "Trusted by 2,500+ clients" },
+    { icon: Shield, text: "90-day workmanship warranty" },
+    { icon: Zap, text: "Same-day response in Nairobi" },
   ];
+
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -143,7 +144,7 @@ export default function HeroSection() {
               className="inline-flex items-center gap-2 bg-primary/10 border border-primary/30 px-4 py-2 rounded-full backdrop-blur-sm hover:bg-primary/20 transition-all duration-300 cursor-default"
             >
               <Sparkles className="w-4 h-4 text-primary animate-pulse" />
-              <span className="text-sm font-medium text-foreground">Kenya's Leading Tech Company</span>
+              <span className="text-sm font-medium text-foreground">Nairobi's Trusted Tech &amp; Security Partner</span>
             </motion.div>
 
             {/* Main Heading */}
