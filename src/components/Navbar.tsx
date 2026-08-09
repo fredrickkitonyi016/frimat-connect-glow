@@ -98,22 +98,24 @@ const mainNavItems = [
   { name: "Services", href: "/services", hasDropdown: true, menuKey: "services", activeSection: "services" },
   { name: "Solutions", href: "/solutions", hasDropdown: true, menuKey: "solutions" },
   { name: "Tech", href: "/technologies", hasDropdown: true, menuKey: "technologies" },
-  { name: "Shop", href: "#shop", hasDropdown: false },
-  { name: "Portfolio", href: "#portfolio", hasDropdown: false },
+  { name: "Shop", href: "/shop", hasDropdown: false },
+  { name: "Book Service", href: "/book-service", hasDropdown: false },
   { name: "Resources", href: "#blog", hasDropdown: true, menuKey: "resources" },
-  { name: "Contact", href: "#contact", hasDropdown: false },
+  { name: "Contact", href: "/contact", hasDropdown: false },
 ];
 
 const mobileNavItems = [
   { name: "Home", href: "#home", icon: Home },
-  { name: "Services", href: "#services", icon: Monitor, hasSubmenu: true, menuKey: "services" },
-  { name: "Solutions", href: "#services", icon: Building2, hasSubmenu: true, menuKey: "solutions" },
-  { name: "Technologies", href: "#services", icon: Cpu, hasSubmenu: true, menuKey: "technologies" },
-  { name: "Case Studies", href: "#portfolio", icon: FolderOpen },
+  { name: "Services", href: "/services", icon: Monitor, hasSubmenu: true, menuKey: "services" },
+  { name: "Solutions", href: "/solutions", icon: Building2, hasSubmenu: true, menuKey: "solutions" },
+  { name: "Technologies", href: "/technologies", icon: Cpu, hasSubmenu: true, menuKey: "technologies" },
+  { name: "Shop", href: "/shop", icon: ShoppingBag },
+  { name: "Book Service", href: "/book-service", icon: FolderOpen },
   { name: "Resources", href: "#blog", icon: BookOpen, hasSubmenu: true, menuKey: "resources" },
   { name: "About", href: "#about", icon: Info },
-  { name: "Contact", href: "#contact", icon: Phone },
+  { name: "Contact", href: "/contact", icon: Phone },
 ];
+
 
 export default function Navbar() {
   const navigate = useNavigate();
