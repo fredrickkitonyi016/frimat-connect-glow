@@ -66,6 +66,20 @@ const Index = () => {
           </Suspense>
         </div>
 
+        <div className="fade-in">
+          <Suspense fallback={<SectionSkeleton />}>
+            <HowItWorksSection />
+          </Suspense>
+        </div>
+
+        <div className="fade-in">
+          <Suspense fallback={<SectionSkeleton />}>
+            <FeaturedProductsSection />
+          </Suspense>
+        </div>
+
+
+
         <Suspense fallback={<SectionSkeleton />}>
           <TechGallerySection />
         </Suspense>

@@ -73,11 +73,13 @@ export default function Footer() {
               {[
                 { name: "Home", href: "#home" },
                 { name: "About Us", href: "#about" },
-                { name: "Services", href: "#services" },
-                { name: "Portfolio", href: "#portfolio" },
-                { name: "Blog", href: "#blog" },
-                { name: "Contact", href: "#contact" }
+                { name: "Services", href: "/services" },
+                { name: "How It Works", href: "#how-it-works" },
+                { name: "Shop", href: "/shop" },
+                { name: "Book a Service", href: "/book-service" },
+                { name: "Contact", href: "/contact" }
               ].map((link, index) => (
+
                 <li key={index}>
                   <button 
                     onClick={() => handleNavigation(link.href)}
@@ -95,15 +97,16 @@ export default function Footer() {
             <h4 className="text-xl font-bold text-foreground mb-6">Our Services</h4>
             <ul className="space-y-3">
               {[
-                { name: "Web Development", href: "/services/web-development" },
-                { name: "Mobile Apps", href: "/services/mobile-apps" },
-                { name: "Cloud Services", href: "/services/cloud-services" },
-                { name: "Cybersecurity", href: "/services/cybersecurity" },
-                { name: "IT Support", href: "/services/it-support" },
-                { name: "E-commerce", href: "/services/ecommerce" },
+                { name: "CCTV & Security", href: "/services/cybersecurity" },
+                { name: "Network & WiFi", href: "/services/it-support" },
+                { name: "Electronics Repair", href: "/services/it-support" },
+                { name: "Websites & Shops", href: "/services/web-development" },
+                { name: "Tech Retail", href: "/shop" },
+                { name: "Crypto Support", href: "/book-service" },
                 { name: "Creative & Design", href: "/services/creative-design" },
                 { name: "Government Services", href: "/services/government-services" }
               ].map((service, index) => (
+
                 <li key={index}>
                   <button
                     onClick={() => navigate(service.href)}
