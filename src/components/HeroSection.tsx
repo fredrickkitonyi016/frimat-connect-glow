@@ -9,6 +9,8 @@ import HeroSlider from "./HeroSlider";
 
 export default function HeroSection() {
   const [mousePosition, setMousePosition] = useState({ x: 0.5, y: 0.5 });
+  const navigate = useNavigate();
+
 
   // Track mouse position for parallax
   useEffect(() => {
