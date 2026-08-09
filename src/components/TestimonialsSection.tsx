@@ -2,38 +2,39 @@ import { Star, Quote } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Sarah Johnson",
-    role: "CEO, TechStart Solutions",
-    company: "TechStart Solutions",
-    content: "FRIMAT transformed our business with smart digital solutions. In just three months, our online presence grew 3x — quietly and effectively.",
+    name: "Grace Wanjiku",
+    role: "Owner, Wanjiku Mini Mart",
+    company: "Nairobi CBD",
+    content: "They installed six cameras in my shop in one day and showed me how to watch them on my phone. Theft stopped completely.",
     rating: 5,
     avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face"
   },
   {
-    name: "Michael Chen",
-    role: "IT Director, GlobalCorp",
-    company: "GlobalCorp",
-    content: "Excellent cybersecurity work. Their advice saved us from real risks and gave us peace of mind that's worth every shilling.",
+    name: "Peter Kimani",
+    role: "Manager, Kimani Apartments",
+    company: "Kiambu",
+    content: "Our WiFi never reached the upper floors. FRIMAT cabled the whole block properly and now every tenant is happy.",
     rating: 5,
     avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
   },
   {
-    name: "Emily Rodriguez",
-    role: "Founder, E-Commerce Plus",
-    company: "E-Commerce Plus",
-    content: "The mobile app they built for us was beyond our expectations. Customer engagement jumped 2.5x and our sales followed.",
+    name: "Mercy Achieng",
+    role: "Teacher",
+    company: "Machakos",
+    content: "My laptop screen was broken and they fixed it the same afternoon at a fair price. Honest people, good work.",
     rating: 5,
     avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face"
   },
   {
-    name: "David Kumar",
-    role: "Operations Manager, LogiFlow",
-    company: "LogiFlow",
-    content: "Their cloud services made our operations smoother and cheaper. We cut costs by 40% while improving efficiency.",
+    name: "Samuel Otieno",
+    role: "Director, Otieno Logistics",
+    company: "Nairobi",
+    content: "They secured our office computers and set up backups. When we had a scare, their support team answered right away.",
     rating: 5,
     avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
   }
 ];
+
 
 export default function TestimonialsSection() {
   return (
