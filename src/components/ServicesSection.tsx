@@ -116,8 +116,9 @@ export default function ServicesSection() {
             </span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            From idea to launch, we offer a full range of digital services to help your business grow and succeed online.
+            Security, internet, repairs and IT — one trusted team for your home, shop or office in Nairobi and beyond.
           </p>
+
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -201,27 +202,28 @@ export default function ServicesSection() {
         <div className="text-center mt-16">
           <div className="glass-card p-8 max-w-4xl mx-auto">
             <h3 className="text-3xl font-bold text-foreground mb-4">
-              Ready to Transform Your Business?
+              Need Help Today?
             </h3>
             <p className="text-xl text-muted-foreground mb-8">
-              Let's talk about how we can help you reach your technology goals.
+              Book a free site survey or talk to a technician right now on WhatsApp.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 variant="hero" 
                 size="lg"
-                onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => navigate('/book-service')}
               >
-                Get in Touch
+                Book a Free Survey
               </Button>
               <Button 
                 variant="glass" 
                 size="lg"
-                onClick={() => document.querySelector('#portfolio')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => navigate('/contact')}
               >
-                View Our Work
+                Contact Us
               </Button>
             </div>
+
           </div>
         </div>
       </div>
