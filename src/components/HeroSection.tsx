@@ -212,7 +212,7 @@ export default function HeroSection() {
                 className="glass-card hover-lift group"
               >
                 <div ref={projectsCount.ref} className="text-4xl font-bold text-primary mb-2 font-display stat-counter group-hover:drop-shadow-[0_0_10px_hsl(var(--primary)/0.5)] transition-all">{projectsCount.value}</div>
-                <div className="text-sm text-muted-foreground font-medium">Projects Done</div>
+                <div className="text-sm text-muted-foreground font-medium">Repairs Completed</div>
                 <div className="mt-3 progress-cyber">
                   <motion.div 
                     className="progress-cyber-bar"
@@ -270,7 +270,7 @@ export default function HeroSection() {
                 className="glass-card hover-lift group"
               >
                 <div ref={ratingCount.ref} className="text-4xl font-bold text-primary mb-2 font-display stat-counter group-hover:drop-shadow-[0_0_10px_hsl(var(--primary)/0.5)] transition-all">{ratingCount.value}</div>
-                <div className="text-sm text-muted-foreground font-medium">Client Rating</div>
+                <div className="text-sm text-muted-foreground font-medium">Years of Experience</div>
                 <div className="mt-3 progress-cyber">
                   <motion.div 
                     className="progress-cyber-bar"
@@ -290,10 +290,10 @@ export default function HeroSection() {
           className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 lg:hidden"
         >
           {[
-            { ref: projectsCount.ref, value: projectsCount.value, label: "Projects", color: "primary" },
+            { ref: projectsCount.ref, value: projectsCount.value, label: "Repairs", color: "primary" },
             { ref: clientsCount.ref, value: clientsCount.value, label: "Clients", color: "secondary" },
             { ref: uptimeCount.ref, value: uptimeCount.value, label: "Support", color: "accent" },
-            { ref: ratingCount.ref, value: ratingCount.value, label: "Rating", color: "primary" },
+            { ref: ratingCount.ref, value: ratingCount.value, label: "Years", color: "primary" },
           ].map((stat, index) => (
             <motion.div 
               key={index}
