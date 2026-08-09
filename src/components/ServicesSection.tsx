@@ -1,18 +1,15 @@
 import { 
   ArrowRight,
   Globe,
-  Smartphone,
-  Cloud,
   Shield,
-  Monitor,
   ShoppingBag,
-  Printer,
   Building2,
-  Code,
-  Server,
-  Palette,
-  Database
+  Camera,
+  Wifi,
+  Wrench,
+  Bitcoin
 } from "lucide-react";
+
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
