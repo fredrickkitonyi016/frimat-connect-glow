@@ -8,7 +8,11 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import ProductDetail from "./pages/ProductDetail";
+import BookService from "./pages/BookService";
+import Shop from "./pages/Shop";
+import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+
 
 // Service Pages
 import ITSupport from "./pages/services/ITSupport";
@@ -59,6 +63,10 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/product/:handle" element={<ProductDetail />} />
+            <Route path="/book-service" element={<BookService />} />
+            <Route path="/shop" element={<Shop />} />
+            <Route path="/contact" element={<Contact />} />
+
             
             {/* Service Routes */}
             <Route path="/services/it-support" element={<ITSupport />} />
