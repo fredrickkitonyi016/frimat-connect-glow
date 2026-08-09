@@ -1,18 +1,15 @@
 import { 
   ArrowRight,
   Globe,
-  Smartphone,
-  Cloud,
   Shield,
-  Monitor,
   ShoppingBag,
-  Printer,
   Building2,
-  Code,
-  Server,
-  Palette,
-  Database
+  Camera,
+  Wifi,
+  Wrench,
+  Bitcoin
 } from "lucide-react";
+
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
@@ -30,114 +27,79 @@ export default function ServicesSection() {
 
   const services = [
     {
-      icon: Globe,
-      gradient: "from-amber-500 to-amber-500",
-      image: webDevImage,
-      title: "Web Development",
-      description: "Custom websites and web apps built with modern technology.",
-      features: ["React & Vue.js apps", "Full-stack development", "API integration", "Performance optimization"],
-      href: "/services/web-development"
-    },
-    {
-      icon: Smartphone,
-      gradient: "from-amber-500 to-pink-500",
-      image: mobileAppImage,
-      title: "Mobile Apps",
-      description: "Native and cross-platform apps for iOS and Android.",
-      features: ["React Native", "Flutter", "iOS development", "Android development"],
-      href: "/services/mobile-apps"
-    },
-    {
-      icon: Cloud,
-      gradient: "from-amber-500 to-amber-500",
-      image: cloudServiceImage,
-      title: "Cloud Services",
-      description: "Scalable cloud infrastructure and smooth migrations.",
-      features: ["AWS & Azure", "Easy migration", "DevOps setup", "Microservices"],
-      href: "/services/cloud-services"
-    },
-    {
-      icon: Shield,
-      gradient: "from-red-500 to-orange-500",
+      icon: Camera,
+      gradient: "from-orange-500 to-amber-500",
       image: cybersecurityImage,
-      title: "Cybersecurity",
-      description: "Complete protection for your digital assets.",
-      features: ["Security audits", "Penetration testing", "Compliance", "Risk assessment"],
+      title: "CCTV & Security Systems",
+      description: "Cameras, alarms and access control installed and set up on your phone.",
+      features: ["4K camera installation", "Remote phone viewing", "Alarm & access control", "Repairs & upgrades"],
       href: "/services/cybersecurity"
     },
     {
-      icon: Monitor,
-      gradient: "from-green-500 to-emerald-500",
-      image: itSupportImage,
-      title: "IT Support",
-      description: "Round-the-clock technical support for your business.",
-      features: ["Help desk", "Network management", "System monitoring", "Maintenance"],
+      icon: Wifi,
+      gradient: "from-amber-500 to-yellow-500",
+      image: cloudServiceImage,
+      title: "Network & WiFi Solutions",
+      description: "Strong, reliable internet for homes, offices, rentals and hotels.",
+      features: ["WiFi setup & boosting", "Structured cabling", "Office networks", "Hotspot billing systems"],
       href: "/services/it-support"
     },
     {
-      icon: ShoppingBag,
-      gradient: "from-amber-500 to-yellow-500",
-      image: ecommerceImage,
-      title: "E-commerce",
-      description: "End-to-end online store solutions, from design to launch.",
-      features: ["Shopify stores", "WooCommerce", "Payment integration", "Inventory management"],
-      href: "/services/ecommerce"
+      icon: Wrench,
+      gradient: "from-red-500 to-orange-500",
+      image: itSupportImage,
+      title: "Electronics Repair",
+      description: "Phone, laptop and TV repairs done fast, with genuine parts.",
+      features: ["Phone screens & batteries", "Laptop repairs", "TV & audio repair", "Data recovery"],
+      href: "/services/it-support"
     },
     {
-      icon: Printer,
-      gradient: "from-teal-500 to-amber-500",
-      image: itSupportImage,
-      title: "Cyber Cafe",
-      description: "A fully equipped cyber cafe for all your daily digital needs.",
-      features: ["Printing & scanning", "Document services", "Internet access", "Computer training"],
-      href: "/services/cyber-cafe"
+      icon: Shield,
+      gradient: "from-orange-600 to-red-500",
+      image: cybersecurityImage,
+      title: "Cybersecurity",
+      description: "Keep your business data, accounts and systems safe from attacks.",
+      features: ["Security checks", "Antivirus & firewalls", "Staff training", "Backup & recovery"],
+      href: "/services/cybersecurity"
+    },
+    {
+      icon: Bitcoin,
+      gradient: "from-amber-500 to-orange-500",
+      image: webDevImage,
+      title: "Crypto Support",
+      description: "Simple, safe guidance on wallets, trading and mining setups.",
+      features: ["Wallet setup", "Safe trading basics", "Mining rig support", "Scam protection advice"],
+      href: "/book-service"
+    },
+    {
+      icon: ShoppingBag,
+      gradient: "from-orange-500 to-rose-500",
+      image: ecommerceImage,
+      title: "Tech Retail & Supply",
+      description: "Genuine cameras, routers, laptops and accessories at fair prices.",
+      features: ["CCTV kits", "Routers & switches", "Laptops & accessories", "Bulk office supply"],
+      href: "/shop"
+    },
+    {
+      icon: Globe,
+      gradient: "from-amber-500 to-orange-400",
+      image: webDevImage,
+      title: "Websites & Online Shops",
+      description: "Get your business online with a clean, fast website customers trust.",
+      features: ["Business websites", "Online stores", "Payment integration", "Hosting & domains"],
+      href: "/services/web-development"
     },
     {
       icon: Building2,
       gradient: "from-rose-500 to-red-500",
       image: itSupportImage,
-      title: "Government Services",
-      description: "Help with Kenyan government portals and online services.",
-      features: ["KRA iTax filing", "HELB applications", "SHA registration", "e-Citizen support"],
+      title: "Government & Cyber Services",
+      description: "Help with KRA, HELB, SHA, e-Citizen, printing and CV writing.",
+      features: ["KRA iTax filing", "HELB applications", "SHA registration", "Printing & scanning"],
       href: "/services/government-services"
-    },
-    {
-      icon: Code,
-      gradient: "from-amber-500 to-amber-500",
-      image: webDevImage,
-      title: "Custom Development",
-      description: "Tailor-made software built around your specific needs.",
-      features: ["Custom software", "Business tools", "System integration", "Legacy upgrades"],
-      href: "/services/custom-development"
-    },
-    {
-      icon: Server,
-      gradient: "from-amber-500 to-amber-500",
-      image: cloudServiceImage,
-      title: "Cloud Migration",
-      description: "Smooth and safe migration of your systems to the cloud.",
-      features: ["Migration planning", "Secure data transfer", "Zero downtime", "Post-migration support"],
-      href: "/services/cloud-migration"
-    },
-    {
-      icon: Palette,
-      gradient: "from-pink-500 to-rose-500",
-      image: webDevImage,
-      title: "Creative & Design",
-      description: "Professional graphic design and branding for your business.",
-      features: ["Logo design", "Brand identity", "Marketing materials", "Social media graphics"],
-      href: "/services/creative-design"
-    },
-    {
-      icon: Database,
-      gradient: "from-emerald-500 to-teal-500",
-      image: cloudServiceImage,
-      title: "Database Solutions",
-      description: "Reliable management and optimization of your business data.",
-      features: ["Database design", "Performance tuning", "Data migration", "Backup & recovery"],
-      href: "/services/cloud-services"
     }
   ];
+
 
   return (
     <section id="services" className="py-24 relative overflow-hidden bg-background">
@@ -154,8 +116,9 @@ export default function ServicesSection() {
             </span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            From idea to launch, we offer a full range of digital services to help your business grow and succeed online.
+            Security, internet, repairs and IT — one trusted team for your home, shop or office in Nairobi and beyond.
           </p>
+
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -239,27 +202,28 @@ export default function ServicesSection() {
         <div className="text-center mt-16">
           <div className="glass-card p-8 max-w-4xl mx-auto">
             <h3 className="text-3xl font-bold text-foreground mb-4">
-              Ready to Transform Your Business?
+              Need Help Today?
             </h3>
             <p className="text-xl text-muted-foreground mb-8">
-              Let's talk about how we can help you reach your technology goals.
+              Book a free site survey or talk to a technician right now on WhatsApp.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 variant="hero" 
                 size="lg"
-                onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => navigate('/book-service')}
               >
-                Get in Touch
+                Book a Free Survey
               </Button>
               <Button 
                 variant="glass" 
                 size="lg"
-                onClick={() => document.querySelector('#portfolio')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => navigate('/contact')}
               >
-                View Our Work
+                Contact Us
               </Button>
             </div>
+
           </div>
         </div>
       </div>

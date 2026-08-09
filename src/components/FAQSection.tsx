@@ -2,38 +2,39 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 
 const faqs = [
   {
-    question: "What services does FRIMAT offer?",
-    answer: "We offer a full range of digital services: web development, mobile apps, cybersecurity, cloud services, IT support, e-commerce, and KRA tax help. Every project is tailored to your business needs."
+    question: "Which areas do you serve?",
+    answer: "We mainly serve Nairobi and the surrounding counties — Kiambu, Machakos and Kajiado. For bigger jobs we travel further; just ask us when you call."
   },
   {
-    question: "How long does a typical project take?",
-    answer: "It depends on the scope. A simple website usually takes 2-4 weeks, while bigger web projects or mobile apps can take 8-16 weeks. We give you a clear timeline at the start and keep you updated throughout."
+    question: "How much does a CCTV system cost?",
+    answer: "A complete 4K four-camera kit with night vision, DVR, 1TB storage and installation starts at KSh 45,000. The final price depends on how many cameras you need and the size of the building. Site surveys and quotes are free."
   },
   {
-    question: "Do you offer support after launch?",
-    answer: "Yes. Every project includes ongoing support — regular updates, security monitoring, bug fixes, and technical help. We build lasting partnerships, not one-time deals."
+    question: "How fast can you come?",
+    answer: "For most jobs inside Nairobi we respond the same day. Bookings for nearby counties are usually done within 24 to 48 hours."
   },
   {
-    question: "How do you handle projects?",
-    answer: "Our process is simple: Discovery and planning → Design and prototyping → Development and testing → Launch → Ongoing support. We keep things clear and communicate openly the whole way."
+    question: "Do you give a warranty?",
+    answer: "Yes. Every installation and repair carries a 90-day workmanship warranty, and hardware we sell comes with the manufacturer's warranty."
   },
   {
-    question: "Do you work with small and large businesses?",
-    answer: "Yes, we work with businesses of all sizes — from startups to large companies. Our prices and services adjust to fit your budget and goals. Our cyber cafe also serves individuals and small local businesses."
+    question: "What can you repair?",
+    answer: "Phones, laptops, desktops, TVs, printers and audio equipment. We use genuine parts, and if we can't fix it you don't pay for the diagnosis."
   },
   {
-    question: "How do you protect our data?",
-    answer: "Security is a top priority. We use SSL encryption, secure coding practices, regular security audits, and follow data protection laws. Our cybersecurity team makes sure your digital assets stay safe."
+    question: "Do you sell hardware as well as install it?",
+    answer: "Yes. Our shop stocks CCTV kits, routers, switches, laptops, cables and accessories — and our own technicians install what you buy."
   },
   {
-    question: "Do you help with KRA tax filing?",
-    answer: "Absolutely. Our cyber cafe handles all KRA services — tax filing, compliance advice, and digital certificates — for both individuals and businesses."
+    question: "Can you help with crypto?",
+    answer: "We help with the practical side: setting up wallets safely, understanding trading basics, supporting mining rigs and avoiding common scams. We do not manage anyone's money."
   },
   {
-    question: "What technologies do you specialize in?",
-    answer: "We work with React, Node.js, and Python; iOS and Android development; AWS, Azure, and Google Cloud; and various databases. We stay up-to-date with the latest tech to give you the best solutions."
+    question: "How do I pay?",
+    answer: "M-Pesa, bank transfer, card or cash. For installations we usually take a deposit for materials and the balance once the system is working."
   }
 ];
+
 
 export default function FAQSection() {
   return (

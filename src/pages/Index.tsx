@@ -9,7 +9,10 @@ import { useScrollAnimations, useMouseEffects } from "@/hooks/useScrollAnimation
 const AboutSection = lazy(() => import("@/components/AboutSection"));
 const PromotionalBanner = lazy(() => import("@/components/PromotionalBanner"));
 const ServicesSection = lazy(() => import("@/components/ServicesSection"));
+const HowItWorksSection = lazy(() => import("@/components/HowItWorksSection"));
+const FeaturedProductsSection = lazy(() => import("@/components/FeaturedProductsSection"));
 const TechGallerySection = lazy(() => import("@/components/TechGallerySection"));
+
 const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection"));
 const TeamSection = lazy(() => import("@/components/TeamSection"));
 const PricingSection = lazy(() => import("@/components/PricingSection"));
@@ -62,6 +65,20 @@ const Index = () => {
             <ServicesSection />
           </Suspense>
         </div>
+
+        <div className="fade-in">
+          <Suspense fallback={<SectionSkeleton />}>
+            <HowItWorksSection />
+          </Suspense>
+        </div>
+
+        <div className="fade-in">
+          <Suspense fallback={<SectionSkeleton />}>
+            <FeaturedProductsSection />
+          </Suspense>
+        </div>
+
+
 
         <Suspense fallback={<SectionSkeleton />}>
           <TechGallerySection />

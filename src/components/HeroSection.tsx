@@ -3,10 +3,14 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle, Shield, Zap, Sparkles } from "lucide-react";
 import { useCountUp } from "@/hooks/useCountUp";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import HeroSlider from "./HeroSlider";
+
 
 export default function HeroSection() {
   const [mousePosition, setMousePosition] = useState({ x: 0.5, y: 0.5 });
+  const navigate = useNavigate();
+
 
   // Track mouse position for parallax
   useEffect(() => {
@@ -21,16 +25,17 @@ export default function HeroSection() {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  const projectsCount = useCountUp({ end: 20, duration: 3000, enableScrollTrigger: false });
-  const clientsCount = useCountUp({ end: 100, suffix: '+', duration: 3500, enableScrollTrigger: false });
+  const projectsCount = useCountUp({ end: 10000, suffix: '+', duration: 3000, enableScrollTrigger: false });
+  const clientsCount = useCountUp({ end: 2500, suffix: '+', duration: 3500, enableScrollTrigger: false });
   const uptimeCount = useCountUp({ end: 24, suffix: '/7', duration: 2000, enableScrollTrigger: false });
-  const ratingCount = useCountUp({ end: 5, suffix: ' Star Rating', duration: 2500, enableScrollTrigger: false });
+  const ratingCount = useCountUp({ end: 15, suffix: '+ Years', duration: 2500, enableScrollTrigger: false });
 
   const features = [
-    { icon: CheckCircle, text: "Trusted by 100+ businesses" },
-    { icon: Shield, text: "Enterprise-grade security" },
-    { icon: Zap, text: "Fast and reliable" },
+    { icon: CheckCircle, text: "Trusted by 2,500+ clients" },
+    { icon: Shield, text: "90-day workmanship warranty" },
+    { icon: Zap, text: "Same-day response in Nairobi" },
   ];
+
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -143,23 +148,23 @@ export default function HeroSection() {
               className="inline-flex items-center gap-2 bg-primary/10 border border-primary/30 px-4 py-2 rounded-full backdrop-blur-sm hover:bg-primary/20 transition-all duration-300 cursor-default"
             >
               <Sparkles className="w-4 h-4 text-primary animate-pulse" />
-              <span className="text-sm font-medium text-foreground">Kenya's Leading Tech Company</span>
+              <span className="text-sm font-medium text-foreground">Nairobi's Trusted Tech &amp; Security Partner</span>
             </motion.div>
 
             {/* Main Heading */}
             <motion.div variants={itemVariants} className="space-y-4">
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] font-display">
-                <span className="text-foreground">Building the</span>
+                <span className="text-foreground">Security, Internet</span>
                 <br />
                 <span className="gradient-text">
-                  Future of Business
+                  &amp; Tech Repairs
                 </span>
                 <br />
-                <span className="text-foreground">with Smart Technology</span>
+                <span className="text-foreground">Done Right</span>
               </h1>
               
               <p className="text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed">
-                FRIMAT Technologies helps Kenyan businesses grow with simple, powerful tech — from websites and mobile apps to cloud, security, and IT support. Real solutions that work.
+                FRIMAT Technologies installs CCTV and WiFi, repairs phones, laptops and TVs, secures your business online, and sells genuine tech — across Nairobi, Kiambu, Machakos and Kajiado.
               </p>
             </motion.div>
 
@@ -179,20 +184,21 @@ export default function HeroSection() {
                 variant="hero" 
                 size="lg" 
                 className="group text-base btn-modern" 
-                onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => navigate('/book-service')}
               >
-                See Our Services
+                Get a Free Quote
                 <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
               </Button>
               <Button 
                 variant="neon" 
                 size="lg" 
                 className="text-base backdrop-blur-sm"
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => navigate('/shop')}
               >
-                Talk to Us
+                Browse the Shop
               </Button>
             </motion.div>
+
           </div>
 
           {/* Right Side - Stats Cards */}
@@ -206,7 +212,7 @@ export default function HeroSection() {
                 className="glass-card hover-lift group"
               >
                 <div ref={projectsCount.ref} className="text-4xl font-bold text-primary mb-2 font-display stat-counter group-hover:drop-shadow-[0_0_10px_hsl(var(--primary)/0.5)] transition-all">{projectsCount.value}</div>
-                <div className="text-sm text-muted-foreground font-medium">Projects Done</div>
+                <div className="text-sm text-muted-foreground font-medium">Repairs Completed</div>
                 <div className="mt-3 progress-cyber">
                   <motion.div 
                     className="progress-cyber-bar"
@@ -264,7 +270,7 @@ export default function HeroSection() {
                 className="glass-card hover-lift group"
               >
                 <div ref={ratingCount.ref} className="text-4xl font-bold text-primary mb-2 font-display stat-counter group-hover:drop-shadow-[0_0_10px_hsl(var(--primary)/0.5)] transition-all">{ratingCount.value}</div>
-                <div className="text-sm text-muted-foreground font-medium">Client Rating</div>
+                <div className="text-sm text-muted-foreground font-medium">Years of Experience</div>
                 <div className="mt-3 progress-cyber">
                   <motion.div 
                     className="progress-cyber-bar"
@@ -284,10 +290,10 @@ export default function HeroSection() {
           className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 lg:hidden"
         >
           {[
-            { ref: projectsCount.ref, value: projectsCount.value, label: "Projects", color: "primary" },
+            { ref: projectsCount.ref, value: projectsCount.value, label: "Repairs", color: "primary" },
             { ref: clientsCount.ref, value: clientsCount.value, label: "Clients", color: "secondary" },
             { ref: uptimeCount.ref, value: uptimeCount.value, label: "Support", color: "accent" },
-            { ref: ratingCount.ref, value: ratingCount.value, label: "Rating", color: "primary" },
+            { ref: ratingCount.ref, value: ratingCount.value, label: "Years", color: "primary" },
           ].map((stat, index) => (
             <motion.div 
               key={index}

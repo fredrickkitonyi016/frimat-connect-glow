@@ -147,7 +147,7 @@ export default function AboutSection() {
                 </span>
               </h2>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                We're a Kenyan technology company building digital tools that help businesses run better. We turn complex tech into simple, practical solutions you can actually use.
+                We're a Kenyan technology company that installs security and internet systems, repairs everyday electronics, and supplies genuine hardware — all with honest advice and neat workmanship.
               </p>
             </div>
 
@@ -155,11 +155,12 @@ export default function AboutSection() {
               <h3 className="text-2xl font-semibold text-foreground">Why Choose Us?</h3>
               <div className="space-y-3">
                 {[
-                  "6+ years of experience in the industry",
-                  "Dedicated support, available whenever you need us",
-                  "Custom solutions built around your business",
-                  "35+ successful projects delivered"
+                  "15+ years serving homes and businesses in Kenya",
+                  "2,500+ happy clients and 10,000+ repairs completed",
+                  "90-day workmanship warranty on every job",
+                  "Free site surveys across Nairobi, Kiambu, Machakos and Kajiado"
                 ].map((item, index) => (
+
                   <div key={index} className="flex items-center gap-3">
                     <CheckCircle className="text-accent" size={20} />
                     <span className="text-muted-foreground">{item}</span>
