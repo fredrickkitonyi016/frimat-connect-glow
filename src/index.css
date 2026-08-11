@@ -985,3 +985,58 @@ Premium cyberpunk aesthetic with cinematic visuals.
     letter-spacing: -0.02em;
   }
 }
+
+@layer components {
+  /* Give every glass panel HUD corner brackets */
+  .glass-card {
+    position: relative;
+    border-radius: var(--radius);
+  }
+
+  .glass-card::before,
+  .glass-card::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    pointer-events: none;
+    border-color: hsl(var(--primary) / 0.8);
+    opacity: 0.75;
+    transition: var(--transition-smooth);
+  }
+
+  .glass-card::before {
+    top: 0; left: 0;
+    border-top: 2px solid; border-left: 2px solid;
+  }
+
+  .glass-card::after {
+    bottom: 0; right: 0;
+    border-bottom: 2px solid; border-right: 2px solid;
+    border-color: hsl(var(--accent) / 0.8);
+  }
+
+  .glass-card:hover::before,
+  .glass-card:hover::after {
+    opacity: 1;
+    width: 18px;
+    height: 18px;
+  }
+
+  /* Navigation + button interactive glow */
+  nav a:hover,
+  header a:hover {
+    text-shadow: 0 0 12px hsl(var(--primary) / 0.6);
+  }
+
+  button:hover,
+  a[role="button"]:hover {
+    transition: var(--transition-smooth);
+  }
+
+  /* Stats & pricing numerics default to mono */
+  .stat-counter {
+    font-family: 'JetBrains Mono', monospace;
+    font-feature-settings: 'tnum' 1;
+  }
+}
