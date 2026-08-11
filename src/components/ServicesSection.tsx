@@ -30,6 +30,7 @@ export default function ServicesSection() {
       icon: Camera,
       gradient: "from-lime-500 to-cyan-500",
       image: cybersecurityImage,
+      op: "Deploy Security Grid",
       title: "CCTV & Security Systems",
       description: "Cameras, alarms and access control installed and set up on your phone.",
       features: ["4K camera installation", "Remote phone viewing", "Alarm & access control", "Repairs & upgrades"],
@@ -39,6 +40,7 @@ export default function ServicesSection() {
       icon: Wifi,
       gradient: "from-cyan-500 to-lime-500",
       image: cloudServiceImage,
+      op: "Signal Uplink Online",
       title: "Network & WiFi Solutions",
       description: "Strong, reliable internet for homes, offices, rentals and hotels.",
       features: ["WiFi setup & boosting", "Structured cabling", "Office networks", "Hotspot billing systems"],
@@ -48,6 +50,7 @@ export default function ServicesSection() {
       icon: Wrench,
       gradient: "from-emerald-500 to-lime-500",
       image: itSupportImage,
+      op: "Diagnostic Mode Initiated",
       title: "Electronics Repair",
       description: "Phone, laptop and TV repairs done fast, with genuine parts.",
       features: ["Phone screens & batteries", "Laptop repairs", "TV & audio repair", "Data recovery"],
@@ -57,6 +60,7 @@ export default function ServicesSection() {
       icon: Shield,
       gradient: "from-lime-600 to-emerald-500",
       image: cybersecurityImage,
+      op: "Threat Shield Active",
       title: "Cybersecurity",
       description: "Keep your business data, accounts and systems safe from attacks.",
       features: ["Security checks", "Antivirus & firewalls", "Staff training", "Backup & recovery"],
@@ -66,6 +70,7 @@ export default function ServicesSection() {
       icon: Bitcoin,
       gradient: "from-cyan-500 to-lime-500",
       image: webDevImage,
+      op: "Ledger Protocol Ready",
       title: "Crypto Support",
       description: "Simple, safe guidance on wallets, trading and mining setups.",
       features: ["Wallet setup", "Safe trading basics", "Mining rig support", "Scam protection advice"],
@@ -75,6 +80,7 @@ export default function ServicesSection() {
       icon: ShoppingBag,
       gradient: "from-lime-500 to-cyan-500",
       image: ecommerceImage,
+      op: "Inventory Grid Synced",
       title: "Tech Retail & Supply",
       description: "Genuine cameras, routers, laptops and accessories at fair prices.",
       features: ["CCTV kits", "Routers & switches", "Laptops & accessories", "Bulk office supply"],
@@ -84,6 +90,7 @@ export default function ServicesSection() {
       icon: Globe,
       gradient: "from-cyan-500 to-lime-400",
       image: webDevImage,
+      op: "Deploy Web Node",
       title: "Websites & Online Shops",
       description: "Get your business online with a clean, fast website customers trust.",
       features: ["Business websites", "Online stores", "Payment integration", "Hosting & domains"],
@@ -93,6 +100,7 @@ export default function ServicesSection() {
       icon: Building2,
       gradient: "from-cyan-500 to-emerald-500",
       image: itSupportImage,
+      op: "Portal Access Granted",
       title: "Government & Cyber Services",
       description: "Help with KRA, HELB, SHA, e-Citizen, printing and CV writing.",
       features: ["KRA iTax filing", "HELB applications", "SHA registration", "Printing & scanning"],
@@ -109,6 +117,7 @@ export default function ServicesSection() {
       />
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
+          <div className="hud-status mx-auto mb-5">Service Modules: 08 Online</div>
           <h2 className="text-5xl font-bold mb-6">
             <span className="text-foreground">Our </span>
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
@@ -128,7 +137,7 @@ export default function ServicesSection() {
               <div 
                 key={index}
                 onClick={() => navigate(service.href)}
-                className="group cursor-pointer bg-card rounded-2xl overflow-hidden border border-border hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2"
+                className="group cursor-pointer hud-frame rounded-md overflow-hidden transition-all duration-500 hover:-translate-y-2"
               >
                 {/* Service Image */}
                 <div className="relative h-36 overflow-hidden">
@@ -140,11 +149,10 @@ export default function ServicesSection() {
                   <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
                   
                   {/* Icon overlay */}
+                  <span className="absolute top-3 left-4 hud-label">{service.op}</span>
                   <div className="absolute bottom-3 left-4">
-                    <div className="p-3 rounded-xl bg-white shadow-lg">
-                      <div className={`p-2 rounded-lg bg-gradient-to-br ${service.gradient}`}>
-                        <Icon className="w-5 h-5 text-white" />
-                      </div>
+                    <div className="p-2 border border-primary/50 bg-background/70 backdrop-blur-sm">
+                      <Icon className="w-5 h-5 text-primary" />
                     </div>
                   </div>
                 </div>
@@ -172,7 +180,7 @@ export default function ServicesSection() {
                   <div className="pt-3">
                     <Button 
                       variant="glass" 
-                      className="w-full group/btn bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white border-0"
+                      className="w-full group/btn bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground border-0"
                       size="default"
                     >
                       Learn More
