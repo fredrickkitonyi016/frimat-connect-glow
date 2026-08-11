@@ -117,7 +117,7 @@ export default function Ecommerce() {
                 
                 <div className="absolute bottom-4 left-6">
                   <div className="p-4 rounded-xl bg-white shadow-lg">
-                    <div className="p-3 rounded-lg bg-gradient-to-br from-amber-500 to-yellow-500">
+                    <div className="p-3 rounded-lg bg-gradient-to-br from-cyan-500 to-lime-500">
                       <ShoppingBag className="w-8 h-8 text-white" />
                     </div>
                   </div>

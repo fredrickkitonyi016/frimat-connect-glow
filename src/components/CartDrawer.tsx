@@ -89,7 +89,7 @@ export const CartDrawer = ({ open, onOpenChange }: CartDrawerProps) => {
                             className="h-8 w-8"
                             onClick={() => removeFromCart(item.id)}
                           >
-                            <Trash2 className="h-4 w-4 text-red-500" />
+                            <Trash2 className="h-4 w-4 text-emerald-500" />
                           </Button>
                         </div>
                         <p className="text-lg font-bold mt-2" style={{ color: '#ff6a00' }}>

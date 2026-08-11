@@ -28,7 +28,7 @@ export default function ServicesSection() {
   const services = [
     {
       icon: Camera,
-      gradient: "from-orange-500 to-amber-500",
+      gradient: "from-lime-500 to-cyan-500",
       image: cybersecurityImage,
       title: "CCTV & Security Systems",
       description: "Cameras, alarms and access control installed and set up on your phone.",
@@ -37,7 +37,7 @@ export default function ServicesSection() {
     },
     {
       icon: Wifi,
-      gradient: "from-amber-500 to-yellow-500",
+      gradient: "from-cyan-500 to-lime-500",
       image: cloudServiceImage,
       title: "Network & WiFi Solutions",
       description: "Strong, reliable internet for homes, offices, rentals and hotels.",
@@ -46,7 +46,7 @@ export default function ServicesSection() {
     },
     {
       icon: Wrench,
-      gradient: "from-red-500 to-orange-500",
+      gradient: "from-emerald-500 to-lime-500",
       image: itSupportImage,
       title: "Electronics Repair",
       description: "Phone, laptop and TV repairs done fast, with genuine parts.",
@@ -55,7 +55,7 @@ export default function ServicesSection() {
     },
     {
       icon: Shield,
-      gradient: "from-orange-600 to-red-500",
+      gradient: "from-lime-600 to-emerald-500",
       image: cybersecurityImage,
       title: "Cybersecurity",
       description: "Keep your business data, accounts and systems safe from attacks.",
@@ -64,7 +64,7 @@ export default function ServicesSection() {
     },
     {
       icon: Bitcoin,
-      gradient: "from-amber-500 to-orange-500",
+      gradient: "from-cyan-500 to-lime-500",
       image: webDevImage,
       title: "Crypto Support",
       description: "Simple, safe guidance on wallets, trading and mining setups.",
@@ -73,7 +73,7 @@ export default function ServicesSection() {
     },
     {
       icon: ShoppingBag,
-      gradient: "from-orange-500 to-rose-500",
+      gradient: "from-lime-500 to-cyan-500",
       image: ecommerceImage,
       title: "Tech Retail & Supply",
       description: "Genuine cameras, routers, laptops and accessories at fair prices.",
@@ -82,7 +82,7 @@ export default function ServicesSection() {
     },
     {
       icon: Globe,
-      gradient: "from-amber-500 to-orange-400",
+      gradient: "from-cyan-500 to-lime-400",
       image: webDevImage,
       title: "Websites & Online Shops",
       description: "Get your business online with a clean, fast website customers trust.",
@@ -91,7 +91,7 @@ export default function ServicesSection() {
     },
     {
       icon: Building2,
-      gradient: "from-rose-500 to-red-500",
+      gradient: "from-cyan-500 to-emerald-500",
       image: itSupportImage,
       title: "Government & Cyber Services",
       description: "Help with KRA, HELB, SHA, e-Citizen, printing and CV writing.",

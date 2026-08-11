@@ -29,7 +29,7 @@ const governmentServices = [
     services: ["PIN Application", "Nil Returns Filing", "Income Tax Filing", "Tax Compliance Certificate", "VAT Registration"],
     portalUrl: "https://itax.kra.go.ke",
     assistancePrice: "KSh 500",
-    color: "from-amber-500 to-orange-700"
+    color: "from-cyan-500 to-lime-700"
   },
   {
     name: "HELB",
@@ -51,7 +51,7 @@ const governmentServices = [
     services: ["New Member Registration", "Card Replacement", "Add Dependents", "Check Contributions", "Hospital Accreditation"],
     portalUrl: "https://sha.go.ke",
     assistancePrice: "KSh 300",
-    color: "from-red-500 to-red-700"
+    color: "from-emerald-500 to-emerald-700"
   },
   {
     name: "NSSF",
@@ -62,7 +62,7 @@ const governmentServices = [
     services: ["Member Registration", "Statement Request", "Benefits Claims", "Contribution Check", "Employer Registration"],
     portalUrl: "https://www.nssf.or.ke",
     assistancePrice: "KSh 300",
-    color: "from-amber-500 to-red-700"
+    color: "from-cyan-500 to-emerald-700"
   },
   {
     name: "e-Citizen",
@@ -73,7 +73,7 @@ const governmentServices = [
     services: ["Passport Application", "ID Application", "Business Registration", "Good Conduct", "Birth Certificate"],
     portalUrl: "https://www.ecitizen.go.ke",
     assistancePrice: "KSh 500",
-    color: "from-orange-500 to-orange-700"
+    color: "from-lime-500 to-lime-700"
   },
   {
     name: "SHIF",
@@ -95,7 +95,7 @@ const governmentServices = [
     services: ["Driving License Application", "Interim License", "License Renewal", "Vehicle Registration", "PSV Permits", "Logbook Transfer"],
     portalUrl: "https://tims.ntsa.go.ke",
     assistancePrice: "KSh 500",
-    color: "from-amber-500 to-amber-700"
+    color: "from-cyan-500 to-cyan-700"
   },
   {
     name: "DCI",
@@ -117,7 +117,7 @@ const governmentServices = [
     services: ["Passport Application", "Passport Renewal", "Visa Application", "Work Permit", "Special Pass", "Alien Card"],
     portalUrl: "https://fns.immigration.go.ke",
     assistancePrice: "KSh 500",
-    color: "from-amber-500 to-orange-700"
+    color: "from-cyan-500 to-lime-700"
   },
   {
     name: "BRS",
@@ -128,7 +128,7 @@ const governmentServices = [
     services: ["Company Registration", "Business Name Registration", "Name Search", "CR12 Certificate", "Annual Returns", "Director Changes"],
     portalUrl: "https://brs.go.ke",
     assistancePrice: "KSh 500",
-    color: "from-amber-500 to-orange-700"
+    color: "from-cyan-500 to-lime-700"
   },
   {
     name: "Judiciary",
@@ -139,7 +139,7 @@ const governmentServices = [
     services: ["Case Filing", "Case Search", "Document Filing", "Court Fees Payment", "Hearing Dates", "Judgment Search"],
     portalUrl: "https://efiling.judiciary.go.ke",
     assistancePrice: "KSh 500",
-    color: "from-rose-500 to-rose-700"
+    color: "from-cyan-500 to-cyan-700"
   },
   {
     name: "Lands Ministry",
@@ -172,7 +172,7 @@ const governmentServices = [
     services: ["Exchange Rates", "Bank Licensing", "Money Remittance", "Credit Reference", "Currency Information"],
     portalUrl: "https://www.centralbank.go.ke",
     assistancePrice: "KSh 300",
-    color: "from-yellow-500 to-yellow-700"
+    color: "from-lime-500 to-lime-700"
   },
   {
     name: "KEPHIS",
@@ -194,7 +194,7 @@ const governmentServices = [
     services: ["Trademark Registration", "Patent Application", "Industrial Design", "Copyright", "IP Search", "Brand Protection"],
     portalUrl: "https://kipi.go.ke",
     assistancePrice: "KSh 500",
-    color: "from-amber-500 to-red-700"
+    color: "from-cyan-500 to-emerald-700"
   },
   {
     name: "CA",
@@ -205,7 +205,7 @@ const governmentServices = [
     services: ["Frequency License", "Broadcasting License", "Type Approval", "Domain Registration", "Equipment Authorization"],
     portalUrl: "https://ca.go.ke",
     assistancePrice: "KSh 500",
-    color: "from-amber-500 to-orange-700"
+    color: "from-cyan-500 to-lime-700"
   },
   {
     name: "NHIF Legacy",
@@ -216,7 +216,7 @@ const governmentServices = [
     services: ["Contribution History", "Legacy Claims", "Member Statement", "Card Status", "Employer Remittance"],
     portalUrl: "https://www.nhif.or.ke",
     assistancePrice: "KSh 200",
-    color: "from-red-400 to-red-600"
+    color: "from-emerald-400 to-emerald-600"
   },
   {
     name: "NEMA",
@@ -238,7 +238,7 @@ const governmentServices = [
     services: ["Single Business Permit", "Building Plans Approval", "Land Rates", "Parking Permits", "Advertisement License"],
     portalUrl: "https://eservices.nairobi.go.ke",
     assistancePrice: "KSh 500",
-    color: "from-orange-600 to-orange-800"
+    color: "from-lime-600 to-lime-800"
   }
 ];
 

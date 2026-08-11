@@ -131,7 +131,7 @@ export default function CreativeDesign() {
                 
                 <div className="absolute bottom-4 left-6">
                   <div className="p-4 rounded-xl bg-card shadow-lg">
-                    <div className="p-3 rounded-lg bg-gradient-to-br from-pink-500 to-rose-500">
+                    <div className="p-3 rounded-lg bg-gradient-to-br from-pink-500 to-cyan-500">
                       <Palette className="w-8 h-8 text-primary-foreground" />
                     </div>
                   </div>

@@ -42,7 +42,7 @@ export default function AboutSection() {
             className="h-16 md:h-20 mx-auto mb-6 dark:invert-0 invert"
           />
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-rose-600 via-red-500 to-rose-700 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-cyan-600 via-emerald-500 to-cyan-700 bg-clip-text text-transparent">
               Helping Businesses Grow with Technology
             </span>
           </h1>

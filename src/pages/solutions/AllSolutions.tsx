@@ -14,7 +14,7 @@ import {
 const solutions = [
   {
     icon: HeartPulse,
-    gradient: "from-red-500 to-pink-500",
+    gradient: "from-emerald-500 to-pink-500",
     title: "Healthcare",
     description: "Digital health solutions that transform patient care and streamline medical operations",
     features: ["Electronic Health Records", "Telemedicine Platforms", "Patient Portals", "Medical Billing Systems"],
@@ -22,7 +22,7 @@ const solutions = [
   },
   {
     icon: ShoppingBag,
-    gradient: "from-amber-500 to-orange-500",
+    gradient: "from-cyan-500 to-lime-500",
     title: "Retail & E-commerce",
     description: "Modern retail technology solutions for seamless omnichannel experiences",
     features: ["POS Systems", "Inventory Management", "Customer Analytics", "Loyalty Programs"],
@@ -38,7 +38,7 @@ const solutions = [
   },
   {
     icon: Factory,
-    gradient: "from-amber-500 to-amber-500",
+    gradient: "from-cyan-500 to-cyan-500",
     title: "Manufacturing",
     description: "Industry 4.0 solutions for smart factories and optimized production",
     features: ["IoT Integration", "Predictive Maintenance", "Supply Chain Management", "Quality Control"],

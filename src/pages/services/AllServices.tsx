@@ -22,7 +22,7 @@ const allServices = [
     href: "/services/web-development",
     pricing: "Starting from KSh 25,000",
     features: ["Responsive Design", "CMS Integration", "SEO Optimization", "E-commerce Ready"],
-    gradient: "from-amber-500 to-amber-500"
+    gradient: "from-cyan-500 to-cyan-500"
   },
   {
     title: "Mobile Apps",
@@ -32,7 +32,7 @@ const allServices = [
     href: "/services/mobile-apps",
     pricing: "Starting from KSh 100,000",
     features: ["iOS & Android", "Cross-platform", "App Store Optimization", "Push Notifications"],
-    gradient: "from-amber-500 to-pink-500"
+    gradient: "from-cyan-500 to-pink-500"
   },
   {
     title: "Cloud Services",
@@ -42,7 +42,7 @@ const allServices = [
     href: "/services/cloud-services",
     pricing: "Starting from KSh 30,000/month",
     features: ["AWS & Azure", "Cloud Migration", "Auto-scaling", "Backup & Recovery"],
-    gradient: "from-amber-500 to-amber-500"
+    gradient: "from-cyan-500 to-cyan-500"
   },
   {
     title: "Cybersecurity",
@@ -52,7 +52,7 @@ const allServices = [
     href: "/services/cybersecurity",
     pricing: "Starting from KSh 25,000",
     features: ["Security Audits", "Penetration Testing", "Compliance", "24/7 Monitoring"],
-    gradient: "from-red-500 to-orange-500"
+    gradient: "from-emerald-500 to-lime-500"
   },
   {
     title: "IT Support",
@@ -72,7 +72,7 @@ const allServices = [
     href: "/services/ecommerce",
     pricing: "Starting from KSh 75,000",
     features: ["Online Stores", "Payment Integration", "Inventory System", "Analytics"],
-    gradient: "from-amber-500 to-yellow-500"
+    gradient: "from-cyan-500 to-lime-500"
   },
   {
     title: "Cyber Cafe Services",
@@ -82,7 +82,7 @@ const allServices = [
     href: "/services/cyber-cafe",
     pricing: "Starting from KSh 10/page",
     features: ["Printing & Scanning", "Internet Access", "CV Writing", "Government Services"],
-    gradient: "from-teal-500 to-amber-500"
+    gradient: "from-teal-500 to-cyan-500"
   },
   {
     title: "Government Services",
@@ -92,7 +92,7 @@ const allServices = [
     href: "/services/government-services",
     pricing: "KSh 200 - 500",
     features: ["KRA iTax", "HELB Applications", "SHA Registration", "e-Citizen Services"],
-    gradient: "from-rose-500 to-red-500"
+    gradient: "from-cyan-500 to-emerald-500"
   },
   {
     title: "Custom Development",
@@ -102,7 +102,7 @@ const allServices = [
     href: "/services/custom-development",
     pricing: "Project-based",
     features: ["Custom Software", "API Development", "Automation", "System Integration"],
-    gradient: "from-amber-500 to-amber-500"
+    gradient: "from-cyan-500 to-cyan-500"
   },
   {
     title: "Cloud Migration",
@@ -112,7 +112,7 @@ const allServices = [
     href: "/services/cloud-migration",
     pricing: "Starting from KSh 50,000",
     features: ["Assessment", "Migration Planning", "Data Transfer", "Training"],
-    gradient: "from-amber-500 to-amber-500"
+    gradient: "from-cyan-500 to-cyan-500"
   },
   {
     title: "Creative & Design",
@@ -122,7 +122,7 @@ const allServices = [
     href: "/services/creative-design",
     pricing: "Starting from KSh 5,000",
     features: ["Logo Design", "Branding", "Print Design", "Social Media Graphics"],
-    gradient: "from-pink-500 to-rose-500"
+    gradient: "from-pink-500 to-cyan-500"
   },
   {
     title: "Database Solutions",
