@@ -19,8 +19,8 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['Times New Roman', 'Georgia', 'Cambria', 'serif'],
-				display: ['Times New Roman', 'Georgia', 'Palatino Linotype', 'serif'],
+				sans: ['Inter', 'system-ui', 'sans-serif'],
+				display: ['JetBrains Mono', 'Space Mono', 'ui-monospace', 'monospace'],
 				mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
 			},
 			colors: {
@@ -70,16 +70,18 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-			// Obsidian & Cyber Copper colors
+			// Matrix HUD / Cyberpunk colors
 				cyber: {
-					blue: '#7A2E0E',      // deep ember (legacy alias)
-					purple: '#B34700',    // burnt copper (legacy alias)
-					cyan: '#FF7A1A',      // vibrant orange (legacy alias)
+					blue: '#00E5FF',      // holographic cyan (legacy alias)
+					purple: '#00FF66',    // neon lime (legacy alias)
+					cyan: '#00E5FF',
 					red: '#ef4444',
-					dark: '#0D0A08',      // obsidian
-					copper: '#FF6A00',
-					ember: '#E8541C',
-					amber: '#FFB347',
+					dark: '#0A0D0E',      // terminal black
+					copper: '#00FF66',    // legacy alias -> lime
+					ember: '#00FF41',
+					amber: '#00E5FF',     // legacy alias -> cyan
+					lime: '#00FF66',
+					grid: '#0F1416',
 				}
 			},
 			borderRadius: {
