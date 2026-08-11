@@ -11,167 +11,153 @@ Premium cyberpunk aesthetic with cinematic visuals.
 
 @layer base {
   :root {
-    /* Light Mode - Obsidian & Copper Theme */
-    --background: 30 20% 96%;
-    --foreground: 24 20% 10%;
+    /* Light Mode - HUD Daylight (rarely used; app defaults to dark) */
+    --background: 180 12% 96%;
+    --foreground: 190 25% 8%;
 
-    /* Cyber Copper Primary */
-    --primary: 22 95% 48%;
-    --primary-foreground: 30 25% 98%;
-    --primary-glow: 28 100% 58%;
+    /* Neon Lime Primary */
+    --primary: 145 90% 34%;
+    --primary-foreground: 180 20% 98%;
+    --primary-glow: 145 100% 45%;
 
-    /* Deep Ember Secondary */
-    --secondary: 18 85% 40%;
-    --secondary-foreground: 30 25% 98%;
-    --secondary-glow: 18 90% 52%;
+    /* Holographic Cyan Secondary */
+    --secondary: 188 90% 38%;
+    --secondary-foreground: 180 20% 98%;
+    --secondary-glow: 188 100% 50%;
 
-    /* Vibrant Orange Accent */
-    --accent: 32 100% 52%;
-    --accent-foreground: 24 20% 10%;
-    --accent-glow: 36 100% 62%;
+    /* Cyan Accent */
+    --accent: 188 100% 42%;
+    --accent-foreground: 190 25% 8%;
+    --accent-glow: 188 100% 55%;
 
-    /* Destructive */
     --destructive: 0 84% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Cards & Surfaces */
     --card: 0 0% 100%;
-    --card-foreground: 24 20% 10%;
-    --card-glass: 30 20% 98%;
+    --card-foreground: 190 25% 8%;
+    --card-glass: 180 12% 98%;
 
-    /* Muted Elements */
-    --muted: 30 15% 90%;
-    --muted-foreground: 24 10% 40%;
+    --muted: 185 10% 90%;
+    --muted-foreground: 190 8% 40%;
 
-    /* Borders & Inputs */
-    --border: 30 15% 85%;
-    --input: 30 15% 94%;
-    --ring: 22 95% 48%;
+    --border: 185 12% 84%;
+    --input: 185 12% 94%;
+    --ring: 145 90% 34%;
 
-    /* Popover */
     --popover: 0 0% 100%;
-    --popover-foreground: 24 20% 10%;
+    --popover-foreground: 190 25% 8%;
 
-    /* Copper Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(22 95% 48%), hsl(28 100% 58%), hsl(36 100% 62%));
-    --gradient-hero: linear-gradient(180deg, hsl(30 20% 96%), hsl(28 25% 94%), hsl(24 20% 92%));
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 100% / 0.95), hsl(30 20% 98% / 0.9));
-    --gradient-button: linear-gradient(135deg, hsl(22 95% 48%), hsl(32 100% 55%));
-    --gradient-glow: radial-gradient(ellipse at center, hsl(22 95% 48% / 0.12), transparent 70%);
-    --gradient-mesh: radial-gradient(at 40% 20%, hsl(22 95% 48% / 0.1) 0px, transparent 50%),
-                     radial-gradient(at 80% 0%, hsl(32 100% 55% / 0.08) 0px, transparent 50%),
-                     radial-gradient(at 0% 50%, hsl(18 85% 45% / 0.08) 0px, transparent 50%);
-    --gradient-cyber: linear-gradient(135deg, hsl(22 95% 48%), hsl(32 100% 55%), hsl(36 100% 62%));
-    --gradient-neon: linear-gradient(90deg, hsl(22 95% 48%), hsl(28 100% 58%), hsl(36 100% 62%), hsl(22 95% 48%));
+    --gradient-primary: linear-gradient(135deg, hsl(145 90% 34%), hsl(160 90% 40%), hsl(188 100% 42%));
+    --gradient-hero: linear-gradient(180deg, hsl(180 12% 97%), hsl(185 14% 95%), hsl(188 14% 93%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100% / 0.95), hsl(180 12% 98% / 0.9));
+    --gradient-button: linear-gradient(135deg, hsl(145 90% 34%), hsl(188 100% 42%));
+    --gradient-glow: radial-gradient(ellipse at center, hsl(145 90% 34% / 0.12), transparent 70%);
+    --gradient-mesh: radial-gradient(at 40% 20%, hsl(145 90% 40% / 0.1) 0px, transparent 50%),
+                     radial-gradient(at 80% 0%, hsl(188 100% 45% / 0.08) 0px, transparent 50%),
+                     radial-gradient(at 0% 50%, hsl(160 90% 40% / 0.08) 0px, transparent 50%);
+    --gradient-cyber: linear-gradient(135deg, hsl(145 100% 40%), hsl(170 95% 42%), hsl(188 100% 45%));
+    --gradient-neon: linear-gradient(90deg, hsl(145 100% 40%), hsl(188 100% 45%), hsl(145 100% 40%));
 
-    /* Glassmorphism */
     --glass-bg: hsl(0 0% 100% / 0.7);
-    --glass-border: hsl(24 20% 85% / 0.5);
-    --glass-shadow: 0 8px 32px hsl(24 30% 10% / 0.08), 0 2px 8px hsl(24 30% 10% / 0.04);
+    --glass-border: hsl(188 40% 70% / 0.5);
+    --glass-shadow: 0 8px 32px hsl(190 30% 10% / 0.08), 0 2px 8px hsl(190 30% 10% / 0.04);
 
-    /* Shadows */
-    --shadow-sm: 0 1px 2px hsl(24 30% 10% / 0.05);
-    --shadow-md: 0 4px 12px hsl(24 30% 10% / 0.08);
-    --shadow-lg: 0 12px 40px hsl(24 30% 10% / 0.1);
-    --shadow-xl: 0 24px 60px hsl(24 30% 10% / 0.14);
-    --shadow-glow: 0 0 40px hsl(22 95% 48% / 0.25);
-    --shadow-neon: 0 0 20px hsl(22 95% 48% / 0.45), 0 0 40px hsl(32 100% 55% / 0.25);
+    --shadow-sm: 0 1px 2px hsl(190 30% 10% / 0.05);
+    --shadow-md: 0 4px 12px hsl(190 30% 10% / 0.08);
+    --shadow-lg: 0 12px 40px hsl(190 30% 10% / 0.1);
+    --shadow-xl: 0 24px 60px hsl(190 30% 10% / 0.14);
+    --shadow-glow: 0 0 40px hsl(145 90% 40% / 0.25);
+    --shadow-neon: 0 0 20px hsl(145 100% 45% / 0.4), 0 0 40px hsl(188 100% 45% / 0.25);
 
-    /* Animations */
     --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 
-    --radius: 0.75rem;
-    --radius-lg: 1rem;
-    --radius-xl: 1.5rem;
+    --radius: 0.375rem;
+    --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
 
     --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 24 20% 10%;
-    --sidebar-primary: 22 95% 48%;
+    --sidebar-foreground: 190 25% 8%;
+    --sidebar-primary: 145 90% 34%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 30 15% 94%;
-    --sidebar-accent-foreground: 24 20% 10%;
-    --sidebar-border: 30 15% 88%;
-    --sidebar-ring: 22 95% 48%;
+    --sidebar-accent: 185 10% 94%;
+    --sidebar-accent-foreground: 190 25% 8%;
+    --sidebar-border: 185 12% 88%;
+    --sidebar-ring: 145 90% 34%;
   }
 
   .dark {
-    /* Dark Mode - Obsidian & Cyber Copper */
-    --background: 24 14% 5%;
-    --foreground: 30 25% 96%;
+    /* Dark Mode - Terminal Black / Matrix HUD */
+    --background: 190 17% 4%;
+    --foreground: 0 0% 100%;
 
-    /* Cyber Copper Primary */
-    --primary: 22 100% 55%;
-    --primary-foreground: 24 20% 6%;
-    --primary-glow: 28 100% 65%;
+    /* Electric Neon Lime Primary #00FF66 */
+    --primary: 144 100% 50%;
+    --primary-foreground: 190 20% 4%;
+    --primary-glow: 150 100% 60%;
 
-    /* Deep Ember Secondary */
-    --secondary: 18 90% 48%;
-    --secondary-foreground: 30 25% 96%;
-    --secondary-glow: 18 95% 58%;
+    /* Holographic Cyan Secondary #00E5FF */
+    --secondary: 187 100% 50%;
+    --secondary-foreground: 190 20% 4%;
+    --secondary-glow: 187 100% 62%;
 
-    /* Vibrant Orange Accent */
-    --accent: 32 100% 58%;
-    --accent-foreground: 24 20% 6%;
-    --accent-glow: 36 100% 68%;
+    /* Cyan Accent */
+    --accent: 187 100% 50%;
+    --accent-foreground: 190 20% 4%;
+    --accent-glow: 187 100% 66%;
 
-    /* Destructive */
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 30 25% 96%;
+    --destructive: 0 90% 58%;
+    --destructive-foreground: 0 0% 100%;
 
-    /* Cards & Surfaces - Obsidian */
-    --card: 24 14% 8%;
-    --card-foreground: 30 25% 96%;
-    --card-glass: 24 14% 10%;
+    /* Cards & Surfaces - Terminal panels */
+    --card: 192 16% 7%;
+    --card-foreground: 0 0% 100%;
+    --card-glass: 192 16% 9%;
 
-    /* Muted Elements */
-    --muted: 24 12% 14%;
-    --muted-foreground: 30 12% 65%;
+    --muted: 195 12% 13%;
+    --muted-foreground: 195 10% 68%;
 
-    /* Borders & Inputs */
-    --border: 24 15% 18%;
-    --input: 24 15% 12%;
-    --ring: 22 100% 55%;
+    --border: 160 30% 16%;
+    --input: 195 14% 11%;
+    --ring: 144 100% 50%;
 
-    /* Popover */
-    --popover: 24 14% 8%;
-    --popover-foreground: 30 25% 96%;
+    --popover: 192 16% 7%;
+    --popover-foreground: 0 0% 100%;
 
-    /* Obsidian Copper Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(22 100% 55%), hsl(28 100% 65%), hsl(36 100% 62%));
-    --gradient-hero: linear-gradient(180deg, hsl(24 14% 5%), hsl(22 18% 7%), hsl(20 20% 9%));
-    --gradient-card: linear-gradient(145deg, hsl(24 14% 8% / 0.9), hsl(24 14% 11% / 0.8));
-    --gradient-button: linear-gradient(135deg, hsl(22 100% 55%), hsl(32 100% 58%));
-    --gradient-glow: radial-gradient(ellipse at center, hsl(22 100% 55% / 0.2), transparent 70%);
-    --gradient-mesh: radial-gradient(at 40% 20%, hsl(22 100% 55% / 0.15) 0px, transparent 50%),
-                     radial-gradient(at 80% 0%, hsl(32 100% 58% / 0.12) 0px, transparent 50%),
-                     radial-gradient(at 0% 50%, hsl(18 90% 48% / 0.1) 0px, transparent 50%);
-    --gradient-cyber: linear-gradient(135deg, hsl(22 100% 55%), hsl(32 100% 58%), hsl(36 100% 68%));
-    --gradient-neon: linear-gradient(90deg, hsl(22 100% 55%), hsl(28 100% 65%), hsl(36 100% 68%), hsl(22 100% 55%));
+    /* Matrix Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(144 100% 50%), hsl(165 100% 52%), hsl(187 100% 50%));
+    --gradient-hero: linear-gradient(180deg, hsl(190 17% 4%), hsl(192 18% 5%), hsl(195 18% 6%));
+    --gradient-card: linear-gradient(145deg, hsl(192 16% 7% / 0.92), hsl(195 18% 10% / 0.82));
+    --gradient-button: linear-gradient(135deg, hsl(144 100% 50%), hsl(187 100% 50%));
+    --gradient-glow: radial-gradient(ellipse at center, hsl(144 100% 50% / 0.16), transparent 70%);
+    --gradient-mesh: radial-gradient(at 40% 20%, hsl(144 100% 50% / 0.14) 0px, transparent 50%),
+                     radial-gradient(at 80% 0%, hsl(187 100% 50% / 0.12) 0px, transparent 50%),
+                     radial-gradient(at 0% 50%, hsl(165 100% 45% / 0.1) 0px, transparent 50%);
+    --gradient-cyber: linear-gradient(135deg, hsl(144 100% 50%), hsl(170 100% 50%), hsl(187 100% 50%));
+    --gradient-neon: linear-gradient(90deg, hsl(144 100% 50%), hsl(187 100% 50%), hsl(144 100% 50%));
 
-    /* Glassmorphism - Obsidian */
-    --glass-bg: hsl(24 14% 7% / 0.65);
-    --glass-border: hsl(22 100% 55% / 0.18);
-    --glass-shadow: 0 8px 32px hsl(22 100% 55% / 0.1), 0 2px 8px hsl(0 0% 0% / 0.4);
+    /* Glassmorphism - HUD panel */
+    --glass-bg: hsl(192 16% 6% / 0.7);
+    --glass-border: hsl(144 100% 50% / 0.22);
+    --glass-shadow: 0 8px 32px hsl(144 100% 50% / 0.08), 0 2px 8px hsl(0 0% 0% / 0.5);
 
-    /* Shadows - Copper Glow */
-    --shadow-sm: 0 1px 2px hsl(0 0% 0% / 0.4);
-    --shadow-md: 0 4px 12px hsl(0 0% 0% / 0.5);
-    --shadow-lg: 0 12px 40px hsl(0 0% 0% / 0.6);
-    --shadow-xl: 0 24px 60px hsl(0 0% 0% / 0.7);
-    --shadow-glow: 0 0 60px hsl(22 100% 55% / 0.3);
-    --shadow-neon: 0 0 20px hsl(22 100% 55% / 0.55), 0 0 40px hsl(32 100% 58% / 0.35), 0 0 60px hsl(36 100% 62% / 0.2);
+    --shadow-sm: 0 1px 2px hsl(0 0% 0% / 0.5);
+    --shadow-md: 0 4px 12px hsl(0 0% 0% / 0.55);
+    --shadow-lg: 0 12px 40px hsl(0 0% 0% / 0.65);
+    --shadow-xl: 0 24px 60px hsl(0 0% 0% / 0.75);
+    --shadow-glow: 0 0 60px hsl(144 100% 50% / 0.28);
+    --shadow-neon: 0 0 18px hsl(144 100% 50% / 0.5), 0 0 40px hsl(187 100% 50% / 0.3);
 
-    --sidebar-background: 24 14% 5%;
-    --sidebar-foreground: 30 25% 96%;
-    --sidebar-primary: 22 100% 55%;
-    --sidebar-primary-foreground: 24 20% 6%;
-    --sidebar-accent: 24 14% 10%;
-    --sidebar-accent-foreground: 30 25% 96%;
-    --sidebar-border: 24 15% 16%;
-    --sidebar-ring: 22 100% 55%;
+    --sidebar-background: 190 17% 4%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 144 100% 50%;
+    --sidebar-primary-foreground: 190 20% 4%;
+    --sidebar-accent: 192 16% 9%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 160 30% 14%;
+    --sidebar-ring: 144 100% 50%;
   }
 }
 
@@ -188,12 +174,12 @@ Premium cyberpunk aesthetic with cinematic visuals.
 
   body {
     @apply bg-background text-foreground overflow-x-hidden;
-    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
     background: var(--gradient-hero);
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Times New Roman', Georgia, 'Palatino Linotype', serif;
+    font-family: 'JetBrains Mono', 'Space Mono', ui-monospace, monospace;
     font-weight: 700;
     letter-spacing: -0.02em;
     text-transform: uppercase;
@@ -862,5 +848,214 @@ Premium cyberpunk aesthetic with cinematic visuals.
   * {
     box-shadow: none !important;
     text-shadow: none !important;
+  }
+}
+
+@layer components {
+  /* ===== HUD / MATRIX SYSTEM ===== */
+
+  /* HUD framed panel with corner brackets */
+  .hud-frame {
+    position: relative;
+    border: 1px solid hsl(var(--primary) / 0.28);
+    background: var(--gradient-card);
+    transition: var(--transition-smooth);
+  }
+
+  .hud-frame::before,
+  .hud-frame::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    pointer-events: none;
+    border-color: hsl(var(--primary));
+    transition: var(--transition-smooth);
+  }
+
+  .hud-frame::before {
+    top: -1px; left: -1px;
+    border-top: 2px solid; border-left: 2px solid;
+  }
+
+  .hud-frame::after {
+    bottom: -1px; right: -1px;
+    border-bottom: 2px solid; border-right: 2px solid;
+  }
+
+  .hud-frame:hover {
+    border-color: hsl(var(--primary) / 0.6);
+    box-shadow: 0 0 0 1px hsl(var(--primary) / 0.2), 0 0 28px hsl(var(--primary) / 0.18);
+  }
+
+  /* Cyan variant */
+  .hud-frame-cyan {
+    border-color: hsl(var(--accent) / 0.3);
+  }
+  .hud-frame-cyan::before,
+  .hud-frame-cyan::after { border-color: hsl(var(--accent)); }
+
+  /* Tiny crosshair ticks */
+  .hud-ticks {
+    position: relative;
+  }
+  .hud-ticks::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: -6px;
+    width: 10px; height: 1px;
+    background: hsl(var(--accent) / 0.7);
+  }
+
+  /* Terminal label */
+  .hud-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: hsl(var(--primary));
+  }
+
+  /* Scanning line overlay */
+  .hud-scan {
+    position: relative;
+    overflow: hidden;
+  }
+  .hud-scan::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0;
+    height: 140px;
+    top: -140px;
+    background: linear-gradient(180deg, transparent, hsl(var(--primary) / 0.07), transparent);
+    animation: hud-scanline 7s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  @keyframes hud-scanline {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(calc(100vh + 280px)); }
+  }
+
+  /* Matrix digital overlay (scanline texture + grid) */
+  .matrix-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      repeating-linear-gradient(0deg, hsl(var(--primary) / 0.045) 0px, hsl(var(--primary) / 0.045) 1px, transparent 1px, transparent 3px),
+      linear-gradient(hsl(var(--accent) / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--accent) / 0.05) 1px, transparent 1px);
+    background-size: 100% 3px, 60px 60px, 60px 60px;
+    opacity: 0.6;
+  }
+
+  /* Glowing neon text */
+  .neon-text {
+    color: hsl(var(--primary));
+    text-shadow: 0 0 10px hsl(var(--primary) / 0.6), 0 0 28px hsl(var(--primary) / 0.3);
+  }
+  .neon-text-cyan {
+    color: hsl(var(--accent));
+    text-shadow: 0 0 10px hsl(var(--accent) / 0.6), 0 0 28px hsl(var(--accent) / 0.3);
+  }
+
+  /* Status pill */
+  .hud-status {
+    @apply inline-flex items-center gap-2 px-3 py-1 text-[0.65rem] uppercase tracking-[0.2em] font-mono;
+    border: 1px solid hsl(var(--primary) / 0.4);
+    color: hsl(var(--primary));
+    background: hsl(var(--primary) / 0.07);
+  }
+
+  /* Interactive glow for links/nav */
+  .hud-link {
+    transition: var(--transition-fast);
+  }
+  .hud-link:hover {
+    color: hsl(var(--primary));
+    text-shadow: 0 0 12px hsl(var(--primary) / 0.7);
+  }
+
+  /* Mono numerics for stats & pricing */
+  .hud-numeric {
+    font-family: 'JetBrains Mono', monospace;
+    font-feature-settings: 'tnum' 1;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  /* Give every glass panel HUD corner brackets */
+  .glass-card {
+    position: relative;
+    border-radius: var(--radius);
+  }
+
+  .glass-card::before,
+  .glass-card::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    pointer-events: none;
+    border-color: hsl(var(--primary) / 0.8);
+    opacity: 0.75;
+    transition: var(--transition-smooth);
+  }
+
+  .glass-card::before {
+    top: 0; left: 0;
+    border-top: 2px solid; border-left: 2px solid;
+  }
+
+  .glass-card::after {
+    bottom: 0; right: 0;
+    border-bottom: 2px solid; border-right: 2px solid;
+    border-color: hsl(var(--accent) / 0.8);
+  }
+
+  .glass-card:hover::before,
+  .glass-card:hover::after {
+    opacity: 1;
+    width: 18px;
+    height: 18px;
+  }
+
+  /* Navigation + button interactive glow */
+  nav a:hover,
+  header a:hover {
+    text-shadow: 0 0 12px hsl(var(--primary) / 0.6);
+  }
+
+  button:hover,
+  a[role="button"]:hover {
+    transition: var(--transition-smooth);
+  }
+
+  /* Stats & pricing numerics default to mono */
+  .stat-counter {
+    font-family: 'JetBrains Mono', monospace;
+    font-feature-settings: 'tnum' 1;
+  }
+}
+
+@layer base {
+  /* Site-wide terminal scanline texture */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    background-image: repeating-linear-gradient(
+      0deg,
+      hsl(var(--primary) / 0.035) 0px,
+      hsl(var(--primary) / 0.035) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+    opacity: 0.7;
   }
 }

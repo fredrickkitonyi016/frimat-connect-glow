@@ -168,7 +168,7 @@ export default function ProductDetail() {
                       key={idx}
                       onClick={() => setSelectedImage(idx)}
                       className={`w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 border-2 ${
-                        selectedImage === idx ? 'border-orange-500' : 'border-transparent'
+                        selectedImage === idx ? 'border-lime-500' : 'border-transparent'
                       }`}
                     >
                       <img
@@ -206,7 +206,7 @@ export default function ProductDetail() {
                         onClick={() => setSelectedVariant(variant.node.id)}
                         className={`px-4 py-2 rounded-lg border-2 text-sm font-medium transition-all ${
                           selectedVariant === variant.node.id
-                            ? 'border-orange-500 bg-orange-50'
+                            ? 'border-primary bg-primary/10 text-primary'
                             : 'border-gray-200 hover:border-gray-300'
                         }`}
                         style={{ color: '#333' }}

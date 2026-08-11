@@ -6,24 +6,28 @@ const steps = [
   {
     icon: PhoneCall,
     step: "01",
+    op: "Signal Received",
     title: "Talk to Us",
     description: "Call, WhatsApp or fill the booking form. Tell us what you need — it takes two minutes.",
   },
   {
     icon: ClipboardList,
     step: "02",
+    op: "Diagnostic Mode Initiated",
     title: "Free Site Survey & Quote",
     description: "We visit your home or business in Nairobi and nearby areas, check the site and send a clear quote.",
   },
   {
     icon: Wrench,
     step: "03",
+    op: "Deploy Security Grid",
     title: "Fast Installation or Repair",
     description: "Our certified technicians do the work neatly and on time, using genuine parts and quality cable.",
   },
   {
     icon: ShieldCheck,
     step: "04",
+    op: "System Status: Operational",
     title: "Support & Warranty",
     description: "You get a 90-day workmanship warranty plus free follow-up support whenever you need help.",
   },
@@ -36,6 +40,7 @@ export default function HowItWorksSection() {
     <section id="how-it-works" className="py-24 relative overflow-hidden bg-background">
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
+          <div className="hud-status mx-auto mb-5">Operations Protocol</div>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="text-foreground">How It </span>
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Works</span>
@@ -54,9 +59,10 @@ export default function HowItWorksSection() {
               <span className="absolute top-4 right-5 text-4xl font-bold text-primary/15 font-mono">
                 {item.step}
               </span>
-              <div className="p-3 rounded-xl bg-gradient-to-br from-primary to-accent w-fit mb-4">
-                <item.icon className="w-6 h-6 text-primary-foreground" />
+              <div className="p-3 rounded-md border border-primary/40 bg-primary/10 w-fit mb-4">
+                <item.icon className="w-6 h-6 text-primary" />
               </div>
+              <div className="hud-label mb-2">{item.op}</div>
               <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
                 {item.title}
               </h3>

@@ -111,10 +111,10 @@ export default function ContactSection() {
   };
 
   const socialLinks = [
-    { icon: Facebook, name: "Facebook", color: "from-amber-500 to-orange-600", url: "https://facebook.com/frimattechnologies" },
-    { icon: Twitter, name: "Twitter", color: "from-amber-500 to-orange-600", url: "https://twitter.com/frimattechnologies" },
-    { icon: Linkedin, name: "LinkedIn", color: "from-orange-700 to-orange-800", url: "https://www.linkedin.com/company/frimat-technologies" },
-    { icon: Instagram, name: "Instagram", color: "from-pink-500 to-orange-500", url: "https://instagram.com/frimattechnologies" }
+    { icon: Facebook, name: "Facebook", color: "from-cyan-500 to-lime-600", url: "https://facebook.com/frimattechnologies" },
+    { icon: Twitter, name: "Twitter", color: "from-cyan-500 to-lime-600", url: "https://twitter.com/frimattechnologies" },
+    { icon: Linkedin, name: "LinkedIn", color: "from-lime-700 to-lime-800", url: "https://www.linkedin.com/company/frimat-technologies" },
+    { icon: Instagram, name: "Instagram", color: "from-pink-500 to-lime-500", url: "https://instagram.com/frimattechnologies" }
   ];
 
   return (

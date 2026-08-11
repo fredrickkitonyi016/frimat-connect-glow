@@ -53,7 +53,7 @@ export default function Healthcare() {
                 {/* Icon overlay */}
                 <div className="absolute bottom-4 left-6">
                   <div className="p-4 rounded-xl bg-white shadow-lg">
-                    <div className="p-3 rounded-lg bg-gradient-to-br from-red-500 to-pink-500">
+                    <div className="p-3 rounded-lg bg-gradient-to-br from-emerald-500 to-pink-500">
                       <HeartPulse className="w-8 h-8 text-white" />
                     </div>
                   </div>

@@ -26,7 +26,7 @@ const governmentPortals = [
     url: "https://itax.kra.go.ke",
     price: "KSh 500",
     description: "Tax returns & PIN registration",
-    color: "from-amber-500 to-orange-600"
+    color: "from-cyan-500 to-lime-600"
   },
   {
     name: "HELB",
@@ -42,7 +42,7 @@ const governmentPortals = [
     url: "https://www.sha.go.ke",
     price: "KSh 300",
     description: "Health insurance (formerly NHIF)",
-    color: "from-red-500 to-red-600"
+    color: "from-emerald-500 to-emerald-600"
   }
 ];
 

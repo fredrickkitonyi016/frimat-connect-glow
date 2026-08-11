@@ -3,28 +3,28 @@ import { Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
 const socialData = [
   { 
     icon: Facebook, 
-    color: "from-orange-600 to-amber-500", 
-    shadow: "shadow-amber-500/50",
+    color: "from-lime-600 to-cyan-500", 
+    shadow: "shadow-cyan-500/50",
     url: "https://facebook.com/frimattechnologies",
     label: "Facebook"
   },
   { 
     icon: Twitter, 
-    color: "from-amber-500 to-orange-400", 
-    shadow: "shadow-orange-400/50",
+    color: "from-cyan-500 to-lime-400", 
+    shadow: "shadow-lime-400/50",
     url: "https://twitter.com/frimattechnologies",
     label: "Twitter"
   },
   { 
     icon: Linkedin, 
-    color: "from-orange-700 to-orange-600", 
-    shadow: "shadow-orange-600/50",
+    color: "from-lime-700 to-lime-600", 
+    shadow: "shadow-lime-600/50",
     url: "https://linkedin.com/company/frimattechnologies",
     label: "LinkedIn"
   },
   { 
     icon: Instagram, 
-    color: "from-pink-500 via-amber-500 to-orange-400", 
+    color: "from-pink-500 via-cyan-500 to-lime-400", 
     shadow: "shadow-pink-500/50",
     url: "https://instagram.com/frimattechnologies",
     label: "Instagram"

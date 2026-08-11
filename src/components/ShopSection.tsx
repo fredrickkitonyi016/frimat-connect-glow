@@ -378,7 +378,7 @@ export default function ShopSection() {
                     {product.name}
                   </h4>
                   <div className="flex items-center gap-1">
-                    <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
+                    <Star className="h-3 w-3 fill-lime-400 text-lime-400" />
                     <span className="text-xs" style={{ color: '#666' }}>{product.rating}</span>
                     <span className="text-xs" style={{ color: '#999' }}>({product.reviews})</span>
                   </div>
