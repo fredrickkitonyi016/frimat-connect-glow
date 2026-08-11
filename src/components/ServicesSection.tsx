@@ -21,6 +21,10 @@ import cybersecurityImage from "@/assets/services/cybersecurity-service.jpg";
 import itSupportImage from "@/assets/services/it-support-service.jpg";
 import ecommerceImage from "@/assets/services/ecommerce-service.jpg";
 import AmbientVideoBackground from "./AmbientVideoBackground";
+import cctvHudImage from "@/assets/products/hud-cctv-kit.jpg";
+import wifiHudImage from "@/assets/products/hud-wifi-router.jpg";
+import repairHudImage from "@/assets/products/hud-laptop.jpg";
+import networkHudImage from "@/assets/products/hud-network-kit.jpg";
 
 export default function ServicesSection() {
   const navigate = useNavigate();
@@ -29,7 +33,7 @@ export default function ServicesSection() {
     {
       icon: Camera,
       gradient: "from-lime-500 to-cyan-500",
-      image: cybersecurityImage,
+      image: cctvHudImage,
       op: "Deploy Security Grid",
       title: "CCTV & Security Systems",
       description: "Cameras, alarms and access control installed and set up on your phone.",
@@ -39,7 +43,7 @@ export default function ServicesSection() {
     {
       icon: Wifi,
       gradient: "from-cyan-500 to-lime-500",
-      image: cloudServiceImage,
+      image: wifiHudImage,
       op: "Signal Uplink Online",
       title: "Network & WiFi Solutions",
       description: "Strong, reliable internet for homes, offices, rentals and hotels.",
@@ -49,7 +53,7 @@ export default function ServicesSection() {
     {
       icon: Wrench,
       gradient: "from-emerald-500 to-lime-500",
-      image: itSupportImage,
+      image: repairHudImage,
       op: "Diagnostic Mode Initiated",
       title: "Electronics Repair",
       description: "Phone, laptop and TV repairs done fast, with genuine parts.",
@@ -79,7 +83,7 @@ export default function ServicesSection() {
     {
       icon: ShoppingBag,
       gradient: "from-lime-500 to-cyan-500",
-      image: ecommerceImage,
+      image: networkHudImage,
       op: "Inventory Grid Synced",
       title: "Tech Retail & Supply",
       description: "Genuine cameras, routers, laptops and accessories at fair prices.",

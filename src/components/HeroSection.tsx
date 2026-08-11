@@ -83,6 +83,9 @@ export default function HeroSection() {
       {/* Background Slider with Parallax */}
       <HeroSlider mousePosition={mousePosition} />
       
+      {/* Matrix HUD overlay */}
+      <div className="matrix-overlay z-[3]" />
+
       {/* Floating particles */}
       <div className="tech-particles z-[3]">
         {particles.map((particle) => (
@@ -145,10 +148,11 @@ export default function HeroSection() {
             {/* Badge */}
             <motion.div 
               variants={itemVariants}
-              className="inline-flex items-center gap-2 bg-primary/10 border border-primary/30 px-4 py-2 rounded-full backdrop-blur-sm hover:bg-primary/20 transition-all duration-300 cursor-default"
+              className="inline-flex items-center gap-2 bg-primary/10 border border-primary/40 px-4 py-2 backdrop-blur-sm hover:bg-primary/20 transition-all duration-300 cursor-default"
             >
               <Sparkles className="w-4 h-4 text-primary animate-pulse" />
-              <span className="text-sm font-medium text-foreground">Nairobi's Trusted Tech &amp; Security Partner</span>
+              <span className="text-xs font-mono uppercase tracking-[0.2em] text-primary">System Status: Operational</span>
+              <span className="text-sm font-medium text-foreground hidden sm:inline">| Nairobi Tech &amp; Security Command</span>
             </motion.div>
 
             {/* Main Heading */}
@@ -315,7 +319,7 @@ export default function HeroSection() {
         transition={{ delay: 1.5, duration: 0.5 }}
       >
         <div className="flex flex-col items-center gap-2">
-          <span className="text-xs text-muted-foreground font-medium">Scroll to explore</span>
+          <span className="hud-label">Scroll // Initiate</span>
           <div className="w-6 h-10 border-2 border-primary/50 rounded-full flex justify-center backdrop-blur-sm hover:border-primary transition-colors">
             <motion.div 
               className="w-1 h-3 bg-primary rounded-full mt-2"
