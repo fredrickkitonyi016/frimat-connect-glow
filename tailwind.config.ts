@@ -19,8 +19,9 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['Inter', 'system-ui', 'sans-serif'],
-				display: ['JetBrains Mono', 'Space Mono', 'ui-monospace', 'monospace'],
+				sans: ['Times New Roman', 'Times', 'serif'],
+				serif: ['Times New Roman', 'Times', 'serif'],
+				display: ['Times New Roman', 'Times', 'serif'],
 				mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
 			},
 			colors: {
