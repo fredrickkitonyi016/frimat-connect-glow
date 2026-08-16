@@ -174,14 +174,14 @@ Premium cyberpunk aesthetic with cinematic visuals.
 
   body {
     @apply bg-background text-foreground overflow-x-hidden;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: 'Times New Roman', Times, serif;
     background: var(--gradient-hero);
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'JetBrains Mono', 'Space Mono', ui-monospace, monospace;
+    font-family: 'Times New Roman', Times, serif;
     font-weight: 700;
-    letter-spacing: -0.02em;
+    letter-spacing: 0;
     text-transform: uppercase;
   }
 
