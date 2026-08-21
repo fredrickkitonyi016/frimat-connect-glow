@@ -11,6 +11,7 @@ import ProductDetail from "./pages/ProductDetail";
 import BookService from "./pages/BookService";
 import Shop from "./pages/Shop";
 import Contact from "./pages/Contact";
+import Portal from "./pages/Portal";
 import NotFound from "./pages/NotFound";
 
 
@@ -66,6 +67,7 @@ const App = () => (
             <Route path="/book-service" element={<BookService />} />
             <Route path="/shop" element={<Shop />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/portal" element={<Portal />} />
 
             
             {/* Service Routes */}
