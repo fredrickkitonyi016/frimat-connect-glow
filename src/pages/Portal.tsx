@@ -287,7 +287,9 @@ const Portal = () => {
 
       <main className="container mx-auto px-4 sm:px-6 py-6 sm:py-10">
         <div className="mb-6">
-          <p className="font-mono text-[11px] text-accent">[SECURE SESSION] CLIENT &amp; ADMIN ACCESS</p>
+          <p className="font-mono text-[11px] text-accent">
+            [SECURE SESSION] {role.toUpperCase()} ACCESS · {user?.email}
+          </p>
           <h1 className="text-2xl sm:text-4xl mt-2">Command Portal</h1>
           <p className="text-muted-foreground mt-2 max-w-2xl">
             Track your CCTV systems, WiFi network, repairs, invoices and support tickets in one
