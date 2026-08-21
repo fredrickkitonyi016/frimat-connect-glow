@@ -226,6 +226,18 @@ const Portal = () => {
     setTicket({ ...ticket, details: "" });
   };
 
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <p className="font-mono text-xs text-primary animate-pulse">
+          [SYSTEM] ESTABLISHING SECURE SESSION…
+        </p>
+      </div>
+    );
+  }
+
+  if (!session) return <PortalSignIn />;
+
   return (
     <div className="min-h-screen bg-background">
       {/* Global Command Navigation Bar */}
@@ -236,10 +248,21 @@ const Portal = () => {
               <Radio size={18} className="text-primary animate-pulse" />
               <span className="font-mono text-xs sm:text-sm text-primary">FRIMAT // COMMAND PORTAL</span>
             </Link>
-            <span className="hidden md:inline font-mono text-[11px] text-muted-foreground">
-              SYSTEM STATUS: <span className="text-primary">OPERATIONAL</span> ·{" "}
-              {clock.toLocaleTimeString("en-KE", { hour12: false })} EAT
-            </span>
+            <div className="flex items-center gap-3">
+              <span className="hidden md:inline font-mono text-[11px] text-muted-foreground">
+                SYSTEM STATUS: <span className="text-primary">OPERATIONAL</span> ·{" "}
+                {clock.toLocaleTimeString("en-KE", { hour12: false })} EAT
+              </span>
+              <span className="rounded border border-accent/50 px-2 py-1 font-mono text-[10px] uppercase text-accent">
+                {role} clearance
+              </span>
+              <button
+                onClick={() => void signOut()}
+                className="rounded border border-border/60 px-2 py-1 font-mono text-[10px] uppercase text-muted-foreground hover:border-primary hover:text-primary transition-colors"
+              >
+                Sign Out
+              </button>
+            </div>
           </div>
           <nav className="flex gap-2 overflow-x-auto pb-2 -mx-1 px-1">
             {[
