@@ -77,7 +77,8 @@ export default function Footer() {
                 { name: "How It Works", href: "#how-it-works" },
                 { name: "Shop", href: "/shop" },
                 { name: "Book a Service", href: "/book-service" },
-                { name: "Contact", href: "/contact" }
+                { name: "Contact", href: "/contact" },
+                { name: "Client & Admin Portal", href: "/portal" }
               ].map((link, index) => (
 
                 <li key={index}>
