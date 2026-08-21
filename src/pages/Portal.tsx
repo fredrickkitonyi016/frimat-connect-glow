@@ -45,7 +45,7 @@ const Panel = ({
 }: {
   title: string;
   tag?: string;
-  icon?: React.ComponentType<{ size?: number; className?: string }>;
+  icon?: React.ComponentType<{ size?: string | number; className?: string }>;
   children: React.ReactNode;
   className?: string;
 }) => (
