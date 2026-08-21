@@ -162,6 +162,7 @@ type TabId = (typeof tabs)[number]["id"];
 /* ----------------------------------- Page ----------------------------------- */
 
 const Portal = () => {
+  const { session, user, role, loading, signOut } = usePortalAuth();
   const [tab, setTab] = useState<TabId>("dashboard");
   const [queue, setQueue] = useState<QueueEntry[]>([]);
   const [clock, setClock] = useState(new Date());
