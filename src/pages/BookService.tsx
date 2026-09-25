@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { MessageSquare, Phone, MapPin, ShieldCheck, Clock } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
+import { pushToQueue } from "@/lib/portalQueue";
 
 const serviceOptions = [
   "CCTV Installation",
@@ -34,7 +35,13 @@ export default function BookService() {
     }
     const text = `Hello FRIMAT Technologies! I would like to book a service.%0A%0AName: ${form.name}%0APhone: ${form.phone}%0AService: ${form.service}%0AArea: ${form.area}%0ADetails: ${form.message || "-"}`;
     window.open(`https://wa.me/254112277289?text=${text}`, "_blank", "noopener,noreferrer");
-    toast({ title: "Booking sent", description: "We will get back to you shortly on WhatsApp." });
+    const rec = pushToQueue({
+      source: form.service === "Buy Hardware" ? "purchase" : "booking",
+      title: form.service,
+      detail: `${form.name} · ${form.phone}${form.message ? " · " + form.message : ""}`,
+      location: form.area,
+    });
+    toast({ title: `Booking sent · ${rec.id}`, description: "Track it in the Portal. We will reply shortly on WhatsApp." });
   };
 
   return (
