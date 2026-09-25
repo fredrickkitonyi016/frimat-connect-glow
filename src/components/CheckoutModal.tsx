@@ -14,6 +14,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { toast } from '@/hooks/use-toast';
 import { CheckCircle, CreditCard, ShieldCheck, Smartphone } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
+import { pushToQueue } from '@/lib/portalQueue';
 
 interface CheckoutModalProps {
   open: boolean;
@@ -89,6 +90,7 @@ export const CheckoutModal = ({ open, onOpenChange }: CheckoutModalProps) => {
         ],
       },
       callback: (response) => {
+        pushToQueue({ source: 'purchase', title: `Shop order (${items.length} item${items.length === 1 ? '' : 's'})`, detail: items.map(i => `${i.quantity}x ${i.name}`).join(', '), amountKsh: items.reduce((t, i) => t + i.price * i.quantity, 0), status: 'PAYMENT INITIATED' });
         toast({
           title: '🎉 Payment Successful!',
           description: `Transaction ref: ${response.reference}. We'll contact you shortly.`,
@@ -131,6 +133,7 @@ export const CheckoutModal = ({ open, onOpenChange }: CheckoutModalProps) => {
           description: 'An M-Pesa payment prompt has been sent to your phone. Enter your PIN to complete.',
         });
         setMpesaStatus('success');
+        pushToQueue({ source: 'purchase', title: `Shop order (${items.length} item${items.length === 1 ? '' : 's'})`, detail: items.map(i => `${i.quantity}x ${i.name}`).join(', '), amountKsh: items.reduce((t, i) => t + i.price * i.quantity, 0), status: 'PAYMENT INITIATED' });
         // Clear cart after a delay (assuming payment will complete)
         setTimeout(() => {
           clearCart();
