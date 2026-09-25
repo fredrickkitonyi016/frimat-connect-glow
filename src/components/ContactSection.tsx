@@ -1,3 +1,4 @@
+import { pushToQueue } from "@/lib/portalQueue";
 import { Button } from "@/components/ui/button";
 import { 
   Mail, 
@@ -91,6 +92,7 @@ export default function ContactSection() {
     const whatsappMessage = encodeURIComponent(messageLines.join('\n'));
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
     
+    pushToQueue({ source: "ticket", title: formData.service || "General enquiry", detail: `${formData.firstName} ${formData.lastName} · ${formData.email}` });
     // Open WhatsApp with the message
     window.open(whatsappUrl, '_blank');
     
