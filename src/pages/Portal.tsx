@@ -151,12 +151,14 @@ const invoices = [
 
 const regions = ["Nairobi", "Kiambu", "Machakos", "Kajiado"];
 
+const ALL = ["admin", "staff", "client"] as const;
 const tabs = [
-  { id: "dashboard", label: "Command Center", icon: LayoutDashboard },
-  { id: "equipment", label: "Equipment Tracker", icon: Camera },
-  { id: "repairs", label: "Repair Terminal", icon: Wrench },
-  { id: "billing", label: "Billing & Shop", icon: CreditCard },
-  { id: "support", label: "Service Desk", icon: Headphones },
+  { id: "dashboard", label: "Command Center", icon: LayoutDashboard, roles: ALL },
+  { id: "equipment", label: "Equipment Tracker", icon: Camera, roles: ALL },
+  { id: "repairs", label: "Repair Terminal", icon: Wrench, roles: ALL },
+  { id: "billing", label: "Billing & Shop", icon: CreditCard, roles: ["admin", "client"] },
+  { id: "support", label: "Service Desk", icon: Headphones, roles: ALL },
+  { id: "operations", label: "Operations Control", icon: ShieldCheck, roles: ["admin", "staff"] },
 ] as const;
 
 type TabId = (typeof tabs)[number]["id"];
@@ -299,7 +301,7 @@ const Portal = () => {
 
         {/* Module tabs */}
         <div className="flex gap-2 overflow-x-auto pb-3 mb-6">
-          {tabs.map((t) => (
+          {tabs.filter((t) => (t.roles as readonly string[]).includes(role)).map((t) => (
             <button
               key={t.id}
               onClick={() => setTab(t.id)}
@@ -659,6 +661,48 @@ const Portal = () => {
               </p>
             </Panel>
           </div>
+        )}
+
+        {/* ------------------------- Operations (staff/admin) ------------------------- */}
+        {tab === "operations" && role !== "client" && (
+          <Panel title="Operations Control" tag={`${role.toUpperCase()} ONLY`} icon={ShieldCheck}>
+            <p className="text-sm text-muted-foreground mb-4">
+              Every request from the main site. Update the status as work moves forward.
+            </p>
+            {queue.length === 0 ? (
+              <p className="font-mono text-[11px] text-muted-foreground">No requests yet.</p>
+            ) : (
+              <div className="space-y-2">
+                {queue.map((q) => (
+                  <div
+                    key={q.id}
+                    className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 rounded-lg border border-border/50 bg-background/60 p-3"
+                  >
+                    <div>
+                      <p className="font-mono text-[11px] text-accent">{q.id} · {q.source.toUpperCase()}</p>
+                      <p className="text-sm">{q.title}</p>
+                      {q.location && <p className="text-xs text-muted-foreground">{q.location}</p>}
+                    </div>
+                    <select
+                      value={q.status}
+                      onChange={(e) => {
+                        const next = getQueue().map((x) =>
+                          x.id === q.id ? { ...x, status: e.target.value } : x
+                        );
+                        localStorage.setItem("frimat_portal_queue", JSON.stringify(next));
+                        window.dispatchEvent(new Event(QUEUE_EVENT));
+                      }}
+                      className="rounded border border-primary/40 bg-background px-2 py-1 font-mono text-[11px] text-primary"
+                    >
+                      {["SIGNAL RECEIVED", "DIAGNOSTIC MODE", "HARDWARE REPLACEMENT", "READY FOR PICKUP", "COMPLETED"].map((s) => (
+                        <option key={s} value={s}>{s}</option>
+                      ))}
+                    </select>
+                  </div>
+                ))}
+              </div>
+            )}
+          </Panel>
         )}
       </main>
       <Footer />
