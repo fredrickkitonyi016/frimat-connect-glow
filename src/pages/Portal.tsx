@@ -475,7 +475,7 @@ const Portal = () => {
         )}
 
         {/* ----------------------------- Billing ----------------------------- */}
-        {tab === "billing" && (
+        {tab === "billing" && role !== "staff" && (
           <div className="grid lg:grid-cols-3 gap-6">
             <Panel
               title="Invoices & Quotes"
