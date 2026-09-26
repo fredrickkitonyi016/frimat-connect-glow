@@ -32,6 +32,7 @@ import {
   pushToQueue,
   subscribeQueue,
   type QueueEntry,
+  QUEUE_EVENT,
 } from "@/lib/portalQueue";
 
 const ksh = (n: number) => `KSh ${n.toLocaleString("en-KE")}`;
