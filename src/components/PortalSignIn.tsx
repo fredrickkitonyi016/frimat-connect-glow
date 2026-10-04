@@ -84,8 +84,18 @@ const PortalSignIn = () => {
         </div>
       </header>
 
-      <main className="flex-1 flex items-center justify-center px-4 py-12">
-        <div className="relative w-full max-w-md rounded-xl border border-primary/30 bg-card/40 backdrop-blur-sm p-6 sm:p-8">
+      <main className="relative flex-1 flex items-center justify-center px-4 py-12 overflow-hidden">
+        {/* Blurred portal preview behind the sign-in card */}
+        <div aria-hidden className="absolute inset-0 grid grid-cols-2 md:grid-cols-4 gap-4 p-6 blur-md opacity-40 pointer-events-none">
+          {Array.from({ length: 8 }).map((_, i) => (
+            <div key={i} className="rounded-xl border border-primary/40 bg-card/60 p-4">
+              <div className="h-3 w-1/2 rounded bg-primary/50 mb-3" />
+              <div className="h-16 rounded bg-accent/20 mb-2" />
+              <div className="h-2 w-3/4 rounded bg-muted" />
+            </div>
+          ))}
+        </div>
+        <div className="relative w-full max-w-md rounded-xl border border-primary/30 bg-card/70 backdrop-blur-xl p-6 sm:p-8">
           <span className="pointer-events-none absolute -top-px -left-px h-4 w-4 border-t-2 border-l-2 border-primary" />
           <span className="pointer-events-none absolute -top-px -right-px h-4 w-4 border-t-2 border-r-2 border-accent" />
           <span className="pointer-events-none absolute -bottom-px -left-px h-4 w-4 border-b-2 border-l-2 border-accent" />

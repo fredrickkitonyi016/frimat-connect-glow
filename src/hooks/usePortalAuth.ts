@@ -16,6 +16,8 @@ export const usePortalAuth = () => {
 
   const resolveRole = useCallback(async (uid: string) => {
     try {
+      // Ensure the profile + client role rows exist before any record is linked to them.
+      await supabase.rpc("bootstrap_current_user", {});
       // has_role is a security-definer function; falls back to client access.
       const { data: isAdmin } = await (supabase.rpc as unknown as (
         fn: string,

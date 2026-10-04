@@ -25,13 +25,13 @@ export default function HeroSection() {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  const projectsCount = useCountUp({ end: 10000, suffix: '+', duration: 3000, enableScrollTrigger: false });
-  const clientsCount = useCountUp({ end: 2500, suffix: '+', duration: 3500, enableScrollTrigger: false });
+  const projectsCount = useCountUp({ end: 100, suffix: '+', duration: 3000, enableScrollTrigger: false });
+  const clientsCount = useCountUp({ end: 500, suffix: '+', duration: 3500, enableScrollTrigger: false });
   const uptimeCount = useCountUp({ end: 24, suffix: '/7', duration: 2000, enableScrollTrigger: false });
-  const ratingCount = useCountUp({ end: 15, suffix: '+ Years', duration: 2500, enableScrollTrigger: false });
+  const ratingCount = useCountUp({ end: 3, suffix: '+ Years', duration: 2500, enableScrollTrigger: false });
 
   const features = [
-    { icon: CheckCircle, text: "Trusted by 2,500+ clients" },
+    { icon: CheckCircle, text: "Trusted by 500+ clients" },
     { icon: Shield, text: "90-day workmanship warranty" },
     { icon: Zap, text: "Same-day response in Nairobi" },
   ];
