@@ -31,7 +31,7 @@ export default function HeroSection() {
   const ratingCount = useCountUp({ end: 15, suffix: '+ Years', duration: 2500, enableScrollTrigger: false });
 
   const features = [
-    { icon: CheckCircle, text: "Trusted by 2,500+ clients" },
+    { icon: CheckCircle, text: "Trusted by 500+ clients" },
     { icon: Shield, text: "90-day workmanship warranty" },
     { icon: Zap, text: "Same-day response in Nairobi" },
   ];

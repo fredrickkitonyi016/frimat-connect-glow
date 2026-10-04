@@ -155,8 +155,8 @@ export default function AboutSection() {
               <h3 className="text-2xl font-semibold text-foreground">Why Choose Us?</h3>
               <div className="space-y-3">
                 {[
-                  "15+ years serving homes and businesses in Kenya",
-                  "2,500+ happy clients and 10,000+ repairs completed",
+                  "3+ years serving homes and businesses in Kenya",
+                  "500+ happy clients and 100+ repairs completed",
                   "90-day workmanship warranty on every job",
                   "Free site surveys across Nairobi, Kiambu, Machakos and Kajiado"
                 ].map((item, index) => (
