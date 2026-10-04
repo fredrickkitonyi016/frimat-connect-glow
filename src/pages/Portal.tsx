@@ -25,6 +25,7 @@ import { Label } from "@/components/ui/label";
 import { toast } from "@/hooks/use-toast";
 import Footer from "@/components/Footer";
 import PortalSignIn from "@/components/PortalSignIn";
+import ClientRecords from "@/components/portal/ClientRecords";
 import { usePortalAuth } from "@/hooks/usePortalAuth";
 import {
   getQueue,
@@ -159,6 +160,7 @@ const tabs = [
   { id: "repairs", label: "Repair Terminal", icon: Wrench, roles: ALL },
   { id: "billing", label: "Billing & Shop", icon: CreditCard, roles: ["admin", "client"] },
   { id: "support", label: "Service Desk", icon: Headphones, roles: ALL },
+  { id: "records", label: "Client Records", icon: Ticket, roles: ALL },
   { id: "operations", label: "Operations Control", icon: ShieldCheck, roles: ["admin", "staff"] },
 ] as const;
 
@@ -662,6 +664,12 @@ const Portal = () => {
               </p>
             </Panel>
           </div>
+        )}
+
+        {tab === "records" && user && (
+          <Panel title="Client Records" tag="LIVE DATABASE" icon={Ticket}>
+            <ClientRecords userId={user.id} role={role} />
+          </Panel>
         )}
 
         {/* ------------------------- Operations (staff/admin) ------------------------- */}
