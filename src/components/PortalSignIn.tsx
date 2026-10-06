@@ -45,7 +45,7 @@ const PortalSignIn = () => {
       const { error } = await supabase.auth.signUp({
         email: email.trim(),
         password,
-        options: { emailRedirectTo: `${window.location.origin}/portal` },
+        options: { emailRedirectTo: window.location.origin },
       });
       if (error) {
         toast({
@@ -66,7 +66,7 @@ const PortalSignIn = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen flex flex-col">
       <header className="border-b border-primary/30 bg-background/90 backdrop-blur-xl">
         <div className="container mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
