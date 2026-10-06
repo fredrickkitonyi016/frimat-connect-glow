@@ -50,7 +50,7 @@ export function useCountUp({
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [enableScrollTrigger, isVisible]);
+  }, [enableScrollTrigger, isVisible, end]);
 
   const startAnimation = () => {
     const startTime = Date.now();

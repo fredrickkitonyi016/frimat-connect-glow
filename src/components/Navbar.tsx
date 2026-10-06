@@ -8,6 +8,7 @@ import { useCartStore } from "@/stores/cartStore";
 import ThemeToggle from "@/components/ThemeToggle";
 import frimatLogo from "@/assets/frimat-logo.png";
 import HelpCentreModal from "@/components/HelpCentreModal";
+import UserMenu from "@/components/UserMenu";
 import { 
   Home, 
   Phone,
@@ -365,15 +366,7 @@ export default function Navbar() {
                   </div>
                   <span className="text-lg font-semibold">Support / Help Desk</span>
                 </button>
-                <button
-                  onClick={() => { setIsMobileMenuOpen(false); navigate('/portal'); }}
-                  className="flex items-center gap-4 p-4 rounded-2xl bg-muted/50 hover:bg-primary/10 transition-colors w-full text-left"
-                >
-                  <div className="p-2 rounded-xl bg-background/50">
-                    <Globe size={22} />
-                  </div>
-                  <span className="text-lg font-semibold">Portal</span>
-                </button>
+                <UserMenu mobile onNavigate={() => setIsMobileMenuOpen(false)} />
                 <a
                   href="#about"
                   onClick={(e) => { e.preventDefault(); handleNavigation('#about'); }}
@@ -428,10 +421,7 @@ export default function Navbar() {
                   <span>Support / Help Desk</span>
                 </button>
                 <span className="text-border">|</span>
-                <button onClick={() => navigate('/portal')} className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
-                  <Globe size={14} />
-                  <span>Portal</span>
-                </button>
+                <UserMenu />
               </div>
               <div className="flex items-center gap-6">
                 <a href="#about" onClick={(e) => { e.preventDefault(); handleNavigation('#about'); }} className="text-muted-foreground hover:text-primary transition-colors">

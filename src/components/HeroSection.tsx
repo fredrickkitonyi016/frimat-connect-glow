@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle, Shield, Zap, Sparkles } from "lucide-react";
 import { useCountUp } from "@/hooks/useCountUp";
+import { useSiteStats } from "@/hooks/useSiteStats";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import HeroSlider from "./HeroSlider";
@@ -25,8 +26,9 @@ export default function HeroSection() {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  const projectsCount = useCountUp({ end: 100, suffix: '+', duration: 3000, enableScrollTrigger: false });
-  const clientsCount = useCountUp({ end: 500, suffix: '+', duration: 3500, enableScrollTrigger: false });
+  const stats = useSiteStats();
+  const projectsCount = useCountUp({ end: stats.repairs, suffix: '+', duration: 3000, enableScrollTrigger: false });
+  const clientsCount = useCountUp({ end: stats.clients, suffix: '+', duration: 3500, enableScrollTrigger: false });
   const uptimeCount = useCountUp({ end: 24, suffix: '/7', duration: 2000, enableScrollTrigger: false });
   const ratingCount = useCountUp({ end: 3, suffix: '+ Years', duration: 2500, enableScrollTrigger: false });
 

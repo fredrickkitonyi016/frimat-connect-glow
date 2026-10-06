@@ -223,6 +223,14 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      admin_set_role: {
+        Args: {
+          _grant: boolean
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: undefined
+      }
       bootstrap_current_user: {
         Args: {
           _company?: string
@@ -232,6 +240,7 @@ export type Database = {
         }
         Returns: undefined
       }
+      get_site_stats: { Args: never; Returns: Json }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
