@@ -8,7 +8,7 @@ import { supabase } from "@/integrations/supabase/client";
 import type { PortalRole } from "@/hooks/usePortalAuth";
 
 type Profile = { user_id: string; full_name: string; email: string; phone: string; company: string; location: string };
-type Record_ = { id: string; tracking_id: string; client_id: string; service_type: string; device: string; issue: string; status: string; created_at: string };
+type Record_ = { id: string; notes?: string | null; tracking_id: string; client_id: string; service_type: string; device: string; issue: string; status: string; created_at: string };
 type Invoice = { id: string; invoice_number: string; client_id: string; description: string; amount_ksh: number; payment_status: string };
 
 const STATUSES = ["SIGNAL RECEIVED", "DIAGNOSTIC MODE", "HARDWARE REPLACEMENT", "READY FOR PICKUP", "COMPLETED"];
@@ -165,6 +165,7 @@ const ClientRecords = ({ userId, role }: { userId: string; role: PortalRole }) =
                   <p className="font-mono text-[11px] text-accent">{r.tracking_id}{isStaff && ` · ${nameOf(r.client_id)}`}</p>
                   <p className="text-sm">{r.service_type}{r.device && ` — ${r.device}`}</p>
                   {r.issue && <p className="text-xs text-muted-foreground">{r.issue}</p>}
+                  {isStaff && r.notes?.startsWith("AI PRIORITY") && <p className="font-mono text-[11px] text-primary">{r.notes}</p>}
                 </div>
                 {isStaff ? (
                   <select value={r.status} onChange={(e) => void setStatus(r.id, e.target.value)}
