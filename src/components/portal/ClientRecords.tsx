@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { Database, Plus, Save } from "lucide-react";
+import { Database, Plus, Save, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -8,7 +8,7 @@ import { supabase } from "@/integrations/supabase/client";
 import type { PortalRole } from "@/hooks/usePortalAuth";
 
 type Profile = { user_id: string; full_name: string; email: string; phone: string; company: string; location: string };
-type Record_ = { id: string; tracking_id: string; client_id: string; service_type: string; device: string; issue: string; status: string; created_at: string };
+type Record_ = { id: string; notes?: string | null; tracking_id: string; client_id: string; service_type: string; device: string; issue: string; status: string; created_at: string };
 type Invoice = { id: string; invoice_number: string; client_id: string; description: string; amount_ksh: number; payment_status: string };
 
 const STATUSES = ["SIGNAL RECEIVED", "DIAGNOSTIC MODE", "HARDWARE REPLACEMENT", "READY FOR PICKUP", "COMPLETED"];
@@ -21,6 +21,8 @@ const ClientRecords = ({ userId, role }: { userId: string; role: PortalRole }) =
   const [invoices, setInvoices] = useState<Invoice[]>([]);
   const [me, setMe] = useState({ full_name: "", phone: "", company: "", location: "" });
   const [rec, setRec] = useState({ client_id: "", service_type: "", device: "", issue: "" });
+  const [triage, setTriage] = useState<{ repair_type: string; priority: string; reason: string } | null>(null);
+  const [triaging, setTriaging] = useState(false);
   const [inv, setInv] = useState({ client_id: "", description: "", amount_ksh: "" });
 
   const load = useCallback(async () => {
@@ -51,11 +53,23 @@ const ClientRecords = ({ userId, role }: { userId: string; role: PortalRole }) =
     void load();
   };
 
+  const runTriage = async () => {
+    if (rec.issue.trim().length < 5) return fail("Describe the problem first.");
+    setTriaging(true);
+    const { data, error } = await supabase.functions.invoke("triage-repair", { body: { description: rec.issue, device: rec.device } });
+    setTriaging(false);
+    if (error || data?.error) return fail(data?.error || error?.message || "AI failed.");
+    setTriage(data);
+    if (!rec.service_type.trim()) setRec((x) => ({ ...x, service_type: data.repair_type }));
+  };
+
   const addRecord = async () => {
     const client_id = isStaff ? rec.client_id : userId;
     if (!client_id || !rec.service_type.trim()) return fail("Choose a client and enter the service.");
+    const notes = triage ? `AI PRIORITY: ${triage.priority} (${triage.repair_type}) — ${triage.reason}` : null;
+    setTriage(null);
     const { data, error } = await supabase.from("service_records")
-      .insert({ client_id, service_type: rec.service_type.trim(), device: rec.device.trim(), issue: rec.issue.trim() })
+      .insert({ client_id, service_type: rec.service_type.trim(), device: rec.device.trim(), issue: rec.issue.trim(), notes })
       .select("tracking_id").single();
     if (error) return fail(error.message);
     toast({ title: "Record created", description: `Tracking ID ${data.tracking_id}` });
@@ -114,9 +128,19 @@ const ClientRecords = ({ userId, role }: { userId: string; role: PortalRole }) =
           {isStaff && <ClientSelect value={rec.client_id} onChange={(v) => setRec({ ...rec, client_id: v })} />}
           <Input placeholder="Service (e.g. CCTV install)" value={rec.service_type} maxLength={120} onChange={(e) => setRec({ ...rec, service_type: e.target.value })} />
           <Input placeholder="Device" value={rec.device} maxLength={120} onChange={(e) => setRec({ ...rec, device: e.target.value })} />
-          <Input placeholder="Issue / notes" value={rec.issue} maxLength={500} onChange={(e) => setRec({ ...rec, issue: e.target.value })} />
+          <Input placeholder="Describe the problem" value={rec.issue} maxLength={500} onChange={(e) => setRec({ ...rec, issue: e.target.value })} />
         </div>
-        <Button onClick={addRecord} className="mt-3 font-mono text-xs uppercase">Save Record</Button>
+        {triage && (
+          <p className="mt-3 font-mono text-[11px] text-accent">
+            AI: {triage.repair_type} · PRIORITY {triage.priority} — <span className="text-muted-foreground">{triage.reason}</span>
+          </p>
+        )}
+        <div className="mt-3 flex flex-wrap gap-2">
+          <Button variant="outline" onClick={runTriage} disabled={triaging} className="font-mono text-xs uppercase">
+            <Sparkles size={14} className="mr-2" />{triaging ? "Analysing…" : "AI Diagnose"}
+          </Button>
+          <Button onClick={addRecord} className="font-mono text-xs uppercase">Save Record</Button>
+        </div>
       </section>
 
       {role === "admin" && (
@@ -141,6 +165,7 @@ const ClientRecords = ({ userId, role }: { userId: string; role: PortalRole }) =
                   <p className="font-mono text-[11px] text-accent">{r.tracking_id}{isStaff && ` · ${nameOf(r.client_id)}`}</p>
                   <p className="text-sm">{r.service_type}{r.device && ` — ${r.device}`}</p>
                   {r.issue && <p className="text-xs text-muted-foreground">{r.issue}</p>}
+                  {isStaff && r.notes?.startsWith("AI PRIORITY") && <p className="font-mono text-[11px] text-primary">{r.notes}</p>}
                 </div>
                 {isStaff ? (
                   <select value={r.status} onChange={(e) => void setStatus(r.id, e.target.value)}
