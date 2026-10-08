@@ -1,0 +1,3 @@
+- The whole site is wrapped in AuthProvider + SiteGate (App.tsx); unauthenticated visitors only see the blurred sign-in overlay. Why: the user requires sign-in before any page is usable.
+- pushToQueue (src/lib/portalQueue.ts) is the single entry point for site requests; it also inserts a service_record for signed-in users with AI priority in notes. Why: one place keeps every form synced to the database.
+- Role changes go through the admin_set_role RPC; user_roles stays write-denied to clients. Why: prevents privilege escalation.
