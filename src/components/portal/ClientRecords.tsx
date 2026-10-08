@@ -99,6 +99,19 @@ const ClientRecords = ({ userId, role }: { userId: string; role: PortalRole }) =
     void load();
   };
 
+  const downloadInvoice = (i: Invoice) => {
+    const p = profiles.find((x) => x.user_id === i.client_id);
+    const html = `<html><head><title>${i.invoice_number}</title></head><body style="font-family:Times New Roman;padding:40px">
+<h1>FRIMAT TECHNOLOGIES — INVOICE</h1><p><b>Invoice:</b> ${i.invoice_number}</p>
+<p><b>Billed to:</b> ${p?.full_name || ""} ${p?.email || ""} ${p?.phone || ""}</p>
+<p><b>Description:</b> ${i.description}</p><h2>Total: KSh ${Number(i.amount_ksh).toLocaleString("en-KE")}</h2>
+<p><b>Status:</b> ${i.payment_status}</p><p>Nairobi, Kenya · +254112277289 · frimattechnologies016@gmail.com</p></body></html>`;
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([html], { type: "text/html" }));
+    a.download = `${i.invoice_number}.html`;
+    a.click();
+  };
+
   const ClientSelect = ({ value, onChange }: { value: string; onChange: (v: string) => void }) => (
     <select value={value} onChange={(e) => onChange(e.target.value)}
       className="w-full h-10 rounded-md border border-input bg-background px-3 text-sm">
@@ -198,6 +211,7 @@ const ClientRecords = ({ userId, role }: { userId: string; role: PortalRole }) =
                         {["DUE", "PAID", "CANCELLED"].map((s) => <option key={s}>{s}</option>)}
                       </select>
                     ) : <span className="font-mono text-[11px] text-primary">{i.payment_status}</span>}
+                    <button onClick={() => downloadInvoice(i)} className="block ml-auto mt-1 font-mono text-[10px] text-accent underline">DOWNLOAD</button>
                   </div>
                 </div>
               ))}
