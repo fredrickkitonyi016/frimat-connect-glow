@@ -5,6 +5,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CartProvider } from "@/contexts/CartContext";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import { AuthProvider } from "@/contexts/AuthContext";
+import SiteGate from "@/components/SiteGate";
+import Admin from "./pages/Admin";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import ProductDetail from "./pages/ProductDetail";
@@ -60,6 +63,8 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <AuthProvider>
+          <SiteGate>
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/auth" element={<Auth />} />
@@ -68,6 +73,7 @@ const App = () => (
             <Route path="/shop" element={<Shop />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/portal" element={<Portal />} />
+            <Route path="/admin" element={<Admin />} />
 
             
             {/* Service Routes */}
@@ -110,6 +116,8 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
           </Routes>
           <WhatsAppButton />
+          </SiteGate>
+          </AuthProvider>
         </BrowserRouter>
       </CartProvider>
     </TooltipProvider>
