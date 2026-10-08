@@ -118,7 +118,7 @@ const Admin = () => {
 
         <nav className="flex flex-wrap gap-2">
           {tabs.map((t) => (
-            <Button key={t.id} variant={tab === t.id ? "default" : "outline"} onClick={() => setTab(t.id)} className="font-mono text-xs uppercase">
+            <Button key={t.id} variant={tab === t.id ? "default" : "outline"} onClick={() => setTab(t.id as typeof tab)} className="font-mono text-xs uppercase">
               <t.icon size={14} className="mr-2" />{t.label}
             </Button>
           ))}
