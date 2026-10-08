@@ -1,3 +1,4 @@
+import { supabase } from "@/integrations/supabase/client";
 // Cross-platform sync: requests made anywhere on the main site are pushed into
 // the portal's diagnostic queue with a unique Sci-Fi tracking ID.
 
@@ -48,7 +49,30 @@ export function pushToQueue(
   } catch {
     /* storage unavailable */
   }
+  void syncToDatabase(record);
   return record;
+}
+
+/** Signed-in users: store the request as a service record with their account details and an AI priority. */
+async function syncToDatabase(r: QueueEntry) {
+  try {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return;
+    const { data: prof } = await supabase.from("profiles").select("phone").eq("user_id", user.id).maybeSingle();
+    const description = [r.title, r.detail].filter(Boolean).join(" — ");
+    let ai = "";
+    if (r.source !== "purchase" && description.length >= 5) {
+      const { data } = await supabase.functions.invoke("triage-repair", { body: { description, device: "" } });
+      if (data?.priority) ai = `AI PRIORITY: ${data.priority} (${data.repair_type}) — ${data.reason}`;
+    }
+    const notes = [ai, `SOURCE: ${r.source.toUpperCase()} · ${r.id}`, `CONTACT: ${user.email ?? ""} ${prof?.phone ?? ""}`.trim(),
+      r.amountKsh ? `AMOUNT: KSh ${r.amountKsh.toLocaleString("en-KE")}` : "", r.location ? `LOCATION: ${r.location}` : ""]
+      .filter(Boolean).join("\n");
+    await supabase.from("service_records").insert({
+      client_id: user.id, service_type: r.title.slice(0, 120), device: "", issue: (r.detail ?? "").slice(0, 500),
+      status: r.status, notes,
+    });
+  } catch { /* offline: local queue still holds it */ }
 }
 
 export function subscribeQueue(cb: () => void) {

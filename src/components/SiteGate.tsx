@@ -14,7 +14,7 @@ const SiteGate = ({ children }: { children: ReactNode }) => {
 
   return (
     <>
-      <div aria-hidden={locked} inert={locked ? "" : undefined} className={locked ? "pointer-events-none select-none" : undefined}>
+      <div aria-hidden={locked} className={locked ? "pointer-events-none select-none" : undefined}>
         {children}
       </div>
       {locked && (
