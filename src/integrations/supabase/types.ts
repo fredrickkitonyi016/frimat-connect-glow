@@ -64,6 +64,42 @@ export type Database = {
           },
         ]
       }
+      devices: {
+        Row: {
+          client_id: string
+          created_at: string
+          device_type: string
+          id: string
+          installed_on: string | null
+          model: string
+          serial_no: string
+          updated_at: string
+          warranty_expires_at: string | null
+        }
+        Insert: {
+          client_id: string
+          created_at?: string
+          device_type?: string
+          id?: string
+          installed_on?: string | null
+          model?: string
+          serial_no?: string
+          updated_at?: string
+          warranty_expires_at?: string | null
+        }
+        Update: {
+          client_id?: string
+          created_at?: string
+          device_type?: string
+          id?: string
+          installed_on?: string | null
+          model?: string
+          serial_no?: string
+          updated_at?: string
+          warranty_expires_at?: string | null
+        }
+        Relationships: []
+      }
       invoices: {
         Row: {
           amount_ksh: number
@@ -144,6 +180,80 @@ export type Database = {
         }
         Relationships: []
       }
+      quotes: {
+        Row: {
+          amount_ksh: number
+          client_id: string
+          created_at: string
+          description: string
+          id: string
+          quote_number: string
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          amount_ksh?: number
+          client_id: string
+          created_at?: string
+          description: string
+          id?: string
+          quote_number?: string
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          amount_ksh?: number
+          client_id?: string
+          created_at?: string
+          description?: string
+          id?: string
+          quote_number?: string
+          status?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      reviews: {
+        Row: {
+          approved: boolean
+          client_id: string
+          comment: string
+          created_at: string
+          display_name: string
+          id: string
+          rating: number
+          record_id: string | null
+        }
+        Insert: {
+          approved?: boolean
+          client_id: string
+          comment?: string
+          created_at?: string
+          display_name?: string
+          id?: string
+          rating?: number
+          record_id?: string | null
+        }
+        Update: {
+          approved?: boolean
+          client_id?: string
+          comment?: string
+          created_at?: string
+          display_name?: string
+          id?: string
+          rating?: number
+          record_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "reviews_record_id_fkey"
+            columns: ["record_id"]
+            isOneToOne: false
+            referencedRelation: "service_records"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       service_records: {
         Row: {
           assigned_to: string
@@ -197,6 +307,38 @@ export type Database = {
           },
         ]
       }
+      ticket_messages: {
+        Row: {
+          body: string
+          created_at: string
+          id: string
+          record_id: string
+          sender_id: string
+        }
+        Insert: {
+          body: string
+          created_at?: string
+          id?: string
+          record_id: string
+          sender_id: string
+        }
+        Update: {
+          body?: string
+          created_at?: string
+          id?: string
+          record_id?: string
+          sender_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ticket_messages_record_id_fkey"
+            columns: ["record_id"]
+            isOneToOne: false
+            referencedRelation: "service_records"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       user_roles: {
         Row: {
           created_at: string
@@ -247,6 +389,14 @@ export type Database = {
           _user_id: string
         }
         Returns: boolean
+      }
+      log_purchase_invoice: {
+        Args: { _amount: number; _description: string; _reference: string }
+        Returns: string
+      }
+      respond_quote: {
+        Args: { _accept: boolean; _quote_id: string }
+        Returns: undefined
       }
     }
     Enums: {
