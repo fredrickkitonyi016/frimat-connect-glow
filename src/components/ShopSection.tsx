@@ -43,11 +43,35 @@ import macbookPro14 from "@/assets/products/macbook-pro-14.jpg";
 import toshibaSatellitePro from "@/assets/products/toshiba-satellite-pro.jpg";
 import toshibaPortege from "@/assets/products/toshiba-portege.jpg";
 
-export default function ShopSection() {
+export const shopCategories = [
+  "All",
+  "Laptops & Desktops",
+  "Computer Accessories",
+  "Networking Devices",
+  "Storage & Drives",
+  "Power & Cables",
+  "Headsets & Audio",
+  "Printers & Scanners",
+  "Smart Gadgets"
+];
+
+interface ShopSectionProps {
+  searchQuery?: string;
+  activeCategory?: string;
+  onSearchChange?: (value: string) => void;
+  onCategoryChange?: (value: string) => void;
+}
+
+export default function ShopSection({ searchQuery: controlledSearch, activeCategory: controlledCategory, onSearchChange, onCategoryChange }: ShopSectionProps = {}) {
   const { addToCart } = useCart();
   
-  const [searchQuery, setSearchQuery] = useState("");
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [internalSearch, setInternalSearch] = useState("");
+  const [internalCategory, setInternalCategory] = useState("All");
+  const isControlled = controlledSearch !== undefined && controlledCategory !== undefined;
+  const searchQuery = isControlled ? (controlledSearch ?? "") : internalSearch;
+  const activeCategory = isControlled ? (controlledCategory ?? "All") : internalCategory;
+  const setSearchQuery = isControlled ? (onSearchChange ?? (() => {})) : setInternalSearch;
+  const setActiveCategory = isControlled ? (onCategoryChange ?? (() => {})) : setInternalCategory;
   const [sortBy, setSortBy] = useState("best-match");
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -55,17 +79,6 @@ export default function ShopSection() {
   const [isPaused, setIsPaused] = useState(false);
 
 
-  const categories = [
-    "All",
-    "Laptops & Desktops",
-    "Computer Accessories",
-    "Networking Devices",
-    "Storage & Drives",
-    "Power & Cables",
-    "Headsets & Audio",
-    "Printers & Scanners",
-    "Smart Gadgets"
-  ];
 
   // Comprehensive product database - Accessories + Laptops
   const allProducts = [
@@ -267,7 +280,8 @@ export default function ShopSection() {
           </p>
         </div>
 
-        {/* Universal Search Bar */}
+        {/* Universal Search Bar (hidden when search is controlled from the Shop page) */}
+        {!isControlled && (
         <div className="max-w-5xl mx-auto mb-8 fade-in">
           <Card className="p-4 bg-white shadow-md">
             <div className="flex flex-col gap-3">
@@ -284,6 +298,7 @@ export default function ShopSection() {
             </div>
           </Card>
         </div>
+        )}
 
         {/* Auto-Rotating Accessories Carousel */}
         <div 
@@ -410,10 +425,11 @@ export default function ShopSection() {
 
         {/* Product Display Section */}
         <div className="fade-in">
-          {/* Category Bar */}
+          {/* Category Bar (hidden when categories are controlled from the Shop page) */}
+          {!isControlled && (
             <div className="mb-6 bg-white rounded-lg shadow-sm p-4">
-              <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
-                {categories.map((category) => (
+              <div className="flex gap-2 flex-wrap">
+                {shopCategories.map((category) => (
                   <button
                     key={category}
                     onClick={() => setActiveCategory(category)}
@@ -429,6 +445,7 @@ export default function ShopSection() {
                 ))}
               </div>
             </div>
+          )}
 
             {/* Sorting & Filter Bar */}
             <div className="mb-6 bg-white rounded-lg shadow-sm p-4">
