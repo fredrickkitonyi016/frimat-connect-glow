@@ -190,18 +190,18 @@ export default function HeroSection() {
                 variant="hero" 
                 size="lg" 
                 className="group text-base btn-modern" 
-                onClick={() => navigate('/book-service')}
+                onClick={() => navigate('/portal?tab=chat')}
               >
-                Get a Free Quote
+                Track My Repair
                 <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
               </Button>
               <Button 
                 variant="neon" 
                 size="lg" 
                 className="text-base backdrop-blur-sm"
-                onClick={() => navigate('/shop')}
+                onClick={() => navigate('/portal?tab=devices')}
               >
-                Browse the Shop
+                Book via Portal
               </Button>
             </motion.div>
 

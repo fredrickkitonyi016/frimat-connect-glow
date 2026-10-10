@@ -33,7 +33,7 @@ export default function ServiceDetailModal({
 
   const handleGetQuote = () => {
     onClose();
-    navigate('/#contact');
+    navigate(`/portal?tab=devices&service=${encodeURIComponent(service?.name ?? '')}`);
   };
 
   return (
@@ -105,7 +105,7 @@ export default function ServiceDetailModal({
               className="flex-1"
               onClick={handleGetQuote}
             >
-              Get a Quote
+              Book via Portal
               <ArrowRight className="ml-2 w-4 h-4" />
             </Button>
             <Button 
