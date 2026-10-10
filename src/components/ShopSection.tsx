@@ -43,11 +43,35 @@ import macbookPro14 from "@/assets/products/macbook-pro-14.jpg";
 import toshibaSatellitePro from "@/assets/products/toshiba-satellite-pro.jpg";
 import toshibaPortege from "@/assets/products/toshiba-portege.jpg";
 
-export default function ShopSection() {
+export const shopCategories = [
+  "All",
+  "Laptops & Desktops",
+  "Computer Accessories",
+  "Networking Devices",
+  "Storage & Drives",
+  "Power & Cables",
+  "Headsets & Audio",
+  "Printers & Scanners",
+  "Smart Gadgets"
+];
+
+interface ShopSectionProps {
+  searchQuery?: string;
+  activeCategory?: string;
+  onSearchChange?: (value: string) => void;
+  onCategoryChange?: (value: string) => void;
+}
+
+export default function ShopSection({ searchQuery: controlledSearch, activeCategory: controlledCategory, onSearchChange, onCategoryChange }: ShopSectionProps = {}) {
   const { addToCart } = useCart();
   
-  const [searchQuery, setSearchQuery] = useState("");
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [internalSearch, setInternalSearch] = useState("");
+  const [internalCategory, setInternalCategory] = useState("All");
+  const isControlled = controlledSearch !== undefined && controlledCategory !== undefined;
+  const searchQuery = isControlled ? (controlledSearch ?? "") : internalSearch;
+  const activeCategory = isControlled ? (controlledCategory ?? "All") : internalCategory;
+  const setSearchQuery = isControlled ? (onSearchChange ?? (() => {})) : setInternalSearch;
+  const setActiveCategory = isControlled ? (onCategoryChange ?? (() => {})) : setInternalCategory;
   const [sortBy, setSortBy] = useState("best-match");
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
