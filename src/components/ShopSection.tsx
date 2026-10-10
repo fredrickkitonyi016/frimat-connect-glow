@@ -263,7 +263,7 @@ export default function ShopSection({ searchQuery: controlledSearch, activeCateg
     }
   });
 
-  console.log("ShopSection rendering, categories:", categories);
+  console.log("ShopSection rendering, categories:", shopCategories);
   console.log("Total products:", enhancedProducts.length);
   console.log("Displayed products count:", displayedProducts.length);
   
