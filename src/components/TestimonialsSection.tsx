@@ -42,8 +42,8 @@ export default function TestimonialsSection() {
   const [approved, setApproved] = useState<typeof baseTestimonials>([]);
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    void (supabase as any).from(\"reviews\").select(\"display_name,rating,comment\").eq(\"approved\", true).order(\"created_at\", { ascending: false }).limit(4)
-      .then(({ data }: { data: { display_name: string; rating: number; comment: string }[] | null }) => setApproved((data ?? []).map((r) => ({ name: r.display_name || \"Client\", role: \"Verified client\", company: \"FRIMAT Portal\", content: r.comment, rating: r.rating, avatar: `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(r.display_name || \"C\")}` }))));
+    void (supabase as any).from("reviews").select("display_name,rating,comment").eq("approved", true).order("created_at", { ascending: false }).limit(4)
+      .then(({ data }: { data: { display_name: string; rating: number; comment: string }[] | null }) => setApproved((data ?? []).map((r) => ({ name: r.display_name || "Client", role: "Verified client", company: "FRIMAT Portal", content: r.comment, rating: r.rating, avatar: `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(r.display_name || "C")}` }))));
   }, []);
   const testimonials = [...approved, ...baseTestimonials];
   return (
