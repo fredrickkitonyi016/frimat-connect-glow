@@ -79,17 +79,6 @@ export default function ShopSection({ searchQuery: controlledSearch, activeCateg
   const [isPaused, setIsPaused] = useState(false);
 
 
-  const categories = [
-    "All",
-    "Laptops & Desktops",
-    "Computer Accessories",
-    "Networking Devices",
-    "Storage & Drives",
-    "Power & Cables",
-    "Headsets & Audio",
-    "Printers & Scanners",
-    "Smart Gadgets"
-  ];
 
   // Comprehensive product database - Accessories + Laptops
   const allProducts = [
@@ -291,7 +280,8 @@ export default function ShopSection({ searchQuery: controlledSearch, activeCateg
           </p>
         </div>
 
-        {/* Universal Search Bar */}
+        {/* Universal Search Bar (hidden when search is controlled from the Shop page) */}
+        {!isControlled && (
         <div className="max-w-5xl mx-auto mb-8 fade-in">
           <Card className="p-4 bg-white shadow-md">
             <div className="flex flex-col gap-3">
@@ -308,6 +298,7 @@ export default function ShopSection({ searchQuery: controlledSearch, activeCateg
             </div>
           </Card>
         </div>
+        )}
 
         {/* Auto-Rotating Accessories Carousel */}
         <div 
@@ -434,10 +425,11 @@ export default function ShopSection({ searchQuery: controlledSearch, activeCateg
 
         {/* Product Display Section */}
         <div className="fade-in">
-          {/* Category Bar */}
+          {/* Category Bar (hidden when categories are controlled from the Shop page) */}
+          {!isControlled && (
             <div className="mb-6 bg-white rounded-lg shadow-sm p-4">
-              <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
-                {categories.map((category) => (
+              <div className="flex gap-2 flex-wrap">
+                {shopCategories.map((category) => (
                   <button
                     key={category}
                     onClick={() => setActiveCategory(category)}
@@ -453,6 +445,7 @@ export default function ShopSection({ searchQuery: controlledSearch, activeCateg
                 ))}
               </div>
             </div>
+          )}
 
             {/* Sorting & Filter Bar */}
             <div className="mb-6 bg-white rounded-lg shadow-sm p-4">
