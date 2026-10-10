@@ -90,6 +90,14 @@ const ClientRecords = ({ userId, role }: { userId: string; role: PortalRole }) =
   const setStatus = async (id: string, status: string) => {
     const { error } = await supabase.from("service_records").update({ status }).eq("id", id);
     if (error) return fail(error.message);
+    // Automatic alert in the ticket chat so the client sees the change.
+    await supabase.from("ticket_messages").insert({ record_id: id, sender_id: userId, body: `STATUS UPDATE: your job is now ${status}.` });
+    const r = records.find((x) => x.id === id);
+    const p = profiles.find((x) => x.user_id === r?.client_id);
+    const phone = (p?.phone ?? "").replace(/\D/g, "").replace(/^0/, "254");
+    if (r && phone.length >= 11 && window.confirm(`Send a WhatsApp update to ${p?.full_name || "the client"}?`)) {
+      window.open(`https://wa.me/${phone}?text=${encodeURIComponent(`Hello ${p?.full_name || ""}, FRIMAT update for ${r.tracking_id} (${r.service_type}): status is now ${status}.`)}`, "_blank");
+    }
     void load();
   };
 

@@ -91,6 +91,7 @@ export const CheckoutModal = ({ open, onOpenChange }: CheckoutModalProps) => {
       },
       callback: (response) => {
         pushToQueue({ source: 'purchase', title: `Shop order (${items.length} item${items.length === 1 ? '' : 's'})`, detail: items.map(i => `${i.quantity}x ${i.name}`).join(', '), amountKsh: items.reduce((t, i) => t + i.price * i.quantity, 0), status: 'PAYMENT INITIATED' });
+        void (supabase as any).rpc('log_purchase_invoice', { _description: `Shop order: ${items.map(i => `${i.quantity}x ${i.name}`).join(', ')}`, _amount: items.reduce((t, i) => t + i.price * i.quantity, 0), _reference: '' });
         toast({
           title: '🎉 Payment Successful!',
           description: `Transaction ref: ${response.reference}. We'll contact you shortly.`,
@@ -134,6 +135,7 @@ export const CheckoutModal = ({ open, onOpenChange }: CheckoutModalProps) => {
         });
         setMpesaStatus('success');
         pushToQueue({ source: 'purchase', title: `Shop order (${items.length} item${items.length === 1 ? '' : 's'})`, detail: items.map(i => `${i.quantity}x ${i.name}`).join(', '), amountKsh: items.reduce((t, i) => t + i.price * i.quantity, 0), status: 'PAYMENT INITIATED' });
+        void (supabase as any).rpc('log_purchase_invoice', { _description: `Shop order: ${items.map(i => `${i.quantity}x ${i.name}`).join(', ')}`, _amount: items.reduce((t, i) => t + i.price * i.quantity, 0), _reference: '' });
         // Clear cart after a delay (assuming payment will complete)
         setTimeout(() => {
           clearCart();

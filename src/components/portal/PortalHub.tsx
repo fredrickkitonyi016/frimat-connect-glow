@@ -17,6 +17,8 @@ type Inv = { id: string; invoice_number: string; client_id: string; description:
 type Review = { id: string; client_id: string; display_name: string; rating: number; comment: string; approved: boolean };
 type Profile = { user_id: string; full_name: string; email: string; phone: string };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const db = supabase as any;
 const box = "rounded-lg border border-border/50 bg-background/60 p-3";
 const ksh = (n: number) => `KSh ${Number(n).toLocaleString("en-KE")}`;
 const fmt = (d: string | null) => (d ? new Date(d).toLocaleDateString("en-KE") : "—");
@@ -42,12 +44,12 @@ const PortalHub = ({ section, userId, role, presetService }: { section: HubSecti
 
   const load = useCallback(async () => {
     const [p, d, q, r, i, v] = await Promise.all([
-      supabase.from("profiles").select("user_id,full_name,email,phone"),
-      supabase.from("devices").select("*").order("created_at", { ascending: false }),
-      supabase.from("quotes").select("*").order("created_at", { ascending: false }),
-      supabase.from("service_records").select("*").order("created_at", { ascending: false }),
-      supabase.from("invoices").select("*").order("created_at", { ascending: false }),
-      supabase.from("reviews").select("*").order("created_at", { ascending: false }),
+      db.from("profiles").select("user_id,full_name,email,phone"),
+      db.from("devices").select("*").order("created_at", { ascending: false }),
+      db.from("quotes").select("*").order("created_at", { ascending: false }),
+      db.from("service_records").select("*").order("created_at", { ascending: false }),
+      db.from("invoices").select("*").order("created_at", { ascending: false }),
+      db.from("reviews").select("*").order("created_at", { ascending: false }),
     ]);
     setProfiles((p.data ?? []) as Profile[]);
     setDevices((d.data ?? []) as Device[]);
@@ -77,7 +79,7 @@ const PortalHub = ({ section, userId, role, presetService }: { section: HubSecti
     if (!client_id || !dev.device_type.trim() || !dev.model.trim()) return fail("Enter device type and model.");
     const installed = dev.installed_on || null;
     const warranty = installed ? new Date(new Date(installed).getTime() + 90 * 864e5).toISOString().slice(0, 10) : null;
-    const { error } = await supabase.from("devices").insert({ client_id, device_type: dev.device_type.trim(), model: dev.model.trim(), serial_no: dev.serial_no.trim(), installed_on: installed, warranty_expires_at: warranty });
+    const { error } = await db.from("devices").insert({ client_id, device_type: dev.device_type.trim(), model: dev.model.trim(), serial_no: dev.serial_no.trim(), installed_on: installed, warranty_expires_at: warranty });
     if (error) return fail(error.message);
     toast({ title: "Device registered" });
     setDev({ client_id: "", device_type: "", model: "", serial_no: "", installed_on: "" });
@@ -93,7 +95,7 @@ const PortalHub = ({ section, userId, role, presetService }: { section: HubSecti
       const { data } = await supabase.functions.invoke("triage-repair", { body: { description: text, device: d?.model ?? "" } });
       if (data?.priority) notes = `AI PRIORITY: ${data.priority} (${data.repair_type}) — ${data.reason}\n${notes}`;
     }
-    const { data, error } = await supabase.from("service_records")
+    const { data, error } = await db.from("service_records")
       .insert({ client_id: d?.client_id ?? userId, service_type: service_type.slice(0, 120), device: d ? `${d.model} ${d.serial_no}`.trim() : "", issue: text.slice(0, 500), notes })
       .select("tracking_id").single();
     if (error) return fail(error.message);
@@ -107,14 +109,14 @@ const PortalHub = ({ section, userId, role, presetService }: { section: HubSecti
   const addQuote = async () => {
     const amount = Number(qt.amount_ksh);
     if (!qt.client_id || !qt.description.trim() || !(amount > 0)) return fail("Fill in client, description and amount.");
-    const { error } = await supabase.from("quotes").insert({ client_id: qt.client_id, description: qt.description.trim(), amount_ksh: amount });
+    const { error } = await db.from("quotes").insert({ client_id: qt.client_id, description: qt.description.trim(), amount_ksh: amount });
     if (error) return fail(error.message);
     toast({ title: "Quote sent to client" });
     setQt({ client_id: "", description: "", amount_ksh: "" });
     void load();
   };
   const respond = async (id: string, accept: boolean) => {
-    const { error } = await supabase.rpc("respond_quote" as never, { _quote_id: id, _accept: accept } as never);
+    const { error } = await db.rpc("respond_quote", { _quote_id: id, _accept: accept });
     if (error) return fail(error.message);
     toast({ title: accept ? "Quote approved — work can start" : "Quote rejected" });
     void load();
@@ -129,7 +131,7 @@ const PortalHub = ({ section, userId, role, presetService }: { section: HubSecti
   useEffect(() => {
     if (section !== "chat" || !active) return;
     const fetchMsgs = async () => {
-      const { data } = await supabase.from("ticket_messages").select("*").eq("record_id", active).order("created_at");
+      const { data } = await db.from("ticket_messages").select("*").eq("record_id", active).order("created_at");
       setMsgs((data ?? []) as Msg[]);
     };
     void fetchMsgs();
@@ -143,7 +145,7 @@ const PortalHub = ({ section, userId, role, presetService }: { section: HubSecti
   const send = async () => {
     const body = text.trim();
     if (!body || !active) return;
-    const { data, error } = await supabase.from("ticket_messages").insert({ record_id: active, sender_id: userId, body: body.slice(0, 2000) }).select().single();
+    const { data, error } = await db.from("ticket_messages").insert({ record_id: active, sender_id: userId, body: body.slice(0, 2000) }).select().single();
     if (error) return fail(error.message);
     setText("");
     setMsgs((m) => (m.some((x) => x.id === data.id) ? m : [...m, data as Msg]));
@@ -191,14 +193,14 @@ const PortalHub = ({ section, userId, role, presetService }: { section: HubSecti
   const [rv, setRv] = useState({ record_id: "", rating: 5, comment: "" });
   const submitReview = async () => {
     if (rv.comment.trim().length < 5) return fail("Write a short comment.");
-    const { error } = await supabase.from("reviews").insert({ client_id: userId, record_id: rv.record_id || null, display_name: (me?.full_name || "Client").slice(0, 80), rating: rv.rating, comment: rv.comment.trim().slice(0, 1000) });
+    const { error } = await db.from("reviews").insert({ client_id: userId, record_id: rv.record_id || null, display_name: (me?.full_name || "Client").slice(0, 80), rating: rv.rating, comment: rv.comment.trim().slice(0, 1000) });
     if (error) return fail(error.message);
     toast({ title: "Thank you!", description: "Your review will appear on the website after approval." });
     setRv({ record_id: "", rating: 5, comment: "" });
     void load();
   };
   const moderate = async (id: string, approved: boolean) => {
-    const { error } = approved ? await supabase.from("reviews").update({ approved: true }).eq("id", id) : await supabase.from("reviews").delete().eq("id", id);
+    const { error } = approved ? await db.from("reviews").update({ approved: true }).eq("id", id) : await db.from("reviews").delete().eq("id", id);
     if (error) return fail(error.message);
     void load();
   };

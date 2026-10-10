@@ -26,6 +26,9 @@ import { toast } from "@/hooks/use-toast";
 import Footer from "@/components/Footer";
 import PortalSignIn from "@/components/PortalSignIn";
 import ClientRecords from "@/components/portal/ClientRecords";
+import PortalHub from "@/components/portal/PortalHub";
+import { useSearchParams } from "react-router-dom";
+import { FileText, HardDrive, Star } from "lucide-react";
 import { usePortalAuth } from "@/hooks/usePortalAuth";
 import {
   getQueue,
@@ -161,6 +164,11 @@ const tabs = [
   { id: "billing", label: "Billing & Shop", icon: CreditCard, roles: ["admin", "client"] },
   { id: "support", label: "Service Desk", icon: Headphones, roles: ALL },
   { id: "records", label: "Client Records", icon: Ticket, roles: ALL },
+  { id: "devices", label: "My Devices", icon: HardDrive, roles: ALL },
+  { id: "quotes", label: "Quotes & Estimates", icon: FileText, roles: ALL },
+  { id: "chat", label: "Ticket Chat", icon: MessageSquare, roles: ALL },
+  { id: "finance", label: "Orders & Invoices", icon: CreditCard, roles: ALL },
+  { id: "reviews", label: "Reviews", icon: Star, roles: ["admin", "client"] },
   { id: "operations", label: "Operations Control", icon: ShieldCheck, roles: ["admin", "staff"] },
 ] as const;
 
@@ -170,7 +178,11 @@ type TabId = (typeof tabs)[number]["id"];
 
 const Portal = () => {
   const { session, user, role, loading, signOut } = usePortalAuth();
-  const [tab, setTab] = useState<TabId>("dashboard");
+  const [params] = useSearchParams();
+  const initialTab = (tabs.find((t) => t.id === params.get("tab"))?.id ?? "dashboard") as TabId;
+  const [tab, setTab] = useState<TabId>(initialTab);
+  const presetService = params.get("service") ?? undefined;
+  useEffect(() => { const t = tabs.find((x) => x.id === params.get("tab")); if (t) setTab(t.id as TabId); }, [params]);
   const [queue, setQueue] = useState<QueueEntry[]>([]);
   const [clock, setClock] = useState(new Date());
 
@@ -664,6 +676,12 @@ const Portal = () => {
               </p>
             </Panel>
           </div>
+        )}
+
+        {user && (["devices", "quotes", "chat", "finance", "reviews"] as const).includes(tab as never) && (
+          <Panel title={tabs.find((t) => t.id === tab)!.label} tag="LIVE DATABASE" icon={tabs.find((t) => t.id === tab)!.icon}>
+            <PortalHub section={tab as "devices"} userId={user.id} role={role} presetService={presetService} />
+          </Panel>
         )}
 
         {tab === "records" && user && (

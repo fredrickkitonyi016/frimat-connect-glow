@@ -1,6 +1,8 @@
+import { useEffect, useState } from "react";
 import { Star, Quote } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
-const testimonials = [
+const baseTestimonials = [
   {
     name: "Grace Wanjiku",
     role: "Owner, Wanjiku Mini Mart",
@@ -37,6 +39,13 @@ const testimonials = [
 
 
 export default function TestimonialsSection() {
+  const [approved, setApproved] = useState<typeof baseTestimonials>([]);
+  useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    void (supabase as any).from("reviews").select("display_name,rating,comment").eq("approved", true).order("created_at", { ascending: false }).limit(4)
+      .then(({ data }: { data: { display_name: string; rating: number; comment: string }[] | null }) => setApproved((data ?? []).map((r) => ({ name: r.display_name || "Client", role: "Verified client", company: "FRIMAT Portal", content: r.comment, rating: r.rating, avatar: `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(r.display_name || "C")}` }))));
+  }, []);
+  const testimonials = [...approved, ...baseTestimonials];
   return (
     <section className="py-24 relative overflow-hidden">
       <div className="container mx-auto px-6">
