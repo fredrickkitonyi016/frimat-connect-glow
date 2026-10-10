@@ -33,7 +33,7 @@ const UserMenu = ({ mobile, onNavigate }: { mobile?: boolean; onNavigate?: () =>
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
-        <UserCircle size={14} /><span className="max-w-[160px] truncate">{user.email}</span>
+        <UserCircle size={14} /><span className="max-w-[160px] truncate">My Account · Client Portal</span>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="z-[200]">
         <DropdownMenuLabel className="font-mono text-[11px] uppercase">Clearance: {role}</DropdownMenuLabel>

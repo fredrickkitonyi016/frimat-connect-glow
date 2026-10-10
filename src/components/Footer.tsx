@@ -77,7 +77,11 @@ export default function Footer() {
                 { name: "How It Works", href: "#how-it-works" },
                 { name: "Shop", href: "/shop" },
                 { name: "Book a Service", href: "/book-service" },
-                { name: "Contact", href: "/contact" }
+                { name: "Contact", href: "/contact" },
+                { name: "Client Portal", href: "/portal" },
+                { name: "Check Repair Status", href: "/portal?tab=chat" },
+                { name: "Download Invoices", href: "/portal?tab=finance" },
+                { name: "Request Support", href: "/portal?tab=devices" }
               ].map((link, index) => (
 
                 <li key={index}>

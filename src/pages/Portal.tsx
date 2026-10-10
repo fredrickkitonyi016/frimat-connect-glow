@@ -182,6 +182,7 @@ const Portal = () => {
   const initialTab = (tabs.find((t) => t.id === params.get("tab"))?.id ?? "dashboard") as TabId;
   const [tab, setTab] = useState<TabId>(initialTab);
   const presetService = params.get("service") ?? undefined;
+  useEffect(() => { const t = tabs.find((x) => x.id === params.get("tab")); if (t) setTab(t.id as TabId); }, [params]);
   const [queue, setQueue] = useState<QueueEntry[]>([]);
   const [clock, setClock] = useState(new Date());
 
