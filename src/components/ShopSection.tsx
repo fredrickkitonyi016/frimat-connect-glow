@@ -70,6 +70,7 @@ export default function ShopSection({ searchQuery: controlledSearch, activeCateg
   const isControlled = controlledSearch !== undefined && controlledCategory !== undefined;
   const searchQuery = isControlled ? (controlledSearch ?? "") : internalSearch;
   const activeCategory = isControlled ? (controlledCategory ?? "All") : internalCategory;
+  const isFiltering = searchQuery.trim() !== "" || activeCategory !== "All";
   const setSearchQuery = isControlled ? (onSearchChange ?? (() => {})) : setInternalSearch;
   const setActiveCategory = isControlled ? (onCategoryChange ?? (() => {})) : setInternalCategory;
   const [sortBy, setSortBy] = useState("best-match");
@@ -301,7 +302,7 @@ export default function ShopSection({ searchQuery: controlledSearch, activeCateg
         )}
 
         {/* Auto-Rotating Accessories Carousel */}
-        <div 
+        {!isFiltering && <div 
           className="mb-12 fade-in"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
@@ -421,7 +422,7 @@ export default function ShopSection({ searchQuery: controlledSearch, activeCateg
               </Card>
             ))}
           </div>
-        </div>
+        </div>}
 
         {/* Product Display Section */}
         <div className="fade-in">
@@ -467,13 +468,14 @@ export default function ShopSection({ searchQuery: controlledSearch, activeCateg
                     <option value="newest">Newest</option>
                   </select>
                 </div>
-                <div className="text-sm" style={{ color: '#666' }}>
-                  Showing 1–{displayedProducts.length} of {enhancedProducts.length} Products
+                <div className="text-sm text-muted-foreground" aria-live="polite">
+                  Showing {displayedProducts.length} of {enhancedProducts.length} products
                 </div>
               </div>
             </div>
 
             {/* Product Grid - AliExpress Style */}
+            {displayedProducts.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4 mb-12">
               {displayedProducts.map((product, index) => (
                 <Card
@@ -592,6 +594,23 @@ export default function ShopSection({ searchQuery: controlledSearch, activeCateg
                 </Card>
               ))}
             </div>
+            ) : (
+              <Card className="mb-12 flex flex-col items-center gap-3 border-border bg-card px-6 py-10 text-center">
+                <h3 className="text-xl font-semibold text-foreground">No matching products</h3>
+                <p className="max-w-md text-sm text-muted-foreground">
+                  Try another search or choose a different category.
+                </p>
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    setSearchQuery("");
+                    setActiveCategory("All");
+                  }}
+                >
+                  Clear filters
+                </Button>
+              </Card>
+            )}
           </div>
 
         {/* Shop CTA */}
